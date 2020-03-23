@@ -16,12 +16,33 @@ import bean.NoticeVo;
 @WebServlet("*.star")
 public class StarbucksServlet extends HttpServlet{
 	String url="bbs/csCenter/notice/notice.jsp";
+	String urlAdmin = "index.jsp?cont=../admin";
+
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String str=req.getParameter("str");
-		RequestDispatcher rd=req.getRequestDispatcher(url+"?str="+str);
-		rd.forward(req, resp);
+		String temp=req.getRequestURI();
+		int pos=temp.lastIndexOf("/");
+		String tempURL=temp.substring(pos);
+
+		switch (tempURL) {
+		
+		case "/notice.star":
+			String str = req.getParameter("str");
+			RequestDispatcher rd = req.getRequestDispatcher(url + "?str=" + str);
+			rd.forward(req, resp);
+			break;
+
+		case "/add_product.star":
+			insertProducts(req, resp);
+			break;
+			
+		case "/select_product.star":
+			selectProducts(req, resp);
+			break;
+		}
+		
+		
 	}
 
 	@Override
@@ -34,8 +55,17 @@ public class StarbucksServlet extends HttpServlet{
 		case"/notice_select.star":
 			select(req, resp);
 			break;
+			
 		case"/notice.star":
 			notice(req, resp);
+			break;
+			
+		case"/select_product.star":
+			selectProducts(req, resp);
+			break;
+			
+		case"/add_product.star":
+			insertProducts(req, resp);
 			break;
 		}
 	}
@@ -50,8 +80,24 @@ public class StarbucksServlet extends HttpServlet{
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
+	
 	public void notice(HttpServletRequest req, HttpServletResponse resp) {
 		
+	}
+	
+	
+	// 주현 : admin - 상품 조회
+	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path= urlAdmin+"/products.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	// 주현 : admin - 상품 등록
+	public void insertProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path= urlAdmin+"/add-product.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
 	}
 	
 }
