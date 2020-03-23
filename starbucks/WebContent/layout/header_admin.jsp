@@ -42,7 +42,7 @@
     <script type='text/javascript' src="<%=request.getContextPath() %>/js/tooplate-scripts.js"></script>
     <script src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <!-- https://jqueryui.com/download/ -->
-    
+    <script src="<%=request.getContextPath() %>/js/admin_products.js"></script>
 	
 </head>
 
