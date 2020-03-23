@@ -1,6 +1,7 @@
 package starbucks;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -11,7 +12,7 @@ import starbucks.MemberVo;
 
 public class Shopping_MemberDao {
 	Connection conn;
-	
+	ResultSet rs;
 	public Shopping_MemberDao() {
 		conn = DBConn.getConn();
 	}
@@ -46,11 +47,37 @@ public class Shopping_MemberDao {
 		} finally {
 			return msg;			
 		}
+
+	}
+	
+	public int login(String mId, String pwd) {
+		
+		String sql = "select member_id, member_pw from shopping_member where member_id = ? ";
+		
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, mId);
+			rs = ps.executeQuery();
+			System.out.println(pwd +"비번");
+			if(rs.next()) {
+				System.out.println(rs.getString("member_pw"));
+				if(rs.getString("member_pw").equals(pwd)) {
+					
+					return 1; //로그인성공
+				}else {
+					
+					return 0; // 비밀번호 불일치
+				}
+				
+			}
+			return -1 ; //아이디 없음 오류
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		
-		
-		
-		
+		return -2; //데이터베이스 오류
 	}
 	
 }

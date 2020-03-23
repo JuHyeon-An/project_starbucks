@@ -37,7 +37,7 @@ String msg = dao.insert(vo);
         </div>
     </div>
 
-<h3>회원가입되었습니다.</h3>
+<h3><%=msg %></h3>
 
 
     
