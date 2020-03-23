@@ -58,7 +58,7 @@
                                 <input type="password" id="password" value='' placeholder="비밀번호를 입력하세요" class="form-control" />
                             </div>
                             <button type="submit" id="login-submit" class="btn btn-default btn-block"/>로그인</button>
-                             <span class='text-center'><a href="" class="text-sm">비밀번호 찾기</a></span>
+                             <span class='text-center'><a href="" class="btn btn-default btn-block">비밀번호 찾기</a></span>
                               <span class='text-center'><a href="/starbucks/member/join.jsp" class="btn btn-default btn-block"> 회원가입</a></span>
                             <div class="form-group">
                             </div>
