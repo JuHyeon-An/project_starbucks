@@ -5,23 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Product Page - Admin HTML Template</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
-    <!-- https://fonts.google.com/specimen/Roboto -->
-    <link rel="stylesheet" href="../css/fontawesome.min.css" />
-    <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="../css/templatemo-style.css">
-    <!--
-	Product Admin CSS Template
-	https://templatemo.com/tm-524-product-admin
-	-->
+   
   </head>
 
-  <body id="reportsPage">
+ <div class="container mt-5">
       <div class="row tm-content-row">
         <div class="col-sm-12 col-md-12 col-lg-8 col-xl-8 tm-block-col">
           <div class="tm-bg-primary-dark tm-block tm-block-products">
@@ -175,7 +162,8 @@
             </div>
             <!-- table container -->
             <a
-              href="add-product.jsp"
+              href="#"
+              onclick='goUrl("/admin", "/add-product.jsp")'
               class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
             <button class="btn btn-primary btn-block text-uppercase">
               Delete selected products
@@ -291,7 +279,7 @@
     <script>
       $(function() {
         $(".tm-product-name").on("click", function() {
-          window.location.href = "edit-product.jsp";
+          goUrl("/admin", "/edit-product.jsp");
         });
       });
     </script>
