@@ -20,6 +20,7 @@
     <script src="/starbucks/js/bootstrap.min.js"></script>
     <!-- https://getbootstrap.com/ -->
     <script src="/starbucks/js/tooplate-scripts.js"></script>
+    
     <script>
         Chart.defaults.global.defaultFontColor = 'white';
         let ctxLine,
