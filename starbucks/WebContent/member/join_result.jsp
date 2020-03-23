@@ -38,16 +38,8 @@ String msg = dao.insert(vo);
     </div>
 
 <h3>회원가입되었습니다.</h3>
-<%
-PrintWriter script = response.getWriter();
-script.println(vo.getmId());
-script.println(vo.getPwd());
-script.println(address);
 
 
-%>
-<button></button>
-    
     
 <%@include file="../layout/footer.jsp" %>
 

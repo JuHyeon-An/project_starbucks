@@ -23,7 +23,7 @@ public class Shopping_MemberDao {
 		try {
 
 			
-			String sql = "insert into shopping_member values( ? , ? , ? , ? , ? , ? , ? )";
+			String sql = "insert into shopping_member(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_EMAIL, MEMBER_REGDATE) values( ? , ? , ? , ? , ? , ? , ? )";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getmId());
 			ps.setString(2, vo.getPwd());
