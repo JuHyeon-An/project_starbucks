@@ -50,7 +50,7 @@
                                 <div class="site-top-icons">
                                     <ul>
                                     	<li><a href="/starbucks/admin/">admin</a></li>
-                                        <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                        <li><a href="/starbucks/member/login.jsp"><span class="icon icon-person"></span></a></li>
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>
                                             <a href="cart.html" class="site-cart">
