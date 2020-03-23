@@ -16,7 +16,7 @@
                             <p>
                                 <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
                             </p>
-                        </div>
+                        </div>   
                     </div>
 
                 </div>
