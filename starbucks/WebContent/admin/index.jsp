@@ -1,9 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<head>
 	
-	</head>
-	<body>
 	<%
 
 request.setCharacterEncoding("utf-8");
@@ -51,7 +48,6 @@ function goSubmit(frm, cont){
 	// post 타입으로도 넘김
 }
 
-btnFunc();
+//btnFunc();
 </script>
 	
-	</body>

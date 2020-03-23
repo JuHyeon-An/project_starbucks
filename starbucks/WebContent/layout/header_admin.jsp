@@ -19,6 +19,23 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
 	-->
+	<link rel="stylesheet" href="/starbucks/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+    <!-- http://api.jqueryui.com/datepicker/ -->
+	
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+	<script type='text/javascript' src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <!-- https://jqueryui.com/download/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/moment.min.js"></script>
+    <!-- https://momentjs.com/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/Chart.min.js"></script>
+    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/tooplate-scripts.js"></script>
+    <script src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <!-- https://jqueryui.com/download/ -->
+	
 </head>
 
 <body id="reportsPage">
