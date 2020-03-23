@@ -8,6 +8,7 @@ let func=function(){
 		});
 	}
 }
+
 let init=function(){
 	func();
 	$('#btnSelect').click();

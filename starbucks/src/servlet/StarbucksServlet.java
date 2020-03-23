@@ -12,11 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.NoticeDao;
 import bean.NoticeVo;
+import bean.OrderDao;
+import bean.OrderVo;
 
 @WebServlet("*.star")
 public class StarbucksServlet extends HttpServlet{
-	String url="bbs/csCenter/notice/notice.jsp";
-
+	String url="bbs/csCenter/notice/notice.jsp";	
+	String urlsw="admin/order.jsp";
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String str=req.getParameter("str");
@@ -37,9 +39,26 @@ public class StarbucksServlet extends HttpServlet{
 		case"/notice.star":
 			notice(req, resp);
 			break;
+		case"/order.star":
+			order(req, resp);
+			break;
+			
+		
 		}
 	}
 		
+
+	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String findStr=req.getParameter("findStr");
+		OrderDao dao=new OrderDao();
+		List<OrderVo> list = dao.select(findStr);
+		req.setAttribute("list", list);
+		String path=url+"?str=./order.jsp&findStr="+findStr;
+		RequestDispatcher rd = req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		
+		
+	}
 
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String findStr=req.getParameter("findStr");
