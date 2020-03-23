@@ -97,13 +97,14 @@
                                 </ul>
                             </li>
                             <li class="has-children">
-                                <a href="/starbucks/bbs/">CS Center</a>
+                                <a href="notice.star?str=./notice_list.jsp">CS Center</a>
                                 <ul class="dropdown">
-                                    <li><a href="/starbucks/bbs/">Notice</a></li>
-                                    <li><a href="/starbucks/bbs/">q&amp;a</a></li>
+                                    <li><a href="notice.star?str=./notice_list.jsp">Notice</a></li>
+                                    <li><a href="/starbucks/bbs/q&a.jsp">q&amp;a</a></li>
                                 </ul>
-                            </li>
                         </ul>
                     </div>
                 </nav>
             </header>
+            
+            
