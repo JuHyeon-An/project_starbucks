@@ -45,7 +45,7 @@
 
 	<div class="offset-lg-4 col-lg-4 ">
 		<div class="jumbotron center-block" >
-			<form action="" method='post'>
+			<form action="/starbucks/member/join_result.jsp" method='post'>
 				<h3 style='text-align:center;'> 회원가입화면</h3>
 				<div class="form-group">
 					<input type="text" class='form-control' placeholder='아이디' name='userID' maxlength='20'/>
@@ -69,8 +69,9 @@
 				<div class="form-group">
 					<input type="text" class='form-control' placeholder='전화번호' name='userPhone' maxlength='20'/>
 				</div>
-				<div class="form-group">
-					<input type="text" class='form-control' placeholder='주소' name='userAddress' maxlength='50'/>
+				<div class="form-group form-inline">
+					<input type="text" class='form-control col-sm-9' placeholder='주소' name='userAddress' maxlength='50'/>
+					<input type="button" class='btn btn-primary col-lg-3' value='검색' />
 				</div>
 
 				

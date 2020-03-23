@@ -69,10 +69,8 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Daily Report</a>
-                                <a class="dropdown-item" href="#">Weekly Report</a>
-                                <a class="dropdown-item" href="#">Yearly Report</a>
-                            </div>
+                                <a class="dropdown-item" href="order.jsp">주문내역조회</a>
+                                                           </div>
                         </li>
 
 						<li class="nav-item dropdown">
