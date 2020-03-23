@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Starbuck Shop ADMIN</title>
+    <title>Starbucks Shop ADMIN</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="/starbucks/css/fontawesome.min.css">
@@ -22,7 +22,7 @@
 </head>
 
 <body id="reportsPage">
-    <div class="" id="home">
+    <div class="" id="home"></div>
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="index.jsp">
@@ -36,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">
+                            <a class="nav-link active" href="#" onclick= 'goUrl("../admin", "/dashboard.jsp")'>
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                                 <span class="sr-only">(current)</span>
@@ -48,7 +48,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-file-alt"></i>
                                 <span>
-                                    Reports <i class="fas fa-angle-down"></i>
+                                    		주문내역 <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -57,11 +57,20 @@
                                 <a class="dropdown-item" href="#">Yearly Report</a>
                             </div>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="products.jsp">
+
+						<li class="nav-item dropdown">
+
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-cart"></i>
-                                Products
+                                <span>상품관리<i class="fas fa-angle-down"></i>
+                                </span>
                             </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/add-product.jsp")'>상품 등록</a>
+                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/products.jsp")'>상품 목록</a>
+                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/edit-product.jsp")'>상품분류 관리</a>
+                            </div>
                         </li>
 
                         <li class="nav-item">
