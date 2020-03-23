@@ -31,41 +31,42 @@
 			<form action="/starbucks/member/join_result.jsp" method='post'>
 				<h3 style='text-align:center;'> 회원가입</h3> <br />
 				<div class="form-group form-inline">
-					<input type="text" class='form-control col-sm-6' placeholder='아이디' name='userID' maxlength='20'/>
+					<input type="text" class='form-control col-sm-6' placeholder='아이디' name='mId' maxlength='20'/>
 					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='중복체크' onclick='' />
 				</div>
 				<div class="form-group">
-					<input type="password" class='form-control' placeholder='비밀번호' name='userPassword' maxlength='20'/>
+					<input type="password" class='form-control' placeholder='비밀번호' name='pwd' maxlength='20'/>
 				</div>
-				<div class="form-group form-inline">
-					<input type="text" class='form-control col-sm-6 ' placeholder='이름' name='userName' maxlength='20'/>
+				<div class="form-group ">
+					<input type="text" class='form-control' placeholder='이름' name='mName' maxlength='20'/>
 					
-					<div class="form-group offset-sm-1 " style='text-align:center;'>
-						<div class='btn-group' data-toggle='buttons'>
-						<label class='btn btn-primary active '>
-							<input type="radio" name="userGender" autocomplete="off" value="남자" checked />남자
-						</label>
-						<label class='btn btn-primary'>
-							<input type="radio" name="userGender" autocomplete="off" value="여자" />여자
-						</label>
-						</div>
-					</div>
+<!-- 					<div class="form-group offset-sm-1 " style='text-align:center;'> -->
+<!-- 						<div class='btn-group' data-toggle='buttons'> -->
+<!-- 						<label class='btn btn-primary active '> -->
+<!-- 							<input type="radio" name="userGender" autocomplete="off" value="남자" checked />남자 -->
+<!-- 						</label> -->
+<!-- 						<label class='btn btn-primary'> -->
+<!-- 							<input type="radio" name="userGender" autocomplete="off" value="여자" />여자 -->
+<!-- 						</label> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					
 				</div>
 
 				<div class="form-group">
-					<input type="text" class='form-control' placeholder='전화번호' name='userPhone' maxlength='20'/>
+					<input type="text" class='form-control' placeholder='전화번호' name='phone' maxlength='20'/>
 				</div>
 				<div class="form-group form-inline">
 					<input type="text" class='form-control col-sm-6' placeholder='우편번호' name='zip' id='zip' maxlength='50'/>
 					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='검색' onclick='execDaumPostcode()' />
 					<input type="text" class='form-control col-12' placeholder='기본주소' name='addr1' id='addr1' maxlength='50'/>
 					<input type="text" class='form-control col-12' placeholder='상세주소' name='addr2' id='addr2' maxlength='50'/>
+					<input type="text" name='address' id='address' value=''/>
 				</div>
 
 				
 				<div class="form-group">
-					<input type="email" class='form-control' placeholder='이메일' name='userEmail' maxlength='50'/>
+					<input type="email" class='form-control' placeholder='이메일' name='email' maxlength='50'/>
 				</div>
 				<input type="submit" class='btn btn-primary form-control' value="회원가입" />
 			</form>
@@ -105,9 +106,20 @@ function execDaumPostcode() {
         $("#zip").val(data.zonecode);
         $("#addr1").val(fullRoadAddr);
         $("#addr2").focus();
+        
         }
     }).open();
 }
+
+$(document).ready(function(){
+
+	$("#addr2").keyup(function(){
+
+		$("#address").text($("#addr2").val());
+
+	});
+
+});
 
 </script>
 
