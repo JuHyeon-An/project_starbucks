@@ -21,6 +21,7 @@
 	-->
 	<link rel="stylesheet" href="/starbucks/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
     <!-- http://api.jqueryui.com/datepicker/ -->
+	<link rel="stylesheet" href="/starbucks/css/custom.css" type="text/css" />
 	 <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Roboto:400,700"
@@ -89,9 +90,9 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/add-product.jsp")'>상품 등록</a>
-                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/products.jsp")'>상품 목록</a>
-                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/edit-product.jsp")'>상품분류 관리</a>
+                                <a class="dropdown-item" href="./add_product.star">상품 등록</a>
+                                <a class="dropdown-item" href="./select_product.star">상품 목록</a>
+                                <a class="dropdown-item" href="#">상품분류 관리</a>
                             </div>
                         </li>
 
