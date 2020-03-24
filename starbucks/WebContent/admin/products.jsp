@@ -50,7 +50,7 @@
             <!-- table container -->
             <a
               href="#"
-              onclick='goUrl("/admin", "/add-product.jsp")'
+              onclick='goUrl("/admin", "/add_product.jsp")'
               class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
             <button class="btn btn-primary btn-block text-uppercase">
               Delete selected products
