@@ -117,9 +117,9 @@
                                 </ul>
                             </li>
                             <li class="has-children">
-                                <a href="notice_select.star?nowPage=1">CS Center</a>
+                                <a href="notice_select.uk?nowPage=1">CS Center</a>
                                 <ul class="dropdown">
-                                    <li><a href="notice_select.star?nowPage=1">Notice</a></li>
+                                    <li><a href="notice_select.uk?nowPage=1">Notice</a></li>
                                 </ul>
                         </ul>
                     </div>
