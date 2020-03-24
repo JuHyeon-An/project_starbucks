@@ -125,7 +125,7 @@
 
 	<script>
       $(function() {
-        $("#expire_date").datepicker();
+        $("#item_regdate").datepicker();
       });
       
     </script>
