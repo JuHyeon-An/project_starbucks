@@ -46,7 +46,7 @@ public class AdminorderServlet extends HttpServlet {
 			  findStr=req.getParameter("findStr");
 		  }
 
-	      String findStr = req.getParameter("findStr");
+		  findStr = req.getParameter("findStr");
 	      OrderDao dao=new OrderDao();
 	      List<OrderVo> list = dao.select(findStr);
 	      req.setAttribute("list", list);
@@ -65,7 +65,7 @@ public class AdminorderServlet extends HttpServlet {
 	    	  
 	      }
 	      System.out.println(path+"");
-	      String path=url+"?str=./order.jsp&findStr="+findStr;
+	      path=url+"?str=./order.jsp&findStr="+findStr;
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
