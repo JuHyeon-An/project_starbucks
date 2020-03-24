@@ -24,6 +24,7 @@ public class ServletJH extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
+		
 	}
 
 	@Override
@@ -69,9 +70,6 @@ public class ServletJH extends HttpServlet{
 		public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			ProductDao dao = new ProductDao();
 			ProductVo vo = new ProductVo();
-			
-			//vo.setItem_code(item_code);
-			
 			String msg = dao.insert(vo);
 			
 			req.setAttribute("msg", msg);
