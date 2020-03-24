@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- Breadcrumb -->
     <div class="bg-light py-3">
         <div class="container">
@@ -89,6 +90,24 @@
                   </div>
                 </div>
               </div>
+              
+              <c:forEach var='vo' items='${list }'>
+               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+                <div class="block-4 text-center border">
+                  <figure class="block-4-image">
+                    <a href="shop-single.html"><img src="${vo.item_thumnailimg }" alt="Image placeholder" class="img-fluid"></a>
+                  </figure>
+                  <div class="block-4-text p-4">
+                    <h3><a href="shop-single.html">${vo.item_group}</a></h3>
+                    <p class="mb-0">${vo.item_title }</p>
+                    <p class="text-primary font-weight-bold">${vo.item_price}</p>
+                  </div>
+                </div>
+              </div>
+              
+              
+              </c:forEach>
+              
 <!-- 상품표시 끝 -->
            
 <!-- 페이징 -->

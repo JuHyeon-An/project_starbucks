@@ -25,7 +25,7 @@ public class ShoppingMember_Servlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("두포스트");
+		
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		String temp = req.getRequestURI();
@@ -51,7 +51,7 @@ public class ShoppingMember_Servlet extends HttpServlet{
 		System.out.println("여까지오나");
 		String path = url+"/check_id.jsp";
 		String mId = req.getParameter("mId");
-		System.out.println(mId+"아이디값");
+		
 		Shopping_MemberDao dao = new Shopping_MemberDao();
 		int result = dao.idCheck(mId);
 		String msg = "";

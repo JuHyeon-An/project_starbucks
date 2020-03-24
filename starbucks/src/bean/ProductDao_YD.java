@@ -25,11 +25,12 @@ public class ProductDao_YD {
 		ResultSet rs = null;
 
 		try {
-			sql = "select * from itemboard";
+			sql = " select * from itemboard ";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				System.out.println(rs.getString("ITEM_MAINIMG")+"아이템코드");
 				vo.setItem_code(rs.getString("ITEM_CODE"));
 				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
 				vo.setItem_group(rs.getString("ITEM_GROUP"));
@@ -46,18 +47,21 @@ public class ProductDao_YD {
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
+				System.out.println("dao에서 실행됨");
 				
 			}
 			
 			
 			
-			
 		} catch (Exception e) {
+			System.out.println("오류뜸" );
+			
+		} finally {
+			return list;
 			
 		}
 		
 		
-		return list;
 	}
 	
 }
