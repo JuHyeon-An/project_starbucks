@@ -24,7 +24,6 @@ public class ServletJH extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		
 	}
 
 	@Override
@@ -70,9 +69,14 @@ public class ServletJH extends HttpServlet{
 		public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			ProductDao dao = new ProductDao();
 			ProductVo vo = new ProductVo();
+			
+			//vo.setItem_code(item_code);
+			vo.setItem_group(req.getParameter("item_group"));
 			String msg = dao.insert(vo);
 			
+			String group = vo.getItem_group();
 			req.setAttribute("msg", msg);
+			req.setAttribute("group", group);
 			
 			String path= urlAdmin+"/add_product_result.jsp";
 			RequestDispatcher rd=req.getRequestDispatcher(path);
