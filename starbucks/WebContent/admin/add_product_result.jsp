@@ -5,9 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<%String msg = request.getParameter("msg"); %>
 </head>
 <body>
-<%=msg %>
 </body>
 </html>

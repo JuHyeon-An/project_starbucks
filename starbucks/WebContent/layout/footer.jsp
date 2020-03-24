@@ -73,8 +73,19 @@
 
     <script src="/starbucks/js/main.js"></script>
     
-    <script src="/starbucks/js/notice.js/"></script>
-
+    <script src="/starbucks/lib/jquery-3.4.1.js"></script>
+    <script src="/starbucks/js/notice.js"></script>
+    <script>
+    func();
+    </script>
+	
+	<!-- 다음 우편번호 서비스 관련 js -->
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<!-- datepicker 관련 js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+	
+    
 	<script>
 	init();
 	</script>

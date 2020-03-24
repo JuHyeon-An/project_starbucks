@@ -1,6 +1,9 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -15,8 +18,9 @@ import bean.NoticeVo;
 import bean.Page;
 
 @WebServlet("*.star")
-public class StarbucksServlet extends HttpServlet{
-	String url="bbs/list.jsp";
+public class ServletUk extends HttpServlet{
+	String url="/bbs/list.jsp";
+	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -28,12 +32,17 @@ public class StarbucksServlet extends HttpServlet{
 		String temp=req.getRequestURI();
 		int pos=temp.lastIndexOf("/");
 		String tempURL=temp.substring(pos);
+		
 		switch(tempURL) {
 		case"/notice_select.star":
 			select(req, resp);
 			break;
+		case"/notice_view.star":
+			view(req, resp);
+			break;
 		}
 	}
+
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String findStr="";
 		int nowPage=1;
@@ -50,10 +59,22 @@ public class StarbucksServlet extends HttpServlet{
 		
 		List<NoticeVo> list=dao.select(page);
 		
+		for(NoticeVo vo:list) {
+		}
+		
 		req.setAttribute("page", page);
 		req.setAttribute("list", list);
 		String path=url+"?star=./notice/notice_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
+	public void view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String noticeRegDate=req.getParameter("noticeRegDate");
+		System.out.println(noticeRegDate);
+		
+		String path=url+"?star=./notice/notice_view.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
 }
