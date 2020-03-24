@@ -38,11 +38,11 @@
 				<h3 style='text-align:center;'> 회원가입</h3> <br />
 				<div class="form-group form-inline">
 				
-					<input type="text" class='form-control col-sm-6' placeholder='아이디' name='mId' id='mId' maxlength='20'/>
-					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='중복체크' id='idck' />
+					<input type="text" class='form-control col-sm-12' placeholder='아이디' name='mId' id='mId' maxlength='20'/>
+<!-- 					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='중복체크' id='idck' /> -->
+				<div id='id_check' class='col-sm-12'></div>
 				</div>
 		
-				<div id='id_check'></div>
 				<div class="form-group">
 					<input type="password" class='form-control' placeholder='비밀번호' name='pwd' maxlength='20'/>
 				</div>
@@ -107,6 +107,7 @@
         }
     });
     //버튼클릭 이벤트
+    /*
     $("#idck").click(function() {
         //사용자가 입력한 아이디
         var mId = $("#mId").val();
@@ -119,9 +120,8 @@
                 success : function(result) {
                     $("#id_check").html(result);
                 }
-            })
-      
-    });
+            })});
+    */
 
 
 
