@@ -26,6 +26,17 @@
     </head>
 
     <body>
+     	
+		<%
+		
+		request.setCharacterEncoding("utf-8");
+		  String sm = "login.jsp";
+		  if(request.getParameter("sm")!=null){
+			  sm = request.getParameter("sm");
+		  }
+		  
+		%>
+
 
         <div class="site-wrap">
             <header class="site-navbar" role="banner">
@@ -50,6 +61,18 @@
                                 <div class="site-top-icons">
                                     <ul>
                                     	<li><a href="/starbucks/admin/">admin</a></li>
+                                    	
+                                    	<%if(session.getAttribute("admin") != null){ %> 
+                                        		<li><a href="/starbucks/admin/">admin</a></li>
+                                        <%}%>
+<!--                                     	세션값에 따라 로그인 로그아웃 표시 -->
+                                    	<%if(session.getAttribute("mId") == null){ %> 
+                                        	<li><a href="/starbucks/member/login.jsp">login</a></li>
+<!--                                         	<li><a href="login.sm">login</a></li> -->
+                                        <%}else{ %>
+                                       		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
+                                        <%} %>
+                                        
                                         <li><a href="#"><span class="icon icon-person"></span></a></li>
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>

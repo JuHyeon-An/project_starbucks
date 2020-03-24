@@ -49,7 +49,7 @@ public class Shopping_MemberDao {
 	public int login(String mId, String pwd) {
 		
 		String sql = "select member_id, member_pw , member_admin from shopping_member where member_id = ? ";
-		
+		System.out.println(mId + pwd);
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
