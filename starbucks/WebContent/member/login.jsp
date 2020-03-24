@@ -47,15 +47,15 @@
                 <div class="col-sm-4">
 
                     <div class="login-box well">
-                        <form accept-charset="UTF-8" role="form" method="post" action="">
+                        <form accept-charset="UTF-8" role="form" method="post" action="/starbucks/member/login_result.jsp">
                             <legend>로그인</legend>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-user"></i></span>
-                                <input type="text" id="userid" value='' placeholder="아이디를 입력하세요" class="form-control" />
+                                <input type="text" name="mId" value='' placeholder="아이디를 입력하세요" class="form-control" />
                             </div>
                             <div class="input-group">
                                 <span class="input-group-addon"><i class="fa fa-lock"></i></span>
-                                <input type="password" id="password" value='' placeholder="비밀번호를 입력하세요" class="form-control" />
+                                <input type="password" name="pwd" value='' placeholder="비밀번호를 입력하세요" class="form-control" />
                             </div>
                             <button type="submit" id="login-submit" class="btn btn-default btn-block"/>로그인</button>
                              <span class='text-center'><a href="" class="btn btn-default btn-block">비밀번호 찾기</a></span>

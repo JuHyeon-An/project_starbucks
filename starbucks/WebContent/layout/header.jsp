@@ -45,12 +45,14 @@
                                     <a href="/starbucks/" class="js-logo-clone"><img src="/starbucks/images/logo.png" alt="" /></a>
                                 </div>
                             </div>
-
+<form id='frm' name='frm' method='post'></form>
                             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div class="site-top-icons">
                                     <ul>
                                     	<li><a href="/starbucks/admin/">admin</a></li>
                                         <li><a href="/starbucks/member/login.jsp"><span class="icon icon-person"></span></a></li>
+							
+<!--                                         <li><a id='loginPage' href="#login" onclick='submitForm();'><span class="icon icon-person"></span></a></li> -->
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>
                                             <a href="/starbucks/my/cart.jsp" class="site-cart">
