@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import='starbucks.Shopping_MemberDao' %>
+<%@ page import='bean.Shopping_MemberDao' %>
 <%@ page import="java.io.PrintWriter" %>
 <% request.setCharacterEncoding("UTF-8"); %> 
-<jsp:useBean id='vo' class='starbucks.Shopping_MemberVo' scope='page'/>
+<jsp:useBean id='vo' class='bean.Shopping_MemberVo' scope='page'/>
 <jsp:setProperty name='vo' property="mId"/>
 <jsp:setProperty name='vo' property="pwd"/>
 

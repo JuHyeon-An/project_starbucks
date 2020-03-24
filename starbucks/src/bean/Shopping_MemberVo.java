@@ -1,4 +1,4 @@
-package starbucks;
+package bean;
 
 public class Shopping_MemberVo {
 

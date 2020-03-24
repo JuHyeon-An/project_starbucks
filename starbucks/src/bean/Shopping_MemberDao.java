@@ -1,12 +1,10 @@
-package starbucks;
+package bean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-
-import bean.DBConn;
 
 public class Shopping_MemberDao {
 	Connection conn;
