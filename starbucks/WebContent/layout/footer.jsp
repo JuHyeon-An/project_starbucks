@@ -85,10 +85,10 @@
 	<!-- datepicker 관련 js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 	
+	<!-- sweetalert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
     
-	<script>
-	init();
-	</script>
+	
     </body>
 
     </html>
