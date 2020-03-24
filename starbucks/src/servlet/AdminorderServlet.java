@@ -31,7 +31,8 @@ public class AdminorderServlet extends HttpServlet {
 	
 		switch(tempURL) {
 		
-		case "order.order"://가져오는
+		case "/order.order"://가져오는
+			System.out.println("짜증나네");
 			order(req , resp);
 			break;
 		
@@ -41,12 +42,19 @@ public class AdminorderServlet extends HttpServlet {
 
 	}
 	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	      String findStr=req.getParameter("findStr");
+	      System.out.println(url);
+	      
+		  String findStr=req.getParameter("findStr");
+	      System.out.println("야야");
 	      OrderDao dao=new OrderDao();
+	     
 	      List<OrderVo> list = dao.select(findStr);
+	      
 	      req.setAttribute("list", list);
-	      String path=url+"?str=./order.jsp&findStr="+findStr;
-	      System.out.println(path);
+	      String path=url+"?order=./admin/order.jsp";
+	      
+	      System.out.println(path+"");
+	      
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
 	      
