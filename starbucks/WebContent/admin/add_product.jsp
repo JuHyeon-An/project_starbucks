@@ -12,7 +12,7 @@
               </div>
             </div>
             <div class="row tm-edit-product-row">
-                <form id="frm" name="frm" method="post" class="tm-edit-product-form">
+                <form id="frm" name="frm" method="post" action="add_productR.stb" class="tm-edit-product-form">
               <div class="col-xl-6 col-lg-6 col-md-12">
                   <div class="form-group mb-3">
                     <label
@@ -99,10 +99,10 @@
                   />
                 </div>
               </div>
-                </form>
               <div class="col-12">
-                <button id="btnInsert" type="submit" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
+                <button type="submit" id="btnInsert" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
               </div>
+                </form>
             </div>
           </div>
         </div>
@@ -113,6 +113,7 @@
       $(function() {
         $("#expire_date").datepicker();
       });
+      
     </script>
   </body>
 </html>

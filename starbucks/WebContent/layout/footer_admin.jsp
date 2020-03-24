@@ -37,6 +37,7 @@
                 updateBarChart();                
             });
         })
+        
     </script>
 </body>
 
