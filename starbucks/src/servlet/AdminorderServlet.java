@@ -15,7 +15,7 @@ import bean.OrderVo;
 
 @WebServlet("*.order")
 public class AdminorderServlet extends HttpServlet {
-	String url = "admin/order.jsp";
+	String url = "./order.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -25,12 +25,13 @@ public class AdminorderServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String temp= req.getRequestURI();
+		System.out.println(temp);
 		int pos = temp.lastIndexOf("/");
 		String tempURL = temp.substring(pos);
 	
 		switch(tempURL) {
 		
-		case "/order_select.order"://가져오는
+		case "order.order"://가져오는
 			order(req , resp);
 			break;
 		
@@ -45,6 +46,7 @@ public class AdminorderServlet extends HttpServlet {
 	      List<OrderVo> list = dao.select(findStr);
 	      req.setAttribute("list", list);
 	      String path=url+"?str=./order.jsp&findStr="+findStr;
+	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
 	      
