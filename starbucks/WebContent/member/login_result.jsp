@@ -39,6 +39,16 @@
 		script.println("location.href = '/starbucks/index.jsp'");
 		script.println("</script>");
 	}
+	
+	else if(result == 2){
+		session.setAttribute("mId", vo.getmId()); // 로그인에 성공하면 해당아이디에 세션을 부여해준다.
+		session.setAttribute("admin", 1);
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '/starbucks/index.jsp'");
+		script.println("</script>");
+	}
+	
 	else if(result == 0){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");

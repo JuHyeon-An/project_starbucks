@@ -54,7 +54,9 @@
                                     <ul>
                                     	<li><a href="/starbucks/admin/">admin</a></li>
                                     	
-
+                                    	<%if(session.getAttribute("admin") != null){ %> 
+                                        		<li><a href="/starbucks/admin/">admin</a></li>
+                                        <%}%>
 <!--                                     	세션값에 따라 로그인 로그아웃 표시 -->
                                     	<%if(session.getAttribute("mId") == null){ %> 
                                         	<li><a href="/starbucks/member/login.jsp">login</a></li>
