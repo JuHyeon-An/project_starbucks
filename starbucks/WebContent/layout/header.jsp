@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html lang="en">
-
     <head>
+    
         <title>Starbucks shop</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,8 +24,11 @@
         <link rel="stylesheet" href="/starbucks/css/custom.css">
 
     </head>
+    
 
     <body>
+     
+
 
         <div class="site-wrap">
             <header class="site-navbar" role="banner">
@@ -50,7 +53,18 @@
                                 <div class="site-top-icons">
                                     <ul>
                                     	<li><a href="/starbucks/admin/">admin</a></li>
-                                        <li><a href="/starbucks/member/login.jsp"><span class="icon icon-person"></span></a></li>
+                                    	
+                                    	<%if(session.getAttribute("admin") != null){ %> 
+                                        		<li><a href="/starbucks/admin/">admin</a></li>
+                                        <%}%>
+<!--                                     	세션값에 따라 로그인 로그아웃 표시 -->
+                                    	<%if(session.getAttribute("mId") == null){ %> 
+                                        	<li><a href="/starbucks/member/login.jsp">login</a></li>
+                                        <%}else{ %>
+                                       		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
+                                        <%} %>
+                                        
+                                        <li><a href="#"><span class="icon icon-person"></span></a></li>
 							
 <!--                                         <li><a id='loginPage' href="#login" onclick='submitForm();'><span class="icon icon-person"></span></a></li> -->
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
@@ -99,10 +113,9 @@
                                 </ul>
                             </li>
                             <li class="has-children">
-                                <a href="notice.star?str=./notice_list.jsp">CS Center</a>
+                                <a href="notice_select.star?nowPage=1">CS Center</a>
                                 <ul class="dropdown">
-                                    <li><a href="notice.star?str=./notice_list.jsp">Notice</a></li>
-                                    <li><a href="/starbucks/bbs/q&a.jsp">q&amp;a</a></li>
+                                    <li><a href="notice_select.star?nowPage=1">Notice</a></li>
                                 </ul>
                         </ul>
                     </div>

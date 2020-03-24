@@ -73,7 +73,11 @@
 
     <script src="/starbucks/js/main.js"></script>
     <script src="/starbucks/js/shopping_member.js"></script>
+    <script src="/starbucks/js/notice.js/"></script>
 
+	<script>
+	init();
+	</script>
     </body>
 
     </html>

@@ -90,8 +90,8 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="./add_product.star">상품 등록</a>
-                                <a class="dropdown-item" href="./select_product.star">상품 목록</a>
+                                <a class="dropdown-item" href="./add_product.stb">상품 등록</a>
+                                <a class="dropdown-item" href="./select_product.stb">상품 목록</a>
                                 <a class="dropdown-item" href="#">상품분류 관리</a>
                             </div>
                         </li>

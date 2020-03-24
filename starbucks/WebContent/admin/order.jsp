@@ -35,7 +35,7 @@
 		</div>
 	
 <script>
-init();
+func();
 </script>
 </body>
 </div>

@@ -1,14 +1,10 @@
-package starbucks;
+package bean;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
-import bean.DBConn;
-import starbucks.MemberVo;
 
 public class Shopping_MemberDao {
 	Connection conn;
@@ -52,7 +48,7 @@ public class Shopping_MemberDao {
 	
 	public int login(String mId, String pwd) {
 		
-		String sql = "select member_id, member_pw from shopping_member where member_id = ? ";
+		String sql = "select member_id, member_pw , member_admin from shopping_member where member_id = ? ";
 		
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -60,10 +56,15 @@ public class Shopping_MemberDao {
 			rs = ps.executeQuery();
 			System.out.println(pwd +"비번");
 			if(rs.next()) {
-				System.out.println(rs.getString("member_pw"));
+			
 				if(rs.getString("member_pw").equals(pwd)) {
 					
-					return 1; //로그인성공
+					if(rs.getString("member_admin") != null) {
+						return 2; //관리자 로그인
+					}
+						
+						return 1; //로그인성공
+					
 				}else {
 					
 					return 0; // 비밀번호 불일치

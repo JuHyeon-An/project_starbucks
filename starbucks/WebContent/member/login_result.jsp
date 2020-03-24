@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@ page import='starbucks.Shopping_MemberDao' %>
+<%@ page import='bean.Shopping_MemberDao' %>
 <%@ page import="java.io.PrintWriter" %>
-<% request.setCharacterEncoding("UTF-8"); %>
-<jsp:useBean id='vo' class='starbucks.Shopping_MemberVo' scope='page'/>
+<% request.setCharacterEncoding("UTF-8"); %> 
+<jsp:useBean id='vo' class='bean.Shopping_MemberVo' scope='page'/>
 <jsp:setProperty name='vo' property="mId"/>
 <jsp:setProperty name='vo' property="pwd"/>
 
@@ -39,6 +39,16 @@
 		script.println("location.href = '/starbucks/index.jsp'");
 		script.println("</script>");
 	}
+	
+	else if(result == 2){
+		session.setAttribute("mId", vo.getmId()); // 로그인에 성공하면 해당아이디에 세션을 부여해준다.
+		session.setAttribute("admin", 1);
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("location.href = '/starbucks/index.jsp'");
+		script.println("</script>");
+	}
+	
 	else if(result == 0){
 		PrintWriter script = response.getWriter();
 		script.println("<script>");

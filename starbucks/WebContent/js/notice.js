@@ -8,11 +8,11 @@ let func=function(){
 		});
 	}
 }
-
-let init=function(){
-	func();
-	$('#btnSelect').click();
+let goPage=function(nowPage){
+	$('#nowPage').val(nowPage);
+	$('#frm').attr('action','notice_select.star').submit();
 }
+
 
 
 
