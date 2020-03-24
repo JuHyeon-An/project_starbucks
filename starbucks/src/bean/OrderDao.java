@@ -12,17 +12,25 @@ public class OrderDao {
 	
 	Connection conn;
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-	
+	OrderVo vo = new OrderVo();
 	public OrderDao() {
 		conn=DBConn.getConn();
 	}
 	public List<OrderVo> select(String findStr) {
 		List<OrderVo> list=new ArrayList<OrderVo>();
 		String sql= " select * "
-				  + " from shopping_order";
+				  + " from shopping_order"
+				  + " where ORDERNUMBER like ? "
+				  + " or MEMBER_ID like ? ";
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + findStr + "%");
+			pstmt.setString(2, "%" + findStr + "%");
+			
+			
 			ResultSet rs=pstmt.executeQuery();
+			
+			
 			
 			
 			while(rs.next()) {
@@ -43,6 +51,17 @@ public class OrderDao {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		for(OrderVo vo:list) {
+		System.out.println("여긴다오");
+		System.out.println(vo.getOrderNumber());
+		System.out.println(vo.getMemberId());
+		System.out.println(vo.getItemCode());
+		System.out.println(vo.getOrderNum());
+		System.out.println(vo.getOrderPrice());
+		System.out.println(vo.getOrderregDate());
+		System.out.println(vo.getOrderStatus());
+		}
+		
 		return list;
 	}
 	

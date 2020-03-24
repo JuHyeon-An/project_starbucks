@@ -15,7 +15,7 @@ import bean.OrderVo;
 
 @WebServlet("*.order")
 public class AdminorderServlet extends HttpServlet {
-	String url = "index.jsp?cont=../admin";
+	String url = "/admin/list.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,27 +32,43 @@ public class AdminorderServlet extends HttpServlet {
 		switch(tempURL) {
 		
 		case "/order.order"://가져오는
-			System.out.println("짜증나네");
+			System.out.println("가져오는군.");
 			order(req , resp);
 			break;
 		
-		
+			
 		
 		}
 
 	}
 	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	      System.out.println(url);
-	      
-		  String findStr=req.getParameter("findStr");
-	      System.out.println("야야");
+	      String findStr="";
+	      System.out.println(findStr+"ㅡㅡ");
+	  
+		  if(req.getParameter("findStr")!=null) {
+			  findStr=req.getParameter("findStr");
+		  }
+
+		  System.out.println("야야");
 	      OrderDao dao=new OrderDao();
 	     
 	      List<OrderVo> list = dao.select(findStr);
 	      
 	      req.setAttribute("list", list);
-	      String path=url+"/order.jsp";
+	      String path=url+"?cont=./order.jsp";
 	      
+	      for(OrderVo vo:list) {
+	    	  System.out.println("여긴서블");
+	    	  System.out.println(vo.getOrderNumber());
+	    	  System.out.println(vo.getMemberId());
+	  		System.out.println(vo.getItemCode());
+	  		System.out.println(vo.getOrderNum());
+	  		System.out.println(vo.getOrderPrice());
+	  		System.out.println(vo.getOrderregDate());
+	  		System.out.println(vo.getOrderStatus());
+	    	  
+	      }
 	      System.out.println(path+"");
 	      
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
