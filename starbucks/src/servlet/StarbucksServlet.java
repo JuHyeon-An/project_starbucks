@@ -12,99 +12,48 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.NoticeDao;
 import bean.NoticeVo;
+import bean.Page;
 
 @WebServlet("*.star")
 public class StarbucksServlet extends HttpServlet{
-	String url="bbs/csCenter/notice/notice.jsp";
-	String urlAdmin = "index.jsp?cont=../admin";
+   String url="bbs/list.jsp";
 
+   @Override
+   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      doPost(req, resp);
+   }
 
-	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String temp=req.getRequestURI();
-		int pos=temp.lastIndexOf("/");
-		String tempURL=temp.substring(pos);
-
-		switch (tempURL) {
-		
-		case "/notice.star":
-			String str = req.getParameter("str");
-			RequestDispatcher rd = req.getRequestDispatcher(url + "?str=" + str);
-			rd.forward(req, resp);
-			break;
-
-		case "/add_product.star":
-			insertProducts(req, resp);
-			break;
-			
-		case "/select_product.star":
-			selectProducts(req, resp);
-			break;
-		}
-		
-		
-	}
-
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String temp=req.getRequestURI();
-		int pos=temp.lastIndexOf("/");
-		String tempURL=temp.substring(pos);
-		
-		switch(tempURL) {
-		case"/notice_select.star":
-			select(req, resp);
-			break;
-			
-		case"/notice.star":
-			notice(req, resp);
-			break;
-			
-		case"/select_product.star":
-			selectProducts(req, resp);
-			break;
-			
-		case"/add_productR.star":
-			insertProductsR(req, resp);
-			break;
-		}
-	}
-		
-
-	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String findStr=req.getParameter("findStr");
-		NoticeDao dao=new NoticeDao();
-		List<NoticeVo> list=dao.select(findStr);
-		req.setAttribute("list", list);
-		String path=url+"?str=./notice_select.jsp&findStr="+findStr;
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-	}
-	
-	public void notice(HttpServletRequest req, HttpServletResponse resp) {
-		
-	}
-	
-	
-	// 주현 : admin - 상품 조회
-	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path= urlAdmin+"/products.jsp";
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-	}
-	
-	// 주현 : admin - 상품 등록
-	public void insertProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path= urlAdmin+"/add-product.jsp";
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-	}
-	
-	// 주현 : admin - 상품 등록(result)
-		public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			String path= urlAdmin+"/add_product_result.jsp";
-			RequestDispatcher rd=req.getRequestDispatcher(path);
-			rd.forward(req, resp);
-		}
-	
+   @Override
+   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      String temp=req.getRequestURI();
+      int pos=temp.lastIndexOf("/");
+      String tempURL=temp.substring(pos);
+      switch(tempURL) {
+      case"/notice_select.star":
+         select(req, resp);
+         break;
+      }
+   }
+   public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+      String findStr="";
+      int nowPage=1;
+      
+      if(req.getParameter("findStr")!=null) {
+         findStr=req.getParameter("findStr");
+      }
+      if(req.getParameter("nowPage")!=null) {
+         nowPage=Integer.parseInt(req.getParameter("nowPage"));
+      }
+      
+      Page page= new Page (findStr, nowPage);
+      NoticeDao dao = new NoticeDao();
+      
+      List<NoticeVo> list=dao.select(page);
+      
+      req.setAttribute("page", page);
+      req.setAttribute("list", list);
+      String path=url+"?star=./notice/notice_select.jsp";
+      RequestDispatcher rd=req.getRequestDispatcher(path);
+      rd.forward(req, resp);
+   }
 }
