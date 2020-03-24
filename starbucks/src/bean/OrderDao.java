@@ -35,6 +35,7 @@ public class OrderDao {
 				vo.setOrderregDate(rs.getString("ORDER_REGDATE"));
 				vo.setOrderStatus(rs.getInt("ORDER_STATUS"));
 				list.add(vo);
+				  
 				
 				
 			}
