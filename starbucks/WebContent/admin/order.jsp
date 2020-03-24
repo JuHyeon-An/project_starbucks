@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<<<<<<< HEAD
+
 <div id='member_main'>
 	<h3>주문 목록 조회</h3>
 	<form name='frm' id='frm' method='post'>
