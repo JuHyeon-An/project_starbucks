@@ -18,7 +18,8 @@
 		session.invalidate();
 	%>
 	<script>
-		location.href = 'index.jsp';
+		alert("로그아웃 되었습니다.");
+		location.href = '/starbucks/index.jsp';
 	</script>
 
 
