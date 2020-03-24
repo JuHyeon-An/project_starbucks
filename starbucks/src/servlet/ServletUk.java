@@ -17,7 +17,7 @@ import bean.NoticeDao;
 import bean.NoticeVo;
 import bean.Page;
 
-@WebServlet("*.star")
+@WebServlet("*.uk")
 public class ServletUk extends HttpServlet{
 	String url="/bbs/list.jsp";
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
@@ -32,12 +32,11 @@ public class ServletUk extends HttpServlet{
 		String temp=req.getRequestURI();
 		int pos=temp.lastIndexOf("/");
 		String tempURL=temp.substring(pos);
-		
 		switch(tempURL) {
-		case"/notice_select.star":
+		case"/notice_select.uk":
 			select(req, resp);
 			break;
-		case"/notice_view.star":
+		case"/notice_view.uk":
 			view(req, resp);
 			break;
 		}
@@ -69,8 +68,6 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String noticeRegDate=req.getParameter("noticeRegDate");
-		System.out.println(noticeRegDate);
 		
 		String path=url+"?star=./notice/notice_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
