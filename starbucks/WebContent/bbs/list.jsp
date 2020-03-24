@@ -15,9 +15,17 @@
     <!-- Breadcrumb END -->
     
 	<!-- Content -->
-	
-	<jsp:include page="${param.star }"></jsp:include> 
-	
+    <div class='content'>
+    	<div class='row'>
+	    	<div class='col' >
+	    		<span>사이드메뉴</span>
+	    	</div>
+	    	
+			<div class='col'>
+			<jsp:include page="${param.star }"></jsp:include> 
+			</div>
+		</div>
+	</div>
 	<!-- Content END-->    
     
 <%@include file="../../../layout/footer.jsp" %>
