@@ -15,11 +15,11 @@ import bean.OrderVo;
 
 @WebServlet("*.order")
 public class AdminorderServlet extends HttpServlet {
-	String url = "./order.jsp";
+	String url = "index.jsp?cont=../admin";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		doPost(req, resp);
 	}
 
 	@Override
@@ -51,7 +51,7 @@ public class AdminorderServlet extends HttpServlet {
 	      List<OrderVo> list = dao.select(findStr);
 	      
 	      req.setAttribute("list", list);
-	      String path=url+"?order=./admin/order.jsp";
+	      String path=url+"/order.jsp";
 	      
 	      System.out.println(path+"");
 	      
