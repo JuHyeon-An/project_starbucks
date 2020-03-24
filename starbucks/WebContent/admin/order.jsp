@@ -14,7 +14,7 @@
 	<h3>주문 목록 조회</h3>
 	<form name='frm' id='frm' method='post'>
 		<input type='text' name='findStr' value=''/>
-		<input type='submit' value='검색' name='btnSelect' id='btnFind'>
+		<input type='button' value='검색' name='btnSelect' id='btnFind'>
 		<div>
 			
 		

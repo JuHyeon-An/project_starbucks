@@ -19,6 +19,31 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
 	-->
+	<link rel="stylesheet" href="/starbucks/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
+    <!-- http://api.jqueryui.com/datepicker/ -->
+	<link rel="stylesheet" href="/starbucks/css/custom.css" type="text/css" />
+	 <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
+    />
+    <!-- https://fonts.google.com/specimen/Roboto -->
+	
+	
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/jquery-3.3.1.min.js"></script>
+    <!-- https://jquery.com/download/ -->
+	<script type='text/javascript' src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <!-- https://jqueryui.com/download/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/moment.min.js"></script>
+    <!-- https://momentjs.com/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/Chart.min.js"></script>
+    <!-- http://www.chartjs.org/docs/latest/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
+    <!-- https://getbootstrap.com/ -->
+    <script type='text/javascript' src="<%=request.getContextPath() %>/js/tooplate-scripts.js"></script>
+    <script src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
+    <!-- https://jqueryui.com/download/ -->
+    
+	
 </head>
 
 <body id="reportsPage">
@@ -65,9 +90,9 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/add-product.jsp")'>상품 등록</a>
-                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/products.jsp")'>상품 목록</a>
-                                <a class="dropdown-item" href="#" onclick= 'goUrl("../admin", "/edit-product.jsp")'>상품분류 관리</a>
+                                <a class="dropdown-item" href="./add_product.star">상품 등록</a>
+                                <a class="dropdown-item" href="./select_product.star">상품 목록</a>
+                                <a class="dropdown-item" href="#">상품분류 관리</a>
                             </div>
                         </li>
 
