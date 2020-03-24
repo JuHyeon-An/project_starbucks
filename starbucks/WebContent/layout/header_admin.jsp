@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Starbucks Shop ADMIN</title>
+    <title>Starbuck Shop ADMIN</title>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:400,700">
     <!-- https://fonts.google.com/specimen/Roboto -->
     <link rel="stylesheet" href="/starbucks/css/fontawesome.min.css">
@@ -19,35 +19,10 @@
 	Product Admin CSS Template
 	https://templatemo.com/tm-524-product-admin
 	-->
-	<link rel="stylesheet" href="/starbucks/jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
-    <!-- http://api.jqueryui.com/datepicker/ -->
-	<link rel="stylesheet" href="/starbucks/css/custom.css" type="text/css" />
-	 <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
-    <!-- https://fonts.google.com/specimen/Roboto -->
-	
-	
-    <script type='text/javascript' src="<%=request.getContextPath() %>/js/jquery-3.3.1.min.js"></script>
-    <!-- https://jquery.com/download/ -->
-	<script type='text/javascript' src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
-    <!-- https://jqueryui.com/download/ -->
-    <script type='text/javascript' src="<%=request.getContextPath() %>/js/moment.min.js"></script>
-    <!-- https://momentjs.com/ -->
-    <script type='text/javascript' src="<%=request.getContextPath() %>/js/Chart.min.js"></script>
-    <!-- http://www.chartjs.org/docs/latest/ -->
-    <script type='text/javascript' src="<%=request.getContextPath() %>/js/bootstrap.min.js"></script>
-    <!-- https://getbootstrap.com/ -->
-    <script type='text/javascript' src="<%=request.getContextPath() %>/js/tooplate-scripts.js"></script>
-    <script src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
-    <!-- https://jqueryui.com/download/ -->
-    <script src="<%=request.getContextPath() %>/js/admin_products.js"></script>
-	
 </head>
 
 <body id="reportsPage">
-    <div class="" id="home"></div>
+    <div class="" id="home">
         <nav class="navbar navbar-expand-xl">
             <div class="container h-100">
                 <a class="navbar-brand" href="index.jsp">
@@ -61,7 +36,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" onclick= 'goUrl("../admin", "/dashboard.jsp")'>
+                            <a class="nav-link active" href="#">
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                                 <span class="sr-only">(current)</span>
@@ -73,27 +48,20 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-file-alt"></i>
                                 <span>
-                                    		주문내역 <i class="fas fa-angle-down"></i>
+                                    Reports <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="order.jsp">주문내역조회</a>
-                                                           </div>
-                        </li>
-
-						<li class="nav-item dropdown">
-
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-shopping-cart"></i>
-                                <span>상품관리<i class="fas fa-angle-down"></i>
-                                </span>
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="./add_product.stb">상품 등록</a>
-                                <a class="dropdown-item" href="./select_product.stb">상품 목록</a>
-                                <a class="dropdown-item" href="#">상품분류 관리</a>
+                                <a class="dropdown-item" href="#">Daily Report</a>
+                                <a class="dropdown-item" href="#">Weekly Report</a>
+                                <a class="dropdown-item" href="#">Yearly Report</a>
                             </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="products.jsp">
+                                <i class="fas fa-shopping-cart"></i>
+                                Products
+                            </a>
                         </li>
 
                         <li class="nav-item">
