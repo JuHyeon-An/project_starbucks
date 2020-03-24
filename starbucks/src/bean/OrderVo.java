@@ -12,7 +12,7 @@ public class OrderVo {
 	String getName;//수령자이름
 	String getPhone;//수령자번호
 	String getAddress;//수령장소
-	String order_regDate;//주문날짜
+	String orderregDate;//주문날짜
 	int orderStatus;//주문처리상태
 	
 	
@@ -85,11 +85,11 @@ public class OrderVo {
 	public void setGetAddress(String getAddress) {
 		this.getAddress = getAddress;
 	}
-	public String getOrder_regDate() {
-		return order_regDate;
+	public String getOrderregDate() {
+		return orderregDate;
 	}
-	public void setOrder_regDate(String order_regDate) {
-		this.order_regDate = order_regDate;
+	public void setOrderregDate(String orderregDate) {
+		this.orderregDate = orderregDate;
 	}
 	public int getOrderStatus() {
 		return orderStatus;

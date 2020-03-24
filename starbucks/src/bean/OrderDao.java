@@ -35,7 +35,7 @@ public class OrderDao {
 				vo.setOrderPrice(rs.getInt("ORDER_PRICE"));
 				vo.setGetName(rs.getString("GET_NAME"));
 				vo.setGetAddress(rs.getString("GET_ADDRESS"));
-				vo.setOrder_regDate(rs.getString("ORDER_REGDATE"));
+				vo.setOrderregDate(rs.getString("ORDER_REGDATE"));
 				vo.setOrderStatus(rs.getInt("ORDER_STATUS"));
 				list.add(vo);
 				
