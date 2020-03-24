@@ -5,12 +5,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<<<<<<< HEAD
+
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
     <script src="/starbucks/admin/order.js"></script>
     
-=======
->>>>>>> branch 'master' of https://github.com/JuHyeon-An/project_starbucks.git
+
 </head>
 <body>
 <<<<<<< HEAD
@@ -64,8 +63,6 @@
 <script>
 func();
 </script>
-=======
 
->>>>>>> branch 'master' of https://github.com/JuHyeon-An/project_starbucks.git
 </body>
 </html>
