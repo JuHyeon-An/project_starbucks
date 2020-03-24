@@ -46,6 +46,9 @@ function goSubmit(frm, cont){
 	// get 타입으로도 넘기고
 	frm.submit();
 	// post 타입으로도 넘김
+	
+	
+	
 }
 
 btnFunc();

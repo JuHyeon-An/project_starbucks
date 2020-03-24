@@ -26,10 +26,15 @@ function btnFunc(){
 				    let img = new Image();
 				    img.src = ev.target.result;
 					// 실제로 읽혀진 파일
-					$('#photo').attr('src', img.src);
+				    if($('#photo').attr('src')==null){
+				    	$('#photo').attr('src', img.src);
+				    }else if($('#photo2').attr('src')==null){
+				    	$('#photo2').attr('src', img.src);
+				    }else{
+				    	$('#photo3').attr('src', img.src);
+				    }
 				  }
 		})
 		}
-	
 	
 }

@@ -78,6 +78,17 @@
     <script>
     func();
     </script>
+	
+	<!-- 다음 우편번호 서비스 관련 js -->
+	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	
+	<!-- datepicker 관련 js -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+	
+    
+	<script>
+	init();
+	</script>
     </body>
 
     </html>

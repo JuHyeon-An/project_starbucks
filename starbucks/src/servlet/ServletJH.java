@@ -2,6 +2,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.NoticeDao;
+import bean.NoticeVo;
 import bean.ProductDao;
 import bean.ProductVo;
 
@@ -21,7 +24,6 @@ public class ServletJH extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		doPost(req, resp);
-		
 	}
 
 	@Override
@@ -53,6 +55,7 @@ public class ServletJH extends HttpServlet{
 		String path= urlAdmin+"/products.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+		
 	}
 	
 	// 주현 : admin - 상품 등록
@@ -66,6 +69,9 @@ public class ServletJH extends HttpServlet{
 		public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 			ProductDao dao = new ProductDao();
 			ProductVo vo = new ProductVo();
+			
+			//vo.setItem_code(item_code);
+			
 			String msg = dao.insert(vo);
 			
 			req.setAttribute("msg", msg);
