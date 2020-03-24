@@ -81,4 +81,23 @@ public class Shopping_MemberDao {
 		return -2; //데이터베이스 오류
 	}
 	
+	public int idCheck(String mId) {
+		
+		String sql = "select count(*) from shopping_member where member_id = ? ";
+		int result = 1;
+		try {
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, mId);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result; //데이터베이스 오류
+	}
+	
+	
 }

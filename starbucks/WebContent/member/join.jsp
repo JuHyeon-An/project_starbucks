@@ -1,5 +1,7 @@
+<%@page import="bean.Shopping_MemberDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c"  uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,9 +9,11 @@
 <title>회원가입</title>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-
+<script src="/starbucks/js/jquery-3.3.1.min.js"></script>
+<script src="/starbucks/js/jquery-ui.js"></script>
 </head>
 <body>
+
 <%@include file="../layout/header.jsp" %>
     <!-- Breadcrumb -->
     <div class="bg-light py-3">
@@ -31,9 +35,12 @@
 			<form action="/starbucks/member/join_result.jsp" method='post'>
 				<h3 style='text-align:center;'> 회원가입</h3> <br />
 				<div class="form-group form-inline">
-					<input type="text" class='form-control col-sm-6' placeholder='아이디' name='mId' maxlength='20'/>
-					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='중복체크' onclick='' />
+				
+					<input type="text" class='form-control col-sm-6' placeholder='아이디' name='mId' id='mId' maxlength='20'/>
+					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='중복체크' id='idck' />
 				</div>
+				<div class="Check"></div>
+				<div id='id_check'></div>
 				<div class="form-group">
 					<input type="password" class='form-control' placeholder='비밀번호' name='pwd' maxlength='20'/>
 				</div>
@@ -78,6 +85,38 @@
 
 
 <script>
+$(document).ready(function() {
+    $("#amId").blur(function() {
+        //사용자가 입력한 아이디
+        var userid = $("#mId").val();
+        var param = "userid=" + userid;
+        if (userid.length >= 4) { 
+            $.ajax({
+                type : "post",
+                url : "/idchk.sm",
+                data : param,
+                success : function(result) {
+                    $("#Check").html(result);
+                }
+            })
+        }
+    });
+    //버튼클릭 이벤트
+    $("#btnJoin").click(function() {
+        //폼데이터를 서버에 제출
+        document.form1.submit();
+
+    });
+
+});
+
+
+
+
+
+
+
+	
 
 function execDaumPostcode() {
     new daum.Postcode({

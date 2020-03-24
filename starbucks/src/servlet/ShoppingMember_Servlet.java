@@ -30,7 +30,9 @@ public class ShoppingMember_Servlet extends HttpServlet{
 		String tempURL = temp.substring(pos);
 		
 		switch (tempURL) {
-
+		case "/idck.sm":
+			idck(req, resp);
+			break;
 		case "/login.sm":
 			login(req, resp);
 			break;
@@ -42,7 +44,16 @@ public class ShoppingMember_Servlet extends HttpServlet{
 			break;
 		}
 	}
-	
+	public void idck(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("dddddd");
+		String path = url+"/idCheckForm.jsp";
+		Shopping_MemberDao dao = new Shopping_MemberDao();
+		String mId=req.getParameter("mId");
+		int msg = dao.idCheck(mId);
+		req.setAttribute("msg", msg);
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
 	public void login(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = url+"/login.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
