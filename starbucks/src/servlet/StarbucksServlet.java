@@ -16,44 +16,44 @@ import bean.Page;
 
 @WebServlet("*.star")
 public class StarbucksServlet extends HttpServlet{
-   String url="bbs/list.jsp";
+	String url="bbs/list.jsp";
 
-   @Override
-   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      doPost(req, resp);
-   }
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		doPost(req, resp);
+	}
 
-   @Override
-   protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      String temp=req.getRequestURI();
-      int pos=temp.lastIndexOf("/");
-      String tempURL=temp.substring(pos);
-      switch(tempURL) {
-      case"/notice_select.star":
-         select(req, resp);
-         break;
-      }
-   }
-   public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-      String findStr="";
-      int nowPage=1;
-      
-      if(req.getParameter("findStr")!=null) {
-         findStr=req.getParameter("findStr");
-      }
-      if(req.getParameter("nowPage")!=null) {
-         nowPage=Integer.parseInt(req.getParameter("nowPage"));
-      }
-      
-      Page page= new Page (findStr, nowPage);
-      NoticeDao dao = new NoticeDao();
-      
-      List<NoticeVo> list=dao.select(page);
-      
-      req.setAttribute("page", page);
-      req.setAttribute("list", list);
-      String path=url+"?star=./notice/notice_select.jsp";
-      RequestDispatcher rd=req.getRequestDispatcher(path);
-      rd.forward(req, resp);
-   }
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String temp=req.getRequestURI();
+		int pos=temp.lastIndexOf("/");
+		String tempURL=temp.substring(pos);
+		switch(tempURL) {
+		case"/notice_select.star":
+			select(req, resp);
+			break;
+		}
+	}
+	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String findStr="";
+		int nowPage=1;
+		
+		if(req.getParameter("findStr")!=null) {
+			findStr=req.getParameter("findStr");
+		}
+		if(req.getParameter("nowPage")!=null) {
+			nowPage=Integer.parseInt(req.getParameter("nowPage"));
+		}
+		
+		Page page=new Page(findStr, nowPage);
+		NoticeDao dao=new NoticeDao();
+		
+		List<NoticeVo> list=dao.select(page);
+		
+		req.setAttribute("page", page);
+		req.setAttribute("list", list);
+		String path=url+"?star=./notice/notice_select.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
 }
