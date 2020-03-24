@@ -27,7 +27,16 @@
     
 
     <body>
-     
+     	
+		<%
+		
+		request.setCharacterEncoding("utf-8");
+		  String sm = "login.jsp";
+		  if(request.getParameter("sm")!=null){
+			  sm = request.getParameter("sm");
+		  }
+		  
+		%>
 
 
         <div class="site-wrap">
@@ -60,6 +69,7 @@
 <!--                                     	세션값에 따라 로그인 로그아웃 표시 -->
                                     	<%if(session.getAttribute("mId") == null){ %> 
                                         	<li><a href="/starbucks/member/login.jsp">login</a></li>
+<!--                                         	<li><a href="login.sm">login</a></li> -->
                                         <%}else{ %>
                                        		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
                                         <%} %>
