@@ -88,10 +88,6 @@
 	<!-- sweetalert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
     
-    
-	<script>
-	init();
-	</script>
 	
     </body>
 
