@@ -28,12 +28,14 @@ public class StarbucksServlet extends HttpServlet{
 		String temp=req.getRequestURI();
 		int pos=temp.lastIndexOf("/");
 		String tempURL=temp.substring(pos);
+		
 		switch(tempURL) {
 		case"/notice_select.star":
 			select(req, resp);
 			break;
 		}
 	}
+
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String findStr="";
 		int nowPage=1;
@@ -56,4 +58,5 @@ public class StarbucksServlet extends HttpServlet{
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
+	
 }
