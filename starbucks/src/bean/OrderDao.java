@@ -23,21 +23,19 @@ public class OrderDao {
 		try {
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			ResultSet rs=pstmt.executeQuery();
+			
+			
 			while(rs.next()) {
 				OrderVo vo = new OrderVo();
 				vo.setOrderNumber(rs.getString("ORDERNUMBER"));
 				vo.setMemberId(rs.getString("MEMBER_ID"));
 				vo.setItemCode(rs.getString("ITEM_CODE"));
-				vo.setMemberName(rs.getString("MEMBER_NAME"));
-				vo.setMemberPhone(rs.getString("MEMBER_PHONE"));
-				vo.setMemberEmail(rs.getString("MEMBER_EMAIL"));
 				vo.setOrderNum(rs.getInt("ORDER_NUM"));
 				vo.setOrderPrice(rs.getInt("ORDER_PRICE"));
-				vo.setGetName(rs.getString("GET_NAME"));
-				vo.setGetAddress(rs.getString("GET_ADDRESS"));
 				vo.setOrderregDate(rs.getString("ORDER_REGDATE"));
 				vo.setOrderStatus(rs.getInt("ORDER_STATUS"));
 				list.add(vo);
+				  
 				
 				
 			}

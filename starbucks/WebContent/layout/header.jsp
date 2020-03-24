@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
-    
         <title>Starbucks shop</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -24,7 +24,6 @@
         <link rel="stylesheet" href="/starbucks/css/custom.css">
 
     </head>
-    
 
     <body>
      	
@@ -57,7 +56,7 @@
                                     <a href="/starbucks/" class="js-logo-clone"><img src="/starbucks/images/logo.png" alt="" /></a>
                                 </div>
                             </div>
-<form id='frm' name='frm' method='post'></form>
+
                             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div class="site-top-icons">
                                     <ul>
@@ -75,11 +74,9 @@
                                         <%} %>
                                         
                                         <li><a href="#"><span class="icon icon-person"></span></a></li>
-							
-<!--                                         <li><a id='loginPage' href="#login" onclick='submitForm();'><span class="icon icon-person"></span></a></li> -->
                                         <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
                                         <li>
-                                            <a href="/starbucks/my/cart.jsp" class="site-cart">
+                                            <a href="cart.html" class="site-cart">
                                                 <span class="icon icon-shopping_cart"></span>
                                                 <span class="count">2</span>
                                             </a>

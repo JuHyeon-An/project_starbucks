@@ -5,26 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-
-.input-group {
-    margin-top: 1em;
-    margin-bottom: 1em;
-}
-
-
-
-.login-box {
-    line-height: 2.3em;
-    font-size: 1em;
-    color: #aaa;
-    margin-top: 1em;
-    margin-bottom: 1em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
-}
-
-</style>
 </head>
 <body>
 <%@include file="../layout/header.jsp" %>

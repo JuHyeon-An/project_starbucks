@@ -54,13 +54,19 @@ public class ServletJH extends HttpServlet{
 	
 	// 주현 : admin - 상품 등록
 	public void insertProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path= urlAdmin+"/add-product.jsp";
+		String path= urlAdmin+"/add_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
 	
 	// 주현 : admin - 상품 등록(result)
 		public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+			ProductDao dao = new ProductDao();
+			ProductVo vo = new ProductVo();
+			String msg = dao.insert(vo);
+			
+			req.setAttribute("msg", msg);
+			
 			String path= urlAdmin+"/add_product_result.jsp";
 			RequestDispatcher rd=req.getRequestDispatcher(path);
 			rd.forward(req, resp);
