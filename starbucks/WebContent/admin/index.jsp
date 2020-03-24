@@ -48,6 +48,6 @@ function goSubmit(frm, cont){
 	// post 타입으로도 넘김
 }
 
-btnFunc();
+//btnFunc();
 </script>
 	

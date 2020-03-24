@@ -65,12 +65,14 @@ a {
     border-color: #e6e7e9;
     color: #000; }
   .btn.btn-sm {
-    font-size: 14px !important;
-    padding: 10px 20px !important; }
+    font-size: 13px !important;
+    padding: 5px 20px !important;
+    }
   .btn.btn-primary {
     font-size: 17px;
     font-weight: 300;
-    letter-spacing: .2em; }
+    /* letter-spacing: .2em; */
+    }
   .btn:hover {
     -webkit-box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
     box-shadow: 0 5px 20px -7px rgba(0, 0, 0, 0.9) !important;
@@ -626,9 +628,9 @@ a {
 .site-blocks-table {
   overflow: auto; }
   .site-blocks-table .product-thumbnail {
-    width: 200px; }
+    width: 100px; }
   .site-blocks-table thead th {
-    padding: 30px;
+    padding: 30px 20px;
     text-align: center;
     border-width: 1px !important;
     vertical-align: middle;
@@ -738,7 +740,7 @@ a {
   color: #b3b3b3;
   margin: 0 0 20px 0;
   text-transform: uppercase;
-  font-size: 15px;
+  font-size: 15px; 
   letter-spacing: .1em; }
 
 .block-38 .block-38-header img {
