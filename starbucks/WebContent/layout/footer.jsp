@@ -73,11 +73,11 @@
 
     <script src="/starbucks/js/main.js"></script>
     
-    <script src="/starbucks/js/notice.js/"></script>
-
-	<script>
-	init();
-	</script>
+    <script src="/starbucks/lib/jquery-3.4.1.js"></script>
+    <script src="/starbucks/js/notice.js"></script>
+    <script>
+    func();
+    </script>
     </body>
 
     </html>
