@@ -16,27 +16,12 @@ import bean.NoticeVo;
 
 @WebServlet("*.stb")
 public class ServletJH extends HttpServlet{
-	String url="bbs/csCenter/notice/notice.jsp";
 	String urlAdmin = "index.jsp?cont=../admin";
 
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String temp=req.getRequestURI();
-		int pos=temp.lastIndexOf("/");
-		String tempURL=temp.substring(pos);
-
-		switch (tempURL) {
-		
-		case "/add_product.star":
-			insertProducts(req, resp);
-			break;
-			
-		case "/select_product.star":
-			selectProducts(req, resp);
-			break;
-		}
-		
+		doPost(req, resp);
 		
 	}
 
@@ -46,19 +31,23 @@ public class ServletJH extends HttpServlet{
 		int pos=temp.lastIndexOf("/");
 		String tempURL=temp.substring(pos);
 		
-		switch(tempURL) {
-			
-		case"/select_product.star":
+		switch (tempURL) {
+
+		case "/select_product.stb":
 			selectProducts(req, resp);
 			break;
-			
-		case"/add_productR.star":
+
+		case "/add_productR.stb":
 			insertProductsR(req, resp);
 			break;
+
+		case "/add_product.stb":
+			insertProducts(req, resp);
+			break;
 		}
+
 	}
 		
-
 	
 	// 주현 : admin - 상품 조회
 	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

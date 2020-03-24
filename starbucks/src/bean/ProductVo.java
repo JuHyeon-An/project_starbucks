@@ -1,4 +1,4 @@
-package jh;
+package bean;
 
 public class ProductVo {
 
