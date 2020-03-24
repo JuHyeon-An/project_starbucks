@@ -53,6 +53,7 @@ public class ServletJH extends HttpServlet{
 		String path= urlAdmin+"/products.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+		
 	}
 	
 	// 주현 : admin - 상품 등록
