@@ -50,6 +50,7 @@
                     <p>
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
+                        <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
 <!--                         <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
                         <script>
                             document.write(new Date().getFullYear());
@@ -75,15 +76,16 @@
     
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
     <script src="/starbucks/js/notice.js"></script>
-    <script>
-    func();
-    </script>
 	
 	<!-- 다음 우편번호 서비스 관련 js -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
 	<!-- datepicker 관련 js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
+    
+    <script>
+    func();
+    </script>
 	
 	<!-- sweetalert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>

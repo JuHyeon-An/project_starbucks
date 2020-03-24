@@ -12,12 +12,11 @@
 </head>
 <body>
 <div id='main'>
-<form name='frm' id='frm' method='post'>
+<form name='notice' id='notice' method='post'>
 	<div id='info'>
 			<input type='text' name='findStr' value='${param.findStr }'/>
 			<input type='button' name='btnSelect' id='btnSelect' value='검색'/>
 			<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-	
 	</div>
 	<p/>
 	<div id='contents'>
