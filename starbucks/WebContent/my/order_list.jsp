@@ -29,22 +29,38 @@
                         </div>
                     </div>
                     <div class="col-md-9 order-2">
-                        <div class="row mb-3">
-                            <div class="col-md-12">
+                        <div class="row">
+                            <div class="col-md-12 mb-3">
                                 <h2 class="h3 mb-3 text-black">구매내역</h2>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="offset-md-6 col-md-6 col-12 mb-3">
-                                <div class="input-group input-group-sm input-daterange">
-                                    <input type="text" class="form-control" value="">
-                                    <div class="input-group-text py-0">to</div>
-                                    <input type="text" class="form-control" value="">
-                                    <div class="input-group-append">
-                                        <button class="btn btn-primary btn-sm" type="button" id="button-addon2">검색</button>
+                            <div class="col-md-12">
+                                <div class="float-md-left">
+                                    <div class="dropdown mr-1 ml-md-auto">
+                                        <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            주문상태
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                            <a class="dropdown-item" href="#">입금확인</a>
+                                            <a class="dropdown-item" href="#">배송준비중</a>
+                                            <a class="dropdown-item" href="#">배송완료</a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex">
+                                    <div class="offset-md-6 col-md-6 col-12 mb-3 pr-0">
+                                        <div class="input-group input-group-sm input-daterange">
+                                            <input type="text" class="form-control" value="">
+                                            <div class="input-group-text py-0">to</div>
+                                            <input type="text" class="form-control" value="">
+                                            <div class="input-group-append">
+                                                <button class="btn btn-primary btn-sm" type="button" id="button-addon2">검색</button>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
                         </div>
 
                         <div class="site-blocks-table mb-3">
@@ -125,7 +141,8 @@
                         showCancelButton: true,
                         confirmButtonColor: '#3085d6',
                         cancelButtonColor: '#d33',
-                        confirmButtonText: '확인'
+                        confirmButtonText: '확인',
+                        cancelButtonText: '취소'
                     }).then((result) => {
                         if (result.value) {
                             Swal.fire(
