@@ -7,8 +7,6 @@ public class MemberVo {
 	String member_pw;
 	String member_name;
 	
-	//branch 작업
-	
 	String member_phone;
 	String member_address;
 	String member_email;
