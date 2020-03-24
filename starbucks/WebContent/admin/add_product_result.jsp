@@ -4,8 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
+<% String group = request.getParameter("group"); %>
 </head>
 <body>
+<%=group %>
 </body>
 </html>

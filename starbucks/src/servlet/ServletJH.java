@@ -66,21 +66,21 @@ public class ServletJH extends HttpServlet{
 	}
 	
 	// 주현 : admin - 상품 등록(result)
-		public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			ProductDao dao = new ProductDao();
-			ProductVo vo = new ProductVo();
-			
-			//vo.setItem_code(item_code);
-			vo.setItem_group(req.getParameter("item_group"));
-			String msg = dao.insert(vo);
-			
-			String group = vo.getItem_group();
-			req.setAttribute("msg", msg);
-			req.setAttribute("group", group);
-			
-			String path= urlAdmin+"/add_product_result.jsp";
-			RequestDispatcher rd=req.getRequestDispatcher(path);
-			rd.forward(req, resp);
-		}
+	public void insertProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		ProductDao dao = new ProductDao();
+		ProductVo vo = new ProductVo();
+		
+		//vo.setItem_code(item_code);
+		vo.setItem_group(req.getParameter("item_group"));
+		String msg = dao.insert(vo);
+		
+		String group = vo.getItem_group();
+		req.setAttribute("msg", msg);
+		req.setAttribute("group", group);
+		
+		String path= urlAdmin+"/add_product_result.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
 	
 }
