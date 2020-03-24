@@ -4,7 +4,7 @@
   <body>
     <div class="container tm-mt-big tm-mb-big">
       <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
+        <div class="col-xl-10 col-lg-11 col-md-12 col-sm-12 mx-auto">
           <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
             <div class="row">
               <div class="col-12">
@@ -162,11 +162,10 @@
                             for="item_regdate"
                             >파일업로드
                           </label>
-                         <div class="tm-product-img-dummy mx-auto">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"
-                  ></i>
+                         <div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
+                  <img
+                  	id="photo"
+                  />
                 </div>
                 
                 
@@ -183,18 +182,15 @@
                 
               </div>
               </div>
-              <!-- 
                               <div class="custom-file mt-3 mb-3">
                   <input id="fileInput" type="file" style="display:none;" />
-                  <input
-                    type="button"
+                  <button
                     class="btn btn-primary btn-block mx-auto"
-                    value="UPLOAD PRODUCT IMAGE"
                     onclick="document.getElementById('fileInput').click();"
-                  />
+                    style="display:none;"
+                  >UPLOAD PRODUCT IMAGE</button>
                 </div>
                
-               				파일 업로드 버튼 -->
                </div>
               <div class="col-12">
                 <button type="submit" id="btnInsert" class="btn btn-primary btn-block text-uppercase">Add Product Now</button>
