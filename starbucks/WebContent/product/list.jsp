@@ -56,11 +56,11 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.html"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002364]_20200304165033804.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Tank Top</a></h3>
-                    <p class="mb-0">Finding perfect t-shirt</p>
+                    <h3><a href="shop-single.html">머그</a></h3>
+                    <p class="mb-0">20 체리블라썸 리드 머그 355ml</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
                 </div>
@@ -68,11 +68,11 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.html"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002362]_20200304164539083.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Corater</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
+                    <h3><a href="shop-single.html">머그</a></h3>
+                    <p class="mb-0">20 체리블라썸 리드 핸들 머그 355ml</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
                 </div>
@@ -80,11 +80,11 @@
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.html"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002365]_20200304165241457.jpg" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">Polo Shirt</a></h3>
-                    <p class="mb-0">Finding perfect products</p>
+                    <h3><a href="shop-single.html">머그</a></h3>
+                    <p class="mb-0">20 체리블라썸 스태킹 컵 세트</p>
                     <p class="text-primary font-weight-bold">$50</p>
                   </div>
                 </div>
