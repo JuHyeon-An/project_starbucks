@@ -51,6 +51,6 @@ function goSubmit(frm, cont){
 	
 }
 
-//btnFunc();
+btnFunc();
 </script>
 	
