@@ -21,7 +21,7 @@ let func=function(){
 }
 
 
-let init = function(){
-	$('#frm').attr('action','order.order').submit();
-	func();
-}
+//let init = function(){
+//	$('#frm').attr('action','order.order').submit();
+//	func();
+//}

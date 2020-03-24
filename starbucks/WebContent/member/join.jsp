@@ -61,7 +61,7 @@
 					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='검색' onclick='execDaumPostcode()' />
 					<input type="text" class='form-control col-12' placeholder='기본주소' name='addr1' id='addr1' maxlength='50'/>
 					<input type="text" class='form-control col-12' placeholder='상세주소' name='addr2' id='addr2' maxlength='50'/>
-					<input type="text" name='address' id='address' value=''/>
+					
 				</div>
 
 				
