@@ -9,8 +9,10 @@
 <title>회원가입</title>
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="/starbucks/js/jquery-3.3.1.min.js"></script>
-<script src="/starbucks/js/jquery-ui.js"></script>
+<script
+  src="https://code.jquery.com/jquery-3.4.1.min.js"
+  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+  crossorigin="anonymous"></script>
 </head>
 <body>
 
@@ -39,7 +41,7 @@
 					<input type="text" class='form-control col-sm-6' placeholder='아이디' name='mId' id='mId' maxlength='20'/>
 					<input type="button" class='btn btn-primary col-sm-4 offset-1' value='중복체크' id='idck' />
 				</div>
-				<div class="Check"></div>
+		
 				<div id='id_check'></div>
 				<div class="form-group">
 					<input type="password" class='form-control' placeholder='비밀번호' name='pwd' maxlength='20'/>
@@ -77,6 +79,7 @@
 				</div>
 				<input type="submit" class='btn btn-primary form-control' value="회원가입" />
 			</form>
+
 		</div>
 	</div>
 
@@ -91,22 +94,33 @@
         //사용자가 입력한 아이디
         var mId = $("#mId").val();
         var param = "mId=" + mId;
-        if (mId.length >= 4) { 
+        if (mId.length >= 2) { 
+        
             $.ajax({
                 type : "post",
-                url : "/idck.sm",
+                url : "idck.sm",
                 data : param,
                 success : function(result) {
-                    $("#Check").html(result);
+                    $("#id_check").html(result);
                 }
             })
         }
     });
     //버튼클릭 이벤트
-    $("#btnJoin").click(function() {
-        //폼데이터를 서버에 제출
-        document.form1.submit();
-
+    $("#idck").click(function() {
+        //사용자가 입력한 아이디
+        var mId = $("#mId").val();
+        var param = "mId=" + mId;
+       
+            $.ajax({
+                type : "post",
+                url : "idck.sm",
+                data : param,
+                success : function(result) {
+                    $("#id_check").html(result);
+                }
+            })
+      
     });
 
 
