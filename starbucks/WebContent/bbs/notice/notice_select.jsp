@@ -19,6 +19,7 @@
 		<form name='frm' id='frm' method='post'>
 			<input type='text' name='findStr' value='${param.findStr }'/>
 			<input type='button' name='btnSelect' id='btnSelect' value='검색'/>
+			<input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>	
 			<p/>
 			<label>no</label>
 			<label>작성자</label>
@@ -34,8 +35,20 @@
 				<span>${vo.noticeRegDate }</span>
 				<span>${vo.noticeView }</span><br/>
 				<input type='hidden' name='memberId' value='${vo.memberId }'/>
-				<input type='hidden' name='noticeContent' value='${vo.noticeContent }'/>		
+				<input type='hidden' name='noticeContent' value='${vo.noticeContent }'/>	
 				</c:forEach>
+				<c:if test="${page.nowPage >1}">
+					<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'/>
+				</c:if>
+				
+				<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
+					<input type='button' value='${i }' onclick='goPage(${i })'/>
+				</c:forEach>	
+				
+				<c:if test="${page.nowPage<page.totPage }">
+					<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'/>
+				</c:if>
+				
 			</div>
 		</form>
 	</div>

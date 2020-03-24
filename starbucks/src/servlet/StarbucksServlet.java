@@ -12,16 +12,15 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.NoticeDao;
 import bean.NoticeVo;
+import bean.Page;
 
 @WebServlet("*.star")
 public class StarbucksServlet extends HttpServlet{
-	String url="bbs/csCenter/notice/notice.jsp";
+	String url="bbs/list.jsp";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String str=req.getParameter("str");
-		RequestDispatcher rd=req.getRequestDispatcher(url+"?str="+str);
-		rd.forward(req, resp);
+		doPost(req, resp);
 	}
 
 	@Override
@@ -34,24 +33,30 @@ public class StarbucksServlet extends HttpServlet{
 		case"/notice_select.star":
 			select(req, resp);
 			break;
-		case"/notice.star":
-			notice(req, resp);
-			break;
 		}
 	}
-		
 
 	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String findStr=req.getParameter("findStr");
+		String findStr="";
+		int nowPage=1;
+		
+		if(req.getParameter("findStr")!=null) {
+			findStr=req.getParameter("findStr");
+		}
+		if(req.getParameter("nowPage")!=null) {
+			nowPage=Integer.parseInt(req.getParameter("nowPage"));
+		}
+		
+		Page page=new Page(findStr, nowPage);
 		NoticeDao dao=new NoticeDao();
-		List<NoticeVo> list=dao.select(findStr);
+		
+		List<NoticeVo> list=dao.select(page);
+		
+		req.setAttribute("page", page);
 		req.setAttribute("list", list);
-		String path=url+"?str=./notice_select.jsp&findStr="+findStr;
+		String path=url+"?star=./notice/notice_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
-	}
-	public void notice(HttpServletRequest req, HttpServletResponse resp) {
-		
 	}
 	
 }
