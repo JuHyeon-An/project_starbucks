@@ -77,7 +77,7 @@
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="order.jsp">주문내역조회</a>
+                                <a class="dropdown-item" href="./order.order">주문내역조회</a>
                                                            </div>
                         </li>
 
