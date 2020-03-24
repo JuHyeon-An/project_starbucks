@@ -35,12 +35,11 @@
 			<span>${vo.orderStatus}</span>
 		<%-- 	<input type='text' name='memberId' value='${vo.memberId }' />
 			 --%>	
-	
+	<!-- 이럴수가 -->
 		</div>
 	</form> 
 	
-	
-	
+
 	<%-- 	<div id='lsit'>
 			<c:forEach var="vo" items="${list }">
 			<span>${vo.orderNumber}</span>
