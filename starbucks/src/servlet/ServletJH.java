@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.ProductDao;
+import bean.ProductVo;
+
 @WebServlet("*.stb")
 public class ServletJH extends HttpServlet{
 	String urlAdmin = "index.jsp?cont=../admin";
