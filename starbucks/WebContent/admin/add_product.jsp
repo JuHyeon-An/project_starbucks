@@ -51,12 +51,12 @@
 										class="custom-select tm-select-accounts" id="item_group"
 										name="item_group">
 										<option selected>분류선택</option>
-										<option value="1">머그</option>
-										<option value="2">글라스</option>
-										<option value="3">텀블러</option>
-										<option value="4">보온병</option>
-										<option value="5">액세서리</option>
-										<option value="6">커피용품/원두</option>
+										<option value="MG">머그</option>
+										<option value="GL">글라스</option>
+										<option value="TB">텀블러</option>
+										<option value="TM">보온병</option>
+										<option value="AC">액세서리</option>
+										<option value="CO">커피용품/원두</option>
 									</select>
 								</div>
 								<div class="form-group mb-3 col-xs-12 col-sm-6">

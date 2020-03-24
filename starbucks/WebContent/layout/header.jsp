@@ -22,7 +22,11 @@
 
         <link rel="stylesheet" href="/starbucks/css/style.css">
         <link rel="stylesheet" href="/starbucks/css/custom.css">
-
+        
+		<!-- datePicker 관련 css -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
+        <!-- datePicker 관련 js -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
     </head>
     
 

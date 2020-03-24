@@ -86,15 +86,15 @@
 
 
 <script>
-$(document).ready(function() {
-    $("#amId").blur(function() {
+
+    $("#mId").blur(function() {
         //사용자가 입력한 아이디
-        var userid = $("#mId").val();
-        var param = "userid=" + userid;
-        if (userid.length >= 4) { 
+        var mId = $("#mId").val();
+        var param = "mId=" + mId;
+        if (mId.length >= 4) { 
             $.ajax({
                 type : "post",
-                url : "/idchk.sm",
+                url : "/idck.sm",
                 data : param,
                 success : function(result) {
                     $("#Check").html(result);
@@ -109,7 +109,7 @@ $(document).ready(function() {
 
     });
 
-});
+
 
 
 

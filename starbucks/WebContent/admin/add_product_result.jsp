@@ -4,8 +4,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title></title>
+<% String group = (String)request.getAttribute("group"); 
+   String test = (String)request.getAttribute("msg");
+
+%>
 </head>
 <body>
+<li><%=group %></li>
+<li><%=test %></li>
 </body>
 </html>
