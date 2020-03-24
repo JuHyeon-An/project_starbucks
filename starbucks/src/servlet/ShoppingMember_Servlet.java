@@ -28,7 +28,8 @@ public class ShoppingMember_Servlet extends HttpServlet{
 		String temp = req.getRequestURI();
 		int pos = temp.lastIndexOf("/");
 		String tempURL = temp.substring(pos);
-		
+		System.out.println("두포스트");
+		System.out.println(tempURL);
 		switch (tempURL) {
 		case "/idck.sm":
 			idck(req, resp);
@@ -48,8 +49,10 @@ public class ShoppingMember_Servlet extends HttpServlet{
 		System.out.println("dddddd");
 		String path = url+"/idCheckForm.jsp";
 		Shopping_MemberDao dao = new Shopping_MemberDao();
-		String mId=req.getParameter("mId");
+		String mId = req.getParameter("mId");
+		
 		int msg = dao.idCheck(mId);
+		
 		req.setAttribute("msg", msg);
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);

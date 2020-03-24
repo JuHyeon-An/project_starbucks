@@ -10,7 +10,7 @@
 <body>
 
  <%
-        String message = (String) request.getAttribute("message");
+        String message = (String) request.getAttribute("msg");
  
         if (message.indexOf("사용가능한") != -1) {
     %>
