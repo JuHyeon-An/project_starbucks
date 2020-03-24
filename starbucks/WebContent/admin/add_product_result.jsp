@@ -5,9 +5,13 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<% String group = request.getParameter("group"); %>
+<% String group = (String)request.getAttribute("group"); 
+   String test = (String)request.getAttribute("msg");
+
+%>
 </head>
 <body>
-<%=group %>
+<li><%=group %></li>
+<li><%=test %></li>
 </body>
 </html>
