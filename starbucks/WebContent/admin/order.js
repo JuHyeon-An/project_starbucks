@@ -15,7 +15,7 @@
 let func=function(){
 	if($('#btnSelect')!=null){
 		$('#btnSelect').click(function(){
-			$('#frm').attr('action' , 'order.order').submit();
+			$('#frmm').attr('action' , 'order.order').submit();
 		})
 	}
 }
