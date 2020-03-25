@@ -27,4 +27,6 @@
 .min-width-125 { min-width: 125px;}
 
 /* sweetalert */ 
-.swal2-container {z-index:3000 !important;}
+.swal2-container {z-index:3000;}
+
+#notice tr:last-child{border-bottom: 1px solid #ddd}

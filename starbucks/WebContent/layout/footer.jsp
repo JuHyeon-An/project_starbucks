@@ -83,29 +83,14 @@
 	<!-- datepicker 관련 js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
     
+    <script>
+    func();
+    </script>
+	
 	<!-- sweetalert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
     
-    <script>
-    func();
-    
-    // 로그인 체크 
-    function loginChk(){
-    	Swal.fire({
-   		  //icon: 'info',
-   		  title: 'Oops...',
-   		  text: '로그인 후 이용가능한 서비스입니다.',
-   			confirmButtonColor: '#006633',
-   		  footer: '<a href="/starbucks/member/join.jsp">아이디가 없으시다면?</a>'
-   		}).then((result) => {
-   		  if (result.value) {
-   			location.href = '/starbucks/member/login.jsp';
-   		  }
-   		})
-    }
-    </script>
-	
 	
     </body>
 
-</html>
+    </html>

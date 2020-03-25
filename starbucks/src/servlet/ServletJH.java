@@ -88,21 +88,6 @@ public class ServletJH extends HttpServlet{
 		}
 		
 		
-		// item code
-		//String gCode = req.getParameter("item_group");
-		//vo.setItem_code(gCode+new Date());
-		//System.out.println(vo.getItem_code());
-		
-		/*
-		vo.setItem_group(req.getParameter("item_group"));
-		vo.setItem_title(req.getParameter("item_title"));
-		vo.setItem_content(req.getParameter("item_content"));
-		vo.setItem_theme(req.getParameter("item_theme"));
-		vo.setItem_size(req.getParameter("item_size"));
-		vo.setItem_price(Integer.parseInt(req.getParameter("item_price")));
-		vo.setItem_num(Integer.parseInt(req.getParameter("item_num")));
-		*/
-		
 		String path= urlAdmin+"/add_product_result.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);

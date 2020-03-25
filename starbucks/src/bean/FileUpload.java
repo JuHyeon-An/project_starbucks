@@ -124,30 +124,23 @@ public class FileUpload {
 						break;
 					}
 				}else { // <input type='file'/>인 경우
-					System.out.println("inputFile까지 갔음");
 					if(fi.getSize()>0) {
 						// file 태그가 여러개가 있다면 n번 돌게 될 것
-						System.out.println("파일인식");
 						
 						// file사이즈가 0이라면 파일이 넘어오지 않은 것
 						// 파일을 선택하지 않고 등록버튼을 누른 경우 파일사이즈가 0
 						
 						String f = fi.getName();
 						// file name을 가지고 오는 작업
-						System.out.println("photo의 name이 제대로 들어가는지"+k);
+						
 						String sysFile = new Date().getTime() +"-"+f;
 						// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
 						
 						System.out.println("photo sysfile : "+sysFile);
-						//MemberPhoto p = new MemberPhoto();
-						//p.setOriFile(f);
-						// getName에 의해서 만들어진 오리지널 파일
-						//p.setSysFile(sysFile);
-						// 임의로 만든 시스템파일
-						//photoList.add(p);
+						System.out.println("가져온 파일 네임값 : "+k);
 						
 						switch (k) {
-						case "fileInput":
+						case "fileInput1":
 							vo.setItem_mainimg(sysFile);
 							break;
 							

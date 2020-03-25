@@ -35,15 +35,21 @@ public class ServletUk extends HttpServlet{
 		
 		switch(tempURL) {
 		case"/notice_select.uk":
-			select(req, resp);
+			notice_select(req, resp);
 			break;
 		case"/notice_view.uk":
-			view(req, resp);
+			notice_view(req, resp);
+			break;
+		
+		
+		
+		case"/review_select.uk":
+			review_select(req,resp);
 			break;
 		}
 	}
 
-	public void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void notice_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String findStr="";
 		int nowPage=1;
 		
@@ -62,16 +68,21 @@ public class ServletUk extends HttpServlet{
 		req.setAttribute("page", page);
 		req.setAttribute("list", list);
 		
-		String path=url+"?star=./notice/notice_select.jsp";
+		String path=url+"?main=./notice/notice_select.jsp&side=./notice/notice_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
-	public void view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		String path=url+"?star=./notice/notice_view.jsp";
+	public void notice_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path=url+"?main=./notice/notice_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
 	
+	
+	
+	public void review_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
 }
