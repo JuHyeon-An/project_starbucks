@@ -24,7 +24,7 @@ public class ProductDao {
 			ps.setString(2, vo.getItem_group()); // selected box에서 가져옴
 			ps.setString(3, vo.getItem_title()); // 아이템명
 			ps.setString(4, vo.getItem_content()); // 설명
-			ps.setDouble(5, vo.getItem_price()*0.05); // 가격의 5%
+			ps.setDouble(5, vo.getItem_price()*0.01); // 가격의 1%
 			ps.setString(6, vo.getItem_theme()); // 테마
 			ps.setString(7, vo.getItem_size()); // 사이즈
 			ps.setInt(8, vo.getItem_price()); // 가격
