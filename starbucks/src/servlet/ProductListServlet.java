@@ -42,6 +42,9 @@ public class ProductListServlet extends HttpServlet{
 		case "/listCategories.pl":
 			pListCategories(req, resp);
 			break;
+		case "/item_view.pl":
+			item_view(req, resp);
+			break;
 	}
 	
 	}
@@ -114,6 +117,20 @@ public class ProductListServlet extends HttpServlet{
 		req.setAttribute("p", p);
 		
 		String path = url+"/list.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	public void item_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = url+"/product_view.jsp";
+		String findStr = req.getParameter("findStr");
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		list = dao.item_view(findStr);
+		
+		
+		req.setAttribute("list", list);	
+		
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

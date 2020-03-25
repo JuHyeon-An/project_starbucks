@@ -26,19 +26,7 @@
                 <div class="d-flex">
             
                   <div class="dropdown mr-1 ml-md-auto">
-                  <!-- 
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Latest
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">머그</a>
-                      <a class="dropdown-item" href="#">글라스</a>
-                      <a class="dropdown-item" href="#">텀블러</a>
-                      <a class="dropdown-item" href="#">보온병</a>
-                      <a class="dropdown-item" href="#">악세서리</a>
-                      <a class="dropdown-item" href="#">커피용품/원두</a>
-                    </div>
-                    --> 
+
                   </div>
       
                   <div class="btn-group">
@@ -63,10 +51,10 @@
 <!-- 	상품 표시 시작 -->
 
               <c:forEach var='vo' items='${list }'>
-               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" onclick="item_view('${vo.item_code}')">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="./fileFolder/${vo.item_thumnailimg }" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="#" ><img src="./fileFolder/${vo.item_thumnailimg }" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="shop-single.html">${vo.item_group}</a></h3>
@@ -236,7 +224,10 @@
 	   $('#findStr').val(findStr);
 	   $('#pd_frm').attr('action', 'listCategories.pl').submit();
    }
-   
+   let item_view = function(findStr){
+	   $('#findStr').val(findStr);
+	   $('#pd_frm').attr('action', 'item_view.pl').submit();
+   } 
    
    </script>
 
