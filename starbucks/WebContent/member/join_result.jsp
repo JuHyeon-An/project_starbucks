@@ -37,8 +37,11 @@ String msg = dao.insert(vo);
             </div>
         </div>
     </div>
-
+<div class="container center-block">
 <h3><%=msg %></h3>
+
+<a class='btn btn-primary' href='/starbucks/' >홈</a>
+</div>
 
 
     
