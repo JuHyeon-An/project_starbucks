@@ -94,12 +94,12 @@
 <!--                                 <a href="/starbucks/product/list.jsp">All Product</a> -->
 								<a href="listPage.pl">All Product</a>
                                 <ul class="dropdown">
-                                    <li><a href="/starbucks/product/list.jsp">머그</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">글라스</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">텀블러</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">원두</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">액세서리</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">기프티 카드</a></li>
+                                    <li><a href="listPage.pl">머그</a></li>
+                                    <li><a href="listPage.pl">글라스</a></li>
+                                    <li><a href="listPage.pl">텀블러</a></li>
+                                    <li><a href="listPage.pl">원두</a></li>
+                                    <li><a href="listPage.pl">액세서리</a></li>
+                                    <li><a href="listPage.pl">기프티 카드</a></li>
                                     
                                 </ul>
                             </li>
