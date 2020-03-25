@@ -11,7 +11,7 @@
 							<h2 class="tm-block-title d-inline-block">Add Product</h2>
 						</div>
 					</div>
-					<form id="productFrm" name="productFrm" method="post" action="add_productR.stb" enctype="multipart/form-data"
+					<form id="frm" name="frm" method="post" action="add_productR.stb"
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="form-group mb-3">
@@ -86,28 +86,26 @@
 					<div class="form-group mb-3 col-xs-12 col-sm-4">
 						<label>파일업로드</label>
 						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo" name="photo" width="100%"/>
+							<img id="photo" width="100%"/>
 						</div>
 					</div>
 					<div class="form-group mb-3 col-xs-12 col-sm-4">
 						<label> 　</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput2').click();">
-							<img id="photo2" name="photo2" width="100%"/>
+						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
+							<img id="photo2" width="100%"/>
 						</div>
 					</div>
 					<div class="form-group mb-3 col-xs-12 col-sm-4">
 						<label> 　</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput3').click();">
-							<img id="photo3" name="photo3 "width="100%"/>
+						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
+							<img id="photo3" width="100%"/>
 						</div>
 					</div>
 
 
 				</div>
 				<div class="custom-file mt-3 mb-3">
-					<input id="fileInput" name="fileInput" type="file" style="display: none;" />
-					<input id="fileInput2" name="fileInput2" type="file" style="display: none;" />
-					<input id="fileInput3" name="fileInput3"  type="file" style="display: none;" />
+					<input id="fileInput" type="file" style="display: none;" />
 					<button class="btn btn-primary btn-block mx-auto"
 						onclick="document.getElementById('fileInput').click();"
 						style="display: none;">UPLOAD PRODUCT IMAGE</button>

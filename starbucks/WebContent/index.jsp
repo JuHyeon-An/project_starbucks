@@ -14,7 +14,7 @@
                         <div class="intro-text text-center text-md-left">
                             <p class="mb-4">달콤한 국내산 복숭아와 은은한 자스민향이 완벽하게 어우러진 스프링 피치 그린 티와 함께 따뜻한 봄의 기운을 느껴보세요!</p>
                             <p>
-                                <a href="#" class="btn btn-primary">Shop Now</a>
+                                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
                             </p>
                         </div>   
                     </div>
@@ -191,7 +191,7 @@
                         <h2><a href="#">신세계면세점 이벤트</a></h2>
                         <p class="post-meta mb-4">2020-03-01 ~ 2020-04-30</p>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam iste dolor accusantium facere corporis ipsum animi deleniti fugiat. Ex, veniam?</p>
-                        <p><a href="#" class="btn btn-primary">more</a></p>
+                        <p><a href="#" class="btn btn-primary btn-sm">more</a></p>
                     </div>
                 </div>
             </div>

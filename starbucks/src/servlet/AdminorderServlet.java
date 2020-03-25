@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.OrderDao;
 import bean.OrderVo;
-import bean.Page;
 
 @WebServlet("*.order")
 public class AdminorderServlet extends HttpServlet {
@@ -41,32 +40,16 @@ public class AdminorderServlet extends HttpServlet {
 	
 	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	      String findStr="";
-	      int nowPage=1;
-	      OrderDao dao=new OrderDao();
-
-	      
-	      if(req.getParameter("nowPage")!=null) {
-	    	  nowPage=Integer.parseInt(req.getParameter("nowPage"));
-	      }
 	      
 		  if(req.getParameter("findStr")!=null) {
 			  findStr=req.getParameter("findStr");
 		  }
-		 
-		  Page p =new Page();
-		  p.setNowPage(nowPage);
-		  p.setFindStr(findStr);
-		  p.pageCompute();
+
 		
-	      List<OrderVo> list = dao.select(p);
+	      OrderDao dao=new OrderDao();
+	      List<OrderVo> list = dao.select(findStr);
 	     
-	      
 	      req.setAttribute("list", list);
-	      req.setAttribute("page", p);
-	      System.out.println("여기가 찍히나요");
-	    
-	      
-	      
 	      
 	      for(OrderVo vo:list) {//값을 확인
 	    	System.out.println("여긴서블");
@@ -84,7 +67,7 @@ public class AdminorderServlet extends HttpServlet {
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
-	      System.out.println("서블릿 마지막");
+	      
 	      
 	   }
 
