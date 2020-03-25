@@ -16,7 +16,7 @@ public class FileUpload {
 	// 파일 업로드하는 고유한 기능 갖도록
 	
 //	String upload = "c:/Users/JHTA/git/web1/1907-web/WebContent/upload/";
-	String upload = "c:/Users/Ellen/git/web1/1907-web/WebContent/upload/";
+	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
 	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
@@ -34,6 +34,8 @@ public class FileUpload {
 		boolean flag = ServletFileUpload.isMultipartContent(req);
 		// 업로드되는 폼이 정확하지 않으면 false 리턴
 		// 결과값이 true일때 uploading이라는 메소드를 호출
+		
+		System.out.println("uploadFormcheck 검증");
 		return flag;
 	}
 	
@@ -134,12 +136,23 @@ public class FileUpload {
 						String sysFile = new Date().getTime() +"-"+f;
 						// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
 						
-						//MemberPhoto p = new MemberPhoto();
-						//p.setOriFile(f);
-						// getName에 의해서 만들어진 오리지널 파일
-						//p.setSysFile(sysFile);
-						// 임의로 만든 시스템파일
-						//photoList.add(p);
+						System.out.println("photo sysfile : "+sysFile);
+						
+						switch (k) {
+						case "fileInput1":
+							vo.setItem_mainimg(sysFile);
+							break;
+							
+						case "fileInput2":
+							vo.setItem_thumnailimg(sysFile);
+							break;
+							
+						case "fileInput3":
+							vo.setItem_contentimg(sysFile);
+							break;
+							
+						}
+						
 						
 						File file = new File(upload + sysFile);
 						// upload 경로 안에 sysFile 더해서 만들고 : upload라는 path에 저장됨
