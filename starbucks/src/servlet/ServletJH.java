@@ -11,15 +11,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.NoticeDao;
-import bean.NoticeVo;
+import bean.FileUpload;
 import bean.ProductDao;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
 public class ServletJH extends HttpServlet{
 	String urlAdmin = "index.jsp?cont=../admin";
-
+	static int n = 0;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -71,19 +70,23 @@ public class ServletJH extends HttpServlet{
 		resp.setContentType("text/html;charset=utf-8");
 		
 		ProductDao dao = new ProductDao();
-		ProductVo vo = new ProductVo();
 		
-		//vo.setItem_code(item_code);
-		vo.setItem_group(req.getParameter("item_group"));
-		vo.setItem_content(req.getParameter("item_content"));
-		System.out.println(req.getParameter("item_content"));
-		//String msg = dao.insert(vo);
+		FileUpload upload = new FileUpload(req, resp);
 		
-		String group = vo.getItem_content();
-		String msg = vo.getItem_group();
+		if(upload.uploadFormCheck()) { // enctype = 'multipart/form-data'
+			ProductVo vo = upload.uploading();
+			// 사진을 포함해서 모든 폼태그가 담겨진 vo가 반환
+			
+			String msg = dao.insert(vo);
+			// 폼태그 담은 vo를 실제로 DB에 넣어줌
+			
+			req.setAttribute("msg", msg);
+			
+		}else {
+			System.out.println("error");
+			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		}
 		
-		req.setAttribute("msg", msg);
-		req.setAttribute("group", group);
 		
 		String path= urlAdmin+"/add_product_result.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

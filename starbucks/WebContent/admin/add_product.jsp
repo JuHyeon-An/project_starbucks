@@ -11,7 +11,7 @@
 							<h2 class="tm-block-title d-inline-block">Add Product</h2>
 						</div>
 					</div>
-					<form id="frm" name="frm" method="post" action="add_productR.stb"
+					<form id="productFrm" name="productFrm" method="post" action="add_productR.stb" enctype="multipart/form-data"
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="form-group mb-3">
@@ -82,34 +82,14 @@
 							</div>
 							<br />
 
-				<div class="row" style="height:250px;">
-					<div class="form-group mb-3 col-xs-12 col-sm-4">
-						<label>파일업로드</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo" width="100%"/>
-						</div>
-					</div>
-					<div class="form-group mb-3 col-xs-12 col-sm-4">
-						<label> 　</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo2" width="100%"/>
-						</div>
-					</div>
-					<div class="form-group mb-3 col-xs-12 col-sm-4">
-						<label> 　</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo3" width="100%"/>
-						</div>
-					</div>
-
+				<div class="row" id="photoRow" style="height:250px;">
+					
 
 				</div>
-				<div class="custom-file mt-3 mb-3">
-					<input id="fileInput" type="file" style="display: none;" />
+					<input id="fileInput1" name="fileInput1" type="file" style="display: none;" />
 					<button class="btn btn-primary btn-block mx-auto"
-						onclick="document.getElementById('fileInput').click();"
+						onclick="document.getElementById('fileInput1').click();"
 						style="display: none;">UPLOAD PRODUCT IMAGE</button>
-				</div>
 
 				<div class="col-12">
 					<button type="submit" id="btnInsert"
@@ -128,27 +108,31 @@
         $("#item_regdate").datepicker();
       });
       
-      let main = document.querySelector('#att_file');
-      let cnt = 0;
+      
+      let main = document.querySelector('#photoRow');
+      let cnt = 1;
       
       makeDiv(main);
-      
       
       function makeDiv(main){
     	  let div = document.createElement('div');
     	  div.setAttribute('class', 
     			  'form-group mb-3 col-xs-12 col-sm-4');
     	  
+    	  
+    	  let divChild = document.createElement('div');
+    	  divChild.setAttribute('class', 'tm-product-img-dummy mx-auto');
+    	  
     	  // image tag를 추가
     	  let img = document.createElement('img');
     	  img.setAttribute('name', 'photo'+cnt);
     	  // <img name='img0'>, <img name='img1'> ... 누를때마다 증가
     	  // name을 같게하면 배열처리 되는데, 그렇게 되면 버거워짐
-    	  img.setAttribute('width', '120px');
-    	  img.setAttribute('height', '180px');
-    	  img.src = 'http://placehold.it/120x180';
+    	  img.setAttribute('width', '100%');
+    	  img.src = 'http://placehold.it/100x100';
     	  //src는 다이렉트로 집어넣을 수 있다
-    	  div.appendChild(img);
+    	  divChild.appendChild(img);
+    	  div.appendChild(divChild);
     	  
     	  // 삭제버튼 추가
     	  let btnDel = document.createElement('input');
@@ -169,14 +153,14 @@
     		  }
     	  }
     	  
-    	  div.appendChild(btnDel);
+    	  divChild.appendChild(btnDel);
     	  
     	  
     	  
     	  // 이미지당 file tag
     	  let file = document.createElement('input');
     	  file.setAttribute('type', 'file');
-    	  file.setAttribute('name', 'attfile'+cnt);
+    	  file.setAttribute('name', 'fildInput'+cnt);
     	  file.setAttribute('style', 'display:none');
     	  file.setAttribute('modify', 'no');
     	  
@@ -215,6 +199,9 @@
     	  main.appendChild(div);
     	  cnt++;
       }
+      
+      //TODO : div 내 자식태그 정리, 기본사진 플러스로 바꾸기
+
       
     </script>
   </body>
