@@ -139,7 +139,7 @@ public class FileUpload {
 						System.out.println("photo sysfile : "+sysFile);
 						
 						switch (k) {
-						case "fileInput":
+						case "fileInput1":
 							vo.setItem_mainimg(sysFile);
 							break;
 							
