@@ -96,7 +96,7 @@ public class Shopping_MemberDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return result; //데이터베이스 오류
+		return result;
 	}
 	
 	
