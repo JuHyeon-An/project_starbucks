@@ -41,22 +41,33 @@ public class AdminorderServlet extends HttpServlet {
 	
 	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	      String findStr="";
+	      int nowPage=1;
+	      OrderDao dao=new OrderDao();
+
+	      
+	      if(req.getParameter("nowPage")!=null) {
+	    	  nowPage=Integer.parseInt(req.getParameter("nowPage"));
+	      }
 	      
 		  if(req.getParameter("findStr")!=null) {
 			  findStr=req.getParameter("findStr");
 			  System.out.println(findStr+"관욱");
 		  }
-
 		  Page p =new Page();
 		  p.setNowPage(nowPage);
 		  p.setFindStr(findStr);
 		  System.out.println(findStr+"서블렛검색어");
 		  p.pageCompute();
-
-	      OrderDao dao=new OrderDao();
-	      List<OrderVo> list = dao.select(findStr);
+		
+	      List<OrderVo> list = dao.select(p);
 	     
+	      
 	      req.setAttribute("list", list);
+	      req.setAttribute("page", p);
+	      System.out.println("여기가 찍히나요");
+	    
+	      
+	      
 	      
 	      for(OrderVo vo:list) {//값을 확인
 	    	System.out.println("여긴서블");
@@ -74,7 +85,7 @@ public class AdminorderServlet extends HttpServlet {
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
-	      
+	      System.out.println("서블릿 마지막");
 	      
 	   }
 
