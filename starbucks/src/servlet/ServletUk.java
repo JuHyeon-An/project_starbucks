@@ -32,6 +32,7 @@ public class ServletUk extends HttpServlet{
 		String temp=req.getRequestURI();
 		int pos=temp.lastIndexOf("/");
 		String tempURL=temp.substring(pos);
+		
 		switch(tempURL) {
 		case"/notice_select.uk":
 			select(req, resp);
@@ -58,16 +59,15 @@ public class ServletUk extends HttpServlet{
 		
 		List<NoticeVo> list=dao.select(page);
 		
-		for(NoticeVo vo:list) {
-		}
-		
 		req.setAttribute("page", page);
 		req.setAttribute("list", list);
+		
 		String path=url+"?star=./notice/notice_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
 	public void view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		
 		String path=url+"?star=./notice/notice_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

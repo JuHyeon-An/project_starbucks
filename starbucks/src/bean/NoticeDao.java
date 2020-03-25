@@ -56,7 +56,7 @@ public class NoticeDao {
 					   + "      where notice_title like ? "
 					   + "      or notice_content like ? "
 					   + "      or member_name like ? "
-					   + "      order by NOTICE_REGDATE)A"
+					   + "      order by NOTICE_REGDATE desc)A"
 					   + " )where rn between ? and ? ";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+page.getFindStr()+"%");
