@@ -57,6 +57,8 @@ public class ServletJH extends HttpServlet{
 		
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list = dao.select();
+		System.out.println(list.get(0).getItem_code());
+		System.out.println(list.get(1).getItem_code());
 		req.setAttribute("list", list);
 		
 		String path= urlAdmin+"/products.jsp";
