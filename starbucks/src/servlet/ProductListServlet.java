@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import bean.Page;
+import bean.Page_ProductList;
 import bean.ProductDao_YD;
 import bean.ProductVo;
 
@@ -57,7 +57,6 @@ public class ProductListServlet extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("plist 들어옴");
 
 		int nowPage = 1;
 		String findStr = "";
@@ -69,16 +68,16 @@ public class ProductListServlet extends HttpServlet{
 			findStr = req.getParameter("findStr");
 		}
 		
-		Page p = new Page();
+		Page_ProductList p = new Page_ProductList();
 		p.setNowPage(nowPage);
 		p.setFindStr(findStr);
 		p.pageCompute();
-		
+		System.out.println(nowPage+"나우페이지");
 		
 		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list = new ArrayList<ProductVo>();
+		List<ProductVo> list  = dao.select(p);
 		
-		list = dao.select(p);
+		
 		req.setAttribute("list", list);
 		req.setAttribute("p", p);
 		

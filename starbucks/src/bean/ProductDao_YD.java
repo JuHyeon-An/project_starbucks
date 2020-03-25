@@ -56,9 +56,9 @@ public class ProductDao_YD {
 		}
 	}
 	
-	public List<ProductVo> select(Page p){
+	public List<ProductVo> select(Page_ProductList p){
 		List<ProductVo> list = new ArrayList<ProductVo>();
-		ProductVo vo = new ProductVo();
+		
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -84,9 +84,10 @@ public class ProductDao_YD {
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, p.getStartNo());
 			ps.setInt(2, p.getEndNo());
+			rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				System.out.println(rs.getString("ITEM_MAINIMG")+"아이템코드");
+				ProductVo vo = new ProductVo();
 				vo.setItem_code(rs.getString("ITEM_CODE"));
 				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
 				vo.setItem_group(rs.getString("ITEM_GROUP"));
@@ -103,7 +104,6 @@ public class ProductDao_YD {
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
-				System.out.println("dao에서 실행됨");
 			}
 		} catch (Exception e) {
 			System.out.println("오류뜸" );

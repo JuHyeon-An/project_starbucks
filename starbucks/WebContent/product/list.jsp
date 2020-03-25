@@ -54,6 +54,7 @@
 
 
 <!-- 	상품 표시 시작 -->
+<!-- 
               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
@@ -90,7 +91,7 @@
                   </div>
                 </div>
               </div>
-              
+             -->
               <c:forEach var='vo' items='${list }'>
                <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
@@ -111,12 +112,68 @@
 <!-- 상품표시 끝 -->
            
 <!-- 페이징 -->
+
+          </div>
+            <div class="row" data-aos="fade-up">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                  
+                  <c:if test='${p.nowPage > p.blockSize }'>
+                 	 <input type="button" class='btn btn-default btn-arraw-left' value ='이전' onclick='pd_goPage(1)'/>
+                  </c:if>
+                  <c:forEach var='i' begin='${p.startPage }' end='${p.endPage }'>
+                  	 <input type="button" class=<c:if test='${ i == p.nowPage }'>'btn btn-primary btn-arraw-left'</c:if> 
+										<c:if test='${ i != p.nowPage }'>'btn btn-default btn-arraw-left'</c:if>
+							value ='${ i }' onclick='pd_goPage(${i})'/>
+                  </c:forEach>
+                  <c:if test="${p.nowPage < p.totPage }">
+					<input type="button" class='btn btn-default btn-arraw-left' value ='다음' onclick='pd_goPage(${p.nowPage+1})'/>
+				 </c:if>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+<!-- 
+          </div>
+            <div class="row" data-aos="fade-up">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                  
+                  <c:if test='${p.nowPage > p.blockSize }'>
+                 	 <li><a onclick='pd_goPage(1)' >&lt;</a></li>
+                  </c:if>
+                  <c:forEach var='i' begin='${p.startPage }' end='${p.endPage }'>
+                  	 <li><a href='pd_goPage(${i})' 
+                  	 	<c:if test='${ i == p.nowPage }'>class='active'</c:if>   >${i }</a></li>      	 
+
+                  </c:forEach>
+                  <c:if test="${p.nowPage < p.totPage }">
+					<li><a onclick='pd_goPage(${p.nowPage+1})' >&gt;</a></li>
+				 </c:if>
+
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
             </div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
                   <ul>
-                    <li><a href="#">&lt;</a></li>
+                    <li><a href="#" >&lt;</a></li>
                     <li class="active"><span>1</span></li>
                     <li><a href="#">2</a></li>
                     <li><a href="#">3</a></li>
@@ -128,6 +185,7 @@
               </div>
             </div>
           </div>
+ -->
 <!-- 페이징 끝-->
 
 <!-- 좌측 메뉴 시작 -->
@@ -183,9 +241,25 @@
           
         </div>
       </div>
+      <form id='pd_frm'>
+      	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
+      </form>
+      
+      
+   <script>
+   let pd_goPage = function(nowPage){
+		$('#nowPage').val(nowPage);
+		$('#pd_frm').attr('action', 'listPage.pl').submit();
+	}
+   </script>
 
-       
-   
+
+   <%
+      if(request.getParameter("nowPage") == null){
+   %>
+   <script>pd_goPage(1)</script>
+   <%}%>     
+
     <!-- Breadcrumb END -->
     
 	<!-- Content -->    
