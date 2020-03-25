@@ -28,3 +28,5 @@
 
 /* sweetalert */ 
 .swal2-container {z-index:3000;}
+
+#notice tr:last-child{border-bottom: 1px solid #ddd}
