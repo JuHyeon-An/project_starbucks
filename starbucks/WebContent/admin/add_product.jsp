@@ -81,12 +81,14 @@
 
 							</div>
 							<br />
-
+						<div class="form group">
+								<label style="color:#fff;">파일업로드</label>
+							</div>
 				<div class="row" id="photoRow" style="height:250px;">
 					
 
 				</div>
-					<input id="fileInput1" name="fileInput1" type="file" style="display: none;" />
+					<input id="fileBtn" name="fileBtn" type="file" style="display: none;" />
 					<button class="btn btn-primary btn-block mx-auto"
 						onclick="document.getElementById('fileInput1').click();"
 						style="display: none;">UPLOAD PRODUCT IMAGE</button>
@@ -129,12 +131,14 @@
     	  // <img name='img0'>, <img name='img1'> ... 누를때마다 증가
     	  // name을 같게하면 배열처리 되는데, 그렇게 되면 버거워짐
     	  img.setAttribute('width', '100%');
-    	  img.src = 'http://placehold.it/100x100';
+    	  img.src = '../img/upload.png';
     	  //src는 다이렉트로 집어넣을 수 있다
     	  divChild.appendChild(img);
     	  div.appendChild(divChild);
     	  
     	  // 삭제버튼 추가
+    	  
+    	  /*
     	  let btnDel = document.createElement('input');
     	  btnDel.setAttribute('name', 'delBtn'+cnt);
     	  btnDel.setAttribute('type', 'button');
@@ -154,13 +158,12 @@
     	  }
     	  
     	  divChild.appendChild(btnDel);
-    	  
-    	  
+    	  */
     	  
     	  // 이미지당 file tag
     	  let file = document.createElement('input');
     	  file.setAttribute('type', 'file');
-    	  file.setAttribute('name', 'fildInput'+cnt);
+    	  file.setAttribute('name', 'fileInput'+cnt);
     	  file.setAttribute('style', 'display:none');
     	  file.setAttribute('modify', 'no');
     	  
@@ -196,12 +199,13 @@
     		  	}
     		  }
     	  
-    	  main.appendChild(div);
-    	  cnt++;
+    		  	if(cnt<4){
+    	  		main.appendChild(div);
+    	  		cnt++;
+    	  }
       }
       
-      //TODO : div 내 자식태그 정리, 기본사진 플러스로 바꾸기
-
+	//TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
       
     </script>
   </body>
