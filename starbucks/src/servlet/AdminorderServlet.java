@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.OrderDao;
 import bean.OrderVo;
+import bean.Page;
 
 @WebServlet("*.order")
 public class AdminorderServlet extends HttpServlet {
@@ -45,16 +46,13 @@ public class AdminorderServlet extends HttpServlet {
 			  findStr=req.getParameter("findStr");
 			  System.out.println(findStr+"관욱");
 		  }
-<<<<<<< HEAD
+
 		  Page p =new Page();
 		  p.setNowPage(nowPage);
 		  p.setFindStr(findStr);
 		  System.out.println(findStr+"서블렛검색어");
 		  p.pageCompute();
-=======
 
->>>>>>> 68992bd81564c6cf25eea9af48286e0ac56009fe
-		
 	      OrderDao dao=new OrderDao();
 	      List<OrderVo> list = dao.select(findStr);
 	     
