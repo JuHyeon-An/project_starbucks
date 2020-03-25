@@ -106,8 +106,10 @@
 	<!-- container -->
 
 	<script>
-      $(function() {
-        $("#item_regdate").datepicker();
+    $(function() {
+        $("#item_regdate").datepicker({
+          defaultDate: new Date()
+        });
       });
       
       
@@ -131,6 +133,7 @@
     	  // <img name='img0'>, <img name='img1'> ... 누를때마다 증가
     	  // name을 같게하면 배열처리 되는데, 그렇게 되면 버거워짐
     	  img.setAttribute('width', '100%');
+    	  img.setAttribute('height', '10%');
     	  img.src = '../img/upload.png';
     	  //src는 다이렉트로 집어넣을 수 있다
     	  divChild.appendChild(img);

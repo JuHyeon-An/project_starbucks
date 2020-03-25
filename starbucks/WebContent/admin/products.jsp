@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <title>Product Page - Admin HTML Template</title>
    
   </head>
@@ -16,14 +17,18 @@
               <table class="table table-hover tm-table-small tm-product-table">
                 <thead>
                   <tr>
-                    <th scope="col">&nbsp;</th>
-                    <th scope="col">PRODUCT NAME</th>
-                    <th scope="col">UNIT SOLD</th>
-                    <th scope="col">IN STOCK</th>
-                    <th scope="col">EXPIRE DATE</th>
+                    <th scope="col">&nbsp;</th> <!-- 사진 -->
+                    <th scope="col">상품코드</th>
+                    <th scope="col">상품명</th>
+                    <th scope="col">판매가</th>
+                    <th scope="col">재고</th>
+                    <th scope="col">누적판매개수</th>
+                    <th scope="col">등록일</th>
                     <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
+                
+                <c:forEach var="vo" items="${list }">
                 <tbody>
                   <tr>
                     <td scope="row">
@@ -34,10 +39,11 @@
 									onclick="image_viewer('img14367')"
 									src="//starbucks.seoulsistas.net/img/cdn/[9300000002189]_20200219103350388.jpg"
 									style="display: block;"></td>
-								<td class="tm-product-name">Lorem Ipsum Product 1</td>
-                    <td>1,450</td>
-                    <td>550</td>
-                    <td>28 March 2019</td>
+                    <td>${vo.item_code}</td>
+                    <td class="tm-product-name">${vo.item_title }</td>
+                    <td>${vo.item_num }</td>
+                    <td>${vo.order_sumnum }</td>
+                    <td>${vo.item_regDate }</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
@@ -45,6 +51,7 @@
                     </td>
                   </tr>
                 </tbody>
+                </c:forEach>
               </table>
             </div>
             <!-- table container -->
