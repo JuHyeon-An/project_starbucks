@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.FileUpload;
 import bean.ProductDao;
+import bean.ProductDao_YD;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
@@ -51,6 +52,13 @@ public class ServletJH extends HttpServlet{
 	
 	// 주현 : admin - 상품 조회
 	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list = dao.select();
+		req.setAttribute("list", list);
+		
 		String path= urlAdmin+"/products.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
