@@ -137,6 +137,7 @@ public class FileUpload {
 						// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
 						
 						System.out.println("photo sysfile : "+sysFile);
+						System.out.println("가져온 파일 네임값 : "+k);
 						
 						switch (k) {
 						case "fileInput1":
