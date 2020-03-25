@@ -46,7 +46,7 @@
 		<c:if test="${page.nowPage >1}">
 			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'/>
 		</c:if>
-		
+	
 		<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
 			<input type='button' value='${i }' onclick='goPage(${i })'/>
 		</c:forEach>	
