@@ -15,11 +15,17 @@
 let func=function(){
 	if($('#btnSelect')!=null){
 		$('#btnSelect').click(function(){
+			alert($('#findStr').val());
+			
 			$('#frmm').attr('action' , 'order.order').submit();
 		})
 	}
 }
 
+let goPage=function(nowPage){
+	$('#nowPage').val(nowPage);
+	$('#frmm').attr('action','order.order').submit();
+}
 
 //let init = function(){
 //	$('#frm').attr('action','order.order').submit();

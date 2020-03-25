@@ -64,7 +64,7 @@ public class OrderDao {
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println("검색어" + page.getFindStr());
+				System.out.println("검색어가왜안나오지?" + page.getFindStr());
 				OrderVo vo = new OrderVo();
 				vo.setOrderNumber(rs.getString("ORDERNUMBER"));
 				vo.setMemberId(rs.getString("MEMBER_ID"));

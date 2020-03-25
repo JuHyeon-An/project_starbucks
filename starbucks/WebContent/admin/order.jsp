@@ -26,10 +26,11 @@
 <body>
 
 <form name='frm' id='frmm' method='post'>
-<input type='text' name='findStr' value= '${param.findStr }' />
+<input type='text' name='findStr' value= '${param.findStr }' id='findStr'/>
 <input type='button' value='검색' name='btnSelect' id='btnSelect'/>
 <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
 </form>
+
 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
 	                <h2 class="tm-block-title">Orders List</h2>
 	                <table class="table">
@@ -46,7 +47,7 @@
 	                        </tr>
 	                    </thead>
 	                    <tbody>
-	                    <div id='list'>
+	               
 								<c:forEach var="vo" items="${list }">	
 	                        <tr>
 	                          
@@ -84,7 +85,7 @@
 		</c:if>
 	</div>
 	
-	</div> 
+
 	
 
 

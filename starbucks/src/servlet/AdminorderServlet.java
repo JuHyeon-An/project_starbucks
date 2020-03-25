@@ -44,26 +44,27 @@ public class AdminorderServlet extends HttpServlet {
 	      int nowPage=1;
 	      OrderDao dao=new OrderDao();
 
-	      
+	      System.out.println(req.getParameter("findStr"));
 	      if(req.getParameter("nowPage")!=null) {
 	    	  nowPage=Integer.parseInt(req.getParameter("nowPage"));
 	      }
 	      
 		  if(req.getParameter("findStr")!=null) {
+			  System.out.println("------------------------");
 			  findStr=req.getParameter("findStr");
-			  System.out.println(findStr+"관욱");
+			  System.out.println(findStr+" 문자 값이  안아아오아아아아아왜애애애");
 		  }
-		  Page p =new Page();
-		  p.setNowPage(nowPage);
-		  p.setFindStr(findStr);
+		  Page page =new Page();
+		  page.setNowPage(nowPage);
+		  page.setFindStr(findStr);
 		  System.out.println(findStr+"서블렛검색어");
-		  p.pageCompute();
+		  page.pageCompute();
 		
-	      List<OrderVo> list = dao.select(p);
+	      List<OrderVo> list = dao.select(page);
 	     
 	      
 	      req.setAttribute("list", list);
-	      req.setAttribute("page", p);
+	      req.setAttribute("page", page);
 	      System.out.println("여기가 찍히나요");
 	    
 	      
