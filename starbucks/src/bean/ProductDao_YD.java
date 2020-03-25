@@ -111,7 +111,7 @@ public class ProductDao_YD {
 		}
 	}
 
-	public List<ProductVo> select(Page_ProductList p, String findStr){
+	public List<ProductVo> select(Page_ProductList p, String findStr){  //테마 및 카테고리로 보기
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		
 		String sql = null;
@@ -240,6 +240,81 @@ public class ProductDao_YD {
 			return list;
 		}
 	}
+	
+	
+	
+	public List<ProductVo> select(Page_ProductList p, String findStr, int desc){
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int totList = 0;
 
+		try {
+			sql = " select count(item_code) cnt from itemboard where item_group = ? or item_theme = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, findStr);
+			ps.setString(2, findStr);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				totList = rs.getInt("cnt");
+			}
+			p.setTotListSize(totList);
+			p.pageCompute();
+			
+			sql = "select * from ("
+					+ "select rownum rn , A.* from ("
+					+ 	" select * "
+					+ 	" from itemboard "
+//					+ " where item_group = ? or item_theme = ? "
+					+   " order by ? ) A "
+					+ ") where rn between ? and ? ";
+			ps = conn.prepareStatement(sql);
+//			ps.setString(1, findStr);
+//			ps.setString(2, findStr);
+//			
+			if(desc == 1) { //상품명순으로 정렬
+				ps.setString(1, "item_title");
+			}else if(desc == 2) { // 상품명 역순으로 정렬
+				ps.setString(1, "item_title desc");
+			}else if(desc == 3) { // 상품명 역순으로 정렬
+				ps.setString(1, "item_price");
+			}else if(desc == 4) { // 상품명 역순으로 정렬
+				ps.setString(1, "item_price desc");
+			}
+			
+			ps.setInt(2, p.getStartNo());
+			ps.setInt(3, p.getEndNo());
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				System.out.println("ㅇㅇㅇ들어온다");
+				ProductVo vo = new ProductVo();
+				vo.setItem_code(rs.getString("ITEM_CODE"));
+				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
+				vo.setItem_group(rs.getString("ITEM_GROUP"));
+				vo.setItem_title(rs.getString("ITEM_TITLE"));
+				vo.setItem_content(rs.getString("ITEM_CONTENT"));
+				vo.setItem_savedmoney(rs.getInt("ITEM_SAVEDMONEY"));
+				vo.setItem_theme(rs.getString("ITEM_THEME"));
+				vo.setItem_size(rs.getString("ITEM_SIZE"));
+				vo.setItem_price(rs.getInt("ITEM_PRICE"));
+				vo.setItem_num(rs.getInt("ITEM_NUM"));
+				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
+				vo.setItem_thumnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
+				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
+				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			System.out.println("오류뜸" );
+		} finally {
+			return list;
+		}
+	}
+	
 
 }
