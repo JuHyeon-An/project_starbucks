@@ -101,8 +101,13 @@
                         <ul class="site-menu js-clone-nav d-none d-md-block">
                             <li class="active"><a href="/starbucks/">HOME</a></li>
                             <li class="has-children">
+<<<<<<< HEAD
+<!--                                 <a href="/starbucks/product/list.jsp">All Product</a> -->
+								<a href="listPage.pl">All Product</a>
+=======
                                 <!--                                 <a href="/starbucks/product/list.jsp">All Product</a> -->
                                 <a href="list.pl">All Product</a>
+>>>>>>> 06abdf8bc5987fb553a0087d3d4b13f68da256c5
                                 <ul class="dropdown">
                                     <li><a href="/starbucks/product/list.jsp">머그</a></li>
                                     <li><a href="/starbucks/product/list.jsp">글라스</a></li>
