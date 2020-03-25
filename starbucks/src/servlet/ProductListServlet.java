@@ -40,6 +40,9 @@ public class ProductListServlet extends HttpServlet{
 		case "/listPage.pl":
 			pListPage(req, resp);
 			break;
+		case "/listCategories.pl":
+			pListCategories(req, resp);
+			break;
 	}
 	
 	}
@@ -76,6 +79,35 @@ public class ProductListServlet extends HttpServlet{
 		
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list  = dao.select(p);
+		
+		
+		req.setAttribute("list", list);
+		req.setAttribute("p", p);
+		
+		String path = url+"/list.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	public void pListCategories(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		int nowPage = 1;
+		String findStr = "";
+		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+			
+		}
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		
+		Page_ProductList p = new Page_ProductList();
+		p.setNowPage(nowPage);
+		p.setFindStr(findStr);
+		p.pageCompute();
+		System.out.println(nowPage+"나우페이지");
+		
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list  = dao.select(p, findStr);
 		
 		
 		req.setAttribute("list", list);

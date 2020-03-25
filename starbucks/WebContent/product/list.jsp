@@ -24,16 +24,23 @@
               <div class="col-md-12 mb-5">
                 <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
                 <div class="d-flex">
+            
                   <div class="dropdown mr-1 ml-md-auto">
+                  <!-- 
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       Latest
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">Men</a>
-                      <a class="dropdown-item" href="#">Women</a>
-                      <a class="dropdown-item" href="#">Children</a>
+                      <a class="dropdown-item" href="#">머그</a>
+                      <a class="dropdown-item" href="#">글라스</a>
+                      <a class="dropdown-item" href="#">텀블러</a>
+                      <a class="dropdown-item" href="#">보온병</a>
+                      <a class="dropdown-item" href="#">악세서리</a>
+                      <a class="dropdown-item" href="#">커피용품/원두</a>
                     </div>
+                    --> 
                   </div>
+      
                   <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
@@ -54,49 +61,12 @@
 
 
 <!-- 	상품 표시 시작 -->
-<!-- 
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002364]_20200304165033804.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">머그</a></h3>
-                    <p class="mb-0">20 체리블라썸 리드 머그 355ml</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002362]_20200304164539083.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">머그</a></h3>
-                    <p class="mb-0">20 체리블라썸 리드 핸들 머그 355ml</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
-                <div class="block-4 text-center border">
-                  <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002365]_20200304165241457.jpg" alt="Image placeholder" class="img-fluid"></a>
-                  </figure>
-                  <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">머그</a></h3>
-                    <p class="mb-0">20 체리블라썸 스태킹 컵 세트</p>
-                    <p class="text-primary font-weight-bold">$50</p>
-                  </div>
-                </div>
-              </div>
-             -->
+
               <c:forEach var='vo' items='${list }'>
                <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="${vo.item_thumnailimg }" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="shop-single.html"><img src="./fileFolder/${vo.item_thumnailimg }" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="shop-single.html">${vo.item_group}</a></h3>
@@ -105,8 +75,6 @@
                   </div>
                 </div>
               </div>
-              
-              
               </c:forEach>
               
 <!-- 상품표시 끝 -->
@@ -193,9 +161,20 @@
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Men</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Women</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Children</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('MG')" class="d-flex"><span>머그</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('GL')" class="d-flex"><span>글라스</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('TB')" class="d-flex"><span>텀블러</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('TM')" class="d-flex"><span>보온병</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('AC')" class="d-flex"><span>액세서리</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('CO')" class="d-flex"><span>커피용품/원두</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+              </ul>
+              <br></br>
+              <h3 class="mb-3 h6 text-uppercase text-black d-block">Theme</h3>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-1"><a href="#" class="d-flex"><span>20 체리블라썸</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>베라왕 X 스타벅스</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>시티투어 콜렉션</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>스프링 콜렉션</span> <span class="text-black ml-auto">(2,220)</span></a></li>
               </ul>
             </div>
 
@@ -243,6 +222,7 @@
       </div>
       <form id='pd_frm'>
       	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
+      	<input type="hidden" name="findStr" id='findStr' value=''/>
       </form>
       
       
@@ -251,6 +231,12 @@
 		$('#nowPage').val(nowPage);
 		$('#pd_frm').attr('action', 'listPage.pl').submit();
 	}
+   let categories = function(findStr){
+	   $('#findStr').val(findStr);
+	   $('#pd_frm').attr('action', 'listCategories.pl').submit();
+   }
+   
+   
    </script>
 
 
