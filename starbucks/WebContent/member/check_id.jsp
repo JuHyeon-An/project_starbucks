@@ -4,13 +4,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>id 중복 검사</title>
-
+<title>Insert title here</title>
 </head>
 <body>
-
- <%
-        String message = (String) request.getAttribute("message");
+    <%
+        String message = (String) request.getAttribute("msg");
  
         if (message.indexOf("사용가능한") != -1) {
     %>
@@ -28,8 +26,6 @@
     %>
 
 
-<script>
 
-</script>
 </body>
 </html>

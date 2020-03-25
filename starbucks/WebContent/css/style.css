@@ -55,7 +55,8 @@ a {
   -o-transition: 0.2s all ease-in-out !important;
   transition: 0.2s all ease-in-out !important;
   top: 0;
-  letter-spacing: .05em; }
+  letter-spacing: .05em;
+  padding: .75rem 1.85rem; }
   .btn:hover, .btn:active, .btn:focus {
     outline: none;
     -webkit-box-shadow: none !important;

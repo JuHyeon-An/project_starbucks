@@ -11,7 +11,7 @@
 							<h2 class="tm-block-title d-inline-block">Add Product</h2>
 						</div>
 					</div>
-					<form id="frm" name="frm" method="post" action="add_productR.stb"
+					<form id="productFrm" name="productFrm" method="post" action="add_productR.stb" enctype="multipart/form-data"
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="form-group mb-3">
@@ -51,12 +51,12 @@
 										class="custom-select tm-select-accounts" id="item_group"
 										name="item_group">
 										<option selected>분류선택</option>
-										<option value="1">머그</option>
-										<option value="2">글라스</option>
-										<option value="3">텀블러</option>
-										<option value="4">보온병</option>
-										<option value="5">액세서리</option>
-										<option value="6">커피용품/원두</option>
+										<option value="MG">머그</option>
+										<option value="GL">글라스</option>
+										<option value="TB">텀블러</option>
+										<option value="TM">보온병</option>
+										<option value="AC">액세서리</option>
+										<option value="CO">커피용품/원두</option>
 									</select>
 								</div>
 								<div class="form-group mb-3 col-xs-12 col-sm-6">
@@ -86,26 +86,28 @@
 					<div class="form-group mb-3 col-xs-12 col-sm-4">
 						<label>파일업로드</label>
 						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo" width="100%"/>
+							<img id="photo" name="photo" width="100%"/>
 						</div>
 					</div>
 					<div class="form-group mb-3 col-xs-12 col-sm-4">
 						<label> 　</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo2" width="100%"/>
+						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput2').click();">
+							<img id="photo2" name="photo2" width="100%"/>
 						</div>
 					</div>
 					<div class="form-group mb-3 col-xs-12 col-sm-4">
 						<label> 　</label>
-						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput').click();">
-							<img id="photo3" width="100%"/>
+						<div class="tm-product-img-dummy mx-auto" onclick="document.getElementById('fileInput3').click();">
+							<img id="photo3" name="photo3 "width="100%"/>
 						</div>
 					</div>
 
 
 				</div>
 				<div class="custom-file mt-3 mb-3">
-					<input id="fileInput" type="file" style="display: none;" />
+					<input id="fileInput" name="fileInput" type="file" style="display: none;" />
+					<input id="fileInput2" name="fileInput2" type="file" style="display: none;" />
+					<input id="fileInput3" name="fileInput3"  type="file" style="display: none;" />
 					<button class="btn btn-primary btn-block mx-auto"
 						onclick="document.getElementById('fileInput').click();"
 						style="display: none;">UPLOAD PRODUCT IMAGE</button>

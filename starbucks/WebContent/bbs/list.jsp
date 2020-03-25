@@ -15,9 +15,19 @@
     <!-- Breadcrumb END -->
     
 	<!-- Content -->
-	
-	<jsp:include page="${param.star }"></jsp:include> 
-	
+	<div class="site-section">
+		<div class="container">
+			<div class="row mb-5">
+				<div class="col-md-3 order-1 mb-5">
+				
+				</div>
+				
+				<div class='col'>
+					<jsp:include page="${param.star }"></jsp:include> 
+				</div>
+			</div>
+		</div>	
+	</div>
 	<!-- Content END-->    
     
 <%@include file="../../../layout/footer.jsp" %>

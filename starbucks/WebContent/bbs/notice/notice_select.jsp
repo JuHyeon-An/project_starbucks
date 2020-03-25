@@ -12,12 +12,11 @@
 </head>
 <body>
 <div id='main'>
-<form name='frm' id='frm' method='post'>
+<form name='notice' id='notice' method='post'>
 	<div id='info'>
 			<input type='text' name='findStr' value='${param.findStr }'/>
 			<input type='button' name='btnSelect' id='btnSelect' value='검색'/>
 			<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-	
 	</div>
 	<p/>
 	<div id='contents'>
@@ -28,16 +27,16 @@
 		<label>조회수</label>
 	<p/>
 		<c:forEach var="vo" items="${list }">
-			<div id='list' onclick='view(${vo.noticePostNum})'>
+			<div id='list' onclick="view('${vo.noticeTitle}','${vo.memberName }','${vo.noticeContent }','${vo.noticeRegDate } ')">
 				<span>${vo.noticePostNum }</span>
 				<span>${vo.memberName }</span>
 				<span>${vo.noticeTitle }</span>
 				<span>${vo.noticeRegDate }</span>
-				<span>${vo.noticeView }</span><br/>
-				<input type='hidden' name='noticeTitle' value='${vo.noticeTitle }'/>
-				<input type='hidden' name='memberId' value='${vo.memberId }'/>
-				<input type='hidden' name='noticeContent' value='${vo.noticeContent }'/>	
-				<input type='hidden' name='noticeRegDate' value='${vo.noticeRegDate }'/>	
+				<span>${vo.noticeView }</span>
+				<input type='hidden' name='noticeTitle' id='noticeTitle' />
+				<input type='hidden' name='memberName' id='memberName'/>
+				<input type='hidden' name='noticeContent' id='noticeContent'/>	
+				<input type='hidden' name='noticeRegDate' id='noticeRegDate'/>	
 			</div>
 		</c:forEach>
 	</div>

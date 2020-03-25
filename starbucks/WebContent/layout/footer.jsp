@@ -51,6 +51,7 @@
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         Copyright &copy;
                         <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+<!--                         <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script> -->
                         <script>
                             document.write(new Date().getFullYear());
                         </script> All rights reserved | This template is made with <i class="icon-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" class="text-primary">Colorlib</a>
@@ -75,20 +76,36 @@
     
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
     <script src="/starbucks/js/notice.js"></script>
-    <script>
-    func();
-    </script>
 	
 	<!-- 다음 우편번호 서비스 관련 js -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 	
 	<!-- datepicker 관련 js -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
-	
+    
 	<!-- sweetalert -->
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
     
+    <script>
+    func();
+    
+    // 로그인 체크 
+    function loginChk(){
+    	Swal.fire({
+   		  //icon: 'info',
+   		  title: 'Oops...',
+   		  text: '로그인 후 이용가능한 서비스입니다.',
+   			confirmButtonColor: '#006633',
+   		  footer: '<a href="/starbucks/member/join.jsp">아이디가 없으시다면?</a>'
+   		}).then((result) => {
+   		  if (result.value) {
+   			location.href = '/starbucks/member/login.jsp';
+   		  }
+   		})
+    }
+    </script>
+	
 	
     </body>
 
-    </html>
+</html>
