@@ -20,7 +20,7 @@ public class FileUpload {
 	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
-	
+	   
 	int maxSize = 1024*1024*50; // 파일이 업로드 되는 최대 사이즈 (최대크기 50메가)
 	HttpServletRequest req;
 	HttpServletResponse resp;
