@@ -1,16 +1,18 @@
 package bean;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
-
-import bean.DBConn;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProductDao {
 
 	Connection conn;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	String upload = "c:/Users/Ellen/git/web1/1907-web/WebContent/upload/";
+	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
 //	String upload = "c:/Users/JHTA/git/web1/1907-web/WebContent/upload/";
 	
 	String sql="";
@@ -38,9 +40,11 @@ public class ProductDao {
 			
 			if(ps.executeUpdate()>0) {
 				conn.commit();
+				ps.close();
 				return "성공";
 			}else {
 				conn.rollback();
+				ps.close();
 				return "오류발생";
 			}
 		}catch(Exception ex) {
@@ -48,5 +52,69 @@ public class ProductDao {
 		}
 		
 		return "DB오류발생";
+	}
+	
+	
+	public int deleteItem(String item_code) {
+		sql = "select item_mainimg, item_thumbnailimg, item_contentimg from itemboard where item_code=?";
+		int r = 0;
+		String file1 = null;
+		String file2 = null;
+		String file3 = null;
+		List<String> fileList = new ArrayList<String>();
+		PreparedStatement ps = null;
+		
+		try {
+			conn = DBConn.getConn();
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, item_code);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				file1 = rs.getString(1);
+				file2 = rs.getString(2);
+				file3 = rs.getString(3);
+				
+				fileList.add(file1);
+				fileList.add(file2);
+				fileList.add(file3);
+			}
+			
+			sql = "delete from itemboard where item_code=?";
+			ps = conn.prepareStatement(sql);
+			
+			ps.setString(1, item_code);
+			
+			r = ps.executeUpdate();
+			if(r>0) {
+				System.out.println("r의 값 : " + r);
+				System.out.println("삭제성공");
+				delFile(fileList);
+				conn.commit();
+			}else {
+				conn.rollback();
+			}
+			
+			ps.close();
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return r;
+	}
+	
+	
+	public void delFile(List<String> fileList) {
+		// 파일명을 넘겨받아서 파일 삭제하는 메소드
+		System.out.println("delFile 메소드 실행");
+		for(String photo : fileList) {
+			File file = new File(upload + photo);
+			if(file.exists()) {
+				System.out.println("파일삭제 실행");
+				file.delete();
+			}
+		}
+		
 	}
 }

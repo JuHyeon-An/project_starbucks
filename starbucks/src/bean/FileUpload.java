@@ -35,7 +35,7 @@ public class FileUpload {
 		// 업로드되는 폼이 정확하지 않으면 false 리턴
 		// 결과값이 true일때 uploading이라는 메소드를 호출
 		
-		System.out.println("uploadFormcheck 검증");
+		//System.out.println("uploadFormcheck 검증");
 		return flag;
 	}
 	

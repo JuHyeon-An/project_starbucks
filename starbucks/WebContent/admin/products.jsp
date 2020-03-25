@@ -37,8 +37,7 @@
                   <tr>
                     <td scope="row">
 								<img
-									data-original="../fileFolder/"${vo.item_thumnailimg }
-									width="50px" class="round z-index-top lazy" id="img14367"
+									width="95%" height="95%" class="round"
 									alt="Starbucks Starbucks Korea 2020 Spring "
 									onclick="image_viewer('img14367')"
 									src="../fileFolder/${vo.item_thumnailimg }"
@@ -48,7 +47,7 @@
                     <td>${vo.item_num }</td>
                     <td>${regDate }</td>
                     <td>
-                      <a href="#" class="tm-product-delete-link">
+                      <a href="#" onclick="deleteF('${vo.item_code}')" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>

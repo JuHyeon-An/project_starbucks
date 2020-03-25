@@ -3,38 +3,59 @@
  */
 
 function btnFunc(){
-	/*
-	if($('#btnInsert')!=null){
-		$('#btnInsert').click(function(){
-			$('#frm').attr('action', 'add_productR.stb').submit();
-		})
-	}
-	*/
+
 	
-	if($('#fileInput')!=null){
-		$('#fileInput').change(function(e){
-			
-			let ele = e.target; //event.srcElement : 순수 자바스크립트 코드로 처리했을 때.
-			let url = ele.files[0];
-			// 이벤트가 발생한 파일의 경로
-			
-			let reader = new FileReader();
-			reader.readAsDataURL(url);
-			
-			  reader.onload = function(ev){
-				  // 읽기가 다 끝나면, 파일을 다 읽으면.
-				    let img = new Image();
-				    img.src = ev.target.result;
-					// 실제로 읽혀진 파일
-				    if($('#photo').attr('src')==null){
-				    	$('#photo').attr('src', img.src);
-				    }else if($('#photo2').attr('src')==null){
-				    	$('#photo2').attr('src', img.src);
-				    }else{
-				    	$('#photo3').attr('src', img.src);
-				    }
-				  }
-		})
-		}
+}
+
+function deleteItem(item_code){
 	
+	Swal.fire({
+		  title: '정말 삭제하시겠습니까?',
+		  text: "",
+		  icon: 'warning',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '삭제해주세요!',
+		  cancelButtonText: '취소'
+		}).then((result) => {
+		  if (result.value) {
+		    Swal.fire(
+		      'Deleted!',
+		      item_code+'가 성공적으로 삭제되었습니다.',
+		      'success'
+		    )
+		  }
+		})
+}
+
+let deleteF = function(item_code){
+	let param = "item_code=" + item_code;
+	
+	$.post('delete_product_result.jsp', param, function(data) {
+		Swal.fire({
+			  title: '정말 삭제하시겠습니까?',
+			  text: "",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '삭제해주세요!',
+			  cancelButtonText: '취소'
+			}).then((result) => {
+			  if (result.value && data>0) {
+			    Swal.fire(
+			      'Deleted!',
+			      '성공적으로 삭제되었습니다.',
+			      'success'
+			    )
+			  }else if(result.value && data<1){
+				  Swal.fire(
+					'삭제 중 오류발생',
+					'관리자에게 문의해주세요.',
+					'warning'
+				  )
+			  }
+			})
+	});
 }

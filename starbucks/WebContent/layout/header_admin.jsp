@@ -43,6 +43,9 @@
     <script src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <!-- https://jqueryui.com/download/ -->
     <script src="<%=request.getContextPath() %>/js/admin_products.js"></script>
+    
+    <!-- sweetalert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
 	
 </head>
 
