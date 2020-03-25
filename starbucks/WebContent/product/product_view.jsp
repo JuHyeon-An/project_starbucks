@@ -58,6 +58,13 @@
             </div>
 
             </div>
+	<%if(session.getAttribute("mId") == null){ %> 
+	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+	<%}%>
+	
+	<%if(session.getAttribute("mId") != null){ %> 
+	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+	    <%}%>
             
             <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 
@@ -145,6 +152,12 @@
     </div>
 
 </c:forEach>
+<script>
+let alert_msg = function(){
+	alert("로그인후에 담아주세요");
+}
+</script>
+
 
    <%
       if(request.getParameter("nowPage") == null){
