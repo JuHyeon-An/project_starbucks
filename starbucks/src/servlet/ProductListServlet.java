@@ -148,7 +148,7 @@ public class ProductListServlet extends HttpServlet{
 	}
 	
 	public void sortList(int desc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+	
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
@@ -163,11 +163,17 @@ public class ProductListServlet extends HttpServlet{
 		p.setNowPage(nowPage);
 		p.setFindStr(findStr);
 		p.pageCompute();
-		
+		System.out.println(findStr+"검색어");
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list  = dao.select(p, findStr, desc);
 		List<ProductVo> listTheme  = dao.theme_view();
+		System.out.println("소트들어와"				+ "");
+		System.out.println(list.size()+"리스트사이즈");
+		System.out.println(desc+"인트값");
 		
+		for(ProductVo a : list) {
+			System.out.println(a.getItem_price());
+		}
 		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("list", list);
 		req.setAttribute("p", p);
