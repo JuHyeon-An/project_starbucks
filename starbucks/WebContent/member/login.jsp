@@ -15,7 +15,7 @@
 			<div class="row">
 				<div class="col-md-12 mb-0">
 					<a href="/starbucks/">Home</a> <span class="mx-2 mb-0">/</span> <strong
-						class="text-black">Login</strong>
+						class="text-black">비밀번호 찾기</strong>
 				</div>
 			</div>
 		</div>
