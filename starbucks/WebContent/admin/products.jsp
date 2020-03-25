@@ -1,14 +1,16 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <title>Product Page - Admin HTML Template</title>
-   
   </head>
-
+<body>
  <div class="container mt-5">
       <div class="row tm-content-row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
@@ -18,40 +20,41 @@
                 <thead>
                   <tr>
                     <th scope="col">&nbsp;</th> <!-- 사진 -->
-                    <th scope="col">상품코드</th>
                     <th scope="col">상품명</th>
                     <th scope="col">판매가</th>
                     <th scope="col">재고</th>
-                    <th scope="col">누적판매개수</th>
                     <th scope="col">등록일</th>
                     <th scope="col">&nbsp;</th>
                   </tr>
                 </thead>
                 
-                <c:forEach var="vo" items="${list }">
                 <tbody>
+                <c:forEach var="vo" items="${list }">
+	                <fmt:parseDate value="${vo.item_regDate}" pattern="yyyy-MM-dd HH:mm:ss" var="temp" />
+					<fmt:formatDate value="${temp }" pattern="yyyy-MM-dd" var="regDate"/>
+	                <fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.item_price}" var="price"/>
+
                   <tr>
                     <td scope="row">
 								<img
-									data-original="//starbucks.seoulsistas.net/img/cdn/[9300000002189]_20200219103350388.jpg"
+									data-original="../fileFolder/"${vo.item_thumnailimg }
 									width="50px" class="round z-index-top lazy" id="img14367"
 									alt="Starbucks Starbucks Korea 2020 Spring "
 									onclick="image_viewer('img14367')"
-									src="//starbucks.seoulsistas.net/img/cdn/[9300000002189]_20200219103350388.jpg"
+									src="../fileFolder/${vo.item_thumnailimg }"
 									style="display: block;"></td>
-                    <td>${vo.item_code}</td>
                     <td class="tm-product-name">${vo.item_title }</td>
+                    <td>${price }</td>
                     <td>${vo.item_num }</td>
-                    <td>${vo.order_sumnum }</td>
-                    <td>${vo.item_regDate }</td>
+                    <td>${regDate }</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>
                   </tr>
-                </tbody>
                 </c:forEach>
+                </tbody>
               </table>
             </div>
             <!-- table container -->
@@ -71,7 +74,7 @@
     <script>
       $(function() {
         $(".tm-product-name").on("click", function() {
-          goUrl("/admin", "/edit-product.jsp");
+          goUrl("/admin", "/edit_product.jsp");
         });
       });
     </script>

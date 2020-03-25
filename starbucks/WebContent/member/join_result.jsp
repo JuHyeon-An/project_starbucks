@@ -10,15 +10,16 @@
 <jsp:setProperty name='vo' property="pwd"/>
 <jsp:setProperty name='vo' property="phone"/>
 <jsp:setProperty name='vo' property="email"/>
+<jsp:setProperty name='vo' property="zip"/>
+<jsp:setProperty name='vo' property="addr1"/>
+<jsp:setProperty name='vo' property="addr2"/>
 
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <%
- String address = request.getParameter("zip") +" " + request.getParameter("addr1") +" "+ request.getParameter("addr2");
 Shopping_MemberDao dao = new Shopping_MemberDao();
-vo.setAddress(address);
 String msg = dao.insert(vo);
 
 %>

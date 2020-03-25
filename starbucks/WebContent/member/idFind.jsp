@@ -1,10 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<script src='<%=request.getContextPath() %>/lib/jquery-3.4.1.js'></script>
+<script src="<%=request.getContextPath() %>/js/bootstrap.js"></script>
+<link rel="stylesheet" href="<%=request.getContextPath() %>/js/css/bootstrap.css" />
 
 </head>
 <body>
@@ -15,7 +19,7 @@
 			<div class="row">
 				<div class="col-md-12 mb-0">
 					<a href="/starbucks/">Home</a> <span class="mx-2 mb-0">/</span> <strong
-						class="text-black">비밀번호 찾기</strong>
+						class="text-black">Login</strong>
 				</div>
 			</div>
 		</div>
@@ -45,7 +49,8 @@
 							class="btn btn-default btn-block" />
 						로그인
 						</button>
-						<span class='text-center'><a href="/starbucks/member/idFind.jsp" class="btn btn-default btn-block">비밀번호 찾기</a></span> <span
+						<span class='text-center'><a href=""
+							class="btn btn-default btn-block">비밀번호 찾기</a></span> <span
 							class='text-center'><a href="/starbucks/member/join.jsp"
 							class="btn btn-default btn-block"> 회원가입</a></span>
 						<div class="form-group"></div>

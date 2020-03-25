@@ -25,9 +25,12 @@
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${vo.item_title }</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
-            <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
-            <p><strong class="text-primary h4">$50.00</strong></p>
+            <p>${vo.item_content }</p>
+            <p class="mb-4">용량 : ${vo.item_size }</p>
+            <p class="mb-4">재고 : ${vo.item_num }</p>
+            <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p>
+            <p><strong class="text-primary h4">${vo.item_price } 원</strong></p>
+            <!-- 
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
@@ -42,6 +45,7 @@
                 <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
               </label>
             </div>
+             -->
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
@@ -54,7 +58,8 @@
             </div>
 
             </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+            
+            <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 
           </div>
         </div>

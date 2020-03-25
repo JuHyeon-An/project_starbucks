@@ -20,16 +20,19 @@ public class Shopping_MemberDao {
 		try {
 
 			
-			String sql = "insert into shopping_member(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_EMAIL, MEMBER_REGDATE) values( ? , ? , ? , ? , ? , ? , ? )";
+			String sql = "insert into shopping_member(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_REGDATE, member_zip, member_addr1, member_addr2 ) "
+						+ " values( ? , ? , ? , ? , ? , ? , ? , ? , ? )";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getmId());
 			ps.setString(2, vo.getPwd());
 			ps.setString(3, vo.getmName());
 			ps.setString(4, vo.getPhone());
-			ps.setString(5, vo.getAddress());
-			ps.setString(6, vo.getEmail());
-			ps.setString(7, sdf.format(new Date()));
-			
+			ps.setString(5, vo.getEmail());
+			ps.setString(6, sdf.format(new Date()));
+			ps.setString(7, vo.getZip());
+			ps.setString(8, vo.getAddr1());
+			ps.setString(9, vo.getAddr2());
+			System.out.println(vo.getZip()+vo.getAddr1()+vo.getAddr2()+"주소합침");
 			
 			int r = ps.executeUpdate();
 			if(r<1) {
