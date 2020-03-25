@@ -25,37 +25,47 @@
 </head>
 <body>
 
+<form name='frm' id='frmm' method='post'>
+<input type='text' name='findStr' value= '${param.findStr }' />
+<input type='button' value='검색' name='btnSelect' id='btnSelect'/>
+<input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+</form>
+<div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+	                <h2 class="tm-block-title">Orders List</h2>
+	                <table class="table">
+	                
+	                    <thead>
+	                        <tr>
+	                            <th scope="col">주문번호</th>
+	                            <th scope="col">아이디</th>
+	                            <th scope="col">상품코드</th>
+	                            <th scope="col">상품갯수</th>
+	                            <th scope="col">총가격</th>
+	                            <th scope="col">주문날짜</th>
+	                            <th scope="col">주문상태</th>
+	                        </tr>
+	                    </thead>
+	                    <tbody>
+	                    <div id='list'>
+								<c:forEach var="vo" items="${list }">	
+	                        <tr>
+	                          
+	                           <td><b>${vo.orderNumber}</b></td>
+	                            <td><b>${vo.memberId}</b></td>
+	                            <td><b>${vo.itemCode}</b></td>
+	                            <td>${vo.orderNum}</td>
+	                            <td>${vo.orderPrice}</td>
+	                            <td>${vo.orderregDate}</td>
+	                            <td>${vo.orderStatus}</td>
+	                         <tr/>
+	                   	 </c:forEach>	
+						</div>
+	                   
+	                    
+	                    </tbody>
+	                </table>
+	            </div>
 
-<div id='member_main'>
-	<h3>주문 목록 조회</h3>
-	<form name='frm' id='frmm' method='post'>
-		<input type='text' name='findStr' value= '${param.findStr }' />
-		<input type='button' value='검색' name='btnSelect' id='btnSelect'/>
-		<input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-		<div id='title'>
-			<span >주문번호</span>
-			<span >아이디</span>
-			<span >상품코드</span>
-			<span >상품갯수</span>
-			<span >총가격</span>
-			<span >주문날짜</span>
-			<span >주문상태</span>
-		
-		<p/>
-	 	<div id='lsit'>
-			<c:forEach var="vo" items="${list }"><br/>	
-				<span>${vo.orderNumber}</span>
-				<span>${vo.memberId}</span>
-				<span>${vo.itemCode}</span>
-				<span>${vo.orderNum}</span>
-				<span>${vo.orderPrice}</span>
-				<span>${vo.orderregDate}</span>
-				<span>${vo.orderStatus}</span>	
-			</c:forEach>	
-			</div>
-			</div>
-			
-	</form> 
 	
 		<div id='page'>
 		<c:if test="${page.nowPage >1}">
@@ -84,16 +94,3 @@ func();
 </body>
 </html>
 <%@include file="../layout/footer_admin.jsp" %>
-
-
-
-
-
-
-
-
-
-
-
-
-    

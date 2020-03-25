@@ -51,11 +51,12 @@ public class AdminorderServlet extends HttpServlet {
 	      
 		  if(req.getParameter("findStr")!=null) {
 			  findStr=req.getParameter("findStr");
+			  System.out.println(findStr+"관욱");
 		  }
-		 
 		  Page p =new Page();
 		  p.setNowPage(nowPage);
 		  p.setFindStr(findStr);
+		  System.out.println(findStr+"서블렛검색어");
 		  p.pageCompute();
 		
 	      List<OrderVo> list = dao.select(p);
