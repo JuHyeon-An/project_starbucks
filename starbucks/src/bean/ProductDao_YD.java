@@ -19,7 +19,6 @@ public class ProductDao_YD {
 	
 	public List<ProductVo> select(){
 		List<ProductVo> list = new ArrayList<ProductVo>();
-		ProductVo vo = new ProductVo();
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -30,6 +29,7 @@ public class ProductDao_YD {
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
+				ProductVo vo = new ProductVo();
 				System.out.println(rs.getString("ITEM_MAINIMG")+"아이템코드");
 				vo.setItem_code(rs.getString("ITEM_CODE"));
 				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
