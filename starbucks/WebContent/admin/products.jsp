@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
   <head>
@@ -29,6 +30,10 @@
                 
                 <tbody>
                 <c:forEach var="vo" items="${list }">
+	                <fmt:parseDate value="${vo.item_regDate}" pattern="yyyy-MM-dd HH:mm:ss" var="temp" />
+					<fmt:formatDate value="${temp }" pattern="yyyy-MM-dd" var="regDate"/>
+	                <fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.item_price}" var="price"/>
+
                   <tr>
                     <td scope="row">
 								<img
@@ -36,12 +41,12 @@
 									width="50px" class="round z-index-top lazy" id="img14367"
 									alt="Starbucks Starbucks Korea 2020 Spring "
 									onclick="image_viewer('img14367')"
-									src="../fileFolder/"${vo.item_thumnailimg }
+									src="../fileFolder/${vo.item_thumnailimg }"
 									style="display: block;"></td>
                     <td class="tm-product-name">${vo.item_title }</td>
-                    <td>${vo.item_price }</td>
+                    <td>${price }</td>
                     <td>${vo.item_num }</td>
-                    <td>${vo.item_regDate }</td>
+                    <td>${regDate }</td>
                     <td>
                       <a href="#" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
