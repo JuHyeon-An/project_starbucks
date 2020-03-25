@@ -11,9 +11,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.Page;
 import bean.ProductDao_YD;
 import bean.ProductVo;
-import bean.Shopping_MemberDao;
 
 @WebServlet("*.pl")
 public class ProductListServlet extends HttpServlet{
@@ -37,23 +37,55 @@ public class ProductListServlet extends HttpServlet{
 		case "/list.pl":
 			pList(req, resp);
 			break;
+		case "/listPage.pl":
+			pListPage(req, resp);
+			break;
 	}
 	
 	}
 	
 	public void pList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("plist 들어옴");
 		String path = url+"/list.jsp";
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		list = dao.select();
 		
-		System.out.println("dao실행"+list.size());
 		
 		req.setAttribute("list", list);
 		
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
+	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("plist 들어옴");
+
+		int nowPage = 1;
+		String findStr = "";
+		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+			
+		}
+		if(req.getParameter("findStr") != null) {
+			findStr = req.getParameter("findStr");
+		}
+		
+		Page p = new Page();
+		p.setNowPage(nowPage);
+		p.setFindStr(findStr);
+		p.pageCompute();
+		
+		
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		
+		list = dao.select(p);
+		req.setAttribute("list", list);
+		req.setAttribute("p", p);
+		
+		String path = url+"/list.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
 	
 }
