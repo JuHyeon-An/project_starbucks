@@ -161,20 +161,21 @@
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" onclick="categories('MG')" class="d-flex"><span>머그</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('GL')" class="d-flex"><span>글라스</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('TB')" class="d-flex"><span>텀블러</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('TM')" class="d-flex"><span>보온병</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('AC')" class="d-flex"><span>액세서리</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('CO')" class="d-flex"><span>커피용품/원두</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('MG')" class="d-flex"><span>머그</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('GL')" class="d-flex"><span>글라스</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('TB')" class="d-flex"><span>텀블러</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('TM')" class="d-flex"><span>보온병</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('AC')" class="d-flex"><span>액세서리</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('CO')" class="d-flex"><span>커피용품/원두</span> <span class="text-black ml-auto"></span></a></li>
               </ul>
               <br></br>
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Theme</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>20 체리블라썸</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>베라왕 X 스타벅스</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>시티투어 콜렉션</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>스프링 콜렉션</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+<!--               테마 리스트 생성 -->
+              <c:forEach var='vo2' items='${listTheme }'>
+                <li class="mb-1"><a href="#" class="d-flex"  onclick="categories('${vo2.item_theme}')" ><span>${vo2.item_theme }</span> <span class="text-black ml-auto"></span></a></li>
+               </c:forEach>
+<!--               테마 리스트 끝 -->           
               </ul>
             </div>
 

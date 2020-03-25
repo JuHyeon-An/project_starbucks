@@ -47,7 +47,6 @@ public class ProductDao_YD {
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
-				System.out.println("dao에서 실행됨");
 			}
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
@@ -164,6 +163,33 @@ public class ProductDao_YD {
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+				list.add(vo);
+			}
+		} catch (Exception e) {
+			System.out.println("오류뜸" );
+		} finally {
+			return list;
+		}
+	}
+	public List<ProductVo> theme_view(){
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		int totList = 0;
+
+		try {
+			sql = " select DISTINCT item_theme FROM itemboard order by ITEM_THEME ";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+
+			
+			while(rs.next()) {
+				ProductVo vo = new ProductVo();
+
+				vo.setItem_theme(rs.getString("ITEM_THEME"));
+		
 				list.add(vo);
 			}
 		} catch (Exception e) {
