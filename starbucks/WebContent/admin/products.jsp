@@ -14,9 +14,9 @@
  <div class="container mt-5">
       <div class="row tm-content-row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
-          <div class="tm-bg-primary-dark tm-block tm-block-products">
+          <div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
             <div class="tm-product-table-container">
-              <table class="table table-hover tm-table-small tm-product-table">
+              <table id="selectTable" class="table table-hover tm-table-small tm-product-table">
                 <thead>
                   <tr>
                     <th scope="col">&nbsp;</th> <!-- 사진 -->
@@ -47,7 +47,7 @@
                     <td>${vo.item_num }</td>
                     <td>${regDate }</td>
                     <td>
-                      <a href="#" onclick="deleteF('${vo.item_code}')" class="tm-product-delete-link">
+                      <a href="#" onclick="deleteItem('${vo.item_code}')" class="tm-product-delete-link">
                         <i class="far fa-trash-alt tm-product-delete-icon"></i>
                       </a>
                     </td>

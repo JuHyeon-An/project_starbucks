@@ -106,9 +106,10 @@
 	<!-- container -->
 
 	<script>
+	
     $(function() {
         $("#item_regdate").datepicker({
-          defaultDate: new Date()
+          defaultDate: "2020-03-26"
         });
       });
       
