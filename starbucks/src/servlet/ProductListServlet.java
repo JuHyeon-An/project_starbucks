@@ -33,11 +33,12 @@ public class ProductListServlet extends HttpServlet{
 		String tempURL = temp.substring(pos);
 		
 		switch (tempURL) {
-		case "/list.pl":
-			pList(req, resp);
-			break;
+//		case "/list.pl":
+//			pList(req, resp);
+//			break;
 		case "/listPage.pl":
 			pListPage(req, resp);
+//			sortList(5, req, resp);
 			break;
 		case "/listCategories.pl":
 			pListCategories(req, resp);
@@ -74,7 +75,7 @@ public class ProductListServlet extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+System.out.println("형이 왜거기서나와");
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {

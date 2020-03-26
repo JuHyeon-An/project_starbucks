@@ -32,7 +32,6 @@
                   <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#">Relevance</a>
                       <a class="dropdown-item" href="sort_title.pl">Name, A to Z</a>
                       <a class="dropdown-item" href="sort_title_desc.pl">Name, Z to A</a>
                       <div class="dropdown-divider"></div>
@@ -235,7 +234,7 @@
    <%
       if(request.getParameter("nowPage") == null){
    %>
-   <script>pd_goPage(1)</script>
+   <script></script>
    <%}%>     
 
     <!-- Breadcrumb END -->
