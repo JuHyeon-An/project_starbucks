@@ -32,7 +32,6 @@ public class Shopping_MemberDao {
 			ps.setString(7, vo.getZip());
 			ps.setString(8, vo.getAddr1());
 			ps.setString(9, vo.getAddr2());
-			System.out.println(vo.getZip()+vo.getAddr1()+vo.getAddr2()+"주소합침");
 			
 			int r = ps.executeUpdate();
 			if(r<1) {
