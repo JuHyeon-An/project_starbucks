@@ -16,8 +16,8 @@
 	}
 	/* 돋보기 */
 	.magnifier {
-	    width: 150px;
-	    height: 150px;
+	    width: 120px;
+	    height: 120px;
 	    position: absolute;
 	    border-radius: 100%;
 	    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85), 0 0 3px 3px rgba(0, 0, 0, 0.25);
@@ -32,7 +32,9 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0">
-                    <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">${vo.item_title }</strong>
+                    <a href="/starbucks/index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <a href="listPage.pl">ALL Product</a> 
+                    <span class="mx-2 mb-0">/</span><strong class="text-black">${vo.item_title }</strong>
+                    
                 </div>
             </div>
         </div>
@@ -43,7 +45,7 @@
         <div class="row">
         
 
-          <div class="wrap col-md-6">
+          <div class="wrap col-md-5 ">
           	<div class='row'>
             <img id='imgView' src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
             </div>
@@ -54,7 +56,7 @@
             <img id='img3'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[11100513]_20190429144456596.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="offset-1 col-md-6">
             <h2 class="text-black">${vo.item_title }</h2>
             <p>${vo.item_content }</p>
             <p class="mb-4">용량 : ${vo.item_size }</p>
@@ -104,7 +106,7 @@
     </div>
 
 
-
+<!-- 
     <div class="site-section block-3 site-blocks-2 bg-light">
       <div class="container">
         <div class="row justify-content-center">
@@ -180,8 +182,9 @@
         </div>
       </div>
     </div>
-
+ -->
 </c:forEach>
+<script src="/starbucks/js/productlist.js"></script>
 <script>
 
 let alert_msg = function(){
@@ -305,11 +308,6 @@ $( function () {
 </script>
 
 
-   <%
-      if(request.getParameter("nowPage") == null){
-   %>
-   <script>pd_goPage(1)</script>
-   <%}%>     
 
     <!-- Breadcrumb END -->
     

@@ -30,7 +30,6 @@ public class ProductDao_YD {
 			
 			while(rs.next()) {
 				ProductVo vo = new ProductVo();
-				System.out.println(rs.getString("ITEM_MAINIMG")+"아이템코드");
 				vo.setItem_code(rs.getString("ITEM_CODE"));
 				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
 				vo.setItem_group(rs.getString("ITEM_GROUP"));
@@ -213,7 +212,6 @@ public class ProductDao_YD {
 			ps.setString(1, findStr);
 			rs = ps.executeQuery();
 
-			System.out.println(findStr+"검색어 넘어옴 뷰");
 			if(rs.next()) {
 				ProductVo vo = new ProductVo();
 				vo.setItem_code(rs.getString("ITEM_CODE"));
@@ -267,7 +265,6 @@ public class ProductDao_YD {
 			String find = "";
 			if(desc == 1) { //상품명순으로 정렬
 				find = "item_title";
-				System.out.println("들어온다 이프");
 			}else if(desc == 2) { // 상품명 역순으로 정렬
 				find = "item_title desc";
 			}else if(desc == 3) { // 상품명 역순으로 정렬

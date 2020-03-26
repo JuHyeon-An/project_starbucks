@@ -94,12 +94,12 @@
 <!--                                 <a href="/starbucks/product/list.jsp">All Product</a> -->
 								<a href="listPage.pl">All Product</a>
                                 <ul class="dropdown">
-                                    <li><a href="listPage.pl">머그</a></li>
-                                    <li><a href="listPage.pl">글라스</a></li>
-                                    <li><a href="listPage.pl">텀블러</a></li>
-                                    <li><a href="listPage.pl">원두</a></li>
-                                    <li><a href="listPage.pl">액세서리</a></li>
-                                    <li><a href="listPage.pl">기프티 카드</a></li>
+                                    <li><a href="#"  onclick="categories('MG')" >머그</a></li>
+                                    <li><a href="#"  onclick="categories('GL')">글라스</a></li>
+                                    <li><a href="#"  onclick="categories('TB')">텀블러</a></li>
+                                    <li><a href="#"  onclick="categories('TM')">보온병</a></li>
+                                    <li><a href="#"  onclick="categories('AC')">액세서리</a></li>
+                                    <li><a href="#"  onclick="categories('CO')">커피용품/원두</a></li>
                                     
                                 </ul>
                             </li>
@@ -125,6 +125,9 @@
                                 </ul>
                         </ul>
                     </div>
+                    <form id='pd_frm' name='pd_frm'>
+                    <input type="hidden" name="pd_findStr" id='pd_findStr'/>
+                    </form>
                 </nav>
             </header>
             
