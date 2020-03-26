@@ -33,7 +33,7 @@ public class ProductDao {
 			ps.setInt(8, vo.getItem_price()); // 가격
 			ps.setInt(9, vo.getItem_num()); // 수량 (재고)
 			ps.setString(10, vo.getItem_mainimg()); // 메인 이미지 path
-			ps.setString(11, vo.getItem_thumnailimg()); // 썸네일 이미지 path
+			ps.setString(11, vo.getItem_thumbnailimg()); // 썸네일 이미지 path
 			ps.setString(12, vo.getItem_contentimg()); // contentimg path
 			ps.setInt(13, 10); // 누적판매개수
 			ps.setString(14, vo.getItem_regDate()); // 등록날짜
@@ -115,6 +115,42 @@ public class ProductDao {
 				file.delete();
 			}
 		}
+		
+	}
+	
+	public ProductVo view(String item_code) {
+		sql = "select * from itemboard where item_code = ?";
+		ProductVo vo = new ProductVo();
+		try {
+			conn = DBConn.getConn();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, item_code);
+			
+			ResultSet rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				vo.setItem_code(rs.getString("ITEM_CODE"));
+				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
+				vo.setItem_group(rs.getString("ITEM_GROUP"));
+				vo.setItem_title(rs.getString("ITEM_TITLE"));
+				vo.setItem_content(rs.getString("ITEM_CONTENT"));
+				vo.setItem_savedmoney(rs.getInt("ITEM_SAVEDMONEY"));
+				vo.setItem_theme(rs.getString("ITEM_THEME"));
+				vo.setItem_size(rs.getString("ITEM_SIZE"));
+				vo.setItem_price(rs.getInt("ITEM_PRICE"));
+				vo.setItem_num(rs.getInt("ITEM_NUM"));
+				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
+				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
+				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+			}
+			ps.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return vo;
 		
 	}
 }

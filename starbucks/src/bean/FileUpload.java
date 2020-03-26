@@ -145,7 +145,7 @@ public class FileUpload {
 							break;
 							
 						case "fileInput2":
-							vo.setItem_thumnailimg(sysFile);
+							vo.setItem_thumbnailimg(sysFile);
 							break;
 							
 						case "fileInput3":

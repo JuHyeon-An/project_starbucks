@@ -41,7 +41,7 @@ public class ProductDao_YD {
 				vo.setItem_price(rs.getInt("ITEM_PRICE"));
 				vo.setItem_num(rs.getInt("ITEM_NUM"));
 				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
-				vo.setItem_thumnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
@@ -97,7 +97,7 @@ public class ProductDao_YD {
 				vo.setItem_price(rs.getInt("ITEM_PRICE"));
 				vo.setItem_num(rs.getInt("ITEM_NUM"));
 				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
-				vo.setItem_thumnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
@@ -158,7 +158,7 @@ public class ProductDao_YD {
 				vo.setItem_price(rs.getInt("ITEM_PRICE"));
 				vo.setItem_num(rs.getInt("ITEM_NUM"));
 				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
-				vo.setItem_thumnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
@@ -225,7 +225,7 @@ public class ProductDao_YD {
 				vo.setItem_price(rs.getInt("ITEM_PRICE"));
 				vo.setItem_num(rs.getInt("ITEM_NUM"));
 				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
-				vo.setItem_thumnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
@@ -308,7 +308,7 @@ public class ProductDao_YD {
 				vo.setItem_price(rs.getInt("ITEM_PRICE"));
 				vo.setItem_num(rs.getInt("ITEM_NUM"));
 				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
-				vo.setItem_thumnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));

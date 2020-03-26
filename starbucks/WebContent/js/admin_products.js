@@ -50,5 +50,5 @@ let deleteItem = function(item_code){
 
 function goEdit(item_code){
 	$('#hidden_code').val(item_code);
-	$('#codeForm').attr('action', 'product_edit.stb').submit();
+	$('#codeForm').attr('action', 'edit_product.stb').submit();
 }
