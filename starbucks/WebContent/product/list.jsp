@@ -213,7 +213,7 @@
           
         </div>
       </div>
-      <form id='pd_frm'>
+      <form id='pd_frm' >
       	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
       	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
       </form>

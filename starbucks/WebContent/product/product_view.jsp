@@ -23,7 +23,7 @@
 	    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85), 0 0 3px 3px rgba(0, 0, 0, 0.25);
 	    display: none;
 	}
-    
+ 
     </style>
     
     <c:forEach var='vo' items='${list }'>

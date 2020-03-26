@@ -92,6 +92,7 @@ public class ProductListServlet extends HttpServlet{
 		
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list  = dao.select(p);
+		
 		List<ProductVo> listTheme  = dao.theme_view();
 		
 		
