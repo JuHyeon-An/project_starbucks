@@ -9,7 +9,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0">
-                    <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
+                    <a href="/starbucks/index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
                 </div>
             </div>
         </div>
@@ -168,7 +168,7 @@
 <!--               테마 리스트 끝 -->           
               </ul>
             </div>
-
+<!-- 
             <div class="border p-4 rounded mb-4">
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
@@ -206,6 +206,8 @@
               </div>
 
             </div>
+            -->
+            
           </div>
 <!--           좌측메뉴 끝 -->
           
