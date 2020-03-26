@@ -15,7 +15,7 @@
         </div>
     </div>
     
-
+	<div class="site-section">
       <div class="container">
 
         <div class="row mb-5">
@@ -217,7 +217,7 @@
       	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
       	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
       </form>
-      
+     </div>
 
 
 

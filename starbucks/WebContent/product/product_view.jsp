@@ -57,6 +57,7 @@
             </div>
           </div>
           <div class="offset-1 col-md-6">
+
             <h2 class="text-black">${vo.item_title }</h2>
             <p>${vo.item_content }</p>
             <p class="mb-4">용량 : ${vo.item_size }</p>
@@ -91,14 +92,26 @@
             </div>
 
             </div>
+            
+    <div class='mb-5 form-inline'>     
 	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 	<%}%>
 	
 	<%if(session.getAttribute("mId") != null){ %> 
-	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
-	    <%}%>
-            
+	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+	<%}%>
+	    
+	<%if(session.getAttribute("mId") == null){ %> 
+	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
+	<%}%>
+	
+	<%if(session.getAttribute("mId") != null){ %> 
+	    <p><a href="./my/order.jsp" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+	<%}%>
+	
+		<p><a href="listPage.pl" class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
+	</div>
 
           </div>
         </div>
