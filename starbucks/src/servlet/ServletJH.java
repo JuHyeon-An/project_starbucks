@@ -45,6 +45,10 @@ public class ServletJH extends HttpServlet{
 		case "/add_product.stb":
 			insertProducts(req, resp);
 			break;
+			
+		case "/edit_product.stb":
+			editProducts(req, resp);
+			break;
 		}
 
 	}
@@ -99,6 +103,22 @@ public class ServletJH extends HttpServlet{
 		
 		
 		String path= urlAdmin+"/add_product_result.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	// 주현 : admin - 상품 등록
+	public void editProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		String item = req.getParameter("hidden_code");
+		
+		ProductDao dao = new ProductDao();
+		ProductVo vo = dao.view(item);
+		
+		req.setAttribute("vo", vo);
+		String path= urlAdmin+"/edit_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

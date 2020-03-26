@@ -47,11 +47,11 @@
 
           <div class="wrap col-md-5 ">
           	<div class='row'>
-            <img id='imgView' src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
+            <img id='imgView' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
             </div>
             <div class='row'>
             <br />
-            <img id='img1' src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
+            <img id='img1' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
             <img id='img2'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002364]_20200304165033804.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
             <img id='img3'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[11100513]_20190429144456596.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
             </div>

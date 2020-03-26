@@ -41,7 +41,7 @@
 									width="95%" height="95%" class="round"
 									alt="Starbucks Starbucks Korea 2020 Spring "
 									onclick="image_viewer('img14367')"
-									src="../fileFolder/${vo.item_thumnailimg }"
+									src="../fileFolder/${vo.item_thumbnailimg }"
 									style="display: block;"></td>
                     <td>${vo.item_code }</td>
                     <td class="tm-product-name">${vo.item_title }</td>
@@ -72,16 +72,11 @@
       </div>
     </div>
 	<form id="codeForm" name="codeForm" method="post">
-	<input type="hidden" name="hidden_code"/>
+	<input type="hidden" id="hidden_code" name="hidden_code"/>
 	</form>
     <script>
     $('#proNav').addClass('active');
     
-      $(function() {
-        $(".tm-product-name").on("click", function() {
-          goUrl("/admin", "/edit_product.jsp");
-        });
-      });
     </script>
   </body>
 </html>
