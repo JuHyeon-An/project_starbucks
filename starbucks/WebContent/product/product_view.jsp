@@ -43,7 +43,7 @@
         <div class="row">
         
 
-          <div class="wrap col-md-6">
+          <div class="wrap col-md-5 ">
           	<div class='row'>
             <img id='imgView' src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
             </div>
@@ -54,7 +54,7 @@
             <img id='img3'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[11100513]_20190429144456596.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="offset-1 col-md-6">
             <h2 class="text-black">${vo.item_title }</h2>
             <p>${vo.item_content }</p>
             <p class="mb-4">용량 : ${vo.item_size }</p>
