@@ -13,8 +13,42 @@ function btnFunc(){
 	
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').click(function(){
-			
-		})
+			//$('#editFrm').attr('action', 'edit_productR.stb').submit();
+			let param = $('#editFrm').serialize();
+
+			$.ajax({
+				url : 'edit_productR.stb',
+				type : 'post',
+				data : param,
+				dataType : 'html',
+				success : function(data){
+					$('#result').html(data);
+				}
+			});
+			});
+		
+		
+		 function ajaxFileUpload() {
+
+		        var form = jQuery("#editFrm")[0];
+		        var formData = new FormData(form);
+		        formData.append("message", "ajax로 파일 전송하기");
+		        formData.append("file", jQuery("#fileEdit1")[0].files[0]);
+		        formData.append("file", jQuery("#fileEdit2")[0].files[0]);
+		        formData.append("file", jQuery("#fileEdit3")[0].files[0]);
+
+		        jQuery.ajax({
+		              url : "./ajaxFormReceive.php"
+		            , type : "POST"
+		            , processData : false
+		            , contentType : false
+		            , data : formData
+		            , success:function(json) {
+		                var obj = JSON.parse(json);
+		            }
+		        });
+		    }
+		
 	}
 }
 
@@ -160,8 +194,9 @@ function makeDiv(main){
 //TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
 
 
-	function preview(photo){
-		$('file').change(function(e){
+	function preview(index){
+		$('#fileEdit'+index).trigger('click');
+		$('#fileEdit'+index).change(function(e){
 			
 			let ele = e.target; //event.srcElement : 순수 자바스크립트 코드로 처리했을 때.
 			let url = ele.files[0];
@@ -175,7 +210,7 @@ function makeDiv(main){
 				    let img = new Image();
 				    img.src = ev.target.result;
 					// 실제로 읽혀진 파일
-					$(photo).attr('src', img.src);
+					$('#photoEdit'+index).attr('src', img.src);
 				  }
 		})
 	}

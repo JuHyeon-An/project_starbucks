@@ -12,7 +12,7 @@
 							<h2 class="tm-block-title d-inline-block">아이템 편집</h2>
 						</div>
 					</div>
-					<form id="productFrm" name="productFrm" method="post" action="add_productR.stb" enctype="multipart/form-data"
+					<form id="editFrm" name="editFrm" method="post" enctype="multipart/form-data"
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							
@@ -123,38 +123,31 @@
 								<div class="form-group mb-3 col-xs-12 col-sm-4">
 									<div class="tm-product-img-dummy mx-auto"
 										  >
-										<img id = "photoEdit1" name="photo" width="100%" height="100%"
-											src="../fileFolder/${vo.item_mainimg }" 
-											onclick="$('#fileEdit1').trigger('click');">
+										<img id = "photoEdit1" name="photo1" width="100%" height="100%"
+											src="../fileFolder/${vo.item_mainimg }" onclick="preview(1);">
 									<input type="file" id = "fileEdit1" name="fileInput1" style="display: none"
-									onclick="preview(0);">
+									>
 									</div>
 								</div>
 								
 								<div class="form-group mb-3 col-xs-12 col-sm-4">
 									<div class="tm-product-img-dummy mx-auto">
-										<img id = "photoEdit2" name="photo" width="100%" height="100%"
-											src="../fileFolder/${vo.item_thumbnailimg }"
-											 onclick="$('#fileEdit2').trigger('click');">
+										<img id = "photoEdit2" name="photo2" width="100%" height="100%"
+											src="../fileFolder/${vo.item_thumbnailimg }" onclick="preview(2);">
 									<input type="file" id = "fileEdit2" name="fileInput2" style="display: none">
 									</div>
 								</div>
 								
 								<div class="form-group mb-3 col-xs-12 col-sm-4">
-									<div class="tm-product-img-dummy mx-auto"
-									 >
-										<img id = "photoEdit3" name="photo" width="100%" height="100%"
+									<div class="tm-product-img-dummy mx-auto">
+										<img id = "photoEdit3" name="photo3" width="100%" height="100%"
 											src="../fileFolder/${vo.item_contentimg }"
-											onclick="$('#fileEdit3').trigger('click');"
-											>
+											 onclick="preview(3);">
 									<input type="file" id = "fileEdit3" name="fileInput3" style="display: none">
 									</div>
 								</div>
 
 							</div>
-					<button class="btn btn-primary btn-block mx-auto"
-						onclick="document.getElementById('fileInput1').click();"
-						style="display: none;">UPLOAD PRODUCT IMAGE</button>
 				<br/>
 				<div class="row">
 				
@@ -177,7 +170,8 @@
 		<!-- row -->
 </div>
 	<!-- container -->
-
+<div id = result>
+</div>
 	<script>
 	
 	$('#proNav').addClass('active');
@@ -187,7 +181,7 @@
           defaultDate: "2020-03-26"
         });
       });
-      
+
     </script>
   </body>
 </html>

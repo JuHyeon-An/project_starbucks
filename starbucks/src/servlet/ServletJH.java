@@ -2,6 +2,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -48,6 +49,10 @@ public class ServletJH extends HttpServlet{
 			
 		case "/edit_product.stb":
 			editProducts(req, resp);
+			break;
+			
+		case "/edit_productR.stb":
+			editProductsR(req, resp);
 			break;
 		}
 
@@ -121,6 +126,37 @@ public class ServletJH extends HttpServlet{
 		String path= urlAdmin+"/edit_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+	}
+	
+	public void editProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		ProductDao dao = new ProductDao();
+		FileUpload upload = new FileUpload(req, resp);
+		
+		int result = 0;
+		
+		if(upload.uploadFormCheck()) { // enctype = 'multipart/form-data'
+			ProductVo vo = upload.uploading();
+			// 사진을 포함해서 모든 폼태그가 담겨진 vo가 반환
+			
+			result = dao.update(vo);
+			// 폼태그 담은 vo를 실제로 DB에 넣어줌
+			
+			PrintWriter out = resp.getWriter();
+			out.print(result);
+			
+		}else {
+			System.out.println("error");
+			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		}
+		
+		/*
+		String path= urlAdmin+"/edit_product.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		*/
 	}
 	
 }

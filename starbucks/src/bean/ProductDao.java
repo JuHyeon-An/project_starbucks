@@ -153,4 +153,49 @@ public class ProductDao {
 		return vo;
 		
 	}
+	
+	public int update(ProductVo vo) {
+		
+		int r = 0;
+		sql = "update itemboard set item_title = ?, item_price=?, item_num=?, "
+				+ "item_size=?, item_content=?, item_group=?, item_theme=?, item_regDate=? "
+				+ "item_mainimg=?, item_thumbnailimg = ?, item_contentimg = ?, "
+				+ "item_savedmoney = ? "
+				+ "where item_code = ?";
+		// 누적판매개수만 수정 못 함
+		try {
+			conn = DBConn.getConn();
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, vo.getItem_title()); // 자동생성 item_code
+			ps.setInt(2, vo.getItem_price()); // selected box에서 가져옴
+			ps.setInt(3, vo.getItem_num()); // 아이템명
+			ps.setString(4, vo.getItem_size()); // 설명
+			ps.setString(5, vo.getItem_content());
+			ps.setString(6, vo.getItem_group());
+			ps.setString(7, vo.getItem_theme());// 테마
+			ps.setString(8, vo.getItem_regDate()); // 등록날짜
+			ps.setString(9, vo.getItem_mainimg()); // 메인 이미지 path
+			ps.setString(10, vo.getItem_thumbnailimg()); // 썸네일 이미지 path
+			ps.setString(11, vo.getItem_contentimg()); // contentimg path
+			ps.setDouble(12, vo.getItem_price()*0.01); // 가격의 1%
+			ps.setString(13, vo.getItem_code());
+			
+			r = ps.executeUpdate();
+			
+			ps.close();
+			
+			
+			if(r>0) {
+				conn.commit();
+			}else {
+				conn.rollback();
+			}
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		
+		return r;
+	}
+	
 }
