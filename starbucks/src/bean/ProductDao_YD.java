@@ -337,7 +337,7 @@ public class ProductDao_YD {
 			
 	         rs.close();
 	         ps.close();
-			conn.close();
+			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
