@@ -4,9 +4,13 @@
 
 function btnFunc(){
 	
+	$('a.nav-link').click(function(){
+		$('a.nav-link').removeClass('active');
+		$(this).addClass('active');
+	})
 }
 
-let table = $('#selectTable').DataTable();
+//let table = $('#selectTable').DataTable();
 
 let deleteItem = function(item_code){
 	let param = "item_code=" + item_code;
@@ -29,8 +33,8 @@ let deleteItem = function(item_code){
 			      'success'
 			    ).then((result2) => {
 			    	if(result2.value){
-			    		table.ajax.reload();
-			    		//$('#reportsPage').load('select_product.stb'); //<- Use this on any event in which you want to refresh the content
+			    		location.reload();
+			    		//$('#reportsPage').load('select_product.stb');
 			    	}
 			    })
 			  }else if(result.value && data<1){

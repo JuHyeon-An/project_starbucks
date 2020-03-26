@@ -107,6 +107,8 @@
 
 	<script>
 	
+	$('#proNav').addClass('active');
+
     $(function() {
         $("#item_regdate").datepicker({
           defaultDate: "2020-03-26"
@@ -208,6 +210,8 @@
     	  		cnt++;
     	  }
       }
+      
+		
       
 	//TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
       

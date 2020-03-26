@@ -71,6 +71,8 @@
     </div>
 
     <script>
+    $('#proNav').addClass('active');
+    
       $(function() {
         $(".tm-product-name").on("click", function() {
           goUrl("/admin", "/edit_product.jsp");
