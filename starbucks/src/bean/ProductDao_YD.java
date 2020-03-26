@@ -8,14 +8,11 @@ import java.util.List;
 
 public class ProductDao_YD {
 
-	Connection conn;
+	Connection conn ;
 	
 	public ProductDao_YD() {
 		conn = DBConn.getConn();
 	}
-	
-	
-	
 	
 	public List<ProductVo> select(){
 		List<ProductVo> list = new ArrayList<ProductVo>();
@@ -47,12 +44,19 @@ public class ProductDao_YD {
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
 			}
+			
+	         rs.close();
+	         ps.close();
+	         conn.close();
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
 			return list;
 		}
 	}
+	
+	
+
 	
 	public List<ProductVo> select(Page_ProductList p){
 		List<ProductVo> list = new ArrayList<ProductVo>();
@@ -106,9 +110,9 @@ public class ProductDao_YD {
 			
 	         rs.close();
 	         ps.close();
-	         conn.close();
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
+			e.printStackTrace();
 		} finally {
 			return list;
 		}
@@ -171,10 +175,9 @@ public class ProductDao_YD {
 			
 	         rs.close();
 	         ps.close();
-	         conn.close();
-			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
+			e.printStackTrace();
 		} finally {
 			return list;
 		}
@@ -200,12 +203,11 @@ public class ProductDao_YD {
 		
 				list.add(vo);
 			}
-	         rs.close();
-	         ps.close();
-	         conn.close();
+
 			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
+			e.printStackTrace();
 		} finally {
 			return list;
 		}
@@ -248,7 +250,6 @@ public class ProductDao_YD {
 			
 	         rs.close();
 	         ps.close();
-	         conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
@@ -336,7 +337,6 @@ public class ProductDao_YD {
 			
 	         rs.close();
 	         ps.close();
-	         conn.close();
 			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
