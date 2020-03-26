@@ -190,7 +190,7 @@ public class Shopping_MemberDao {
 				e.printStackTrace();
 			}
 		}
-		
+		 
 		return msg;
 		
 	}
