@@ -22,7 +22,28 @@ public class Shopping_MemberVo {
 		
 	}	
 	
+	public Shopping_MemberVo (String pwd, String mName, String phone , String email, String zip, String addr1, String addr2) {
+		this.pwd = pwd;
+		this.mName = mName;
+		this.phone = phone;
+		this.email = email;
+		this.zip = zip;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		
+	}	
 	
+	public Shopping_MemberVo (String mId, String pwd, String mName, String phone , String email, String zip, String addr1, String addr2) {
+		this.mId = mId;
+		this.pwd = pwd;
+		this.mName = mName;
+		this.phone = phone;
+		this.email = email;
+		this.zip = zip;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		
+	}	
 	
 	
 	public String getmId() {
