@@ -57,12 +57,15 @@
             </div>
           </div>
           <div class="offset-1 col-md-6">
+
             <h2 class="text-black">${vo.item_title }</h2>
             <p>${vo.item_content }</p>
             <p class="mb-4">용량 : ${vo.item_size }</p>
             <p class="mb-4">재고 : ${vo.item_num }</p>
             <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p>
-            <p><strong class="text-primary h4">${vo.item_price } 원</strong></p>
+            <p><strong id='price'class="text-primary h4">${vo.item_price }</strong><strong class='text-primary h4'>원</strong></p>
+            <input type="hidden" id="oriprice" value='${vo.item_price }' />
+            <input type="hidden" id="sumprice" value='' />
             <!-- 
             <div class="mb-1 d-flex">
               <label for="option-sm" class="d-flex mr-3 mb-3">
@@ -82,23 +85,35 @@
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
-                <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>
+                <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
               <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               <div class="input-group-append">
-                <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>
+                <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
               </div>
             </div>
 
             </div>
+            
+    <div class='mb-5 form-inline'>     
 	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
+	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 	<%}%>
 	
 	<%if(session.getAttribute("mId") != null){ %> 
-	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
-	    <%}%>
-            
+	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+	<%}%>
+	    
+	<%if(session.getAttribute("mId") == null){ %> 
+	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
+	<%}%>
+	
+	<%if(session.getAttribute("mId") != null){ %> 
+	    <p><a href="./my/order.jsp" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+	<%}%>
+	
+		<p><a href="listPage.pl" class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
+	</div>
 
           </div>
         </div>
@@ -183,9 +198,23 @@
       </div>
     </div>
  -->
+ 
 </c:forEach>
 <script src="/starbucks/js/productlist.js"></script>
 <script>
+let priceplus = function(){
+	let price = parseInt($('#price').text());
+	let oriprice = parseInt($('#oriprice').val());
+	$('#price').text(price+oriprice);
+	$('#sumprice').val(price+oriprice);
+}
+let priceminus = function(){
+	let price = parseInt($('#price').text());
+	let oriprice = parseInt($('#oriprice').val());
+	$('#price').text(price-oriprice);
+	$('#sumprice').val(price-oriprice);
+}
+
 
 let alert_msg = function(){
 	alert("로그인후에 담아주세요");
