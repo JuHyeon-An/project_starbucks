@@ -64,10 +64,10 @@
 										class="custom-select tm-select-accounts" id="item_theme"
 										name="item_theme">
 										<option selected>테마선택</option>
-										<option value="1">20 체리블라썸</option>
-										<option value="2">베라왕 X 스타벅스</option>
-										<option value="3">시티투어 콜렉션</option>
-										<option value="4">스프링 콜렉션</option>
+										<option value="20 체리블라썸">20 체리블라썸</option>
+										<option value="베라왕 X 스타벅스">베라왕 X 스타벅스</option>
+										<option value="시티투어 콜렉션">시티투어 콜렉션</option>
+										<option value="스프링 콜렉션">스프링 콜렉션</option>
 									</select>
 								</div>
 							</div>

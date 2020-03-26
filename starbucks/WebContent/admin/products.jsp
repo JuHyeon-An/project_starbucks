@@ -20,6 +20,7 @@
                 <thead>
                   <tr>
                     <th scope="col">&nbsp;</th> <!-- 사진 -->
+                    <th scope="col">상품코드</th>
                     <th scope="col">상품명</th>
                     <th scope="col">판매가</th>
                     <th scope="col">재고</th>
@@ -34,7 +35,7 @@
 					<fmt:formatDate value="${temp }" pattern="yyyy-MM-dd" var="regDate"/>
 	                <fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.item_price}" var="price"/>
 
-                  <tr>
+                  <tr onclick='goEdit("${vo.item_code}")'>
                     <td scope="row">
 								<img
 									width="95%" height="95%" class="round"
@@ -42,6 +43,7 @@
 									onclick="image_viewer('img14367')"
 									src="../fileFolder/${vo.item_thumnailimg }"
 									style="display: block;"></td>
+                    <td>${vo.item_code }</td>
                     <td class="tm-product-name">${vo.item_title }</td>
                     <td>${price }</td>
                     <td>${vo.item_num }</td>
@@ -69,7 +71,9 @@
         
       </div>
     </div>
-
+	<form id="codeForm" name="codeForm" method="post">
+	<input type="hidden" name="hidden_code"/>
+	</form>
     <script>
     $('#proNav').addClass('active');
     
