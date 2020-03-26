@@ -103,6 +103,10 @@ public class ProductDao_YD {
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
 			}
+			
+	         rs.close();
+	         ps.close();
+	         conn.close();
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
@@ -164,6 +168,11 @@ public class ProductDao_YD {
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
 			}
+			
+	         rs.close();
+	         ps.close();
+	         conn.close();
+			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
@@ -191,6 +200,10 @@ public class ProductDao_YD {
 		
 				list.add(vo);
 			}
+	         rs.close();
+	         ps.close();
+	         conn.close();
+			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
@@ -232,9 +245,15 @@ public class ProductDao_YD {
 		
 				list.add(vo);
 			}
+			
+	         rs.close();
+	         ps.close();
+	         conn.close();
+			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
+
 			return list;
 		}
 	}
@@ -314,6 +333,11 @@ public class ProductDao_YD {
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
 			}
+			
+	         rs.close();
+	         ps.close();
+	         conn.close();
+			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {

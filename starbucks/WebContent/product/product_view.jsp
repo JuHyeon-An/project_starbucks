@@ -23,7 +23,7 @@
 	    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.85), 0 0 3px 3px rgba(0, 0, 0, 0.25);
 	    display: none;
 	}
-    
+ 
     </style>
     
     <c:forEach var='vo' items='${list }'>
@@ -97,7 +97,7 @@
             
     <div class='mb-5 form-inline'>     
 	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+	      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 	<%}%>
 	
 	<%if(session.getAttribute("mId") != null){ %> 
@@ -105,7 +105,7 @@
 	<%}%>
 	    
 	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
+	      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
 	<%}%>
 	
 	<%if(session.getAttribute("mId") != null){ %> 
@@ -215,10 +215,17 @@ let priceminus = function(){
 	$('#sumprice').val(price-oriprice);
 }
 
-
-let alert_msg = function(){
-	alert("로그인후에 담아주세요");
+let alert_login = function(){
+	Swal.fire({
+		  icon: 'error',
+		  title: 'Oops...',
+		  text: '로그인 후 이용해주세요 !',
+		  footer: "<a href='/starbucks/member/login.jsp'>로그인화면 이동</a>"
+		})
 }
+
+
+
 
 let imgchang = function(num){
 	
