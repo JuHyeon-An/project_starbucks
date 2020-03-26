@@ -97,7 +97,7 @@
             
     <div class='mb-5 form-inline'>     
 	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+	      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 	<%}%>
 	
 	<%if(session.getAttribute("mId") != null){ %> 
@@ -105,7 +105,7 @@
 	<%}%>
 	    
 	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_msg()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
+	      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
 	<%}%>
 	
 	<%if(session.getAttribute("mId") != null){ %> 
@@ -215,10 +215,17 @@ let priceminus = function(){
 	$('#sumprice').val(price-oriprice);
 }
 
-
-let alert_msg = function(){
-	alert("로그인후에 담아주세요");
+let alert_login = function(){
+	Swal.fire({
+		  icon: 'error',
+		  title: 'Oops...',
+		  text: '로그인 후 이용해주세요 !',
+		  footer: "<a href='/starbucks/member/login.jsp'>로그인화면 이동</a>"
+		})
 }
+
+
+
 
 let imgchang = function(num){
 	
