@@ -59,7 +59,7 @@ public class Shopping_MemberDao {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			rs = ps.executeQuery();
-			System.out.println(pwd +"비번");
+			
 			if(rs.next()) {
 			
 				if(rs.getString("member_pw").equals(pwd)) {
@@ -138,6 +138,9 @@ public class Shopping_MemberDao {
 				vo.setEmail(rs.getString("member_email"));
 			}
 			
+			rs.close();
+			ps.close();
+			conn.close();
 			
 			
 		}catch(Exception ex) {
@@ -153,15 +156,14 @@ public class Shopping_MemberDao {
 		String msg = "회원정보가 정상적으로 수정되었습니다.";
 		
 		try {
-			String sql  = "update SHOPPING_MEMBER set MEMBER_NAME=?, MEMBER_PW=?, MEMBER_PHONE=?, MEMBER_EMAIL=?, member_zip=?, member_addr1=?, member_addr2=? "
+			String sql  = "update SHOPPING_MEMBER set MEMBER_PW=?, MEMBER_NAME=?, MEMBER_PHONE=?, MEMBER_EMAIL=?, member_zip=?, member_addr1=?, member_addr2=? "
 						+ "where MEMBER_ID=?";
 			conn.setAutoCommit(false);
 			
-			System.out.println("asddsa");
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
-			ps.setString(1, vo.getmName());
-			ps.setString(2, vo.getPwd());
+			ps.setString(1, vo.getPwd());
+			ps.setString(2, vo.getmName());
 			ps.setString(3, vo.getPhone());
 			ps.setString(4, vo.getEmail());
 			ps.setString(5, vo.getZip());
@@ -169,9 +171,7 @@ public class Shopping_MemberDao {
 			ps.setString(7, vo.getAddr2());
 			ps.setString(8, vo.getmId());
 			
-			System.out.println("addr2 : " + vo.getAddr2());
 			
-			System.out.println("ps next");
 			int r = ps.executeUpdate();
 			if(r>0) {
 				msg = "회원정보가 정상적으로 수정되었습니다.";
@@ -190,16 +190,53 @@ public class Shopping_MemberDao {
 				e.printStackTrace();
 			}
 		}
-		
+		 
 		return msg;
 		
 	}
 	
-	public String delete(String mId, String pwd) {
-		String msg = "회원정보가 정상적으로 삭제되었습니다.";
-		
-		
-		return msg;
-	}	
+	
+	public int deleteData(String mId, String pwd) {
+		int result = 0;
+		try {
+			String sql = "select * from shopping_member where member_id=? ";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, mId);
+			
+			rs = ps.executeQuery();
+			
+			
+			if(rs.next()) {	
+				
+				if(rs.getString("member_pw").equals(pwd)) { // 입력된 정보와 일치하는 데이터가 있다면 
+					sql = "delete from shopping_member where member_id=? ";
+					ps = conn.prepareStatement(sql);
+					ps.setString(1, mId);
+					
+					int r = ps.executeUpdate();
+					if(r>0) {
+						result = 1;	// 회원정보 삭제 성공 
+						conn.commit();
+					}
+				}else if(!rs.getString("member_pw").equals(pwd)){
+					result = -1; // 비밀번호 불일치 
+				}
+				
+			}else {
+				
+			}
+			 
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+	
+		}
+		return result;
+	}
 	
 }

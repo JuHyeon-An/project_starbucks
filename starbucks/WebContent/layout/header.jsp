@@ -64,20 +64,29 @@
 <!--                                     	세션값에 따라 로그인 로그아웃 표시 -->
                                     	<%if(session.getAttribute("mId") == null){ %> 
                                         	<li><a href="/starbucks/member/login.jsp">login</a></li>
+                                        	<li><a href="/starbucks/member/login.jsp"><span class="icon icon-person"></span></a></li>
+                                       		 <li>
+	                                            <a href="/starbucks/member/login.jsp" class="site-cart">
+	                                                <span class="icon icon-shopping_cart"></span>
+	                                                <span class="count">2</span>
+	                                            </a>
+	                                        </li>
                                         <%}else{ %>
                                        		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
+                                       		 <li><a href="/starbucks/my/my.my"><span class="icon icon-person"></span></a></li>
+                                       		 <li>
+	                                            <a href="/starbucks/my/cart.my" class="site-cart">
+	                                                <span class="icon icon-shopping_cart"></span>
+	                                                <span class="count">2</span>
+	                                            </a>
+	                                        </li>
                                         <%} %>
                                         
-                                        <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                        
 							
 <!--                                         <li><a id='loginPage' href="#login" onclick='submitForm();'><span class="icon icon-person"></span></a></li> -->
-                                        <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                                        <li>
-                                            <a href="/starbucks/my/cart.jsp" class="site-cart">
-                                                <span class="icon icon-shopping_cart"></span>
-                                                <span class="count">2</span>
-                                            </a>
-                                        </li>
+                                        
+                                        
                                         <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                                     </ul>
                                 </div>
