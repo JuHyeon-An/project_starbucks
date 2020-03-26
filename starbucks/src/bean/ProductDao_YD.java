@@ -260,17 +260,31 @@ public class ProductDao_YD {
 			
 			if(rs.next()) {
 				totList = rs.getInt("cnt");
-				System.out.println(totList+"톳리스트");
 			}
 			p.setTotListSize(totList);
 			p.pageCompute();
+			
+			String find = "";
+			if(desc == 1) { //상품명순으로 정렬
+				find = "item_title";
+				System.out.println("들어온다 이프");
+			}else if(desc == 2) { // 상품명 역순으로 정렬
+				find = "item_title desc";
+			}else if(desc == 3) { // 상품명 역순으로 정렬
+				find =  "item_price";
+			}else if(desc == 4) { // 상품명 역순으로 정렬
+				find = "item_price desc";
+			}else if(desc == 5) { // 상품명 역순으로 정렬
+				find = "item_title";
+			}
+			
 			
 			sql = "select * from ("
 					+ "select rownum rn , A.* from ("
 					+ 	" select * "
 					+ 	" from itemboard "
 //					+ " where item_group = ? or item_theme = ? "
-					+   " order by ? ) A "
+					+   " order by " + find + " ) A "
 					+ ") where rn between ? and ? ";
 //			sql = "select * from itemboard order by item_price desc ";
 			ps = conn.prepareStatement(sql);
@@ -278,25 +292,13 @@ public class ProductDao_YD {
 //			ps.setString(2, findStr);
 //			
 		
-			if(desc == 1) { //상품명순으로 정렬
-					ps.setString(1, "item_title");
-				System.out.println("들어온다 이프");
-			}else if(desc == 2) { // 상품명 역순으로 정렬
-					ps.setString(1, "item_title desc");
-					System.out.println("ddddd");
-			}else if(desc == 3) { // 상품명 역순으로 정렬
-					ps.setString(1, "item_price");
-			}else if(desc == 4) { // 상품명 역순으로 정렬
-					ps.setString(1, "item_price desc");
-			}
+
 			
-			ps.setInt(2, p.getStartNo());
-			ps.setInt(3, p.getEndNo());
+			ps.setInt(1, p.getStartNo());
+			ps.setInt(2, p.getEndNo());
 	
 			rs = ps.executeQuery();
-			System.out.println(p.getStartNo()+"시작번호"+p.getEndNo() +"끝번호");
 			while(rs.next()) {
-				System.out.println("ㅇㅇㅇ들어온다"+rs.getString("item_price"));
 				ProductVo vo = new ProductVo();
 				vo.setItem_code(rs.getString("ITEM_CODE"));
 				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
