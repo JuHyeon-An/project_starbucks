@@ -44,7 +44,15 @@
         
 
           <div class="wrap col-md-6">
-            <img src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
+          	<div class='row'>
+            <img id='imgView' src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
+            </div>
+            <div class='row'>
+            <br />
+            <img id='img1' src="./fileFolder/${vo.item_thumnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
+            <img id='img2'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002364]_20200304165033804.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
+            <img id='img3'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[11100513]_20190429144456596.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
+            </div>
           </div>
           <div class="col-md-6">
             <h2 class="text-black">${vo.item_title }</h2>
@@ -89,7 +97,6 @@
 	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 	    <%}%>
             
-            <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">Add To Cart</a></p>
 
           </div>
         </div>
@@ -176,11 +183,72 @@
 
 </c:forEach>
 <script>
+
 let alert_msg = function(){
 	alert("로그인후에 담아주세요");
 }
 
-$(function () {
+let imgchang = function(num){
+	
+	$('#imgView').attr('src',$('#img'+num).attr('src'));
+	zoom();
+	
+}
+let zoom = function () {
+	 
+    var target = $('.target');
+    //1
+    var zoom = target.data('zoom');
+ 
+    $(".wrap")
+        .on('mousemove', magnify)
+        .prepend("<div class='magnifier'></div>")
+        .children('.magnifier').css({
+            "background": "url('" + target.attr("src") + "') no-repeat",
+            // 2
+            "background-size": target.width() * zoom + "px " + target.height() * zoom+ "px"
+        });
+ 
+    var magnifier = $('.magnifier');
+ 
+    function magnify(e) {
+ 
+        // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
+        var mouseX = e.pageX - $(this).offset().left;
+        var mouseY = e.pageY - $(this).offset().top;
+ 
+        // 컨테이너 밖으로 마우스가 벗어나면 돋보기를 없앤다.
+        if (mouseX < $(this).width() && mouseY < $(this).height() && mouseX > 0 && mouseY > 0) {
+            magnifier.fadeIn(100);
+        } else {
+            magnifier.fadeOut(100);
+        }
+ 
+        //돋보기가 존재할 때
+        if (magnifier.is(":visible")) {
+ 
+            // 3
+            var rx = -(mouseX * zoom - magnifier.width() /2 );
+            var ry = -(mouseY * zoom - magnifier.height() /2 );
+ 
+            //돋보기를 마우스 위치에 따라 움직인다.
+            //돋보기의 width, height 절반을 마우스 좌표에서 차감해 마우스와 돋보기 위치를 일치시킨다.
+            var px = mouseX - magnifier.width() / 2;
+            var py = mouseY - magnifier.height() / 2;
+ 
+            //적용
+            magnifier.css({
+                left: px,
+                top: py,
+                backgroundPosition: rx + "px " + ry + "px"
+            });
+        }
+    }
+};
+
+
+
+$( function () {
 	 
     var target = $('.target');
     //1
