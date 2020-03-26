@@ -81,8 +81,8 @@ public class ProductListServlet extends HttpServlet{
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			
 		}
-		if(req.getParameter("findStr") != null) {
-			findStr = req.getParameter("findStr");
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
 		}
 		
 		Page_ProductList p = new Page_ProductList();
@@ -111,8 +111,8 @@ public class ProductListServlet extends HttpServlet{
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			
 		}
-		if(req.getParameter("findStr") != null) {
-			findStr = req.getParameter("findStr");
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
 		}
 		
 		Page_ProductList p = new Page_ProductList();
@@ -135,7 +135,7 @@ public class ProductListServlet extends HttpServlet{
 	
 	public void item_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = url+"/product_view.jsp";
-		String findStr = req.getParameter("findStr");
+		String findStr = req.getParameter("pd_findStr");
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		list = dao.item_view(findStr);
@@ -155,8 +155,8 @@ public class ProductListServlet extends HttpServlet{
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			
 		}
-		if(req.getParameter("findStr") != null) {
-			findStr = req.getParameter("findStr");
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
 		}
 		
 		Page_ProductList p = new Page_ProductList();

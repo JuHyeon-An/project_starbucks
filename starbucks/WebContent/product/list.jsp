@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+
     pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -71,6 +73,7 @@
           </div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
+             
                 <div class="site-block-27">
                   <ul>
                   
@@ -210,32 +213,13 @@
       </div>
       <form id='pd_frm'>
       	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
-      	<input type="hidden" name="findStr" id='findStr' value=''/>
+      	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
       </form>
       
-      
-   <script>
-   let pd_goPage = function(nowPage){
-		$('#nowPage').val(nowPage);
-		$('#pd_frm').attr('action', 'listPage.pl').submit();
-	}
-   let categories = function(findStr){
-	   $('#findStr').val(findStr);
-	   $('#pd_frm').attr('action', 'listCategories.pl').submit();
-   }
-   let item_view = function(findStr){
-	   $('#findStr').val(findStr);
-	   $('#pd_frm').attr('action', 'item_view.pl').submit();
-   } 
+
+
+
    
-   </script>
-
-
-   <%
-      if(request.getParameter("nowPage") == null){
-   %>
-   <script></script>
-   <%}%>     
 
     <!-- Breadcrumb END -->
     

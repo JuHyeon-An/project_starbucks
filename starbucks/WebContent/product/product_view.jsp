@@ -182,6 +182,7 @@
     </div>
  -->
 </c:forEach>
+<script src="/starbucks/js/productlist.js"></script>
 <script>
 
 let alert_msg = function(){
@@ -305,11 +306,6 @@ $( function () {
 </script>
 
 
-   <%
-      if(request.getParameter("nowPage") == null){
-   %>
-   <script>pd_goPage(1)</script>
-   <%}%>     
 
     <!-- Breadcrumb END -->
     
