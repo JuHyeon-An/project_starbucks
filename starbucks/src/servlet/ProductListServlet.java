@@ -33,9 +33,7 @@ public class ProductListServlet extends HttpServlet{
 		String tempURL = temp.substring(pos);
 		
 		switch (tempURL) {
-//		case "/list.pl":
-//			pList(req, resp);
-//			break;
+
 		case "/listPage.pl":
 			pListPage(req, resp);
 //			sortList(5, req, resp);
@@ -62,18 +60,7 @@ public class ProductListServlet extends HttpServlet{
 	
 	}
 	
-	public void pList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = url+"/list.jsp";
-		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list = new ArrayList<ProductVo>();
-		list = dao.select();
-		
-		
-		req.setAttribute("list", list);
-		
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-	}
+
 	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int nowPage = 1;
 		String findStr = "";
