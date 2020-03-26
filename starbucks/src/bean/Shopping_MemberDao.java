@@ -13,7 +13,7 @@ public class Shopping_MemberDao {
 		conn = DBConn.getConn();
 	}
 	
-	public String insert(Shopping_MemberVo vo) {
+	public String insert(Shopping_MemberVo vo) { //회원가입
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String msg = "회원정보가 정상적으로 등록되었습니다.";
 		
@@ -37,7 +37,9 @@ public class Shopping_MemberDao {
 			if(r<1) {
 				msg = "입력중 오류발생";
 			}
-			
+	           rs.close();
+	            ps.close();
+	            conn.close();
 			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -48,7 +50,8 @@ public class Shopping_MemberDao {
 
 	}
 	
-	public int login(String mId, String pwd) {
+	public int login(String mId, String pwd) { //로그인
+		
 		
 		String sql = "select member_id, member_pw , member_admin from shopping_member where member_id = ? ";
 		
@@ -62,17 +65,27 @@ public class Shopping_MemberDao {
 				if(rs.getString("member_pw").equals(pwd)) {
 					
 					if(rs.getString("member_admin") != null) {
+				           rs.close();
+				            ps.close();
+				            conn.close();
 						return 2; //관리자 로그인
 					}
-						
+			           rs.close();
+			            ps.close();
+			            conn.close();
 						return 1; //로그인성공
 					
 				}else {
-					
+			           rs.close();
+			            ps.close();
+			            conn.close();
 					return 0; // 비밀번호 불일치
 				}
 				
 			}
+	           rs.close();
+	            ps.close();
+	            conn.close();
 			return -1 ; //아이디 없음 오류
 			
 		} catch (Exception e) {
@@ -94,6 +107,9 @@ public class Shopping_MemberDao {
 			if(rs.next()) {
 				return rs.getInt(1);
 			}
+	           rs.close();
+	            ps.close();
+	            conn.close();
 			
 		} catch (Exception e) {
 			e.printStackTrace();

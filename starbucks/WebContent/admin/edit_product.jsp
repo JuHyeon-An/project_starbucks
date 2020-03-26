@@ -121,45 +121,54 @@
 							</div>
 				<div class="row" id="photoRow" style="height:250px;">
 								<div class="form-group mb-3 col-xs-12 col-sm-4">
-									<div class="tm-product-img-dummy mx-auto">
-										<img name="photo1" width="100%" height="100%"
-											src="../fileFolder/${vo.item_mainimg }">
+									<div class="tm-product-img-dummy mx-auto"
+										  >
+										<img id = "photoEdit1" name="photo" width="100%" height="100%"
+											src="../fileFolder/${vo.item_mainimg }" 
+											onclick="$('#fileEdit1').trigger('click');">
+									<input type="file" id = "fileEdit1" name="fileInput1" style="display: none"
+									onclick="preview(0);">
 									</div>
-									<input type="file" name="fileInput1" style="display: none">
 								</div>
 								
 								<div class="form-group mb-3 col-xs-12 col-sm-4">
 									<div class="tm-product-img-dummy mx-auto">
-										<img name="photo2" width="100%" height="100%"
-											src="../fileFolder/${vo.item_thumbnailimg }">
+										<img id = "photoEdit2" name="photo" width="100%" height="100%"
+											src="../fileFolder/${vo.item_thumbnailimg }"
+											 onclick="$('#fileEdit2').trigger('click');">
+									<input type="file" id = "fileEdit2" name="fileInput2" style="display: none">
 									</div>
-									<input type="file" name="fileInput2" style="display: none">
 								</div>
 								
 								<div class="form-group mb-3 col-xs-12 col-sm-4">
-									<div class="tm-product-img-dummy mx-auto">
-										<img name="photo3" width="100%" height="100%"
-											src="../fileFolder/${vo.item_contentimg }">
+									<div class="tm-product-img-dummy mx-auto"
+									 >
+										<img id = "photoEdit3" name="photo" width="100%" height="100%"
+											src="../fileFolder/${vo.item_contentimg }"
+											onclick="$('#fileEdit3').trigger('click');"
+											>
+									<input type="file" id = "fileEdit3" name="fileInput3" style="display: none">
 									</div>
-									<input type="file" name="fileInput3" style="display: none">
 								</div>
 
 							</div>
-					<input id="fileBtn" name="fileBtn" type="file" style="display: none;" />
 					<button class="btn btn-primary btn-block mx-auto"
 						onclick="document.getElementById('fileInput1').click();"
 						style="display: none;">UPLOAD PRODUCT IMAGE</button>
 				<br/>
 				<div class="row">
+				
 				<div class="col-6">
-					<button type="submit" id="btnInsert"
-						class="btn btn-primary btn-block text-uppercase">저장하기</button>
+					<input type="button" id="btnUpdate"
+						class="btn btn-primary btn-block text-uppercase" value="저장하기">
 				</div>
 				
 				<div class="col-6">
-					<button type="submit" id="btnInsert"
-						class="btn btn-primary btn-block text-uppercase">삭제하기</button>
+					<input type="button" id="btnDelete" onclick="deleteItem('${vo.item_code}')"
+						class="btn btn-primary btn-block text-uppercase" value="삭제하기">
 				</div>
+				
+				
 				</div>
 				</form>
 			</div>
@@ -178,105 +187,6 @@
           defaultDate: "2020-03-26"
         });
       });
-      
-      
-    /*
-      let main = document.querySelector('#photoRow');
-      let cnt = 1;
-      
-      makeDiv(main);
-      
-      function makeDiv(main){
-    	  let div = document.createElement('div');
-    	  div.setAttribute('class', 
-    			  'form-group mb-3 col-xs-12 col-sm-4');
-    	  
-    	  
-    	  let divChild = document.createElement('div');
-    	  divChild.setAttribute('class', 'tm-product-img-dummy mx-auto');
-    	  
-    	  // image tag를 추가
-    	  let img = document.createElement('img');
-    	  img.setAttribute('name', 'photo'+cnt);
-    	  // <img name='img0'>, <img name='img1'> ... 누를때마다 증가
-    	  // name을 같게하면 배열처리 되는데, 그렇게 되면 버거워짐
-    	  img.setAttribute('width', '100%');
-    	  img.setAttribute('height', '100%');
-    	  img.src = '../img/upload.png';
-    	  //src는 다이렉트로 집어넣을 수 있다
-    	  divChild.appendChild(img);
-    	  div.appendChild(divChild);
-    	  
-    	  // 삭제버튼 추가
-    	  
-    	  /*
-    	  let btnDel = document.createElement('input');
-    	  btnDel.setAttribute('name', 'delBtn'+cnt);
-    	  btnDel.setAttribute('type', 'button');
-    	  btnDel.setAttribute('value', 'X');
-    	  btnDel.setAttribute('class', 'btnDel');
-    	  
-    	  btnDel.onclick = function(ev){
-    		  let obj = ev.srcElement;
-    		  let parent = obj.parentNode;
-    		  // parentNode : 부모태그 div
-    		  let tag = parent.getElementsByTagName('input')[1];
-    		  // input태그들 중에서 두번째 태그를 가져와라
-    		  
-    		  if(tag.getAttribute('modify')=='yes'){
-    			  main.removeChild(parent);
-    		  }
-    	  }
-    	  
-    	  divChild.appendChild(btnDel);
-    	  
-    	  // 이미지당 file tag
-    	  let file = document.createElement('input');
-    	  file.setAttribute('type', 'file');
-    	  file.setAttribute('name', 'fileInput'+cnt);
-    	  file.setAttribute('style', 'display:none');
-    	  file.setAttribute('modify', 'no');
-    	  
-    	  div.appendChild(file);
-    	  
-    	  // 이미지를 클릭하면
-    	  img.onclick = function(){
-    		  file.click();
-    	  }
-    	  
-    	  file.onclick =  function imagePreView(event){
-    		  	let btn = event.srcElement;
-    		  	
-    		  	console.log(btn);
-    		  	console.log(btn.value);
-    		  	
-    		  	btn.onchange = function(){
-    		  	let url = btn.files[0];
-    		  	let reader = new FileReader();
-    		  	reader.readAsDataURL(url);
-    		  	
-    		  	reader.onload = function(ev){
-    		  		let target = event.srcElement;
-    		  		let temp = new Image();
-    		  		temp.src = ev.target.result;
-    		  		img.src = temp.src;
-    		  		}
-    		  	if(file.getAttribute('modify')=='no'){
-    		  	makeDiv(main);
-    		  	// 이미지 불러오고 나면 div를 하나 더 추가해라
-    		  	}
-    		  	file.setAttribute('modify', 'yes');
-    		  	}
-    		  }
-    	  
-    		  	if(cnt<4){
-    	  		main.appendChild(div);
-    	  		cnt++;
-    	  }
-      }
-		*/
-      
-	//TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
       
     </script>
   </body>

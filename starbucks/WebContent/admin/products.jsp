@@ -35,7 +35,7 @@
 					<fmt:formatDate value="${temp }" pattern="yyyy-MM-dd" var="regDate"/>
 	                <fmt:formatNumber type="number" maxFractionDigits="3" value="${vo.item_price}" var="price"/>
 
-                  <tr onclick='goEdit("${vo.item_code}")'>
+                  <tr>
                     <td scope="row">
 								<img
 									width="95%" height="95%" class="round"
@@ -43,8 +43,8 @@
 									onclick="image_viewer('img14367')"
 									src="../fileFolder/${vo.item_thumbnailimg }"
 									style="display: block;"></td>
-                    <td>${vo.item_code }</td>
-                    <td class="tm-product-name">${vo.item_title }</td>
+                    <td onclick='goEdit("${vo.item_code}")'>${vo.item_code }</td>
+                    <td class="tm-product-name" onclick='goEdit("${vo.item_code}")'>${vo.item_title }</td>
                     <td>${price }</td>
                     <td>${vo.item_num }</td>
                     <td>${regDate }</td>
@@ -75,7 +75,9 @@
 	<input type="hidden" id="hidden_code" name="hidden_code"/>
 	</form>
     <script>
-    $('#proNav').addClass('active');
+   $(document).ready(function(){
+	    $('#proNav').addClass('active');
+    })
     
     </script>
   </body>
