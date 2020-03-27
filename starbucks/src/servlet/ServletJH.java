@@ -54,6 +54,14 @@ public class ServletJH extends HttpServlet{
 		case "/edit_productR.stb":
 			editProductsR(req, resp);
 			break;
+			
+		case "/delete_productR.stb":
+			deleteProductsR(req, resp);
+			break;
+			
+		case "/product_group.stb":
+			editGroup(req, resp);
+			break;
 		}
 
 	}
@@ -131,29 +139,50 @@ public class ServletJH extends HttpServlet{
 	public void editProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
-		System.out.println("여기까지 오긴 하나..");
-		String msg = req.getParameter("message");
-		System.out.println(msg);
-
 		ProductDao dao = new ProductDao();
 		FileUpload upload = new FileUpload(req, resp);
-		ProductVo vo = new ProductVo();
-		String test = req.getParameter("item_code");
-		System.out.println(test);
-		int result = 0;
+		String msg = "";
+		
+		if(upload.uploadFormCheck()) { // enctype = 'multipart/form-data'
+			ProductVo vo = upload.uploading();
 			// 사진을 포함해서 모든 폼태그가 담겨진 vo가 반환
 			
-			result = dao.update(vo);
+			int r = dao.update(vo);
 			// 폼태그 담은 vo를 실제로 DB에 넣어줌
+			if(r>0) {
+				msg = "성공";
+			}else {
+				msg = "실패";
+			}
 			
-			PrintWriter out = resp.getWriter();
-			out.print(test);
-			
-		/*
-		String path= urlAdmin+"/edit_product.jsp";
+		}else {
+			System.out.println("error");
+			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+		}
+		req.setAttribute("msg", msg);
+		
+		String path= urlAdmin+"/edit_product_result.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
-		*/
+	}
+	
+	public void deleteProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		ProductDao dao = new ProductDao();
+		int result = dao.deleteItem(req.getParameter("item_code"));
+		PrintWriter out = resp.getWriter();
+		out.print(result);
+	}
+	
+	public void editGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		String path= urlAdmin+"/product_category.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
 	}
 	
 }

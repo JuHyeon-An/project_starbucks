@@ -26,11 +26,7 @@ let func=function(){
 			//console.log($('#orderStatus').val());
 			$('#frmm').attr('action' ,'modify.order').submit();
 		})
-	}
-	
-	
-	
-	
+	}		
 }
 
 let goPage=function(nowPage){
@@ -47,11 +43,7 @@ let  view=function(orderNumber,memberId,itemCode,orderNum,orderPrice,orderregDat
 	$('#orderPrice').val(orderPrice);
 	$('#orderregDate').val(orderregDate);
 	$('#orderStatus').val(orderStatus);
-	$('#frmm').attr('action', 'order_view.order').submit();
-	
-	
-	
-	
+	$('#frmm').attr('action', 'order_view.order').submit();	
 }
 
    
