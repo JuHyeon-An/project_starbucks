@@ -25,7 +25,7 @@
                         <div class="intro-text text-center text-md-left">
                             <p class="mb-4">달콤한 국내산 복숭아와 은은한 자스민향이 완벽하게 어우러진 스프링 피치 그린 티와 함께 따뜻한 봄의 기운을 느껴보세요!</p>
                             <p>
-                                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
+                                <a href="listPage.pl" class="btn btn-sm btn-primary">Shop Now</a>
                             </p>
                         </div>   
                     </div>
