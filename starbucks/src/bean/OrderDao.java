@@ -128,7 +128,7 @@ public class OrderDao {
 			System.out.println(r + "r값 ");
 			
 			throw new Exception("수정하는데 오류발새애앵");
-		
+		 
 		}
 		conn.commit();
 	}catch(Exception ex) {

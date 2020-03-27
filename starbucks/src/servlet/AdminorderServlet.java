@@ -16,7 +16,7 @@ import bean.Page;
 
 @WebServlet("*.order")
 public class AdminorderServlet extends HttpServlet {
-	String url = "/admin/list.jsp";
+	String url = "index.jsp?cont=../admin/";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -90,7 +90,7 @@ public class AdminorderServlet extends HttpServlet {
 	    	  
 	      }
 
-	      String path=url+"?cont=./order.jsp"; //
+	      String path=url+"order.jsp"; //
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
@@ -99,7 +99,7 @@ public class AdminorderServlet extends HttpServlet {
 	   }
 	public void order_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String path=url+"?cont=./order_view.jsp";
+		String path=url+"order_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -130,7 +130,7 @@ public class AdminorderServlet extends HttpServlet {
 		
 		
 		req.setAttribute("msg", msg); //여기가 뷰의 값
-		String path=url+"?cont=./order_view.jsp";
+		String path=url+"order_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	
