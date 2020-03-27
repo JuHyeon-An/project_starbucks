@@ -76,14 +76,10 @@
     <script src="/starbucks/js/header.js"></script>
     
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
-<<<<<<< HEAD
     <script src="/starbucks/js/uk2.js"></script> 
-=======
-    <script src="/starbucks/js/notice.js"></script>
     <script src="/starbucks/js/productlist.js"></script>
     <script src="/starbucks/js/product_view.js"></script>
     <script src="/starbucks/js/myPage.js"></script>
->>>>>>> 2f3b3634a4e5741a144421637a79081fb49f4a8d
 	
 	<!-- 다음 우편번호 서비스 관련 js -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
