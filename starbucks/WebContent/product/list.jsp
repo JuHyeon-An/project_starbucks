@@ -112,9 +112,13 @@
               <br></br>
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Theme</h3>
               <ul class="list-unstyled mb-0">
+              
 <!--               테마 리스트 생성 -->
               <c:forEach var='vo2' items='${listTheme }'>
                 <li class="mb-1"><a href="#" class="d-flex"  onclick="categories('${vo2.item_theme}')" ><span>${vo2.item_theme }</span> <span class="text-black ml-auto"></span></a></li>
+              
+
+              
                </c:forEach>
 <!--               테마 리스트 끝 -->           
               </ul>
@@ -132,9 +136,6 @@
       </form>
      </div>
 
-
-
-   
 
     <!-- Breadcrumb END -->
     
