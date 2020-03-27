@@ -73,10 +73,12 @@
     <script src="/starbucks/js/aos.js"></script>
 
     <script src="/starbucks/js/main.js"></script>
+    <script src="/starbucks/js/header.js"></script>
     
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
-    <script src="/starbucks/js/notice.js"></script>
+    <script src="/starbucks/js/uk2.js"></script> 
     <script src="/starbucks/js/productlist.js"></script>
+    <script src="/starbucks/js/product_view.js"></script>
     <script src="/starbucks/js/myPage.js"></script>
 	
 	<!-- 다음 우편번호 서비스 관련 js -->

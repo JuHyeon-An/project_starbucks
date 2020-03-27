@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,11 +25,15 @@
 			</div>
 		</div>
 	</div>
-
-
+<c:set var='r' value='1'></c:set>
 	<div class="container form-inline col-12">
-		<div class="row text-center col-6">
-			<div class="offset-8 col-sm-4">
+	<div class='row offset-4 col-sm-3'>
+		<input type="button" class='btn btn-default' value="아이디 찾기" onclick='btnCheck(1)' />
+		<input type="button" class='btn btn-default' value="비밀번호 찾기"  onclick='btnCheck(2)'/>
+	</div>
+<c:if test="${r==1}">
+		<div class="row text-center col-12">
+			<div class="offset-4 col-sm-3">
 
 				<div class="login-box well">
 					<form accept-charset="UTF-8" role="form" method="post"
@@ -36,7 +41,7 @@
 						<legend>아이디 찾기</legend>
 						<div class="input-group">
 							<span class="input-group-addon"><i class="fa fa-user"></i></span>
-							<input type="text" name="mId" value='' placeholder="이름을 입력하세요"
+							<input type="text" name="mId" value='${r }' placeholder="이름을 입력하세요"
 								class="form-control" />
 						</div>
 						<div class="input-group">
@@ -54,7 +59,9 @@
 
 			</div>
 		</div>
-	<div class="row text-center col-6">
+</c:if>
+<c:if test="${r==2}">		
+	<div class="row text-center col-12">
 			
 			<div class="col-sm-4">
 
@@ -88,11 +95,15 @@
 
 			</div>
 		</div>
-	</div>
+</c:if>
+</div>
 
+<script>
+let btnCheck = function(num){
+	${r= num}; 
+}
 
-
-
+</script>
 
 	<!-- Breadcrumb END -->
 

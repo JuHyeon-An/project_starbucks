@@ -165,6 +165,7 @@ public class ProductDao {
 		try {
 			conn = DBConn.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
+			
 			ps.setString(1, vo.getItem_title()); // 자동생성 item_code
 			ps.setInt(2, vo.getItem_price()); // selected box에서 가져옴
 			ps.setInt(3, vo.getItem_num()); // 아이템명
@@ -178,11 +179,20 @@ public class ProductDao {
 			ps.setString(11, vo.getItem_contentimg()); // contentimg path
 			ps.setDouble(12, vo.getItem_price()*0.01); // 가격의 1%
 			ps.setString(13, vo.getItem_code());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_title());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_price());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_num());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_size());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_content());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_theme());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_regDate());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_mainimg());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_thumbnailimg());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_contentimg());
+			System.out.println("vo가 잘 들어가는지:"+vo.getItem_code());
 			
 			r = ps.executeUpdate();
-			
-			ps.close();
-			
+			System.out.println(r+" r의값");
 			
 			if(r>0) {
 				conn.commit();
@@ -190,6 +200,7 @@ public class ProductDao {
 				conn.rollback();
 			}
 			
+			ps.close();
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

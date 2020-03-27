@@ -75,12 +75,54 @@ public class FileUpload {
 				/* 폼태그에 들어가있는 인풋 태그를 모두 파싱해서 리스트에 넣고, 하나하나 꺼내서
 				 * value값과 name값을 각각 v와  k에 담는다 
 				 */
+				
+				if(fi.getSize()>0) {
+					// 파일의 값이 있으면
+					
+					String f = fi.getName();
+					// file name을 가지고 오는 작업
+					
+					String sysFile = new Date().getTime() +"-"+f;
+					// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
+					
+					System.out.println("photo sysfile : "+sysFile);
+					System.out.println("가져온 파일 네임값 : "+k);
+					
+					switch (k) {
+					case "fileInput1":
+						vo.setItem_mainimg(sysFile);
+						break;
+						
+					case "fileInput2":
+						vo.setItem_thumbnailimg(sysFile);
+						break;
+						
+					case "fileInput3":
+						vo.setItem_contentimg(sysFile);
+						break;
+						
+					}
+					
+					
+					File file = new File(upload + sysFile);
+					// upload 경로 안에 sysFile 더해서 만들고 : upload라는 path에 저장됨
+					fi.write(file);
+					// file을 실제로 저장
+					
+					fi.delete();
+					// temp에 들어가있는 임시 파일을 지우는 작업
+				}
+				
 				if(fi.isFormField()) {
 					// input타입이 파일이 아닌가? => else(파일인경우)
 					switch (k) { // name값을 가져와서
 					case "item_group": //<input type="text" name="mId"/>
 					// input 상자의 name값이 mId면 v값을 vo의 mId에 집어넣어라
 						vo.setItem_group(v);
+						break;
+					
+					case "item_code":
+						vo.setItem_code(v);
 						break;
 						
 					case "item_title":
@@ -110,6 +152,24 @@ public class FileUpload {
 					case "item_regdate":
 						vo.setItem_regDate(v);
 						break;
+					
+					case "hiddenFile1":
+						if(vo.getItem_mainimg()==null) {
+							vo.setItem_mainimg(v);
+						}
+						break;
+						
+					case "hiddenFile2":
+						if(vo.getItem_thumbnailimg()==null) {
+							vo.setItem_thumbnailimg(v);
+						}
+						break;
+						
+					case "hiddenFile3":
+						if(vo.getItem_contentimg()==null) {
+							vo.setItem_contentimg(v);
+						}
+						break;
 						
 					case "findStr":
 						// 폼태그 이름이 findStr이면 value값을 attribute에 저장
@@ -122,46 +182,6 @@ public class FileUpload {
 					
 					default:
 						break;
-					}
-				}else { // <input type='file'/>인 경우
-					if(fi.getSize()>0) {
-						// file 태그가 여러개가 있다면 n번 돌게 될 것
-						
-						// file사이즈가 0이라면 파일이 넘어오지 않은 것
-						// 파일을 선택하지 않고 등록버튼을 누른 경우 파일사이즈가 0
-						
-						String f = fi.getName();
-						// file name을 가지고 오는 작업
-						
-						String sysFile = new Date().getTime() +"-"+f;
-						// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
-						
-						System.out.println("photo sysfile : "+sysFile);
-						System.out.println("가져온 파일 네임값 : "+k);
-						
-						switch (k) {
-						case "fileInput1":
-							vo.setItem_mainimg(sysFile);
-							break;
-							
-						case "fileInput2":
-							vo.setItem_thumbnailimg(sysFile);
-							break;
-							
-						case "fileInput3":
-							vo.setItem_contentimg(sysFile);
-							break;
-							
-						}
-						
-						
-						File file = new File(upload + sysFile);
-						// upload 경로 안에 sysFile 더해서 만들고 : upload라는 path에 저장됨
-						fi.write(file);
-						// file을 실제로 저장
-						
-						fi.delete();
-						// temp에 들어가있는 임시 파일을 지우는 작업
 					}
 				}
 			}
