@@ -46,7 +46,7 @@
 	                          
 	                        
 	                         	
-	                         	 <td>
+	                         	 <td>  
 	                            <input type='text' name='orderNumber' id='orderNumber' value='${param.orderNumber}' readonly/>
 								</td>
 								<td>
