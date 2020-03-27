@@ -35,7 +35,7 @@
 
 
         <div class="site-wrap">
-            <header class="site-navbar" role="banner">
+            <header class="site-navbar " role="banner">
                 <div class="site-navbar-top">
                     <div class="container">
                         <div class="row align-items-center">
@@ -95,7 +95,7 @@
                         </div>
                     </div>
                 </div>
-                <nav class="site-navigation text-right text-md-center" role="navigation">
+                <nav id='navbar'class="site-navigation text-right text-md-center" role="navigation" '>
                     <div class="container">
                         <ul class="site-menu js-clone-nav d-none d-md-block">
                             <li class="active"><a href="/starbucks/">HOME</a></li>
@@ -139,5 +139,5 @@
                     </form>
                 </nav>
             </header>
-            
-            
+         </div>  
+         

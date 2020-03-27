@@ -18,6 +18,7 @@ public class Shopping_MemberVo {
 	public Shopping_MemberVo () {
 		
 	}
+	
 	public Shopping_MemberVo (String mId, String pwd, String mName, String phone ,String address, String email) {
 		
 	}	
