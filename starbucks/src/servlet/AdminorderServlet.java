@@ -34,6 +34,14 @@ public class AdminorderServlet extends HttpServlet {
 		case "/order.order"://가져오는
 			order(req , resp);
 			break;			
+			
+		case "/order_view.order":
+			order_view(req, resp);
+			break;
+		
+		case "/modify.order":
+			order_modify(req, resp);
+			break;
 		
 		}
 
@@ -86,9 +94,49 @@ public class AdminorderServlet extends HttpServlet {
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
-	      System.out.println("서블릿 마지막");
+	     
 	      
 	   }
+	public void order_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String path=url+"?cont=./order_view.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
 
+	public void order_modify(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		OrderVo vo = new OrderVo();
+		OrderDao dao = new OrderDao();
+			
+		vo.setOrderNumber(req.getParameter("orderNumber"));
+		vo.setOrderStatus(Integer.parseInt(req.getParameter("orderStatus")));
+		System.out.println(vo.getOrderNumber() + "서블릿 오더넘버값" );
+		System.out.println(vo.getOrderStatus() + "서블릿 스테이튜스값");
+		
+		  
+		  
+		 String msg = dao.modify(vo);
+         req.setAttribute("msg", msg);
+
+			
+		//vo = dao.view(req.getParameter("memberId"));
+		
+	
+		
+	
+		 
+		System.out.println("서블렛 수정 넘버들어오나"+vo.getOrderNumber()
+											+vo.getOrderStatus());
+		
+		
+		req.setAttribute("msg", msg); //여기가 뷰의 값
+		String path=url+"?cont=./order_view.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	
+		System.out.println("수정 끝");
+		System.out.println("");
+		
+	}
 
 }

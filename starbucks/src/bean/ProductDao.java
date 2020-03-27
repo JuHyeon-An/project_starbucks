@@ -158,10 +158,9 @@ public class ProductDao {
 		
 		int r = 0;
 		sql = "update itemboard set item_title = ?, item_price=?, item_num=?, "
-				+ "item_size=?, item_content=?, item_group=?, item_theme=?, item_regDate=? "
+				+ "item_size=?, item_content=?, item_group=?, item_theme=?, item_regDate=?, "
 				+ "item_mainimg=?, item_thumbnailimg = ?, item_contentimg = ?, "
-				+ "item_savedmoney = ? "
-				+ "where item_code = ?";
+				+ "item_savedmoney = ? where item_code = ?";
 		// 누적판매개수만 수정 못 함
 		try {
 			conn = DBConn.getConn();

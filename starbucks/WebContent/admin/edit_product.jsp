@@ -12,7 +12,7 @@
 							<h2 class="tm-block-title d-inline-block">아이템 편집</h2>
 						</div>
 					</div>
-					<form id="editFrm" name="editFrm" method="post" enctype="multipart/form-data"
+					<form id="editFrm" name="editFrm" method="post" enctype="multipart/form-data" 
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							
