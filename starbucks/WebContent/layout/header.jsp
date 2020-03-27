@@ -64,20 +64,29 @@
 <!--                                     	세션값에 따라 로그인 로그아웃 표시 -->
                                     	<%if(session.getAttribute("mId") == null){ %> 
                                         	<li><a href="/starbucks/member/login.jsp">login</a></li>
+                                        	<li><a href="/starbucks/member/login.jsp"><span class="icon icon-person"></span></a></li>
+                                       		 <li>
+	                                            <a href="/starbucks/member/login.jsp" class="site-cart">
+	                                                <span class="icon icon-shopping_cart"></span>
+	                                                <span class="count">2</span>
+	                                            </a>
+	                                        </li>
                                         <%}else{ %>
                                        		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
+                                       		 <li><a href="/starbucks/my/my.my"><span class="icon icon-person"></span></a></li>
+                                       		 <li>
+	                                            <a href="/starbucks/my/cart.my" class="site-cart">
+	                                                <span class="icon icon-shopping_cart"></span>
+	                                                <span class="count">2</span>
+	                                            </a>
+	                                        </li>
                                         <%} %>
                                         
-                                        <li><a href="#"><span class="icon icon-person"></span></a></li>
+                                        
 							
 <!--                                         <li><a id='loginPage' href="#login" onclick='submitForm();'><span class="icon icon-person"></span></a></li> -->
-                                        <li><a href="#"><span class="icon icon-heart-o"></span></a></li>
-                                        <li>
-                                            <a href="/starbucks/my/cart.jsp" class="site-cart">
-                                                <span class="icon icon-shopping_cart"></span>
-                                                <span class="count">2</span>
-                                            </a>
-                                        </li>
+                                        
+                                        
                                         <li class="d-inline-block d-md-none ml-md-0"><a href="#" class="site-menu-toggle js-menu-toggle"><span class="icon-menu"></span></a></li>
                                     </ul>
                                 </div>
@@ -94,12 +103,12 @@
 <!--                                 <a href="/starbucks/product/list.jsp">All Product</a> -->
 								<a href="listPage.pl">All Product</a>
                                 <ul class="dropdown">
-                                    <li><a href="/starbucks/product/list.jsp">머그</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">글라스</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">텀블러</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">원두</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">액세서리</a></li>
-                                    <li><a href="/starbucks/product/list.jsp">기프티 카드</a></li>
+                                    <li><a href="#"  onclick="categories('MG')" >머그</a></li>
+                                    <li><a href="#"  onclick="categories('GL')">글라스</a></li>
+                                    <li><a href="#"  onclick="categories('TB')">텀블러</a></li>
+                                    <li><a href="#"  onclick="categories('TM')">보온병</a></li>
+                                    <li><a href="#"  onclick="categories('AC')">액세서리</a></li>
+                                    <li><a href="#"  onclick="categories('CO')">커피용품/원두</a></li>
                                     
                                 </ul>
                             </li>
@@ -125,6 +134,9 @@
                                 </ul>
                         </ul>
                     </div>
+                    <form id='pd_frm' name='pd_frm'>
+                    <input type="hidden" name="pd_findStr" id='pd_findStr'/>
+                    </form>
                 </nav>
             </header>
             

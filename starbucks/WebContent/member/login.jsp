@@ -5,22 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
-.input-group {
-	margin-top: 1em;
-	margin-bottom: 1em;
-}
 
-.login-box {
-	line-height: 2.3em;
-	font-size: 1em;
-	color: #aaa;
-	margin-top: 1em;
-	margin-bottom: 1em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-</style>
 </head>
 <body>
 	<%@include file="../layout/header.jsp"%>
@@ -30,7 +15,7 @@
 			<div class="row">
 				<div class="col-md-12 mb-0">
 					<a href="/starbucks/">Home</a> <span class="mx-2 mb-0">/</span> <strong
-						class="text-black">Login</strong>
+						class="text-black">로그인</strong>
 				</div>
 			</div>
 		</div>
@@ -60,8 +45,7 @@
 							class="btn btn-default btn-block" />
 						로그인
 						</button>
-						<span class='text-center'><a href=""
-							class="btn btn-default btn-block">비밀번호 찾기</a></span> <span
+						<span class='text-center'><a href="/starbucks/member/idFind.jsp" class="btn btn-default btn-block">비밀번호 찾기</a></span> <span
 							class='text-center'><a href="/starbucks/member/join.jsp"
 							class="btn btn-default btn-block"> 회원가입</a></span>
 						<div class="form-group"></div>

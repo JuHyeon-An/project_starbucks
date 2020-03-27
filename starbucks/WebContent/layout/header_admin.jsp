@@ -43,6 +43,11 @@
     <script src="/starbucks/jquery-ui-datepicker/jquery-ui.min.js"></script>
     <!-- https://jqueryui.com/download/ -->
     <script src="<%=request.getContextPath() %>/js/admin_products.js"></script>
+    
+    <!-- sweetalert -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
+	
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
 </head>
 
@@ -61,7 +66,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mx-auto h-100">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#" onclick= 'goUrl("../admin", "/dashboard.jsp")'>
+                            <a id="dashNav" class="nav-link" href="#" onclick= 'goUrl("../admin", "/dashboard.jsp")'>
                                 <i class="fas fa-tachometer-alt"></i>
                                 Dashboard
                                 <span class="sr-only">(current)</span>
@@ -69,7 +74,7 @@
                         </li>
                         <li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            <a id="orderNav" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="far fa-file-alt"></i>
                                 <span>
@@ -83,7 +88,7 @@
 
 						<li class="nav-item dropdown">
 
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                            <a id="proNav" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-shopping-cart"></i>
                                 <span>상품관리<i class="fas fa-angle-down"></i>
@@ -97,7 +102,7 @@
                         </li>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="accounts.jsp">
+                            <a id="accNav" class="nav-link" href="accounts.jsp">
                                 <i class="far fa-user"></i>
                                 Accounts
                             </a>

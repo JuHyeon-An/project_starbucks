@@ -26,7 +26,6 @@ public class ProductListServlet extends HttpServlet{
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("두포스트");
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html; charset=utf-8");
 		String temp = req.getRequestURI();
@@ -34,54 +33,58 @@ public class ProductListServlet extends HttpServlet{
 		String tempURL = temp.substring(pos);
 		
 		switch (tempURL) {
-		case "/list.pl":
-			pList(req, resp);
-			break;
+
 		case "/listPage.pl":
 			pListPage(req, resp);
+//			sortList(5, req, resp);
 			break;
 		case "/listCategories.pl":
 			pListCategories(req, resp);
 			break;
+		case "/item_view.pl":
+			item_view(req, resp);
+			break;
+		case "/sort_title.pl":
+			sortList(1, req, resp);
+			break;
+		case "/sort_title_desc.pl":
+			sortList(2, req, resp);
+			break;
+		case "/sort_price.pl":
+			sortList(3, req, resp);
+			break;
+		case "/sort_price_desc.pl":
+			sortList(4, req, resp);
+			break;
 	}
 	
 	}
 	
-	public void pList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path = url+"/list.jsp";
-		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list = new ArrayList<ProductVo>();
-		list = dao.select();
-		
-		
-		req.setAttribute("list", list);
-		
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-	}
-	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			
 		}
-		if(req.getParameter("findStr") != null) {
-			findStr = req.getParameter("findStr");
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
 		}
 		
 		Page_ProductList p = new Page_ProductList();
 		p.setNowPage(nowPage);
 		p.setFindStr(findStr);
 		p.pageCompute();
-		System.out.println(nowPage+"나우페이지");
 		
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list  = dao.select(p);
 		
+		List<ProductVo> listTheme  = dao.theme_view();
+		
 		
 		req.setAttribute("list", list);
+		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("p", p);
 		
 		String path = url+"/list.jsp";
@@ -96,20 +99,63 @@ public class ProductListServlet extends HttpServlet{
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			
 		}
-		if(req.getParameter("findStr") != null) {
-			findStr = req.getParameter("findStr");
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
 		}
 		
 		Page_ProductList p = new Page_ProductList();
 		p.setNowPage(nowPage);
 		p.setFindStr(findStr);
 		p.pageCompute();
-		System.out.println(nowPage+"나우페이지");
 		
 		ProductDao_YD dao = new ProductDao_YD();
 		List<ProductVo> list  = dao.select(p, findStr);
+		List<ProductVo> listTheme  = dao.theme_view();
+		
+		req.setAttribute("listTheme", listTheme);
+		req.setAttribute("list", list);
+		req.setAttribute("p", p);
+		
+		String path = url+"/list.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	public void item_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = url+"/product_view.jsp";
+		String findStr = req.getParameter("pd_findStr");
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		list = dao.item_view(findStr);
 		
 		
+		req.setAttribute("list", list);	
+		
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	public void sortList(int desc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	
+		int nowPage = 1;
+		String findStr = "";
+		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+			
+		}
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
+		}
+		
+		Page_ProductList p = new Page_ProductList();
+		p.setNowPage(nowPage);
+		p.setFindStr(findStr);
+		p.pageCompute();
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list  = dao.select(p, findStr, desc);
+		List<ProductVo> listTheme  = dao.theme_view();
+		
+		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("list", list);
 		req.setAttribute("p", p);
 		

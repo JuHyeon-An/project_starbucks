@@ -35,7 +35,7 @@ public class FileUpload {
 		// 업로드되는 폼이 정확하지 않으면 false 리턴
 		// 결과값이 true일때 uploading이라는 메소드를 호출
 		
-		System.out.println("uploadFormcheck 검증");
+		//System.out.println("uploadFormcheck 검증");
 		return flag;
 	}
 	
@@ -137,6 +137,7 @@ public class FileUpload {
 						// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
 						
 						System.out.println("photo sysfile : "+sysFile);
+						System.out.println("가져온 파일 네임값 : "+k);
 						
 						switch (k) {
 						case "fileInput1":
@@ -144,7 +145,7 @@ public class FileUpload {
 							break;
 							
 						case "fileInput2":
-							vo.setItem_thumnailimg(sysFile);
+							vo.setItem_thumbnailimg(sysFile);
 							break;
 							
 						case "fileInput3":

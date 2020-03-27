@@ -14,7 +14,7 @@ public class ProductVo {
 	int item_price;
 	int item_num;
 	String item_mainimg;
-	String item_thumnailimg;
+	String item_thumbnailimg;
 	String item_contentimg;
 	int order_sumnum;
 	String item_regDate;
@@ -86,11 +86,11 @@ public class ProductVo {
 	public void setItem_mainimg(String item_mainimg) {
 		this.item_mainimg = item_mainimg;
 	}
-	public String getItem_thumnailimg() {
-		return item_thumnailimg;
+	public String getItem_thumbnailimg() {
+		return item_thumbnailimg;
 	}
-	public void setItem_thumnailimg(String item_thumnailimg) {
-		this.item_thumnailimg = item_thumnailimg;
+	public void setItem_thumbnailimg(String item_thumbnailimg) {
+		this.item_thumbnailimg = item_thumbnailimg;
 	}
 	public String getItem_contentimg() {
 		return item_contentimg;

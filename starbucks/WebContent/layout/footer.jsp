@@ -62,7 +62,7 @@
             </div>
         </div>
     </footer>
-    </div>
+ 
 
     <script src="/starbucks/js/jquery-3.3.1.min.js"></script>
     <script src="/starbucks/js/jquery-ui.js"></script>
@@ -76,6 +76,10 @@
     
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
     <script src="/starbucks/js/uk2.js"></script> 
+    <script src="/starbucks/js/notice.js"></script>
+    <script src="/starbucks/js/productlist.js"></script>
+    <script src="/starbucks/js/product_view.js"></script>
+    <script src="/starbucks/js/myPage.js"></script>
 	
 	<!-- 다음 우편번호 서비스 관련 js -->
 	<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>

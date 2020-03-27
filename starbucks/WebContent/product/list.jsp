@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+
+
     pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -7,13 +9,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12 mb-0">
-                    <a href="index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
+                    <a href="/starbucks/index.jsp">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Shop</strong>
                 </div>
             </div>
         </div>
     </div>
     
-
+	<div class="site-section">
       <div class="container">
 
         <div class="row mb-5">
@@ -22,34 +24,21 @@
 <!-- 필터 메뉴  -->
             <div class="row">
               <div class="col-md-12 mb-5">
-                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop All</h2></div>
+                <div class="float-md-left mb-4"><h2 class="text-black h5">Shop</h2></div>
                 <div class="d-flex">
             
                   <div class="dropdown mr-1 ml-md-auto">
-                  <!-- 
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Latest
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">머그</a>
-                      <a class="dropdown-item" href="#">글라스</a>
-                      <a class="dropdown-item" href="#">텀블러</a>
-                      <a class="dropdown-item" href="#">보온병</a>
-                      <a class="dropdown-item" href="#">악세서리</a>
-                      <a class="dropdown-item" href="#">커피용품/원두</a>
-                    </div>
-                    --> 
+
                   </div>
       
                   <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#">Relevance</a>
-                      <a class="dropdown-item" href="#">Name, A to Z</a>
-                      <a class="dropdown-item" href="#">Name, Z to A</a>
+                      <a class="dropdown-item" href="sort_title.pl">Name, A to Z</a>
+                      <a class="dropdown-item" href="sort_title_desc.pl">Name, Z to A</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Price, low to high</a>
-                      <a class="dropdown-item" href="#">Price, high to low</a>
+                      <a class="dropdown-item" href="sort_price.pl">Price, low to high</a>
+                      <a class="dropdown-item" href="sort_price_desc.pl">Price, high to low</a>
                     </div>
                   </div>
                 </div>
@@ -63,10 +52,10 @@
 <!-- 	상품 표시 시작 -->
 
               <c:forEach var='vo' items='${list }'>
-               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up">
+               <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" onclick="item_view('${vo.item_code}')">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="shop-single.html"><img src="./fileFolder/${vo.item_thumnailimg }" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="#" ><img src="./fileFolder/${vo.item_thumbnailimg }" alt="Image placeholder" class="img-fluid"></a>
                   </figure>
                   <div class="block-4-text p-4">
                     <h3><a href="shop-single.html">${vo.item_group}</a></h3>
@@ -84,6 +73,7 @@
           </div>
             <div class="row" data-aos="fade-up">
               <div class="col-md-12 text-center">
+             
                 <div class="site-block-27">
                   <ul>
                   
@@ -161,23 +151,24 @@
             <div class="border p-4 rounded mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" onclick="categories('MG')" class="d-flex"><span>머그</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('GL')" class="d-flex"><span>글라스</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('TB')" class="d-flex"><span>텀블러</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('TM')" class="d-flex"><span>보온병</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('AC')" class="d-flex"><span>액세서리</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" onclick="categories('CO')" class="d-flex"><span>커피용품/원두</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('MG')" class="d-flex"><span>머그</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('GL')" class="d-flex"><span>글라스</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('TB')" class="d-flex"><span>텀블러</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('TM')" class="d-flex"><span>보온병</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('AC')" class="d-flex"><span>액세서리</span> <span class="text-black ml-auto"></span></a></li>
+                <li class="mb-1"><a href="#" onclick="categories('CO')" class="d-flex"><span>커피용품/원두</span> <span class="text-black ml-auto"></span></a></li>
               </ul>
               <br></br>
               <h3 class="mb-3 h6 text-uppercase text-black d-block">Theme</h3>
               <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>20 체리블라썸</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>베라왕 X 스타벅스</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>시티투어 콜렉션</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>스프링 콜렉션</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+<!--               테마 리스트 생성 -->
+              <c:forEach var='vo2' items='${listTheme }'>
+                <li class="mb-1"><a href="#" class="d-flex"  onclick="categories('${vo2.item_theme}')" ><span>${vo2.item_theme }</span> <span class="text-black ml-auto"></span></a></li>
+               </c:forEach>
+<!--               테마 리스트 끝 -->           
               </ul>
             </div>
-
+<!-- 
             <div class="border p-4 rounded mb-4">
               <div class="mb-4">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
@@ -215,36 +206,22 @@
               </div>
 
             </div>
+            -->
+            
           </div>
 <!--           좌측메뉴 끝 -->
           
         </div>
       </div>
-      <form id='pd_frm'>
+      <form id='pd_frm' >
       	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
-      	<input type="hidden" name="findStr" id='findStr' value=''/>
+      	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
       </form>
-      
-      
-   <script>
-   let pd_goPage = function(nowPage){
-		$('#nowPage').val(nowPage);
-		$('#pd_frm').attr('action', 'listPage.pl').submit();
-	}
-   let categories = function(findStr){
-	   $('#findStr').val(findStr);
-	   $('#pd_frm').attr('action', 'listCategories.pl').submit();
-   }
-   
-   
-   </script>
+     </div>
 
 
-   <%
-      if(request.getParameter("nowPage") == null){
-   %>
-   <script>pd_goPage(1)</script>
-   <%}%>     
+
+   
 
     <!-- Breadcrumb END -->
     

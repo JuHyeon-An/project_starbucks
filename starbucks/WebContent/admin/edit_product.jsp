@@ -1,147 +1,187 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Edit Product - Dashboard Admin Template</title>
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
-    <!-- https://fonts.google.com/specimen/Roboto -->
-    <link rel="stylesheet" href="../css/fontawesome.min.css" />
-    <!-- https://fontawesome.com/ -->
-    <link rel="stylesheet" href="../jquery-ui-datepicker/jquery-ui.min.css" type="text/css" />
-    <!-- http://api.jqueryui.com/datepicker/ -->
-    <link rel="stylesheet" href="../css/bootstrap.min.css" />
-    <!-- https://getbootstrap.com/ -->
-    <link rel="stylesheet" href="../css/templatemo-style.css">
-    <!--
-	Product Admin CSS Template
-	https://templatemo.com/tm-524-product-admin
-	-->
-  </head>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
   <body>
-    <div class="container tm-mt-big tm-mb-big">
-      <div class="row">
-        <div class="col-xl-9 col-lg-10 col-md-12 col-sm-12 mx-auto">
-          <div class="tm-bg-primary-dark tm-block tm-block-h-auto">
-            <div class="row">
-              <div class="col-12">
-                <h2 class="tm-block-title d-inline-block">Edit Product</h2>
-              </div>
-            </div>
-            <div class="row tm-edit-product-row">
-              <div class="col-xl-6 col-lg-6 col-md-12">
-                <form action="" method="post" class="tm-edit-product-form">
-                  <div class="form-group mb-3">
-                    <label
-                      for="name"
-                      >Product Name
-                    </label>
-                    <input
-                      id="name"
-                      name="name"
-                      type="text"
-                      value="Lorem Ipsum Product"
-                      class="form-control validate"
-                    />
-                  </div>
-                  <div class="form-group mb-3">
-                    <label
-                      for="description"
-                      >Description</label
-                    >
-                    <textarea                    
-                      class="form-control validate tm-small"
-                      rows="5"
-                      required
-                    >Lorem ipsum dolor amet gentrify glossier locavore messenger bag chillwave hashtag irony migas wolf kale chips small batch kogi direct trade shaman.</textarea>
-                  </div>
-                  <div class="form-group mb-3">
-                    <label
-                      for="category"
-                      >Category</label
-                    >
-                    <select
-                      class="custom-select tm-select-accounts"
-                      id="category"
-                    >
-                      <option>Select category</option>
-                      <option value="1" selected>New Arrival</option>
-                      <option value="2">Most Popular</option>
-                      <option value="3">Trending</option>
-                    </select>
-                  </div>
-                  <div class="row">
-                      <div class="form-group mb-3 col-xs-12 col-sm-6">
-                          <label
-                            for="expire_date"
-                            >Expire Date
-                          </label>
-                          <input
-                            id="expire_date"
-                            name="expire_date"
-                            type="text"
-                            value="22 Oct, 2020"
-                            class="form-control validate"
-                            data-large-mode="true"
-                          />
-                        </div>
-                        <div class="form-group mb-3 col-xs-12 col-sm-6">
-                          <label
-                            for="stock"
-                            >Units In Stock
-                          </label>
-                          <input
-                            id="stock"
-                            name="stock"
-                            type="text"
-                            value="19,765"
-                            class="form-control validate"
-                          />
-                        </div>
-                  </div>
-                  
-              </div>
-              <div class="col-xl-6 col-lg-6 col-md-12 mx-auto mb-4">
-                <div class="tm-product-img-edit mx-auto">
-                  <img src="../img/product-image.jpg" alt="Product image" class="img-fluid d-block mx-auto">
-                  <i
-                    class="fas fa-cloud-upload-alt tm-upload-icon"
-                    onclick="document.getElementById('fileInput').click();"
-                  ></i>
-                </div>
-                <div class="custom-file mt-3 mb-3">
-                  <input id="fileInput" type="file" style="display:none;" />
-                  <input
-                    type="button"
-                    class="btn btn-primary btn-block mx-auto"
-                    value="CHANGE IMAGE NOW"
-                    onclick="document.getElementById('fileInput').click();"
-                  />
-                </div>
-              </div>
-              <div class="col-12">
-                <button type="submit" class="btn btn-primary btn-block text-uppercase">Update Now</button>
-              </div>
-            </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+	<div class="container tm-mt-big tm-mb-big">
+		<div class="row">
+			<div class="col-xl-10 col-lg-11 col-md-12 col-sm-12 mx-auto">
+				<div class="tm-bg-primary-dark tm-block tm-block-h-auto">
+					<div class="row">
+						<div class="col-12">
+							<h2 class="tm-block-title d-inline-block">아이템 편집</h2>
+						</div>
+					</div>
+					<form id="editFrm" name="editFrm" method="post" enctype="multipart/form-data" 
+						class="tm-edit-product-row">
+						<div class="col-xl-12 col-lg-12 col-md-12">
+							
+							<div class="row">
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_code">상품코드
+									</label> <input id="item_code" name="item_code" value="${vo.item_code }" type="text"
+										class="form-control validate" data-large-mode="true"
+										style="color:black; font-weight:bold;"
+										readonly/>
+								</div>
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+								</div>
+								
+							</div>
+							<div class="form-group mb-3">
+								<label for="item_title">상품명 </label> <input
+									id="item_title" name="item_title" type="text" value = "${vo.item_title }"
+									class="form-control validate" required />
+							</div>
+							<div class="row">
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_price">판매가
+									</label> <input id="item_price" name="item_price" type="text" value="${vo.item_price }"
+										class="form-control validate" data-large-mode="true" />
+								</div>
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_num">재고
+									</label> <input id="item_num" name="item_num" type="text" value="${vo.item_num }"
+										class="form-control validate" required />
+								</div>
+							</div>
+							<div class="row">
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_size">사이즈/크기
+									</label> <input id="item_size" name="item_size" type="text" value="${vo.item_size }"
+										class="form-control validate" required />
+								</div>
+							</div>
+							<div class="form-group mb-3">
+								<label for="item_content">상품설명</label>
+								<textarea id="item_content" name="item_content"
+									class="form-control validate" rows="3" required>${vo.item_content }</textarea>
+							</div>
 
-    <script>
-      $(function() {
-        $("#expire_date").datepicker({
-          defaultDate: "10/22/2020"
+							<hr />
+							<div class="row">
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_group">분류</label> <select
+										class="custom-select tm-select-accounts" id="item_group"
+										name="item_group">
+										<option value= "MG" 
+												<c:if test="${vo.item_group eq 'MG' }"> selected </c:if>
+												>머그</option>
+										<option value="GL"
+												<c:if test="${vo.item_group eq 'GL' }"> selected </c:if>
+												>글라스</option>
+										<option value="TB"
+												<c:if test="${vo.item_group eq 'TB' }"> selected </c:if>
+												>텀블러</option>
+										<option value="TM"
+												<c:if test="${vo.item_group eq 'TM' }"> selected </c:if>
+												>보온병</option>
+										<option value="AC"
+												<c:if test="${vo.item_group eq 'AC' }"> selected </c:if>
+												>액세서리</option>
+										<option value="CO"
+												<c:if test="${vo.item_group eq 'CO' }"> selected </c:if>
+												>커피용품/원두</option>
+									</select>
+								</div>
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_theme">테마</label> <select
+										class="custom-select tm-select-accounts" id="item_theme"
+										name="item_theme">
+										<option value="20 체리블라썸"
+											<c:if test="${vo.item_theme eq '20 체리블라썸' }"> selected </c:if>
+											>20 체리블라썸</option>
+										<option value="베라왕 X 스타벅스"
+											<c:if test="${vo.item_theme eq '베라왕 X 스타벅스' }"> selected </c:if>
+											>베라왕 X 스타벅스</option>
+										<option value="시티투어 콜렉션"
+											<c:if test="${vo.item_theme eq '시티투어 콜렉션' }"> selected </c:if>
+											>시티투어 콜렉션</option>
+										<option value="스프링 콜렉션"
+											<c:if test="${vo.item_theme eq '스프링 콜렉션' }"> selected </c:if>
+										>	스프링 콜렉션</option>
+									</select>
+								</div>
+							</div>
+							
+							<fmt:parseDate value="${vo.item_regDate}" pattern="yyyy-MM-dd HH:mm:ss" var="temp" />
+							<fmt:formatDate value="${temp }" pattern="yyyy-MM-dd" var="regDate"/>
+							
+							<div class="row">
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_regdate">등록일자
+									</label> <input id="item_regdate" name="item_regdate" type="text" value="${regDate }"
+										class="form-control validate" data-large-mode="true" />
+								</div>
+
+							</div>
+							<br />
+						<div class="form group">
+								<label style="color:#fff;">파일업로드</label>
+							</div>
+				<div class="row" id="photoRow" style="height:250px;">
+								<div class="form-group mb-3 col-xs-12 col-sm-4">
+									<div class="tm-product-img-dummy mx-auto"
+										  >
+										<img id = "photoEdit1" name="photo1" width="100%" height="100%"
+											src="../fileFolder/${vo.item_mainimg }" onclick="preview(1);">
+									<input type="file" id = "fileEdit1" name="fileInput1" style="display: none"
+									>
+									</div>
+								</div>
+								
+								<div class="form-group mb-3 col-xs-12 col-sm-4">
+									<div class="tm-product-img-dummy mx-auto">
+										<img id = "photoEdit2" name="photo2" width="100%" height="100%"
+											src="../fileFolder/${vo.item_thumbnailimg }" onclick="preview(2);">
+									<input type="file" id = "fileEdit2" name="fileInput2" style="display: none">
+									</div>
+								</div>
+								
+								<div class="form-group mb-3 col-xs-12 col-sm-4">
+									<div class="tm-product-img-dummy mx-auto">
+										<img id = "photoEdit3" name="photo3" width="100%" height="100%"
+											src="../fileFolder/${vo.item_contentimg }"
+											 onclick="preview(3);">
+									<input type="file" id = "fileEdit3" name="fileInput3" style="display: none">
+									</div>
+								</div>
+
+							</div>
+				<br/>
+				<div class="row">
+				
+				<div class="col-6">
+					<input type="button" id="btnUpdate"
+						class="btn btn-primary btn-block text-uppercase" value="저장하기">
+				</div>
+				
+				<div class="col-6">
+					<input type="button" id="btnDelete" onclick="deleteItem('${vo.item_code}')"
+						class="btn btn-primary btn-block text-uppercase" value="삭제하기">
+				</div>
+				
+				
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
+		<!-- row -->
+</div>
+	<!-- container -->
+<div id = result>
+</div>
+	<script>
+	
+	$('#proNav').addClass('active');
+
+    $(function() {
+        $("#item_regdate").datepicker({
+          defaultDate: "2020-03-26"
         });
       });
+
     </script>
   </body>
 </html>

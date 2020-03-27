@@ -7,6 +7,9 @@ public class Shopping_MemberVo {
 	String mName;
 	String phone;
 	String address;
+	String zip;
+	String addr1;
+	String addr2;
 	String email;
 	String rDate;
 	int savedMoney;
@@ -19,7 +22,28 @@ public class Shopping_MemberVo {
 		
 	}	
 	
+	public Shopping_MemberVo (String pwd, String mName, String phone , String email, String zip, String addr1, String addr2) {
+		this.pwd = pwd;
+		this.mName = mName;
+		this.phone = phone;
+		this.email = email;
+		this.zip = zip;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		
+	}	
 	
+	public Shopping_MemberVo (String mId, String pwd, String mName, String phone , String email, String zip, String addr1, String addr2) {
+		this.mId = mId;
+		this.pwd = pwd;
+		this.mName = mName;
+		this.phone = phone;
+		this.email = email;
+		this.zip = zip;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		
+	}	
 	
 	
 	public String getmId() {
@@ -75,6 +99,24 @@ public class Shopping_MemberVo {
 	}
 	public void setAdmin(int admin) {
 		this.admin = admin;
+	}
+	public String getZip() {
+		return zip;
+	}
+	public void setZip(String zip) {
+		this.zip = zip;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
 	}
 	
 	

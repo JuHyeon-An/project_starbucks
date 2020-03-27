@@ -2,6 +2,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -13,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.FileUpload;
 import bean.ProductDao;
+import bean.ProductDao_YD;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
@@ -44,6 +46,14 @@ public class ServletJH extends HttpServlet{
 		case "/add_product.stb":
 			insertProducts(req, resp);
 			break;
+			
+		case "/edit_product.stb":
+			editProducts(req, resp);
+			break;
+			
+		case "/edit_productR.stb":
+			editProductsR(req, resp);
+			break;
 		}
 
 	}
@@ -51,6 +61,15 @@ public class ServletJH extends HttpServlet{
 	
 	// 주현 : admin - 상품 조회
 	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list = dao.select();
+		System.out.println(list.get(0).getItem_code());
+		System.out.println(list.get(1).getItem_code());
+		req.setAttribute("list", list);
+		
 		String path= urlAdmin+"/products.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -91,6 +110,50 @@ public class ServletJH extends HttpServlet{
 		String path= urlAdmin+"/add_product_result.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+	}
+	
+	// 주현 : admin - 상품 등록
+	public void editProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		String item = req.getParameter("hidden_code");
+		
+		ProductDao dao = new ProductDao();
+		ProductVo vo = dao.view(item);
+		
+		req.setAttribute("vo", vo);
+		String path= urlAdmin+"/edit_product.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	public void editProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		System.out.println("여기까지 오긴 하나..");
+		String msg = req.getParameter("message");
+		System.out.println(msg);
+
+		ProductDao dao = new ProductDao();
+		FileUpload upload = new FileUpload(req, resp);
+		ProductVo vo = new ProductVo();
+		String test = req.getParameter("item_code");
+		System.out.println(test);
+		int result = 0;
+			// 사진을 포함해서 모든 폼태그가 담겨진 vo가 반환
+			
+			result = dao.update(vo);
+			// 폼태그 담은 vo를 실제로 DB에 넣어줌
+			
+			PrintWriter out = resp.getWriter();
+			out.print(test);
+			
+		/*
+		String path= urlAdmin+"/edit_product.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		*/
 	}
 	
 }
