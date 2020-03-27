@@ -27,7 +27,7 @@
     </style>
     
     <c:forEach var='vo' items='${list }'>
-    
+ <form id='view_frm' name='view_frm' method='post'>  
     <div class="bg-light py-3">
         <div class="container">
             <div class="row">
@@ -72,7 +72,7 @@
               <div class="input-group-prepend">
                 <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
-              <input id='ea' type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input id='itemEa' type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               <div class="input-group-append">
                 <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
               </div>
@@ -87,7 +87,7 @@
 				<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+				    <p><a href="#" onclick='cart_go()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 				<%}%>
 				    
 				<%if(session.getAttribute("mId") == null){ %> 
@@ -95,22 +95,22 @@
 				<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="./my/order.jsp" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+				    <p><a href="./my/order.jsp" id='btnOrder' class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
 				<%}%>
 				
-					<p><a href="listPage.pl" class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
+					<p><a href="listPage.pl" onclick='' class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
 				</div>
 
           </div>
         </div>
       </div>
     </div>
-           	<form id='view_frm' name='view_frm' action="">
-	        <input type="hidden" id="oriPrice" value='${vo.item_price }' />
+           	
+	        <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
             <input type="hidden" id="totPrice" value='' />
-            <input type="text" id="oriEa" value='1' />
-            <input type="text" id="itemEa" value='1' />
-			</form>
+            <input type="hidden" name="item_code" value='${item_code }'/>
+
+</form>
             
             
 
@@ -118,153 +118,9 @@
 </c:forEach>
 <script src="/starbucks/js/productlist.js"></script>
 <script>
-let priceplus = function(){
-	let price = parseInt($('#price').text());
-	let oriprice = parseInt($('#oriPrice').val());
-	
-	let ea = parseInt($('#itemEa').text());
-	let oriea = parseInt($('#oriEa').text());
-	
-	$('#price').text(price+oriprice);
-	$('#totPrice').val(price+oriprice);
-	$('#itemEa').text(ea+oriea);
+let cart_go = function(){
+	$('#view_frm').attr('action','/my/cart.my').submit();
 }
-let priceminus = function(){
-	let price = parseInt($('#price').text());
-	let oriprice = parseInt($('#oriPrice').val());
-	let ea = parseInt($('#itemEa').text());
-	let oriea = parseInt($('#oriEa').val());
-	
-	$('#price').text(price-oriprice);
-	$('#totPrice').val(price-oriprice);
-	$('#itemEa').text(ea-oriea);
-}
-
-let alert_login = function(){
-	Swal.fire({
-		  icon: 'error',
-		  title: 'Oops...',
-		  text: '로그인 후 이용해주세요 !',
-		  footer: "<a href='/starbucks/member/login.jsp'>로그인화면 이동</a>"
-		})
-}
-
-
-
-
-let imgchang = function(num){
-	
-	$('#imgView').attr('src',$('#img'+num).attr('src'));
-	zoom();
-	
-}
-let zoom = function () {
-	 
-    var target = $('.target');
-    //1
-    var zoom = target.data('zoom');
- 
-    $(".wrap")
-        .on('mousemove', magnify)
-        .prepend("<div class='magnifier'></div>")
-        .children('.magnifier').css({
-            "background": "url('" + target.attr("src") + "') no-repeat",
-            // 2
-            "background-size": target.width() * zoom + "px " + target.height() * zoom+ "px"
-        });
- 
-    var magnifier = $('.magnifier');
- 
-    function magnify(e) {
- 
-        // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
-        var mouseX = e.pageX - $(this).offset().left;
-        var mouseY = e.pageY - $(this).offset().top;
- 
-        // 컨테이너 밖으로 마우스가 벗어나면 돋보기를 없앤다.
-        if (mouseX < $(this).width() && mouseY < $(this).height() && mouseX > 0 && mouseY > 0) {
-            magnifier.fadeIn(100);
-        } else {
-            magnifier.fadeOut(100);
-        }
- 
-        //돋보기가 존재할 때
-        if (magnifier.is(":visible")) {
- 
-            // 3
-            var rx = -(mouseX * zoom - magnifier.width() /2 );
-            var ry = -(mouseY * zoom - magnifier.height() /2 );
- 
-            //돋보기를 마우스 위치에 따라 움직인다.
-            //돋보기의 width, height 절반을 마우스 좌표에서 차감해 마우스와 돋보기 위치를 일치시킨다.
-            var px = mouseX - magnifier.width() / 2;
-            var py = mouseY - magnifier.height() / 2;
- 
-            //적용
-            magnifier.css({
-                left: px,
-                top: py,
-                backgroundPosition: rx + "px " + ry + "px"
-            });
-        }
-    }
-};
-
-
-
-$( function () {
-	 
-    var target = $('.target');
-    //1
-    var zoom = target.data('zoom');
- 
-    $(".wrap")
-        .on('mousemove', magnify)
-        .prepend("<div class='magnifier'></div>")
-        .children('.magnifier').css({
-            "background": "url('" + target.attr("src") + "') no-repeat",
-            // 2
-            "background-size": target.width() * zoom + "px " + target.height() * zoom+ "px"
-        });
- 
-    var magnifier = $('.magnifier');
- 
-    function magnify(e) {
- 
-        // 마우스 위치에서 .magnify의 위치를 차감해 컨테이너에 대한 마우스 좌표를 얻는다.
-        var mouseX = e.pageX - $(this).offset().left;
-        var mouseY = e.pageY - $(this).offset().top;
- 
-        // 컨테이너 밖으로 마우스가 벗어나면 돋보기를 없앤다.
-        if (mouseX < $(this).width() && mouseY < $(this).height() && mouseX > 0 && mouseY > 0) {
-            magnifier.fadeIn(100);
-        } else {
-            magnifier.fadeOut(100);
-        }
- 
-        //돋보기가 존재할 때
-        if (magnifier.is(":visible")) {
- 
-            // 3
-            var rx = -(mouseX * zoom - magnifier.width() /2 );
-            var ry = -(mouseY * zoom - magnifier.height() /2 );
- 
-            //돋보기를 마우스 위치에 따라 움직인다.
-            //돋보기의 width, height 절반을 마우스 좌표에서 차감해 마우스와 돋보기 위치를 일치시킨다.
-            var px = mouseX - magnifier.width() / 2;
-            var py = mouseY - magnifier.height() / 2;
- 
-            //적용
-            magnifier.css({
-                left: px,
-                top: py,
-                backgroundPosition: rx + "px " + ry + "px"
-            });
-        }
-    }
-});
-
-
 
 </script>
 
