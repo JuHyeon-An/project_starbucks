@@ -54,12 +54,12 @@
                            %>
                            
                             <div class="item">
-                                <div class="block-4 text-center">
+                                <div class="block-4 text-center" onclick="item_view('<%=vo.getItem_code()%>')"  style="cursor:pointer">
                                     <figure class="block-4-image">
                                         <img src="./fileFolder/<%=vo.getItem_thumbnailimg() %>" alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
-                                        <h3><a href="#"><%=vo.getItem_title() %></a></h3>
+                                        <h3><a href="#" ><%=vo.getItem_title() %></a></h3>
                                         <p class="mb-0"><%=vo.getItem_size() %></p>
                                         <p class="text-primary font-weight-bold"><%=vo.getItem_price() %>원</p>
                                     </div>
@@ -96,12 +96,12 @@
                         	   if(i<=6){
                            %>
                             <div class="item">
-                                <div class="block-4 text-center">
+                                <div class="block-4 text-center" onclick="item_view('<%=vo.getItem_code()%>')"  style="cursor:pointer">
                                     <figure class="block-4-image">
                                         <img src="./fileFolder/<%=vo.getItem_thumbnailimg() %>" alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
-                                        <h3><a href="#"><%=vo.getItem_title() %></a></h3>
+                                        <h3><a href="#" ><%=vo.getItem_title() %></a></h3>
                                         <p class="mb-0">><%=vo.getItem_size() %></p>
                                         <p class="text-primary font-weight-bold"><%=vo.getItem_price() %>원</p>
                                     </div>
@@ -140,4 +140,8 @@
                 </div>
             </div>
         </div>
+        
+        <form id='pd_frm' name='pd_frm' method='post'>
+        	<input type="hidden" name="pd_findStr" id ='pd_findStr' value='' />
+        </form>
         <%@include file="./layout/footer.jsp" %>
