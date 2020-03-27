@@ -58,7 +58,9 @@ public class MyServlet extends HttpServlet{
 		//System.out.println(url + tempUrl);
 		
 		switch(tempUrl) {
-		
+		case "/cart.my":
+			cart(req, resp);
+			break;
 		case "/orderResult.my":
 			orderResult(req, resp);
 			break;
@@ -67,6 +69,9 @@ public class MyServlet extends HttpServlet{
 			break;
 		case "/outResult.my":
 			outResult(req, resp);
+			break;
+		case "/order.my":
+			order(req, resp);
 			break;
 		}
 	}

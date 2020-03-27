@@ -51,6 +51,7 @@
             </div>
             <div class='row'>
             <br />
+            
             <img id='img1' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
             <img id='img2'  src="./fileFolder/${vo.item_mainimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
             <img id='img3'  src="./fileFolder/${vo.item_contentimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
@@ -72,7 +73,9 @@
               <div class="input-group-prepend">
                 <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
+              
               <input id='itemEa' type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              
               <div class="input-group-append">
                 <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
               </div>
@@ -87,7 +90,7 @@
 				<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="#" onclick='cart_go()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+				    <p><a href="#" onclick="cart_go('cart')" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 				<%}%>
 				    
 				<%if(session.getAttribute("mId") == null){ %> 
@@ -95,7 +98,7 @@
 				<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="./my/order.jsp" id='btnOrder' class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+				    <p><a href="#" id='btnOrder' onclick="cart_go('order')" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
 				<%}%>
 				
 					<p><a href="listPage.pl" onclick='' class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
@@ -118,8 +121,8 @@
 </c:forEach>
 <script src="/starbucks/js/productlist.js"></script>
 <script>
-let cart_go = function(){
-	$('#view_frm').attr('action','/my/cart.my').submit();
+let cart_go = function(page){
+	$('#view_frm').attr('action','/starbucks/my/'+page+'.my').submit();
 }
 
 </script>
