@@ -12,8 +12,8 @@
 							<h2 class="tm-block-title d-inline-block">아이템 편집</h2>
 						</div>
 					</div>
-					<form id="editFrm" name="editFrm" method="post" enctype="multipart/form-data" 
-						class="tm-edit-product-row">
+					<form id="editFrm" name="editFrm" method="post" enctype= "multipart/form-data"
+						class="tm-edit-product-row" action="edit_productR.stb">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							
 							<div class="row">
@@ -160,9 +160,24 @@
 					<input type="button" id="btnDelete" onclick="deleteItem('${vo.item_code}')"
 						class="btn btn-primary btn-block text-uppercase" value="삭제하기">
 				</div>
-				
-				
 				</div>
+				
+				<br/>
+				<hr/>
+				<div class="row">
+				<div class="col-9"></div>
+				<div class="col-3">
+					<div class="row">
+					<span class="col-6 bottom_nav" onclick="history.back();"
+						>목록으로</span>
+					<span class="col-6 bottom_nav" onclick="$('html').scrollTop(0);"
+						>맨 위로</span>
+						</div>
+				</div>
+				</div>
+				<input type="hidden" name="hiddenFile1" id="hiddenFile1" value="${vo.item_mainimg }">
+				<input type="hidden" name="hiddenFile2" id="hiddenFile2" value="${vo.item_thumbnailimg }">
+				<input type="hidden" name="hiddenFile3" id="hiddenFile3" value="${vo.item_contentimg }">
 				</form>
 			</div>
 		</div>

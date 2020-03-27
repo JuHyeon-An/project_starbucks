@@ -11,52 +11,44 @@ function btnFunc(){
 		$(this).addClass('active');
 	})
 	
+	
+	if($('#btnUpdate')!=null){
+		$('#btnUpdate').click(function(){
+			$('#editFrm').submit();
+		})
+	}
+	
+	
+	/*
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').click(function(){
 			alert("눌린거지..?");
-			//$('#editFrm').attr('action', 'edit_productR.stb').submit();
-			//let param = $('#editFrm').serialize();
-			
-			/*
-			$.ajax({
-				url : 'edit_productR.stb',
-				type : 'post',
-				data : param,
-				dataType : 'html',
-				success : function(data){
-					$('#result').html(data);
-				}
-			});
-			});
-		*/
-		        let form = $("#editFrm")[0];
-		        console.log($("#editFrm")[0]);
-		        let formData = new FormData(form);
-		        /*
+
+				let form = $("#editFrm").serialize;
+		        console.log(form);
 		        formData.append("message", "ajax로 파일 전송하기");
 		        formData.append("file", $("#fileEdit1")[0].files[0]);
 		        formData.append("file", $("#fileEdit2")[0].files[0]);
 		        formData.append("file", $("#fileEdit3")[0].files[0]);
-				*/
-		        	$.ajax({
-		              url : "edit_product_result.jsp"
-		            , type : "POST"
-		            , enctype : 'multipart/form-data'
-		            , processData : false
-		            , contentType : false
-		            , data : formData
-		            , success:function(data) {
-		            	alert("complete");
+		        $.ajax({
+		            url : 'edit_product_result.jsp',
+		            type : 'post',
+		            data : form,
+		            dataType : 'html',
+		            error: function(xhr, status, error){
+		                alert(error);
+		            },
+		            success : function(data){
 		                alert(data);
-		            }
+		            },
 		        });
 		});
-}
+	}
+	 */
 }
 //let table = $('#selectTable').DataTable();
 
 let deleteItem = function(item_code){
-	let param = "item_code=" + item_code;
 	
 	Swal.fire({
 		  title: '정말 삭제하시겠습니까?',
@@ -70,7 +62,7 @@ let deleteItem = function(item_code){
 		}).then((result) => {
 		  if (result.value) {
 			  // 확인을 눌렀으면
-				$.post('delete_product_result.jsp', param, function(data) {
+				$.post('delete_productR.stb', {"item_code" : item_code}, function(data) {
 					// data가 1이면 삭제된것, 1보다 작으면 오류
 					Swal.fire(
 							'Deleted!',
@@ -82,7 +74,7 @@ let deleteItem = function(item_code){
 							// $('#reportsPage').load('select_product.stb');
 						}
 					})
-				if(data>1){
+				if(data<1){
 					// 삭제될 때 오류가 발생한 경우
 						  Swal.fire(
 							'삭제 중 오류발생',
@@ -202,7 +194,7 @@ function makeDiv(main){
 			let ele = e.target; //event.srcElement : 순수 자바스크립트 코드로 처리했을 때.
 			let url = ele.files[0];
 			// 이벤트가 발생한 파일의 경로
-			
+			let fileName = url.name;
 			let reader = new FileReader();
 			reader.readAsDataURL(url);
 			
@@ -212,6 +204,11 @@ function makeDiv(main){
 				    img.src = ev.target.result;
 					// 실제로 읽혀진 파일
 					$('#photoEdit'+index).attr('src', img.src);
-				  }
+
+					if($('#hiddenFile'+index)!=null){
+						$('#hiddenFile'+index).val(fileName);
+					}
+				  
+			  }
 		});
 	}
