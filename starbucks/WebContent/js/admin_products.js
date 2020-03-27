@@ -45,6 +45,11 @@ function btnFunc(){
 		});
 	}
 	 */
+	if($('.category-input')!=null){
+		$('.category-input').on({
+			click:function(){ $(this).removeAttr('readonly'); }
+		});
+	}
 }
 //let table = $('#selectTable').DataTable();
 
