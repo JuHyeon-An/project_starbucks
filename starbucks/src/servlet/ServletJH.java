@@ -131,27 +131,24 @@ public class ServletJH extends HttpServlet{
 	public void editProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
-		
+		System.out.println("여기까지 오긴 하나..");
+		String msg = req.getParameter("message");
+		System.out.println(msg);
+
 		ProductDao dao = new ProductDao();
 		FileUpload upload = new FileUpload(req, resp);
-		
+		ProductVo vo = new ProductVo();
+		String test = req.getParameter("item_code");
+		System.out.println(test);
 		int result = 0;
-		
-		if(upload.uploadFormCheck()) { // enctype = 'multipart/form-data'
-			ProductVo vo = upload.uploading();
 			// 사진을 포함해서 모든 폼태그가 담겨진 vo가 반환
 			
 			result = dao.update(vo);
 			// 폼태그 담은 vo를 실제로 DB에 넣어줌
 			
 			PrintWriter out = resp.getWriter();
-			out.print(result);
+			out.print(test);
 			
-		}else {
-			System.out.println("error");
-			resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
-		}
-		
 		/*
 		String path= urlAdmin+"/edit_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

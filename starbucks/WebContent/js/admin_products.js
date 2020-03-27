@@ -13,9 +13,11 @@ function btnFunc(){
 	
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').click(function(){
+			alert("눌린거지..?");
 			//$('#editFrm').attr('action', 'edit_productR.stb').submit();
-			let param = $('#editFrm').serialize();
-
+			//let param = $('#editFrm').serialize();
+			
+			/*
 			$.ajax({
 				url : 'edit_productR.stb',
 				type : 'post',
@@ -26,32 +28,28 @@ function btnFunc(){
 				}
 			});
 			});
-		
-		
-		 function ajaxFileUpload() {
-
-		        var form = jQuery("#editFrm")[0];
-		        var formData = new FormData(form);
+		*/
+		        let form = $("#editFrm")[0];
+		        console.log($("#editFrm")[0]);
+		        let formData = new FormData(form);
 		        formData.append("message", "ajax로 파일 전송하기");
-		        formData.append("file", jQuery("#fileEdit1")[0].files[0]);
-		        formData.append("file", jQuery("#fileEdit2")[0].files[0]);
-		        formData.append("file", jQuery("#fileEdit3")[0].files[0]);
+		        formData.append("file", $("#fileEdit1")[0].files[0]);
+		        formData.append("file", $("#fileEdit2")[0].files[0]);
+		        formData.append("file", $("#fileEdit3")[0].files[0]);
 
-		        jQuery.ajax({
-		              url : "./ajaxFormReceive.php"
+		        	$.ajax({
+		              url : "edit_productR.stb"
 		            , type : "POST"
 		            , processData : false
 		            , contentType : false
 		            , data : formData
-		            , success:function(json) {
-		                var obj = JSON.parse(json);
+		            , success:function(data) {
+		                alert(data);
 		            }
 		        });
-		    }
-		
-	}
+		});
 }
-
+}
 //let table = $('#selectTable').DataTable();
 
 let deleteItem = function(item_code){
@@ -212,5 +210,5 @@ function makeDiv(main){
 					// 실제로 읽혀진 파일
 					$('#photoEdit'+index).attr('src', img.src);
 				  }
-		})
+		});
 	}
