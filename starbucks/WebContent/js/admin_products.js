@@ -32,18 +32,21 @@ function btnFunc(){
 		        let form = $("#editFrm")[0];
 		        console.log($("#editFrm")[0]);
 		        let formData = new FormData(form);
+		        /*
 		        formData.append("message", "ajax로 파일 전송하기");
 		        formData.append("file", $("#fileEdit1")[0].files[0]);
 		        formData.append("file", $("#fileEdit2")[0].files[0]);
 		        formData.append("file", $("#fileEdit3")[0].files[0]);
-
+				*/
 		        	$.ajax({
-		              url : "edit_productR.stb"
+		              url : "edit_product_result.jsp"
 		            , type : "POST"
+		            , enctype : 'multipart/form-data'
 		            , processData : false
 		            , contentType : false
 		            , data : formData
 		            , success:function(data) {
+		            	alert("complete");
 		                alert(data);
 		            }
 		        });
