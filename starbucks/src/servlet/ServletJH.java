@@ -58,6 +58,10 @@ public class ServletJH extends HttpServlet{
 		case "/delete_productR.stb":
 			deleteProductsR(req, resp);
 			break;
+			
+		case "/product_group.stb":
+			editGroup(req, resp);
+			break;
 		}
 
 	}
@@ -170,6 +174,15 @@ public class ServletJH extends HttpServlet{
 		int result = dao.deleteItem(req.getParameter("item_code"));
 		PrintWriter out = resp.getWriter();
 		out.print(result);
+	}
+	
+	public void editGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		String path= urlAdmin+"/product_category.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
 	}
 	
 }
