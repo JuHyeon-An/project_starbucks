@@ -54,10 +54,7 @@
             <img id='img1' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
             <img id='img2'  src="./fileFolder/${vo.item_mainimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
             <img id='img3'  src="./fileFolder/${vo.item_contentimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
-            
-            
-<!--             <img id='img2'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/03/[9300000002364]_20200304165033804.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' /> -->
-<!--             <img id='img3'  src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/04/[11100513]_20190429144456596.jpg" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' /> -->
+
             </div>
           </div>
           <div class="offset-1 col-md-6">
@@ -68,30 +65,14 @@
             <p class="mb-4">재고 : ${vo.item_num }</p>
             <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p>
             <p><strong id='price'class="text-primary h4">${vo.item_price }</strong><strong class='text-primary h4'>원</strong></p>
-            <input type="hidden" id="oriprice" value='${vo.item_price }' />
-            <input type="hidden" id="sumprice" value='' />
-            <!-- 
-            <div class="mb-1 d-flex">
-              <label for="option-sm" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> <span class="d-inline-block text-black">Small</span>
-              </label>
-              <label for="option-md" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span> <span class="d-inline-block text-black">Medium</span>
-              </label>
-              <label for="option-lg" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> <span class="d-inline-block text-black">Large</span>
-              </label>
-              <label for="option-xl" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> <span class="d-inline-block text-black"> Extra Large</span>
-              </label>
-            </div>
-             -->
+
+
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
                 <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
-              <input type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input id='ea' type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               <div class="input-group-append">
                 <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
               </div>
@@ -99,31 +80,39 @@
 
             </div>
             
-    <div class='mb-5 form-inline'>     
-	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
-	<%}%>
-	
-	<%if(session.getAttribute("mId") != null){ %> 
-	    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
-	<%}%>
-	    
-	<%if(session.getAttribute("mId") == null){ %> 
-	      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
-	<%}%>
-	
-	<%if(session.getAttribute("mId") != null){ %> 
-	    <p><a href="./my/order.jsp" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
-	<%}%>
-	
-		<p><a href="listPage.pl" class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
-	</div>
+            <!-- 로그인 확인해서 장바구니, 주문하기 버튼 다르게 생성해줌 -->
+			    <div class='mb-5 form-inline'>     
+				<%if(session.getAttribute("mId") == null){ %> 
+				      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+				<%}%>
+				
+				<%if(session.getAttribute("mId") != null){ %> 
+				    <p><a href="./my/cart.jsp" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+				<%}%>
+				    
+				<%if(session.getAttribute("mId") == null){ %> 
+				      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary offset-1">구매하기</a></p>
+				<%}%>
+				
+				<%if(session.getAttribute("mId") != null){ %> 
+				    <p><a href="./my/order.jsp" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+				<%}%>
+				
+					<p><a href="listPage.pl" class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
+				</div>
 
           </div>
         </div>
       </div>
     </div>
-
+           	<form id='view_frm' name='view_frm' action="">
+	        <input type="hidden" id="oriPrice" value='${vo.item_price }' />
+            <input type="hidden" id="totPrice" value='' />
+            <input type="text" id="oriEa" value='1' />
+            <input type="text" id="itemEa" value='1' />
+			</form>
+            
+            
 
 
 </c:forEach>
@@ -131,15 +120,24 @@
 <script>
 let priceplus = function(){
 	let price = parseInt($('#price').text());
-	let oriprice = parseInt($('#oriprice').val());
+	let oriprice = parseInt($('#oriPrice').val());
+	
+	let ea = parseInt($('#itemEa').text());
+	let oriea = parseInt($('#oriEa').text());
+	
 	$('#price').text(price+oriprice);
-	$('#sumprice').val(price+oriprice);
+	$('#totPrice').val(price+oriprice);
+	$('#itemEa').text(ea+oriea);
 }
 let priceminus = function(){
 	let price = parseInt($('#price').text());
-	let oriprice = parseInt($('#oriprice').val());
+	let oriprice = parseInt($('#oriPrice').val());
+	let ea = parseInt($('#itemEa').text());
+	let oriea = parseInt($('#oriEa').val());
+	
 	$('#price').text(price-oriprice);
-	$('#sumprice').val(price-oriprice);
+	$('#totPrice').val(price-oriprice);
+	$('#itemEa').text(ea-oriea);
 }
 
 let alert_login = function(){
