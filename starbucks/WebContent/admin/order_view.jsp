@@ -2,7 +2,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@include file="../layout/header_admin.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -46,7 +45,7 @@
 	                          
 	                        
 	                         	
-	                         	 <td>  
+	                         	 <td>
 	                            <input type='text' name='orderNumber' id='orderNumber' value='${param.orderNumber}' readonly/>
 								</td>
 								<td>
@@ -68,10 +67,9 @@
 	                            <input type='text' size='8' name='orderStatus' id='orderStatus' value='${param.orderStatus}'/>
 	                            
 	                            <select name='status' id='status'>
-	                            <option value='1'>주문취소</option>
-	                            <option value='2'>승인대기</option>
-	                            <option value='3'>주문완료</option>
-	                            
+	                            <option value='${param.orderStatus}'>주문취소</option>
+	                            <option value='${param.orderStatus}'>승인대기</option>
+	                            <option value='${param.orderStatus}'>주문완료</option>
 	                            </select>
 	                          	</td>
 	                            
@@ -93,11 +91,11 @@
 <input type= 'button'  id='btnModify' name='btnModify' value='수정'/>
 
 </form>
+
+${msg };
 	
-${msg }
 </body>
 <script>
 func();
 </script>
 </html>
-<%@include file="../layout/footer_admin.jsp" %>

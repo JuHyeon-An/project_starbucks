@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
-<%@include file="../layout/header_admin.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
@@ -76,10 +75,29 @@
 	            </div>
 
 	
+		<div id='page'>
+		<c:if test="${page.nowPage >1}">
+			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'/>
+		</c:if>
 		
+		<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
+			<input type='button' value='${i }'
+			${ (i== page.nowPage)? "class='here'" : "class = 'ho'" }
+			 onclick='goPage(${i })'/>
+			
+		</c:forEach>	
+		
+		<c:if test="${page.nowPage<page.totPage }">
+			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'/>
+		</c:if>
+	</div>
 </form>
 	
 
+<script>
+func();
+$('#orderNav').addClass('active');
+
+</script>
 </body>
 </html>
-<%@include file="../layout/footer_admin.jsp" %>
