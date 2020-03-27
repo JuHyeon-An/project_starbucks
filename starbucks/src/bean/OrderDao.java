@@ -23,7 +23,7 @@ public class OrderDao {
 		ResultSet rs = null;
 		int totList = 0;
 		
-		System.out.println(" dao   시자자작");
+		//System.out.println(" dao   시자자작");
 			  sql= " select count(ordernumber) cnt "
 				  + " from shopping_order "
 				  + " where ORDERNUMBER like ? "
@@ -39,7 +39,7 @@ public class OrderDao {
 			}
 			page.setTotListSize(totList);
 			page.pageCompute();
-			System.out.println("okdodododo");
+
 			sql= "select * from( "
 				+ " select rownum rn, A.*from( "
 				+ " 	select ORDERNUMBER, "  
@@ -64,7 +64,7 @@ public class OrderDao {
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				System.out.println("검색어가왜안나오지?" + page.getFindStr());
+		
 				OrderVo vo = new OrderVo();
 				vo.setOrderNumber(rs.getString("ORDERNUMBER"));
 				vo.setMemberId(rs.getString("MEMBER_ID"));
@@ -78,7 +78,7 @@ public class OrderDao {
 //				vo.setGetAddress(rs.getString("GET_ADDRESS"));
 				vo.setOrderregDate(rs.getString("ORDER_REGDATE"));
 				vo.setOrderStatus(rs.getInt("ORDER_STATUS"));
-			    	list.add(vo);
+			    list.add(vo);
 			
 				
 			}
@@ -87,19 +87,89 @@ public class OrderDao {
 			e.printStackTrace();
 			
 		}
-		for(OrderVo vo:list) {
-		System.out.println("여긴다오");
-		System.out.println(vo.getOrderNumber());
-		System.out.println(vo.getMemberId());
-		System.out.println(vo.getItemCode());
-		System.out.println(vo.getOrderNum());
-		System.out.println(vo.getOrderPrice());
-		System.out.println(vo.getOrderregDate());
-		System.out.println(vo.getOrderStatus());
-		}
+//		for(OrderVo vo:list) {
+//		System.out.println("여긴다오");
+//		System.out.println(vo.getOrderNumber());
+//		System.out.println(vo.getMemberId());
+//		System.out.println(vo.getItemCode());
+//		System.out.println(vo.getOrderNum());
+//		System.out.println(vo.getOrderPrice());
+//		System.out.println(vo.getOrderregDate());
+//		System.out.println(vo.getOrderStatus());
+//		}
 		
 		return list;
 	}
+	
+	
+	public String modify(OrderVo vo) {
+	System.out.println("modify dao 시작");
+	String msg ="수정됐어요";
+	int r = 0;
+	System.out.println(vo.orderNumber+ vo.orderStatus +"아이디랑 status");
+	
+	String	sql= "update shopping_order set order_status= ? "
+				+ " where orderNumber = ?  ";
+		
+		System.out.println(" 수정 da o  o oo o o o o o o");
+	try {
+		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, vo.getOrderStatus());
+		ps.setString(2, vo.getOrderNumber());
+		
+		System.out.println("알에스 시작전");
+		System.out.println(" status"+vo.getOrderStatus());
+		System.out.println(" number" + vo.getOrderNumber());
+		 
+		r = ps.executeUpdate(); 
+		 
+		System.out.println(r + "알에스 시작후 ");
+		if(r<1) {
+			System.out.println(r + "r값 ");
+			
+			throw new Exception("수정하는데 오류발새애앵");
+		
+		}
+		conn.commit();
+	}catch(Exception ex) {
+		ex.printStackTrace();
+	}finally {
+		
+		System.out.println(msg);
+		
+		return msg;
+	}
+	
+	
+	}
+	
+	///////////////////////////////////////////
+//	public OrderVo view(String memberId) {
+//		OrderVo vo = new OrderVo();
+//		List<OrderVo> list = new ArrayList<OrderVo>();
+//		try {
+//			String sql= " select *from shopping_order where member_id=? ";
+//			PreparedStatement ps = conn.prepareStatement(sql);
+//			ps.setString(1, memberId);
+//			
+//			//System.out.println("mid 값 들어오나"+memberId);
+//			ResultSet rs = ps.executeQuery();
+//			if(rs.next()) {
+//				vo.setMemberId(memberId);
+//			//System.out.println("view 의 아이디 들어오나");	
+//			}
+//		System.out.println("뷰아이디 들어오냐구");
+//		
+//		}catch(Exception ex) {
+//			
+//		}finally {
+//			return vo;
+//		}
+//		
+//		
+//		
+//		
+//	}
 	
 
 }
