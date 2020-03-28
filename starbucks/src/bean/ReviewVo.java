@@ -1,15 +1,14 @@
 package bean;
 
-import java.util.List;
-
 public class ReviewVo {
 	int review_postnum;
 	String member_id;
 	String item_code;
 	String review_title;
 	String review_content;
+	String review_regdate; 
 	int review_like;
-	Review_imgs review_img;
+	Review_imgs review_imgs;
 	
 	public int getReview_postnum() {
 		return review_postnum;
@@ -41,17 +40,23 @@ public class ReviewVo {
 	public void setReview_content(String review_content) {
 		this.review_content = review_content;
 	}
+	public String getReview_regdate() {
+		return review_regdate;
+	}
+	public void setReview_regdate(String review_regdate) {
+		this.review_regdate = review_regdate;
+	}
 	public int getReview_like() {
 		return review_like;
 	}
 	public void setReview_like(int review_like) {
 		this.review_like = review_like;
 	}
-	public Review_imgs getReview_img() {
-		return review_img;
+	public Review_imgs getReview_imgs() {
+		return review_imgs;
 	}
-	public void setReview_img(Review_imgs review_img) {
-		this.review_img = review_img;
+	public void setReview_imgs(Review_imgs review_imgs) {
+		this.review_imgs = review_imgs;
 	}
 	
 }

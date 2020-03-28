@@ -15,30 +15,8 @@ let func=function(){
 		});
 		
 	}
-	/*이미지 프리뷰*/
-	if($('#file')!=null){
-		$('#file').change(function(event){
-			$('img').remove();
-			$('span').remove();
-			let et=event.target;
-			for(let i=0; i<et.files.length; i++){
-				let src=et.files[i];
-				let reader=new FileReader();
-				reader.readAsDataURL(src);
-			
-				reader.onload=function(ev){
-					let url=ev.target.result;
-					$('#gif'+i).attr('src', url);
-					let obj2=$('<span class=p-2>'+src.name+'</span>');
-					$('#board2').append(obj2);
-				}
-				let obj=$('<img>');
-				obj.attr('id','gif'+i);
-				obj.attr('width','120px');
-				obj.attr('height','180px')
-				$('#board3').append(obj);
-			}
-		});
+	if($('#msg').val()){	
+		alert($('#msg').val());
 	}
 }
 let goPage=function(nowPage){

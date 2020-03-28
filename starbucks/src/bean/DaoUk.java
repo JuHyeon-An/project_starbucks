@@ -94,7 +94,7 @@ public class DaoUk {
 		int cnt2=0;
 
 		try {
-			String sql= " insert into REVIEWBOARD values(seq_review_postum.nextval,?,?,?,?,?,sysdate)";
+			String sql= " insert into REVIEWBOARD values(seq_review_postnum.nextval,?,?,?,?,?,sysdate) ";
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMember_id());
@@ -105,15 +105,20 @@ public class DaoUk {
 			int cnt=pstmt.executeUpdate();
 			
 			if(cnt>0) {
-				sql2= " insert into review_imgs values(seq_review_postum.currval,?,?,?,?,?) ";
+				sql2= " insert into review_imgs values(seq_review_postnum.currval,?,?,?,?,?) ";
 				pstmt2=conn.prepareStatement(sql2);
 				
-				Review_imgs imgs=vo.getReview_img();
+				Review_imgs imgs=vo.getReview_imgs();
 				List<String> list2=imgs.getSys_imgs();
-				for(String img:list2) {
-					int i=1;
-					pstmt2.setString(i, img);
-					i++;
+				for(int i=0; i<list2.size(); i++) {
+					int count=i+1;
+					String para=list2.get(i);
+					System.out.println(":"+count);
+					pstmt2.setString(count, para);
+				}
+				for(int i=(list2.size()+1); i<6; i++) {
+					System.out.println("::"+i);
+					pstmt2.setString(i, "");
 				}
 				
 				cnt2=pstmt2.executeUpdate();
@@ -138,30 +143,44 @@ public class DaoUk {
 	}
 	public List<ReviewVo> review_select(String findStr) {
 		List<ReviewVo> list=new ArrayList<ReviewVo>();
-		String sql= " select * from reviewboard where like ? ";
+		String sql= " select * from reviewboard "
+				+ " where member_id like ? "
+				+ " or item_code like ? "
+				+ " or review_title like ? "
+				+ " or review_content like ? ";
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+findStr+"%");
+			pstmt.setString(2, "%"+findStr+"%");
+			pstmt.setString(3, "%"+findStr+"%");
+			pstmt.setString(4, "%"+findStr+"%");
 			ResultSet rs=pstmt.executeQuery();
 			while(rs.next()) {
 				ReviewVo vo=new ReviewVo();
-				Review_imgs imgs=new Review_imgs();
-				List<String> list2=new ArrayList<String>();
+				
 				vo.setReview_postnum(rs.getInt("review_postnum"));
 				vo.setMember_id(rs.getString("member_id"));
 				vo.setItem_code(rs.getString("item_code"));
 				vo.setReview_title(rs.getString("review_title"));
 				vo.setReview_content(rs.getString("review_content"));
 				vo.setReview_like(rs.getInt("review_like"));
+				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
 				
-				String sql2= " select * from review_img where=? ";
+				String sql2= " select * from review_imgs where review_postnum=? ";
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
 				pstmt2.setInt(1, vo.getReview_postnum());
 				ResultSet rs2=pstmt2.executeQuery();
 				if(rs2.next()) {
+					Review_imgs imgs=new Review_imgs();
+					List<String> list2=new ArrayList<String>();
+					list2.add(rs2.getString("sys_img1"));
+					list2.add(rs2.getString("sys_img2"));
+					list2.add(rs2.getString("sys_img3"));
+					list2.add(rs2.getString("sys_img4"));
+					list2.add(rs2.getString("sys_img5"));
 					imgs.setSys_imgs(list2);
-					vo.setReview_img(imgs);
+					vo.setReview_imgs(imgs);
 				}
 				list.add(vo);
 			}

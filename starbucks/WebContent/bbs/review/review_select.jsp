@@ -10,10 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-
-<div>
-<h3>리뷰 조회</h3><h3>리뷰 조회</h3><h3>리뷰 조회</h3><h3>리뷰 조회</h3><h3>리뷰 조회</h3>
-</div>
+<h3>리뷰셀렉트</h3>
 
 <c:forEach var="vo" items="${list }">
 	<span>${vo.review_postnum }</span>
@@ -26,9 +23,11 @@
 	<c:forEach var="img" items="${imgs.sys_imgs}">
 		<span>${img }</span>
 	</c:forEach>	
-
-
 </c:forEach>
+
+	<input type='text' value='${param.findStr }'/>
+	<input type='text' value='${param.nowPage }'/>
+	<input type='hidden' id='msg' value='${msg }'/>
 
 </body>
 </html>
