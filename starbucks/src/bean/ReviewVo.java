@@ -8,6 +8,7 @@ public class ReviewVo {
 	String review_content;
 	String review_regdate; 
 	int review_like;
+	int reivew_view;
 	Review_imgs review_imgs;
 	
 	public int getReview_postnum() {
@@ -51,6 +52,12 @@ public class ReviewVo {
 	}
 	public void setReview_like(int review_like) {
 		this.review_like = review_like;
+	}
+	public int getReivew_view() {
+		return reivew_view;
+	}
+	public void setReivew_view(int reivew_view) {
+		this.reivew_view = reivew_view;
 	}
 	public Review_imgs getReview_imgs() {
 		return review_imgs;

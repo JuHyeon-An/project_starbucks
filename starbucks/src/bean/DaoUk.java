@@ -95,7 +95,7 @@ public class DaoUk {
 		int cnt2=0;
 
 		try {
-			String sql= " insert into REVIEWBOARD values(seq_review_postnum.nextval,?,?,?,?,?,sysdate) ";
+			String sql= " insert into REVIEWBOARD values(seq_review_postnum.nextval,?,?,?,?,?,sysdate,?) ";
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMember_id());
@@ -103,6 +103,7 @@ public class DaoUk {
 			pstmt.setString(3, vo.getReview_title());
 			pstmt.setString(4, vo.getReview_content());
 			pstmt.setInt(5, vo.getReview_like());
+			pstmt.setInt(6, vo.getReivew_view());
 			int cnt=pstmt.executeUpdate();
 			
 			if(cnt>0) {
@@ -197,7 +198,7 @@ public class DaoUk {
 				vo.setReview_content(rs.getString("review_content"));
 				vo.setReview_like(rs.getInt("review_like"));
 				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
-				
+				vo.setReivew_view(rs.getInt("reivew_view"));
 				String sql2= " select * from review_imgs where review_postnum=? ";
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
 				pstmt2.setInt(1, vo.getReview_postnum());

@@ -106,6 +106,7 @@ public class ServletUk extends HttpServlet{
 		DaoUk dao=new DaoUk();
 		List<ReviewVo> list=dao.review_select(page);
 		req.setAttribute("list", list);
+		req.setAttribute("page", page);
 		
 		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
