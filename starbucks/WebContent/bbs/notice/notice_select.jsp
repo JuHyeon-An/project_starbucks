@@ -47,7 +47,7 @@
                 <th class="product-price">제목</th>
                 <th class="product-quantity">등록일</th>
                 <th class="product-total">조회수</th>
-                <th class="product-remove">-</th>
+                <th class="product-remove">-</th> 
             </tr>
         </thead>
         <tbody>
