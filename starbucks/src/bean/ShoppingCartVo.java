@@ -11,7 +11,7 @@ public class ShoppingCartVo {
 	
 	public ShoppingCartVo() {
 		
-	}
+	}  
 	
 	public ShoppingCartVo(String mId,String fileName, String itemCode, int price, int itemEa, int totPrice) {
 		this.mId = mId;
