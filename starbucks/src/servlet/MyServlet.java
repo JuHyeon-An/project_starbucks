@@ -9,12 +9,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.ShoppingCartDao;
+import bean.ShoppingCartVo;
 import bean.Shopping_MemberDao;
 import bean.Shopping_MemberVo;
 
 @WebServlet("*.my")
 public class MyServlet extends HttpServlet{
-	String url = "/my/index.jsp";
+	String url = "./my/index.jsp";
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,7 +33,7 @@ public class MyServlet extends HttpServlet{
 			account(req, resp);
 			break;
 		case "/cart.my":
-			cart(req, resp);
+			goCart(req, resp);
 			break;
 		case "/order.my":
 			order(req, resp);
@@ -99,9 +101,37 @@ public class MyServlet extends HttpServlet{
 		
 	}
 	
-	public void cart (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void goCart (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		String path = url + "?my=./cart.jsp";
+		RequestDispatcher rd = req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		
+	}
+	
+	public void cart (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		System.out.println("111");
+		String mId = req.getParameter("mId");
+		String fileName = req.getParameter("fileName");
+		String itemCode = req.getParameter("item_code");
+		int price = Integer.parseInt(req.getParameter("oriPrice"));
+		int itemEa = Integer.parseInt(req.getParameter("itemEa"));
+		int totPrice = price*itemEa;
+		
+		
+		
+		
+		ShoppingCartVo vo = new ShoppingCartVo(mId, fileName, itemCode, price, itemEa, totPrice);
+		ShoppingCartDao dao = new ShoppingCartDao();
+		
+		System.out.println("vo.getItemCode : " + vo.getItemCode());
+		
+		int result = dao.insert(vo, mId);
+		System.out.println("result : " + result);
+		
+		req.setAttribute("result", result);
+		String path = "/starbucks/product/product_view.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 		

@@ -1,6 +1,17 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="bean.ProductVo"%>
+<%@page import="java.util.List"%>
+<%@page import="bean.ProductDao_YD"%>
+<%@ page import="java.io.PrintWriter" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@include file="./layout/header.jsp" %>
+    
+    <%
+    ProductDao_YD dao = new ProductDao_YD();
+    List<ProductVo> list = new ArrayList<ProductVo>();
+    
+    %>
         <div class="site-blocks-cover main-banner" style="" data-aos="fade">
             <div class="container">
                 <div class="row align-items-start align-items-md-center justify-content-end">
@@ -14,7 +25,7 @@
                         <div class="intro-text text-center text-md-left">
                             <p class="mb-4">달콤한 국내산 복숭아와 은은한 자스민향이 완벽하게 어우러진 스프링 피치 그린 티와 함께 따뜻한 봄의 기운을 느껴보세요!</p>
                             <p>
-                                <a href="#" class="btn btn-sm btn-primary">Shop Now</a>
+                                <a href="listPage.pl" class="btn btn-sm btn-primary">Shop Now</a>
                             </p>
                         </div>   
                     </div>
@@ -23,6 +34,7 @@
             </div>
         </div>
 
+<!--  신상품 표시 시작 -->
         <div class="site-section block-3 site-blocks-2">
             <div class="container">
                 <div class="row justify-content-center">
@@ -33,73 +45,39 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="nonloop-block-3 owl-carousel">
+                           
+                           <%
+                           list = dao.mainSelect(1);
+                           int i = 1;
+                           for(ProductVo vo : list){
+                        	   if(i<=6){
+                           %>
+                           
                             <div class="item">
-                                <div class="block-4 text-center">
+                                <div class="block-4 text-center" onclick="item_view('<%=vo.getItem_code()%>')"  style="cursor:pointer">
                                     <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2018/02/[9300000001044]_20180221164951776.jpg" alt="Image placeholder" class="img-fluid">
+                                        <img src="./fileFolder/<%=vo.getItem_thumbnailimg() %>" alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
-                                        <h3><a href="#">Tank Top</a></h3>
-                                        <p class="mb-0">Finding perfect t-shirt</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
+                                        <h3><a href="#" ><%=vo.getItem_title() %></a></h3>
+                                        <p class="mb-0"><%=vo.getItem_size() %></p>
+                                        <p class="text-primary font-weight-bold"><%=vo.getItem_price() %>원</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/08/[9300000001745]_20190806105254858.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">Corater</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2018/06/[9300000001568]_20180615095810112.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">Polo Shirt</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/02/[9300000002200]_20200219112357910.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">T-Shirt Mockup</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/02/[9300000002197]_20200224162804240.jpg" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">Corater</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
+							
+							<%
+                          i++;
+                           }}
+							%>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
+ <!-- 신상품 표시끝 -->
+ <!-- 베스트 표시시작 -->       
         <div class="site-section block-3 site-blocks-2 bg-light">
             <div class="container">
                 <div class="row justify-content-center">
@@ -110,72 +88,38 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="nonloop-block-3 owl-carousel">
+                                                   
+                           <%
+                           list = dao.mainSelect(2);
+                           i = 1;
+                           for(ProductVo vo : list){
+                        	   if(i<=6){
+                           %>
                             <div class="item">
-                                <div class="block-4 text-center">
+                                <div class="block-4 text-center" onclick="item_view('<%=vo.getItem_code()%>')"  style="cursor:pointer">
                                     <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2015/08/[11019855]_20150809120449047.jpg" alt="Image placeholder" class="img-fluid">
+                                        <img src="./fileFolder/<%=vo.getItem_thumbnailimg() %>" alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
-                                        <h3><a href="#">Tank Top</a></h3>
-                                        <p class="mb-0">Finding perfect t-shirt</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
+                                        <h3><a href="#" ><%=vo.getItem_title() %></a></h3>
+                                        <p class="mb-0">><%=vo.getItem_size() %></p>
+                                        <p class="text-primary font-weight-bold"><%=vo.getItem_price() %>원</p>
                                     </div>
                                 </div>
                             </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/02/[11098921]_20200228102232307.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">Corater</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/02/[11104968]_20200219105812789.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">Polo Shirt</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2018/02/[9300000001045]_20180221165043348.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">T-Shirt Mockup</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="block-4 text-center">
-                                    <figure class="block-4-image">
-                                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2019/02/[9300000001860]_20190214152641791.jpg" alt="Image placeholder" class="img-fluid">
-                                    </figure>
-                                    <div class="block-4-text p-4">
-                                        <h3><a href="#">Corater</a></h3>
-                                        <p class="mb-0">Finding perfect products</p>
-                                        <p class="text-primary font-weight-bold">$50</p>
-                                    </div>
-                                </div>
-                            </div>
+                            				
+							<%
+	                          i++;
+	                           }}
+							%>
+                          
+                      
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-
+<!-- 베스트 표시끝 -->      
         <div class="site-section block-8">
             <div class="container">
                 <div class="row justify-content-center  mb-5">
@@ -196,4 +140,8 @@
                 </div>
             </div>
         </div>
+        
+        <form id='pd_frm' name='pd_frm' method='post'>
+        	<input type="hidden" name="pd_findStr" id ='pd_findStr' value='' />
+        </form>
         <%@include file="./layout/footer.jsp" %>
