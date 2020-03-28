@@ -14,15 +14,14 @@ public class ProductDao {
 
 	Connection conn;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
-	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
-//	String upload = "c:/Users/JHTA/git/web1/1907-web/WebContent/upload/";
+	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
+//	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
 	
 	String sql="";
 	
 	public String insert(ProductVo vo) {
 		
-		sql = "insert into itemboard values(?||to_char(sysdate,'rrmmdd')||'-'||seq_itemcode.nextval, seq_item_postnum.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		sql = "insert into itemboard values(?||to_char(sysdate,'rrmmdd')||'-'||seq_itemcode.nextval, seq_item_postnum.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
 			conn = DBConn.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -40,6 +39,7 @@ public class ProductDao {
 			ps.setString(12, vo.getItem_contentimg()); // contentimg path
 			ps.setInt(13, 10); // 누적판매개수
 			ps.setString(14, vo.getItem_regDate()); // 등록날짜
+			ps.setString(15, vo.getItem_status());
 			
 			if(ps.executeUpdate()>0) {
 				conn.commit();
@@ -147,6 +147,7 @@ public class ProductDao {
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+				vo.setItem_status(rs.getString("ITEM_STATUS"));
 			}
 			ps.close();
 			
@@ -163,7 +164,7 @@ public class ProductDao {
 		sql = "update itemboard set item_title = ?, item_price=?, item_num=?, "
 				+ "item_size=?, item_content=?, item_group=?, item_theme=?, item_regDate=?, "
 				+ "item_mainimg=?, item_thumbnailimg = ?, item_contentimg = ?, "
-				+ "item_savedmoney = ? where item_code = ?";
+				+ "item_savedmoney = ?, item_status = ? where item_code = ?";
 		// 누적판매개수만 수정 못 함
 		try {
 			conn = DBConn.getConn();
@@ -181,7 +182,9 @@ public class ProductDao {
 			ps.setString(10, vo.getItem_thumbnailimg()); // 썸네일 이미지 path
 			ps.setString(11, vo.getItem_contentimg()); // contentimg path
 			ps.setDouble(12, vo.getItem_price()*0.01); // 가격의 1%
-			ps.setString(13, vo.getItem_code());
+			ps.setString(13, vo.getItem_status());
+			System.out.println(vo.getItem_status());
+			ps.setString(14, vo.getItem_code());
 			/*
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_title());
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_price());
@@ -196,7 +199,6 @@ public class ProductDao {
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_code());
 			*/
 			r = ps.executeUpdate();
-			System.out.println(r+" r의값");
 			
 			if(r>0) {
 				conn.commit();
@@ -245,6 +247,7 @@ public class ProductDao {
 				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
 				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+				vo.setItem_status(rs.getString("item_status"));
 				list.add(vo);
 			}
 			

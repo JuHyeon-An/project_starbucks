@@ -18,6 +18,7 @@ public class ProductVo {
 	String item_contentimg;
 	int order_sumnum;
 	String item_regDate;
+	String item_status;
 	
 	
 	public String getItem_code() {
@@ -109,6 +110,12 @@ public class ProductVo {
 	}
 	public void setItem_regDate(String item_regDate) {
 		this.item_regDate = item_regDate;
+	}
+	public String getItem_status() {
+		return item_status;
+	}
+	public void setItem_status(String item_status) {
+		this.item_status = item_status;
 	}
 	
 	

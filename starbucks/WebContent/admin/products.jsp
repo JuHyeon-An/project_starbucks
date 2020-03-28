@@ -19,7 +19,7 @@
 					<div class="row">
 					<div class="input-group col-lg-8"></div>
 					<form id="frmSearch" method="post" name="frmSearch" class="input-group col-lg-4 mb-3">
-						<input type="text" class="form-control" placeholder="검색어를 입력하세요"
+						<input type="text" class="form-control" placeholder="상품명 또는 상품코드로 검색"
 							id="findStr" name="findStr" value="${ empty param.findStr? findStr : param.findStr }">
 						<div class="input-group-append">
 							<input type="button" class="input-group-text search-span" id="btnSearch-item" 
@@ -38,6 +38,7 @@
 									<th class="text-center" scope="col">상품명</th>
 									<th class="text-center" scope="col">판매가</th>
 									<th class="text-center" scope="col">재고</th>
+									<th class="text-center" scope="col">판매상태</th>
 									<th class="text-center" scope="col">등록일</th>
 									<th class="text-center" scope="col">&nbsp;</th>
 								</tr>
@@ -62,6 +63,7 @@
 											onclick='goEdit("${vo.item_code}")'>${vo.item_title }</td>
 										<td class="text-center">${price }</td>
 										<td class="text-center">${vo.item_num }</td>
+										<td class="text-center">${vo.item_status}</td>
 										<td class="text-center">${regDate }</td>
 										<td class="text-center"><a href="#" onclick="deleteItem('${vo.item_code}')"
 											class="tm-product-delete-link"> <i
