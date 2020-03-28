@@ -8,6 +8,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.gson.Gson;
+
 public class ProductDao {
 
 	Connection conn;
@@ -180,6 +182,7 @@ public class ProductDao {
 			ps.setString(11, vo.getItem_contentimg()); // contentimg path
 			ps.setDouble(12, vo.getItem_price()*0.01); // 가격의 1%
 			ps.setString(13, vo.getItem_code());
+			/*
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_title());
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_price());
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_num());
@@ -191,7 +194,7 @@ public class ProductDao {
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_thumbnailimg());
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_contentimg());
 			System.out.println("vo가 잘 들어가는지:"+vo.getItem_code());
-			
+			*/
 			r = ps.executeUpdate();
 			System.out.println(r+" r의값");
 			
@@ -207,6 +210,53 @@ public class ProductDao {
 		}
 		
 		return r;
+	}
+	
+	public List<ProductVo> select(String productSearch){
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			sql = " select * from itemboard where item_code like ? or item_title like ?";
+			conn = DBConn.getConn();
+			ps = conn.prepareStatement(sql);
+
+			ps.setString(1, "%"+productSearch+"%");
+			ps.setString(2, "%"+productSearch+"%");
+
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ProductVo vo = new ProductVo();
+				vo.setItem_code(rs.getString("ITEM_CODE"));
+				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
+				vo.setItem_group(rs.getString("ITEM_GROUP"));
+				vo.setItem_title(rs.getString("ITEM_TITLE"));
+				vo.setItem_content(rs.getString("ITEM_CONTENT"));
+				vo.setItem_savedmoney(rs.getInt("ITEM_SAVEDMONEY"));
+				vo.setItem_theme(rs.getString("ITEM_THEME"));
+				vo.setItem_size(rs.getString("ITEM_SIZE"));
+				vo.setItem_price(rs.getInt("ITEM_PRICE"));
+				vo.setItem_num(rs.getInt("ITEM_NUM"));
+				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
+				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
+				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+				list.add(vo);
+			}
+			
+	         rs.close();
+	         ps.close();
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+			System.out.println("ㅠㅠ에러" );
+		} finally {
+			return list;
+		}
 	}
 	
 }

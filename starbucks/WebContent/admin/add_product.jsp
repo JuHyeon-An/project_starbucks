@@ -114,6 +114,11 @@
       let main = document.querySelector('#photoRow');
       makeDiv(main);
       
+      var j = jQuery.noConflict();
+      j(document).ready(function(){
+          j('#datetimepicker').datepicker();
+      })
+      
     </script>
   </body>
 </html>
