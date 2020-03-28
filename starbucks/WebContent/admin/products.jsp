@@ -17,8 +17,15 @@
 				<div id="mainDiv"
 					class="tm-bg-primary-dark tm-block tm-block-products">
 					<div class="row">
-					<div class="input-group col-lg-8"></div>
-					<form id="frmSearch" method="post" name="frmSearch" class="input-group col-lg-4 mb-3">
+					<div class="input-group col-lg-3"></div>
+					<form id="frmSearch" method="post" name="frmSearch" class="input-group col-lg-6 mb-3">
+						<select class="custom-select tm-select-accounts">
+						<option>종류선택</option>
+						<option>종류선택</option>
+						<option>종류선택</option>
+						<option>종류선택</option>
+						<option>종류선택</option>
+						</select>
 						<input type="text" class="form-control" placeholder="상품명 또는 상품코드로 검색"
 							id="findStr" name="findStr" value="${ empty param.findStr? findStr : param.findStr }">
 						<div class="input-group-append">
@@ -26,6 +33,7 @@
 							name="btnSearch-item" value="검색"/>
 						</div>
 						</form>
+						<div class="input-group col-lg-3"></div>
 					</div>
 					<div id = "tableContainer" class="tm-product-table-container">
 						<table id="selectTable"
