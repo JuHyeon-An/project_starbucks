@@ -20,7 +20,7 @@
             <div class="row mb-5">
             	
                	<!-- content -->
-               	<jsp:include page="${param.my }" />
+               	<jsp:include page="${param.my }"></jsp:include>
 
             </div>
         </div>

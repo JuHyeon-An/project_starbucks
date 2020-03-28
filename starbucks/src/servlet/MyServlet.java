@@ -35,9 +35,9 @@ public class MyServlet extends HttpServlet{
 		case "/cart.my":
 			goCart(req, resp);
 			break;
-		case "/order.my":
-			order(req, resp);
-			break;
+//		case "/order.my":
+//			order(req, resp);
+//			break;
 		case "/orderList.my":
 			orderList(req, resp);
 			break;
