@@ -260,7 +260,7 @@ public class ProductDao_YD {
 	}
 	
 	
-	
+	//정렬하여 상품 뿌려주기
 	public List<ProductVo> select(Page_ProductList p, String findStr, int desc){
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		
@@ -340,6 +340,52 @@ public class ProductDao_YD {
 			
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
+		} finally {
+			return list;
+		}
+	}
+	
+	public List<ProductVo> mainSelect(int flag){
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+
+		try {
+			if(flag == 1) {
+				sql = " select * from itemboard order by order_sumnum";
+			}else if(flag==2) {
+				sql = " select * from itemboard order by item_regdate";
+			}
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				ProductVo vo = new ProductVo();
+				vo.setItem_code(rs.getString("ITEM_CODE"));
+				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
+				vo.setItem_group(rs.getString("ITEM_GROUP"));
+				vo.setItem_title(rs.getString("ITEM_TITLE"));
+				vo.setItem_content(rs.getString("ITEM_CONTENT"));
+				vo.setItem_savedmoney(rs.getInt("ITEM_SAVEDMONEY"));
+				vo.setItem_theme(rs.getString("ITEM_THEME"));
+				vo.setItem_size(rs.getString("ITEM_SIZE"));
+				vo.setItem_price(rs.getInt("ITEM_PRICE"));
+				vo.setItem_num(rs.getInt("ITEM_NUM"));
+				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
+				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
+				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+				list.add(vo);
+			}
+			
+	         rs.close();
+	         ps.close();
+		} catch (Exception e) {
+			System.out.println("오류뜸" );
+			e.printStackTrace();
+			
 		} finally {
 			return list;
 		}

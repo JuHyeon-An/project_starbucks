@@ -119,6 +119,7 @@
 
 
 </c:forEach>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="/starbucks/js/productlist.js"></script>
 <script>
 let cart_go = function(page){
