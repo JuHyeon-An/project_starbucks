@@ -142,21 +142,51 @@ public class DaoUk {
 		}
 		return msg;
 	}
-	public List<ReviewVo> review_select(String findStr) {
+	public List<ReviewVo> review_select(Page page) {
 		List<ReviewVo> list=new ArrayList<ReviewVo>();
-		String sql= " select * from reviewboard "
-				+ " where member_id like ? "
-				+ " or item_code like ? "
-				+ " or review_title like ? "
-				+ " or review_content like ? ";
-		PreparedStatement pstmt;
+		String sql=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int totList=0;
+		sql= " select count(review_postnum) cnt "
+			+ " from reviewboard "
+			+ " where member_id like ? "
+			+ " or item_code like ? "
+			+ " or review_title like ? "
+			+ " or review_content like ? ";
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, "%"+findStr+"%");
-			pstmt.setString(2, "%"+findStr+"%");
-			pstmt.setString(3, "%"+findStr+"%");
-			pstmt.setString(4, "%"+findStr+"%");
-			ResultSet rs=pstmt.executeQuery();
+			pstmt.setString(1, "%"+page.getFindStr()+"%");
+			pstmt.setString(2, "%"+page.getFindStr()+"%");
+			pstmt.setString(3, "%"+page.getFindStr()+"%");
+			pstmt.setString(4, "%"+page.getFindStr()+"%");
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totList=rs.getInt("cnt");
+			}
+			
+			page.setTotListSize(totList);
+			page.pageCompute();
+			
+			sql= " select * from( "
+					   + "   select rownum rn, A.*from( "
+					   + "      select * "
+					   + "      from reviewboard "
+					   + "      where member_id like ? "
+					   + "      or item_code like ? "
+					   + "      or item_code like ? "
+					   + "      or review_content like ? "
+					   + "      order by review_regdate desc)A"
+					   + " )where rn between ? and ? ";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+page.getFindStr()+"%");
+			pstmt.setString(2, "%"+page.getFindStr()+"%");
+			pstmt.setString(3, "%"+page.getFindStr()+"%");
+			pstmt.setString(4, "%"+page.getFindStr()+"%");
+			pstmt.setInt(5, page.getStartNo());
+			pstmt.setInt(6, page.getEndNo());
+			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				ReviewVo vo=new ReviewVo();
 				

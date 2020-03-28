@@ -102,8 +102,9 @@ public class ServletUk extends HttpServlet{
 		if(req.getParameter("nowPage")!=null) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
+		Page page=new Page(findStr, nowPage);
 		DaoUk dao=new DaoUk();
-		List<ReviewVo> list=dao.review_select(findStr);
+		List<ReviewVo> list=dao.review_select(page);
 		req.setAttribute("list", list);
 		
 		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
