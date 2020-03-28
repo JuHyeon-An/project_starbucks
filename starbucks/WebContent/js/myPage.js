@@ -4,35 +4,37 @@
  * 작성일 : 2020.03
  */
 
-function userInfoUpdate(){
-	// 	회원정보 수정 버튼
-	if ($("#btnSave") != null) {
-	    $("#btnSave").click(function () {
-	        $("#userInfoFrm").attr("action", "accountResult.my").submit();
-	    });
-	}
-	
 
-	// 회원 탈퇴 버튼 
-	if($("#btnDelUser") != null){
-		$("#btnDelUser").click(function(){
-			if(deleteUserFrm.userPwd.value == ""){
-				Swal.fire({
-					icon: 'error',
-					title: 'Oops...',
-					text: '비밀번호를 입력해주세요.' 
-				});
-			}else if(deleteUserFrm.userPwd.value != ""){
-				$("#deleteUserFrm").attr("action", "outResult.my").submit();
-			} 
-			
-		}) 
-	}
 
+function userInfoUpdate() {
+    // 	회원정보 수정 버튼
+    if ($("#btnSave") != null) {
+        $("#btnSave").click(function () {
+            $("#userInfoFrm").attr("action", "accountResult.my").submit();
+        });
+    }
+
+
+    // 회원 탈퇴 버튼 
+    if ($("#btnDelUser") != null) {
+        $("#btnDelUser").click(function () {
+            if (deleteUserFrm.userPwd.value == "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '비밀번호를 입력해주세요.'
+                });
+            } else if (deleteUserFrm.userPwd.value != "") {
+                $("#deleteUserFrm").attr("action", "outResult.my").submit();
+            }
+
+        })
+    }
+    
 }
 
 
-
+// 다음 우편번호 서비스
 function openDaumZipAddress() {
     new daum.Postcode({
         oncomplete: function (data) {
@@ -45,4 +47,3 @@ function openDaumZipAddress() {
         }
     }).open();
 }
-
