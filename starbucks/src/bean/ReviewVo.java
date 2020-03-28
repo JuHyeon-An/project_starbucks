@@ -58,5 +58,4 @@ public class ReviewVo {
 	public void setReview_imgs(Review_imgs review_imgs) {
 		this.review_imgs = review_imgs;
 	}
-	
 }

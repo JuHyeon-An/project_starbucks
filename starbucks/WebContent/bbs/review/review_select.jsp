@@ -19,7 +19,7 @@
 	<span>${vo.review_title }</span>
 	<span>${vo.review_content }</span>
 	<span>${vo.review_like }</span>
-	<c:set var="imgs" value="${vo.review_img }"/>
+	<c:set var="imgs" value="${vo.review_imgs }"/>
 	<c:forEach var="img" items="${imgs.sys_imgs}">
 		<span>${img }</span>
 	</c:forEach>	

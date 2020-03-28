@@ -18,6 +18,7 @@ import bean.NoticeVo;
 import bean.Page;
 import bean.ReviewUp;
 import bean.ReviewVo;
+import bean.Review_imgs;
 
 @WebServlet("*.uk")
 public class ServletUk extends HttpServlet{
@@ -103,21 +104,11 @@ public class ServletUk extends HttpServlet{
 		}
 		DaoUk dao=new DaoUk();
 		List<ReviewVo> list=dao.review_select(findStr);
-		for(ReviewVo vo:list) {
-			System.out.println(vo.getMember_id());
-			System.out.println(vo.getReview_postnum());
-			System.out.println(vo.getItem_code());
-			System.out.println(vo.getReview_content());
-			System.out.println(vo.getReview_like());
-		}
-		
 		req.setAttribute("list", list);
+		
 		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
-		System.out.println("여기되나1");
 		RequestDispatcher rd=req.getRequestDispatcher(path);
-		System.out.println("여기되나2");
 		rd.forward(req, resp);
-		System.out.println("여기되나3");
 	}
 	public void review_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	

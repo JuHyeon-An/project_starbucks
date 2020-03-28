@@ -10,12 +10,12 @@ import java.util.List;
 
 import oracle.security.o3logon.a;
 
-public class DaoUk {
+public class DaoUk_one {
 	
 	Connection conn;
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	
-	public DaoUk() {
+	public DaoUk_one() {
 		conn=DBConn.getConn();
 	}
 	public List<NoticeVo> notice_select(Page page) {
@@ -87,7 +87,6 @@ public class DaoUk {
 		}
 			return list;
 	}
-	
 	public String review_insert(ReviewVo vo) {
 		String msg=null;
 		String sql2=null;
