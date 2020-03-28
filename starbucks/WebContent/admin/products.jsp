@@ -15,6 +15,18 @@
       <div class="row tm-content-row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 tm-block-col">
           <div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
+          	<div class="container">
+          		<div class="row">
+          		<div class="mb-3"></div>
+          		<div class="mb-3"></div>
+          		<div class="form-group mb-3">
+					<label for="item_title">상품명 </label> <input
+						id="item_title" name="item_title" type="text"
+						class="form-control validate" required />
+				</div>
+				</div>
+          			</div>
+          
             <div class="tm-product-table-container">
               <table id="selectTable" class="table table-hover tm-table-small tm-product-table">
                 <thead>
@@ -60,8 +72,7 @@
             </div>
             <!-- table container -->
             <a
-              href="#"
-              onclick='goUrl("/admin", "/add_product.jsp")'
+              href="./add_product.stb"
               class="btn btn-primary btn-block text-uppercase mb-3">Add new product</a>
             <button class="btn btn-primary btn-block text-uppercase">
               Delete selected products
