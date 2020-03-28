@@ -50,6 +50,28 @@ function btnFunc(){
 			click:function(){ $(this).removeAttr('readonly'); }
 		});
 	}
+	
+	if($('#btnSearch-item')!=null){
+		$('#btnSearch-item').click(function(){
+			
+			let form = $('#frmSearch').serialize;
+			
+			$.ajax({
+				url : 'select_product.stb',
+				type : 'post',
+				data : form,
+				dataType : 'json',
+				error : function(xhr, status, error){
+					alert(error);
+				},
+				success : function(data){
+					alert(data);
+				}
+			})
+			
+			//$('frmSearch').attr('action', 'select_product.stb').submit();
+		})
+	}
 }
 //let table = $('#selectTable').DataTable();
 
