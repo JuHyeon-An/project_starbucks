@@ -113,13 +113,11 @@ public class ServletUk extends HttpServlet{
 	}
 	public void review_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
-		System.out.println(review_postnum);
 		DaoUk dao=new DaoUk();
-		int r=dao.review_view(review_postnum);
-		if(r>0) {
-			System.out.println("성공");
-		}
-		
+		dao.review_view(review_postnum);
+		ReviewVo vo=dao.review_view2(review_postnum);
+
+		req.setAttribute("vo", vo);
 		String path=url+"?main=./review/review_view.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);

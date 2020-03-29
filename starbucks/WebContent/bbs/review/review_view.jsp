@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 
 <div class="row border-bottom mb-3">
@@ -8,28 +11,38 @@
 	</div>
 	<div class="col-md-12 px-0">
 		<div class="float-md-left mb-4">
-			<span class="" id="">2020-02-29</span>
+			<span class="" id="">${vo.review_regdate }</span>
 		</div>
 		<div class="d-flex">
-			<span class="ml-md-auto" id="">5</span>
+			<span class="ml-md-auto" id="">조회수${vo.reivew_view }</span>
 		</div>
 	</div>
 </div>
 <div class="row">
 	<div class="col-12">
-		<div class="col-12">img</div>
-		<div class="col-12">내용</div>
-	</div>
+		<div class="row border-bottom mb-3">
+			<div class="col-12 mb-3">img</div>
+			<div class="col-12 mb-3">내용</div>
+		</div>
+	</div>	
 	<div class="col-12">
-		<div class="row">
-			<div class="col-12">img</div>
-			<div class="col-12">내용</div>
+		<div class="row mb-3">
+			<div class="col-12 mb-3">
+				<c:set var="imgs" value="${vo.review_imgs }" />
+				<c:forEach var="img" items="${imgs.sys_imgs}">
+					${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
+				</c:forEach>
+			</div>
+			<div class="col-12 mb-3">${vo.review_content }</div>
 		</div>
 	</div>
 </div>
-<div class="row">
-	<div class="col-12"></div>
-	<div class="col-12"></div>
+<div class="row border-bottom-bold mb-3">
+	<div class="col-2">총 댓글</div>
+	<div class="col-10"></div>
+</div>
+<div class="row border-bottom mb-3">
+	<div class="col-12 mb-3">댓글을 다시오.</div>
 </div>
 <div class="row">
 	<div class="col-12 text-right">
@@ -39,14 +52,9 @@
 	</div>
 </div>
 <form id='review' name='review' method='post'>
-<input type='text' name='findStr' value='${param.findStr }' /> 
-<input type='text' name='nowPage' value='${param.nowPage }' />
+	<input type='hidden' name='findStr' value='${param.findStr }' /> <input
+		type='hidden' name='nowPage' value='${param.nowPage }' />
 </form>
-${param.review_postnum }
-${param.member_id }
-${param.item_code }
-${param.review_title }
-${param.review_content }
-${param.review_like }
-${param.review_regdate }
-${param.reivew_view }
+
+
+
