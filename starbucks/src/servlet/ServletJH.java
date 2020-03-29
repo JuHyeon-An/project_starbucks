@@ -3,6 +3,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import bean.FileUpload;
 import bean.ProductDao;
 import bean.ProductDao_YD;
@@ -20,7 +23,7 @@ import bean.ProductVo;
 @WebServlet("*.stb")
 public class ServletJH extends HttpServlet{
 	String urlAdmin = "index.jsp?cont=../admin";
-	static int n = 0;
+	String findStr = "";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +41,11 @@ public class ServletJH extends HttpServlet{
 		case "/select_product.stb":
 			selectProducts(req, resp);
 			break;
-
+			
+		case "/select_productR.stb":
+			selectProductsR(req, resp);
+			break;
+			
 		case "/add_productR.stb":
 			insertProductsR(req, resp);
 			break;
@@ -71,14 +78,16 @@ public class ServletJH extends HttpServlet{
 	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
+
+		if(req.getParameter("findStr")!=null) {
+			findStr = req.getParameter("findStr");
+		}
 		
-		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list = dao.select();
-		System.out.println(list.get(0).getItem_code());
-		System.out.println(list.get(1).getItem_code());
+		ProductDao dao = new ProductDao();
+		List<ProductVo> list = dao.select(findStr);
 		req.setAttribute("list", list);
 		
-		String path= urlAdmin+"/products.jsp";
+		String path= urlAdmin+"/products.jsp?findStr="+findStr;
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 		
@@ -183,6 +192,41 @@ public class ServletJH extends HttpServlet{
 		String path= urlAdmin+"/product_category.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+	}
+	
+	// 주현 : admin - 상품 조회
+	public void selectProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		ProductDao dao = new ProductDao();
+		String findStr = "";
+		System.out.println(req.getParameter("findStr"));
+		if(req.getParameter("findStr")!=null) {
+			findStr = req.getParameter("findStr");
+		}else {
+			selectProducts(req, resp);
+			return;
+		}
+		System.out.println("검색어 : "+findStr);
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		list = dao.select(findStr);
+		System.out.println(list.get(0).getItem_code());
+		System.out.println(list.get(1).getItem_code());
+		
+		String json = "";
+		Gson gson = new Gson();
+			json = gson.toJson(list);
+		System.out.println("json : "+json);
+		
+		/*
+		String path= urlAdmin+"/products.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		*/
+		
+		PrintWriter out = resp.getWriter();
+		out.print(json);
 	}
 	
 }

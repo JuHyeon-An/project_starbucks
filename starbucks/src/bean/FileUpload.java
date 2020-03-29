@@ -181,6 +181,10 @@ public class FileUpload {
 						req.setAttribute("nowPage", v);
 						break;
 					
+					case "item_status":
+						vo.setItem_status(v);
+						break;
+						
 					default:
 						break;
 					}

@@ -30,12 +30,22 @@
 									</label> <input id="item_num" name="item_num" type="text"
 										class="form-control validate" required />
 								</div>
+								
 							</div>
 							<div class="row">
 								<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_size">사이즈/크기
 									</label> <input id="item_size" name="item_size" type="text"
 										class="form-control validate" required />
+								</div>
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_status">판매상태</label> <select
+										class="custom-select tm-select-accounts" id="item_status"
+										name="item_status">
+										<option selected>판매상태</option>
+										<option value="판매">판매</option>
+										<option value="판매안함">판매안함</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group mb-3">
@@ -113,6 +123,11 @@
       
       let main = document.querySelector('#photoRow');
       makeDiv(main);
+      
+      var j = jQuery.noConflict();
+      j(document).ready(function(){
+          j('#datetimepicker').datepicker();
+      })
       
     </script>
   </body>

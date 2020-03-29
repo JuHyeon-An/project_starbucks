@@ -51,27 +51,27 @@ function btnFunc(){
 		});
 	}
 	
+	
 	if($('#btnSearch-item')!=null){
 		$('#btnSearch-item').click(function(){
 			
-			let form = $('#frmSearch').serialize;
+			let findStr = $('#findStr').val();
 			
-			$.ajax({
-				url : 'select_product.stb',
-				type : 'post',
-				data : form,
-				dataType : 'json',
-				error : function(xhr, status, error){
-					alert(error);
-				},
-				success : function(data){
-					alert(data);
-				}
-			})
-			
+			$('#tableContainer').load('select_product.stb?findStr='+findStr+' #selectTable');
+		
+			/*
+			$.post('select_productR.stb', {"findStr" : findStr}, function(data) {
+				alert(data);
+				})
+			*/
 			//$('frmSearch').attr('action', 'select_product.stb').submit();
 		})
 	}
+	
+	$('#frmSearch').submit(function(){
+		$('#btnSearch-item').click();
+		return false;
+	});
 }
 //let table = $('#selectTable').DataTable();
 
