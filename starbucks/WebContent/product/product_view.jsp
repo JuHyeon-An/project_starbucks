@@ -87,7 +87,7 @@
 			    <div class='mb-5 form-inline'>     
 				<%if(session.getAttribute("mId") == null){ %> 
 				      <p><a href='#' onclick='alert_login()' class="buy-now btn btn-sm btn-primary">장바구니</a></p>
-				<%}%>
+		 		<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
 				    <p><a href="#" onclick="cart_go('cart')" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
