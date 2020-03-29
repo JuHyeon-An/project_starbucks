@@ -50,6 +50,28 @@ function btnFunc(){
 			click:function(){ $(this).removeAttr('readonly'); }
 		});
 	}
+	
+	
+	if($('#btnSearch-item')!=null){
+		$('#btnSearch-item').click(function(){
+			
+			let findStr = $('#findStr').val();
+			
+			$('#tableContainer').load('select_product.stb?findStr='+findStr+' #selectTable');
+		
+			/*
+			$.post('select_productR.stb', {"findStr" : findStr}, function(data) {
+				alert(data);
+				})
+			*/
+			//$('frmSearch').attr('action', 'select_product.stb').submit();
+		})
+	}
+	
+	$('#frmSearch').submit(function(){
+		$('#btnSearch-item').click();
+		return false;
+	});
 }
 //let table = $('#selectTable').DataTable();
 

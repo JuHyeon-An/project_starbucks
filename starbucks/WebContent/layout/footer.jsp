@@ -76,7 +76,7 @@
     <script src="/starbucks/js/header.js"></script>
     
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
-    <script src="/starbucks/js/uk2.js"></script> 
+    <script src="/starbucks/js/uk.js"></script> 
     <script src="/starbucks/js/productlist.js"></script>
     <script src="/starbucks/js/product_view.js"></script>
     <script src="/starbucks/js/myPage.js"></script>

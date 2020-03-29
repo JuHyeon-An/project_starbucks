@@ -2,17 +2,7 @@
     pageEncoding="UTF-8"%>
     
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-    
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-    
-</head>
-<body>
 
-<div class="col-md-9 order-2">
 <form name='notice' id='notice' method='post'>
 
     <div class="row">
@@ -42,8 +32,8 @@
             </div>
          </div>
 	</div> <!-- <div class="row"> -->
-                     <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-                     <input type='hidden' name='noticeTitle' id='noticeTitle' />
+<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+<input type='hidden' name='noticeTitle' id='noticeTitle' />
 <input type='hidden' name='memberName' id='memberName'/>
 <input type='hidden' name='noticeContent' id='noticeContent'/>	
 <input type='hidden' name='noticeRegDate' id='noticeRegDate'/>
@@ -53,16 +43,16 @@
             <tr>
                 <th class="">no</th>
                 <th class="product-thumbnail">아이디</th>
-                <th class="product-name">작성자</th>
+                <th class="product-name"></th>
                 <th class="product-price">제목</th>
                 <th class="product-quantity">등록일</th>
                 <th class="product-total">조회수</th>
-                <th class="product-remove">-</th>
+                <th class="product-remove">-</th> 
             </tr>
         </thead>
         <tbody>
         	<c:forEach var="vo" items="${list }">
-            <tr onclick="view('${vo.noticeTitle}','${vo.memberName }','${vo.noticeContent }','${vo.noticeRegDate } ')">
+            <tr onclick="notice_view('${vo.noticeTitle}','${vo.noticeContent }','${vo.noticeRegDate } ')">
                 <td class="">
                     <span>${vo.noticePostNum }</span>
                 </td>
@@ -70,7 +60,7 @@
                    <span>${vo.memberId }</span>
                 </td>
                 <td class="product-name text-left">
-                    <span>${vo.memberName }</span>
+                    <span></span>
                 </td>
                 <td>
                     <span>${vo.noticeTitle }</span>
@@ -104,7 +94,7 @@
 					  </c:if>
 					  
 					  <c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
-		                  <li onclick='goPage(${i })'><a href="#">${i }</a></li>
+		                  <li id='here' onclick='goPage(${i })' ${(i==page.nowPage)? "class='active'":""}><a href="#">${i }</a></li>
 					  </c:forEach>	
 	                  
 	                  <c:if test="${page.nowPage<page.totPage }">
@@ -115,12 +105,3 @@
 	      </div>
 	  </div>
 </form>
-</div>
-
-
-
-
-
-
-</body>
-</html>

@@ -77,7 +77,7 @@ public class FileUpload {
 				 * value값과 name값을 각각 v와  k에 담는다 
 				 */
 				
-				if(fi.getSize()>0) {
+				if(fi.getSize()>0 && !fi.isFormField()) {
 					// 파일의 값이 있으면
 					
 					String f = fi.getName();
@@ -181,6 +181,10 @@ public class FileUpload {
 						req.setAttribute("nowPage", v);
 						break;
 					
+					case "item_status":
+						vo.setItem_status(v);
+						break;
+						
 					default:
 						break;
 					}

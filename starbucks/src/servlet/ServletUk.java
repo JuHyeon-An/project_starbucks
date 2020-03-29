@@ -18,6 +18,7 @@ import bean.NoticeVo;
 import bean.Page;
 import bean.ReviewUp;
 import bean.ReviewVo;
+import bean.Review_imgs;
 
 @WebServlet("*.uk")
 public class ServletUk extends HttpServlet{
@@ -101,10 +102,12 @@ public class ServletUk extends HttpServlet{
 		if(req.getParameter("nowPage")!=null) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
+		Page page=new Page(findStr, nowPage);
 		DaoUk dao=new DaoUk();
-		List<ReviewVo> list=dao.review_select(findStr);
-		
+		List<ReviewVo> list=dao.review_select(page);
 		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		
 		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -133,7 +136,7 @@ public class ServletUk extends HttpServlet{
 		}
 		
 		req.setAttribute("msg", msg);
-		String path=url+"?main=./review/review_insert.jsp&side=./review/review_side.jsp";
+		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

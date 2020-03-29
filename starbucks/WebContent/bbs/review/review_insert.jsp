@@ -5,6 +5,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+    <script src="/starbucks/lib/jquery-3.4.1.js"></script>
+    <script src="/starbucks/js/uk2.js"></script> 
 </head>
 <body>
 
@@ -24,21 +26,16 @@
 		<option value=5>별별별별별</option>
 	</select>
 	<label>이미지</label>
-	<input type='text' name='member_id' value='${mId }'/>
-	<input type='text' name='item_code' value='${item_code }'/>
-	<input type='text' id='msg' name='msg' value='${msg }'/>
-	<div id='board'>
-	<input type='file' id='file' name='file' multiple='multiple' >
-	</div>
-	<div id='board2'></div>
-	<div id='board3'>
-	<img src='http://placehold.it/120x180'/>
-	</div>
-	<input type='button' id='btnRegist' value='등록'/>
+	<div id='att_file'></div>
 	
+	
+	<input type='button' id='btnRegist' value='등록'/>
 	
 </form>
 </div>
-
+<script>
+let main=document.getElementById('att_file');
+makeDiv(main);
+</script>
 </body>
 </html>
