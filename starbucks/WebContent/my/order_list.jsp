@@ -74,7 +74,7 @@
                         <button type="button" class="btn btn-primary btn-sm" id="btnCancle">
                             취소요청
                         </button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnWriteReview">
+                        <button type="button" class="btn btn-primary btn-sm" id="btnRegist">
                             리뷰작성
                         </button>
 
