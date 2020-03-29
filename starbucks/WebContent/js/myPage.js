@@ -30,7 +30,12 @@ function userInfoUpdate() {
 
         })
     }
-    
+    if($('#btnRegist')!=null){
+		$('#btnRegist').on('click',function(){
+			$('#review').attr('action', 'review_insert.uk').submit();
+		});
+		
+	}
 }
 
 

@@ -36,14 +36,6 @@
 <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
 <input type='hidden' id='msg' value='${msg }'/>
 <input type='hidden' name='review_postnum' id='review_postnum' />
-<input type='hidden' name='member_id' id='member_id'/>
-<input type='hidden' name='item_code' id='item_code'/>	
-<input type='hidden' name='review_title' id='review_title'/>
-<input type='hidden' name='review_content' id='review_content'/>
-<input type='hidden' name='review_like' id='review_like'/>
-<input type='hidden' name='review_regdate' id='review_regdate'/>
-<input type='hidden' name='reivew_view' id='reivew_view'/>
-<input type='hidden' name='review_imgs' id='review_imgs'/>
     <div class="site-blocks-table mb-3">
     <table class="table">
         <thead>
@@ -59,7 +51,8 @@
         </thead>
         <tbody>
         	<c:forEach var="vo" items="${list }">
-            <tr onclick="review_view('${vo.review_postnum}','${vo.member_id }','${vo.item_code }','${vo.review_title }','${vo.review_content }','${vo.review_like }','${vo.review_regdate }','${vo.reivew_view }','${vo.review_imgs }')">
+            <tr>
+            <tr onclick="review_view('${vo.review_postnum}')">
                 <td class="">
                     <span>${vo.review_postnum }</span>
                 </td>
@@ -72,7 +65,7 @@
                 <td>
                 	<c:set var="imgs" value="${vo.review_imgs }"/>
 					<c:forEach var="img" items="${imgs.sys_imgs}">
-					 ${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
+						${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
 					</c:forEach>
                 </td>
                 <td>
@@ -82,7 +75,7 @@
                   	<span>${vo.review_like }</span>
                 </td>
                 <td>
-                  	<span>조회수:${vo.reivew_view }</span>
+                  	<span>${vo.reivew_view }</span>
                 </td>
                 <td>
                     <!-- Button trigger modal -->

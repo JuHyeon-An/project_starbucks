@@ -101,6 +101,9 @@
         </div>
     </div>
 </div>
+<form id=review name=review method=post>
+	<input type='hidden' value='1'/>
+</form>
 
     <script>
         $(function () {
