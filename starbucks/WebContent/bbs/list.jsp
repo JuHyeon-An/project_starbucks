@@ -25,5 +25,4 @@
 		</div>	
 	</div>
 	<!-- Content END-->    
-    
 <%@include file="../../../layout/footer.jsp" %>

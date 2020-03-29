@@ -4,13 +4,6 @@
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-    
-</head>
-<body>
 
 <form name='review' id='review' method='post'> 
     <div class="row">
@@ -41,14 +34,8 @@
          </div>
 	</div> <!-- <div class="row"> -->
 <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+<input type='hidden' id='msg' value='${msg }'/>
 <input type='hidden' name='review_postnum' id='review_postnum' />
-<input type='hidden' name='member_id' id='member_id'/>
-<input type='hidden' name='item_code' id='item_code'/>	
-<input type='hidden' name='review_title' id='review_title'/>
-<input type='hidden' name='review_content' id='review_content'/>
-<input type='hidden' name='review_like' id='review_like'/>
-<input type='hidden' name='review_regdate' id='review_regdate'/>
-<input type='hidden' name='reivew_view' id='reivew_view'/>
     <div class="site-blocks-table mb-3">
     <table class="table">
         <thead>
@@ -64,7 +51,8 @@
         </thead>
         <tbody>
         	<c:forEach var="vo" items="${list }">
-            <tr onclick="review_view('${review_postnum}','${member_id }','${item_code }','${review_title }','${review_content }','${review_like }','${review_regdate }','${reivew_view }')">
+            <tr>
+            <tr onclick="review_view('${vo.review_postnum}')">
                 <td class="">
                     <span>${vo.review_postnum }</span>
                 </td>
@@ -77,7 +65,7 @@
                 <td>
                 	<c:set var="imgs" value="${vo.review_imgs }"/>
 					<c:forEach var="img" items="${imgs.sys_imgs}">
-					 ${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
+						${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
 					</c:forEach>
                 </td>
                 <td>
@@ -85,6 +73,9 @@
                 </td>
                 <td>
                   	<span>${vo.review_like }</span>
+                </td>
+                <td>
+                  	<span>${vo.reivew_view }</span>
                 </td>
                 <td>
                     <!-- Button trigger modal -->
@@ -121,9 +112,3 @@
 </form>
 
 
-
-
-
-
-</body>
-</html>

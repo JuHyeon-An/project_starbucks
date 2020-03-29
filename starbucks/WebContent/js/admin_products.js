@@ -4,7 +4,7 @@
 
  let cnt = 1;
 
-function btnFunc(){
+ function btnFunc(){
 	
 	$('a.nav-link').click(function(){
 		$('a.nav-link').removeClass('active');
@@ -19,32 +19,6 @@ function btnFunc(){
 	}
 	
 	
-	/*
-	if($('#btnUpdate')!=null){
-		$('#btnUpdate').click(function(){
-			alert("눌린거지..?");
-
-				let form = $("#editFrm").serialize;
-		        console.log(form);
-		        formData.append("message", "ajax로 파일 전송하기");
-		        formData.append("file", $("#fileEdit1")[0].files[0]);
-		        formData.append("file", $("#fileEdit2")[0].files[0]);
-		        formData.append("file", $("#fileEdit3")[0].files[0]);
-		        $.ajax({
-		            url : 'edit_product_result.jsp',
-		            type : 'post',
-		            data : form,
-		            dataType : 'html',
-		            error: function(xhr, status, error){
-		                alert(error);
-		            },
-		            success : function(data){
-		                alert(data);
-		            },
-		        });
-		});
-	}
-	 */
 	if($('.category-input')!=null){
 		$('.category-input').on({
 			click:function(){ $(this).removeAttr('readonly'); }
@@ -54,17 +28,7 @@ function btnFunc(){
 	
 	if($('#btnSearch-item')!=null){
 		$('#btnSearch-item').click(function(){
-			
-			let findStr = $('#findStr').val();
-			
-			$('#tableContainer').load('select_product.stb?findStr='+findStr+' #selectTable');
-		
-			/*
-			$.post('select_productR.stb', {"findStr" : findStr}, function(data) {
-				alert(data);
-				})
-			*/
-			//$('frmSearch').attr('action', 'select_product.stb').submit();
+			loadTable();
 		})
 	}
 	
@@ -72,8 +36,19 @@ function btnFunc(){
 		$('#btnSearch-item').click();
 		return false;
 	});
-}
-//let table = $('#selectTable').DataTable();
+	
+	if($('#btnTheme')!=null && $('#btnCategory')!=null){
+		 $('#btnTheme').click(function(){
+			 $(this).addClass('active');
+			 $('#btnCategory').removeClass('active');
+		 }),$('#btnCategory').click(function(){
+			 $(this).addClass('active');
+			 $('#btnTheme').removeClass('active');
+		 })
+		 
+	}
+	
+}// end of btnFunc
 
 let deleteItem = function(item_code){
 	
@@ -238,4 +213,27 @@ function makeDiv(main){
 				  
 			  }
 		});
+	}
+	
+	function loadTable(){
+		 let findStr = $('#findStr').val();
+		 let category = $('#categorySelect').val();
+		 
+		 if($("#checkSale").is(":checked")){
+	        	
+	        	$('#tableContainer').load('select_product.stb #selectTable', 
+	        			{'findStr' : findStr,
+	        			'category' : category,
+	        			'check' : 'true'});
+	        	
+	        }else{
+	        	$('#tableContainer').load('select_product.stb?findStr='+findStr+
+	    				'&category='+category+
+	    				' #selectTable');
+	        }
+	}
+	
+	function toList(){
+		location.href='select_product.stb';
+		loadTable();
 	}

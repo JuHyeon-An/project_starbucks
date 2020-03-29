@@ -42,10 +42,6 @@ public class ServletJH extends HttpServlet{
 			selectProducts(req, resp);
 			break;
 			
-		case "/select_productR.stb":
-			selectProductsR(req, resp);
-			break;
-			
 		case "/add_productR.stb":
 			insertProductsR(req, resp);
 			break;
@@ -78,16 +74,28 @@ public class ServletJH extends HttpServlet{
 	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
-
+		String category = "";
+		String check = "";
+		
 		if(req.getParameter("findStr")!=null) {
 			findStr = req.getParameter("findStr");
 		}
 		
+		
+		if(req.getParameter("category")!=null) {
+			category = req.getParameter("category");
+		}
+		
+		if(req.getParameter("check")!=null) {
+			check = req.getParameter("check");
+		}
+		
+		System.out.println("체크가 됐는지 "+check);
 		ProductDao dao = new ProductDao();
-		List<ProductVo> list = dao.select(findStr);
+		List<ProductVo> list = dao.select(findStr, category, check);
 		req.setAttribute("list", list);
 		
-		String path= urlAdmin+"/products.jsp?findStr="+findStr;
+		String path= urlAdmin+"/products.jsp?findStr="+findStr+"&category="+category;
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 		
@@ -192,41 +200,6 @@ public class ServletJH extends HttpServlet{
 		String path= urlAdmin+"/product_category.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
-	}
-	
-	// 주현 : admin - 상품 조회
-	public void selectProductsR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setCharacterEncoding("utf-8");
-		resp.setContentType("text/html;charset=utf-8");
-		
-		ProductDao dao = new ProductDao();
-		String findStr = "";
-		System.out.println(req.getParameter("findStr"));
-		if(req.getParameter("findStr")!=null) {
-			findStr = req.getParameter("findStr");
-		}else {
-			selectProducts(req, resp);
-			return;
-		}
-		System.out.println("검색어 : "+findStr);
-		List<ProductVo> list = new ArrayList<ProductVo>();
-		list = dao.select(findStr);
-		System.out.println(list.get(0).getItem_code());
-		System.out.println(list.get(1).getItem_code());
-		
-		String json = "";
-		Gson gson = new Gson();
-			json = gson.toJson(list);
-		System.out.println("json : "+json);
-		
-		/*
-		String path= urlAdmin+"/products.jsp";
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-		*/
-		
-		PrintWriter out = resp.getWriter();
-		out.print(json);
 	}
 	
 }
