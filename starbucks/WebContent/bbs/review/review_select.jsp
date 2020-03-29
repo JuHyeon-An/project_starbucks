@@ -56,7 +56,7 @@
                 <th class="">no</th>
                 <th class="product-thumbnail">아이디</th>
                 <th class="product-name">제목</th>
-                <th class="product-price">아이템코드</th>
+                <th class="product-price">사진</th>
                 <th class="product-quantity">등록일</th>
                 <th class="product-total">평점</th>
                 <th class="product-remove">-</th>
@@ -75,7 +75,10 @@
                     <span>${vo.review_title }</span>
                 </td>
                 <td>
-                    <span>${vo.item_code }</span>
+                	<c:set var="imgs" value="${vo.review_imgs }"/>
+					<c:forEach var="img" items="${imgs.sys_imgs}">
+					 ${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
+					</c:forEach>
                 </td>
                 <td>
                     <span>${vo.review_regdate }</span>
@@ -89,9 +92,8 @@
                    	     삭제
                     </button>
                 </td>
-            
-                
             </tr>
+            	
             </c:forEach>
         </tbody>
     </table>		
