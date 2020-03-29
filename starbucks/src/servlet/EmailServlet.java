@@ -43,17 +43,33 @@ public class EmailServlet extends HttpServlet {
 		String tempURL = temp.substring(pos);
 		
 		switch (tempURL) {
-
 		case "/idFind.email":
 			idFind(req, resp);
 			break;
 		case "/pwFind.email":
 			pwFind(req, resp);
 			break;
+		case "/idFindR.email":
+			idFindR(req, resp);
+			break;
+		case "/pwFindR.email":
+			pwFindR(req, resp);
+			break;
 		}
 
 	}
 	public void idFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = url+"/idFind.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	public void pwFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String path = url+"/pwFind.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	public void idFindR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String mName = null;
 		String email = null;
 		if(req.getParameter("mName") != null && req.getParameter("mName") != "") {
@@ -83,25 +99,29 @@ public class EmailServlet extends HttpServlet {
 		
 		
 	}
-	public void pwFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void pwFindR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String mId = null;
 		String email = null;
+		String mName = null;
 		if(req.getParameter("mId") != null && req.getParameter("mId") != "") {
 			mId = req.getParameter("mId");
 		}
 		if(req.getParameter("email") != null && req.getParameter("email") != "") {
 			email = req.getParameter("email");
 		}
+		if(req.getParameter("mName") != null && req.getParameter("mName") != "") {
+			mName = req.getParameter("mName");
+		}
 		EmailDao dao = new EmailDao();
-		Shopping_MemberVo vo = dao.pwFind(mId, email);
+		Shopping_MemberVo vo = dao.pwFind(mName, mId, email);
 		
 		if(vo.getmId() != null) {
-			int flag = 1 ; // 아이디 찾는경우
+			int flag = 2 ; // 비밀번호 찾는경우
 			String msg = mId+"회원님의 비밀번호는 [ "+vo.getPwd()+" ] 입니다.";
 			int r = sendEmail(flag, email , msg, req, resp);
 			
 			if(r==1) {
-				String path = url+"/idFind_result.jsp";
+				String path = url+"/pwFind_result.jsp";
 				RequestDispatcher rd=req.getRequestDispatcher(path);
 				rd.forward(req, resp);
 			}

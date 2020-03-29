@@ -35,7 +35,9 @@ public class EmailDao {
 
 				}
 			}
-
+			rs.close();
+			ps.close();
+			conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -43,14 +45,15 @@ public class EmailDao {
 
 		return vo; // 데이터베이스 오류
 	}
-	public Shopping_MemberVo pwFind(String mId, String email) { // 아이디찾기
+	public Shopping_MemberVo pwFind(String mName, String mId, String email) { // 아이디찾기
 
-		String sql = "select member_name, member_email, member_id from shopping_member where member_id = ? and member_email = ? ";
+		String sql = "select member_name, member_email, member_id, member_pw from shopping_member where member_id = ? and member_email = ? and member_name = ? ";
 		Shopping_MemberVo  vo = new Shopping_MemberVo();
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			ps.setString(2, email);
+			ps.setString(3, mName);
 			rs = ps.executeQuery();
 
 			if (rs.next()) {
@@ -59,6 +62,7 @@ public class EmailDao {
 					vo.setmName(rs.getString("member_name"));
 					vo.setEmail(email);
 					vo.setmId(rs.getString("member_id"));
+					vo.setPwd(rs.getString("member_pw"));
 					rs.close();
 					ps.close();
 					conn.close();
@@ -66,7 +70,9 @@ public class EmailDao {
 
 				}
 			}
-
+			rs.close();
+			ps.close();
+			conn.close();
 
 		} catch (Exception e) {
 			e.printStackTrace();
