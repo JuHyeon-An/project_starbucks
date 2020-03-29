@@ -12,7 +12,7 @@
 </head>
 <body>
 
-<form name='review' id='review' method='post'>
+<form name='review' id='review' method='post'> 
     <div class="row">
    		<div class="col-md-12 mb-3">
            	<h2 class="h3 mb-3 text-black">리뷰</h2>
