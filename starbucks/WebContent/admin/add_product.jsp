@@ -56,7 +56,7 @@
 
 							<hr />
 							<div class="row">
-								<div class="form-group mb-3 col-xs-12 col-sm-6">
+							<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_group">분류</label> <select
 										class="custom-select tm-select-accounts" id="item_group"
 										name="item_group">

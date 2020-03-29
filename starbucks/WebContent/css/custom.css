@@ -61,3 +61,37 @@
 	background-color:#394e64;
 	border:none;
 }
+
+.select-custom{
+	color:#fff;
+	background-color:#394e64;
+	border:none;
+	width:100px;
+	border-radius:0.25rem 0 0 0.25rem;
+	text-align:center;
+}
+
+.btn-custom-r{
+	border:none;
+	color:#fff;
+	background-color:#394e64;
+	height:50px;
+	border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.btn-custom-l{
+	border:none;
+	border-right:solid #567086 0.5px;
+	color:#fff;
+	background-color:#394e64;
+	height:50px;
+	border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.btn-dark:active {
+	color: #fff;
+	background-color: #23272b;
+	border-color: #1d2124
+}
