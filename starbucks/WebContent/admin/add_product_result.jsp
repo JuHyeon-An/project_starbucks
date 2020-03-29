@@ -5,13 +5,27 @@
 <head>
 <meta charset="UTF-8">
 <title></title>
-<% String group = (String)request.getAttribute("group"); 
+<% 
    String test = (String)request.getAttribute("msg");
-
+	
 %>
 </head>
+
+<div class="container">
+	<div></div>
+
+
+</div>
 <body>
-<li><%=group %></li>
 <li><%=test %></li>
+<script>
+	Swal.fire({
+		  icon: 'success',
+		  title: 'Your work has been saved',
+		  showConfirmButton: false,
+		  timer: 1500
+		})
+		//history.back();
+</script>
 </body>
 </html>
