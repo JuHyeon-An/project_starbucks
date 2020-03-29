@@ -103,7 +103,10 @@
 				<div class="col-12">
 					<button type="submit" id="btnInsert"
 						class="btn btn-primary btn-block text-uppercase">상품등록</button>
-				</div></form>
+				</div>
+				
+				<input type="text" id="resultMsg" value="${msg }"/>
+				</form>
 			</div>
 		</div>
 	</div>

@@ -18,13 +18,20 @@
 		})
 	}
 	
-	
 	if($('.category-input')!=null){
 		$('.category-input').on({
 			click:function(){ $(this).removeAttr('readonly'); }
 		});
 	}
 	
+		/*
+		  $("#findStr").on("keyup", function() {
+		    let value = $(this).val().toLowerCase();
+		    $("#selectTable tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+	*/
 	
 	if($('#btnSearch-item')!=null){
 		$('#btnSearch-item').click(function(){
@@ -48,6 +55,61 @@
 		 
 	}
 	
+	/*
+	Swal.fire({
+		  title: '등록 성공!',
+		  text: "상품이 성공적으로 등록되었습니다.",
+		  icon: 'success',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '상품 등록',
+		  cancelButtonText: '목록으로'
+		}).then((result) => {
+		  if (result.value) {
+			  // 확인을 눌렀으면
+					Swal.fire(
+							'Deleted!',
+							'성공적으로 삭제되었습니다.',
+							'success'
+					).then((result2) => {
+						if(result2.value){
+							location.href="/starbucks/admin/select_product.stb"
+						}
+					})
+	*/
+	
+	
+	
+	/*
+	 * Swal.fire({
+				  icon: 'success',
+				  title: 'Your work has been saved',
+				  showConfirmButton: false,
+				  timer: 1500
+				})
+	 */
+	
+	if($('#resultMsg')!=null){
+		if($('#resultMsg').val()=='성공'){
+			Swal.fire({
+				  title: '등록 성공!',
+				  text: "상품이 성공적으로 등록되었습니다.",
+				  icon: 'success',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '상품 등록',
+				  cancelButtonText: '목록으로'
+				}).then((result) => {
+				  if (result.value) {
+					  // 확인을 눌렀으면
+		}else{
+			location.href="select_product.stb"
+		}
+	});
+		}
+	}
 }// end of btnFunc
 
 let deleteItem = function(item_code){
@@ -216,7 +278,7 @@ function makeDiv(main){
 	}
 	
 	function loadTable(){
-		 let findStr = $('#findStr').val();
+		 let findStr = $('#findStr').val().toUpperCase();
 		 let category = $('#categorySelect').val();
 		 
 		 if($("#checkSale").is(":checked")){
@@ -237,3 +299,56 @@ function makeDiv(main){
 		location.href='select_product.stb';
 		loadTable();
 	}
+	
+	/*
+	function sortTable(index){
+		let table = $('#selectTable');
+		let rows = table[0].rows;
+		// 테이블 전체 행
+		console.log(rows.length)
+		
+		for (var i = 1; i < (rows.length - 1); i++) { 
+			console.log("실행");
+			var fCell = rows[i].cells[index];
+			console.log(fCell.innerHTML.toLowerCase()); // value
+			var sCell = rows[i + 1].cells[index];
+			if (fCell.innerHTML.toLowerCase() > sCell.innerHTML.toLowerCase()) {
+				console.log("몇번실행되는지");
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); } 
+			}
+			}
+*/
+
+		let sortType = 'asc';
+		function sortTable(index){
+		    sortType = (sortType === 'asc') ? 'desc':'asc';
+
+		    let table = $('#selectTable');
+			let rows = table[0].rows;
+		    let chkSort = true;
+		   
+		    while (chkSort){
+		        chkSort = false;
+		        for (var i = 1; i < (rows.length - 1); i++) {
+		            let row = rows[i];
+		            
+		            let fCell = row.cells[index].innerHTML;
+		            let sCell = rows[i + 1].cells[index].innerHTML;
+		            
+		            if(index==3 || index==4){
+		            	fCell = parseInt(fCell);
+		            	sCell = parseInt(sCell);
+		            }else{
+		            	fCell = fCell.toLowerCase();
+		            	sCell = sCell.toLowerCase();
+		            }
+//		            let sCell = row.nextSibling.cells[index].innerHTML.toLowerCase();
+		            
+		            if ( (sortType === 'asc'  && fCell > sCell) ||
+		               (sortType === 'desc' && fCell < sCell) ) {
+		                row.parentNode.insertBefore(row.nextSibling, row);
+		                chkSort = true;
+		            }
+		        }   
+		    }
+		}

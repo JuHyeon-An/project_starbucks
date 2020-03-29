@@ -132,7 +132,7 @@ public class ServletJH extends HttpServlet{
 		}
 		
 		
-		String path= urlAdmin+"/add_product_result.jsp";
+		String path= urlAdmin+"/add_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
