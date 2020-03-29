@@ -64,7 +64,8 @@
 						style="background-color: rgb(255, 255, 255);"></div>
 				</div>
 				<img class="swal2-image" style="display: none;">
-				<h2 class="swal2-title" id="swal2-title" style="display: flex;"> 회원님의 아이디가 이메일로 전송되었습니다.</h2>
+				<h2 class="swal2-title" id="swal2-title" style="display: flex;"> 회원님의 아이디가</h2>
+				<h2 class="swal2-title" id="swal2-title" style="display: flex;"> 이메일로 전송되었습니다.</h2>
 				<button type="button" class="swal2-close"
 					aria-label="Close this dialog" style="display: none;">×</button>
 			</div>
