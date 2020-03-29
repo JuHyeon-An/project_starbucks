@@ -71,9 +71,11 @@
                         <span class="" id="orderPrice">$49.00</span>
                     </td>
                     <td>
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary btn-sm" id="btnCancle">
                             취소요청
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnWriteReview">
+                            리뷰작성
                         </button>
 
                     </td>
