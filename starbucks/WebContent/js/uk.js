@@ -3,7 +3,6 @@
  */
 let cnt=0;	
 let func=function(){
-	
 	if($('#btnSelect')!=null){
 		$('#btnSelect').on('click', function(){
 			$('#notice').attr('action', 'notice_select.uk').submit();
@@ -24,6 +23,7 @@ let func=function(){
 		alert($('#msg').val());
 	}
 }
+
 let goPage=function(nowPage){
 	$('#nowPage').val(nowPage);
 	$('#notice').attr('action','notice_select.uk').submit();
@@ -38,7 +38,7 @@ let notice_view=function(noticeTitle,noticeContent,noticeRegDate ){
 	$('#noticeRegDate').val(noticeRegDate);
 	$('#notice').attr('action','notice_view.uk').submit();
 }
-let review_view=function(){
+let review_view=function(review_postnum, member_id, item_code, review_title, review_content, review_like, review_regdate, reivew_view, review_imgs){
 	$('#review_postnum').val(review_postnum);
 	$('#member_id').val(member_id);
 	$('#item_code').val(item_code);
@@ -47,6 +47,7 @@ let review_view=function(){
 	$('#review_like').val(review_like);
 	$('#review_regdate').val(review_regdate);
 	$('#reivew_view').val(reivew_view);
+	$('#review_imgs').val(review_imgs);
 	$('#review').attr('action','review_view.uk').submit();
 }
 

@@ -93,7 +93,6 @@ public class ServletUk extends HttpServlet{
 	
 	
 	public void review_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		String findStr="";
 		int nowPage=1;
 		if(req.getParameter("findStr")!=null) {
@@ -113,8 +112,13 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		
+		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		System.out.println(review_postnum);
+		DaoUk dao=new DaoUk();
+		int r=dao.review_view(review_postnum);
+		if(r>0) {
+			System.out.println("성공");
+		}
 		
 		String path=url+"?main=./review/review_view.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

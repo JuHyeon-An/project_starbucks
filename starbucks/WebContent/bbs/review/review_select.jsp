@@ -4,13 +4,6 @@
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-    
-</head>
-<body>
 
 <form name='review' id='review' method='post'> 
     <div class="row">
@@ -41,6 +34,7 @@
          </div>
 	</div> <!-- <div class="row"> -->
 <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+<input type='hidden' id='msg' value='${msg }'/>
 <input type='hidden' name='review_postnum' id='review_postnum' />
 <input type='hidden' name='member_id' id='member_id'/>
 <input type='hidden' name='item_code' id='item_code'/>	
@@ -49,6 +43,7 @@
 <input type='hidden' name='review_like' id='review_like'/>
 <input type='hidden' name='review_regdate' id='review_regdate'/>
 <input type='hidden' name='reivew_view' id='reivew_view'/>
+<input type='hidden' name='review_imgs' id='review_imgs'/>
     <div class="site-blocks-table mb-3">
     <table class="table">
         <thead>
@@ -64,7 +59,7 @@
         </thead>
         <tbody>
         	<c:forEach var="vo" items="${list }">
-            <tr onclick="review_view('${review_postnum}','${member_id }','${item_code }','${review_title }','${review_content }','${review_like }','${review_regdate }','${reivew_view }')">
+            <tr onclick="review_view('${vo.review_postnum}','${vo.member_id }','${vo.item_code }','${vo.review_title }','${vo.review_content }','${vo.review_like }','${vo.review_regdate }','${vo.reivew_view }','${vo.review_imgs }')">
                 <td class="">
                     <span>${vo.review_postnum }</span>
                 </td>
@@ -85,6 +80,9 @@
                 </td>
                 <td>
                   	<span>${vo.review_like }</span>
+                </td>
+                <td>
+                  	<span>조회수:${vo.reivew_view }</span>
                 </td>
                 <td>
                     <!-- Button trigger modal -->
@@ -121,9 +119,3 @@
 </form>
 
 
-
-
-
-
-</body>
-</html>
