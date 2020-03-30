@@ -123,11 +123,11 @@
                                 </ul>
                             </li>
                             <li class="has-children">
-                                <a href="./bbs/">Events</a>
+                                <a href="./bbs/">Information</a>
                                 <ul class="dropdown">
-                                    <li><a href="/starbucks/bbs/">진행중인 이벤트</a></li>
-                                    <li><a href="/starbucks/bbs/">종료된 이벤트</a></li>
-                                    <li><a href="/starbucks/bbs/">당첨자 발표</a></li>
+                                    <li><a href="/starbucks/product/privacy.jsp">개인정보처리방침</a></li>
+<!--                                     <li><a href="/starbucks/bbs/">종료된 이벤트</a></li> -->
+<!--                                     <li><a href="/starbucks/bbs/">당첨자 발표</a></li> -->
                                 </ul>
                             <li class="has-children">
                                 <a href="/starbucks/bbs/">Community</a>
