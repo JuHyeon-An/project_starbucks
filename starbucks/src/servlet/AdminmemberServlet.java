@@ -26,6 +26,8 @@ public class AdminmemberServlet extends HttpServlet {
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+	    resp.setContentType("text/html; charset=utf-8");
 		String temp= req.getRequestURI();
 		int pos = temp.lastIndexOf("/");
 		String tempURL = temp.substring(pos);
