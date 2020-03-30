@@ -23,14 +23,18 @@
             <div class="container">
                 <div class="row align-items-start align-items-md-center justify-content-end">
 
-                    <div class="col-md-5 text-center text-md-left pt-5 pt-md-0 img-area">
+                    <div class="col-md-4 text-center text-md-left pt-5 pt-md-0 img-area">
                         <img src="images/product/20_spring_bean.png" alt="">
                     </div>
                     
-                    <div class="col-md-5 text-center text-md-left pt-5 pt-md-0">
-                        <h1 class="mb-2">Iced Spring Peach Green Tea</h1>
+                    <div class="col-md-6 text-center text-md-left pt-5 pt-md-0">
+                        <h4 class="mb-2" style='color:#333;'>뚜렷한 특색의 4가지 원두를 블랜딩하여 </h4>
+                        <h4 class="mb-2" style='color:#333;'>복합적인 풍미를 선사할 커피</h4>
+                        <h1 class="mb-2">SPRING SEASON BLEND</h1>
                         <div class="intro-text text-center text-md-left">
-                            <p class="mb-4">달콤한 국내산 복숭아와 은은한 자스민향이 완벽하게 어우러진 스프링 피치 그린 티와 함께 따뜻한 봄의 기운을 느껴보세요!</p>
+						<span class="mb-4">풍부한 다크 체리의 풍미와 스파이시함, 입 안 가득 차는 풀 바디감을 느낄 수 있는
+									다크 로스트 커피로, 숙성 수마트라, 썬드라이드 에티오피아, 파푸아뉴기니,
+									콜롬비아 원두의 독특한 풍미를 경험해보세요.</span>
                             <p>
                                 <a href="listPage.pl" class="btn btn-sm btn-primary">Shop Now</a>
                             </p>
