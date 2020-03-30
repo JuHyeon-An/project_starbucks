@@ -20,7 +20,27 @@ public class OrderVo {
 	String addr2; //상세주소 
 	int savedMoney; // 	적립금   
 	
+	public OrderVo() {
+		
+	}
 	
+	public OrderVo(String mId, String itemCode, String mName, String phone, String email, int orderNum, int orderPrice, String getNm, String getPhone, String orderRegDt, int orderStatus, String zone, String addr1, String addr2) {	
+		this.memberId = mId;
+		this.itemCode = itemCode;
+		this.memberName = mName;
+		this.memberPhone = phone;
+		this.memberEmail = email;
+		this.orderNum = orderNum;
+		this.orderPrice = orderPrice;
+		this.getName = getNm;
+		this.getPhone = getPhone;
+		this.orderregDate = orderRegDt;
+		this.orderStatus = orderStatus;
+		this.zone = zone;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		
+	}
 	
 	public String getOrderNumber() {
 		return orderNumber;
