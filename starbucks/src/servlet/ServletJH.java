@@ -17,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.FileUpload;
 import bean.ProductDao;
+import bean.ProductSumVo;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
@@ -198,18 +199,12 @@ public class ServletJH extends HttpServlet{
 		resp.setContentType("text/html;charset=utf-8");
 		
 		ProductDao dao = new ProductDao();
-		Map<String, Integer> map = dao.dashBoard();
+		List<ProductSumVo> list = dao.dashBoard();
 		
-		req.setAttribute("map", map);
+		System.out.println("서블릿 : "+list.get(0).getItem_title());
+		System.out.println("서블릿 : "+list.get(0).getOrder_sumnum());
 		
-		Set<String> keySet = map.keySet();
-		Iterator<String> iter = keySet.iterator();
-		while(iter.hasNext()){
-			String key = iter.next();
-			Integer value = map.get(key);
-			System.out.println(key);
-			System.out.println(value);
-		}
+		req.setAttribute("pList", list);
 		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

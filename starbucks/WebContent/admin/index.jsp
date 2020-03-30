@@ -18,8 +18,5 @@
 
 <script>
 	btnFunc();
-	
-	$("#dashNav").one("click", function() {
-		alert("클릭");
-	});
+
 </script>
