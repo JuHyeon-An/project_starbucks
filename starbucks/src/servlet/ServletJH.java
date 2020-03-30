@@ -3,8 +3,10 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -196,6 +198,19 @@ public class ServletJH extends HttpServlet{
 		
 		ProductDao dao = new ProductDao();
 		Map<String, Integer> map = dao.dashBoard();
+		
+		
+		req.setAttribute("map", map);
+		
+		Set<String> keySet = map.keySet();
+		Iterator<String> iter = keySet.iterator();
+		while(iter.hasNext()){
+			String key = iter.next();
+			Integer value = map.get(key);
+			System.out.println(key);
+			System.out.println(value);
+		}
+		
 		
 		
 		String path= urlAdmin+"/dashboard.jsp";

@@ -297,7 +297,7 @@ public class ProductDao {
 		
 		try {
 			
-				sql = " select item_title, order_sumnum from itemboard order by order_sumnum desc";
+				sql = " select * from (select item_title, ORDER_SUMNUM from itemboard order by order_sumnum desc) where rownum <= 7";
 				
 				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);

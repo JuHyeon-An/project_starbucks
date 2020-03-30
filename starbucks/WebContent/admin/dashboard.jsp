@@ -270,8 +270,8 @@
 	    </div>
 	</div>
 	<form>
-	<c:forEach var="item" items="${list }">
-	<input type="text" name="bestItem" value="${item }"/>
+	<c:forEach var="item" items="${map }">
+	<input type="text" name="bestItem" value="${item.key }"/>
 	</c:forEach>
 	</form>
 	<script>
