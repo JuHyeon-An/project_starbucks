@@ -180,7 +180,7 @@
 				<div class="col-9"></div>
 				<div class="col-3">
 					<div class="row">
-					<span class="col-6 bottom-nav" onclick="history.back();"
+					<span class="col-6 bottom-nav" onclick="toList();"
 						>목록으로</span>
 					<span class="col-6 bottom-nav" onclick="$('html').scrollTop(0);"
 						>맨 위로</span>

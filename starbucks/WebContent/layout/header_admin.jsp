@@ -24,10 +24,13 @@
 	<link rel="stylesheet" href="/starbucks/css/custom.css" type="text/css" />
 	 <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"/>
     <!-- https://fonts.google.com/specimen/Roboto -->
-	
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+	<!-- choose a theme file -->
+	<!-- 
+	<link rel="stylesheet" href="../tablesorter-master/css/theme.default.css">
+	 -->
 	
     <script type='text/javascript' src="<%=request.getContextPath() %>/js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
@@ -48,6 +51,17 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- dataTable -->
+	<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	
+<!-- load jQuery and tablesorter scripts -->
+<script type="text/javascript" src="../tablesorter-master/docs/js/jquery-latest.js"></script>
+<script type="text/javascript" src="../tablesorter-master/js/jquery.tablesorter.js"></script>
+
+<!-- tablesorter widgets (optional) -->
+<script type="text/javascript" src="../tablesorter-master/js/widgets/jquery.tablesorter.widgets.js"></script>
+	
 	
 </head>
 
@@ -102,13 +116,12 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="accNav" class="nav-link dropdown-toggle"  href="admin.adminmember" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            <a id="accNav" class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                                 <i class="far fa-user"></i>
                                 <span>Accounts<i class="fas fa-angle-down"></i></span>
                             </a>
                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="accounts.jsp">회원상세보기</a>
-                                <a class="dropdown-item" href="./add_product.stb">회원관리</a>
+                                <a class="dropdown-item" href="admin.adminmember">회원관리</a>
                                
                             </div>
                         </li>

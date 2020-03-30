@@ -85,43 +85,62 @@
 
 </div>
 
+<script>
+var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
+var passwdCheck = RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^*()\-_=+\\\|\[\]{};:\'",.<>\/?]).{8,16}$/);
+var nameCheck = RegExp(/^[가-힣]{2,6}$/);
+var nickNameCheck = RegExp(/^[가-힣a-zA-Z0-9]{2,10}$/);
+var emailCheck = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+var birthdayCheck = RegExp(/^(19|20)[0-9]{2}(0[1-9]|1[1-2])(0[1-9]|[1-2][0-9]|3[0-1])$/);
+var phonNumberCheck = RegExp(/^01[0179][0-9]{7,8}$/);
+var enCheck = RegExp(/[^a-zA-Z]$/);
 
+var enCheck = RegExp(/[^a-zA-Z]$/);
+
+$('#email').keyup(function(){
+	if(emailCheck.test($('#email').val())){
+		$('#email').val($('#email').val().replace(/[^a-z]/gi,''));
+	}
+});
+
+</script>
 
 
 <script>
 
-    $("#mId").blur(function() {
-        //사용자가 입력한 아이디
-        var mId = $("#mId").val();
-        var param = "mId=" + mId;
-        if (mId.length >= 2) { 
-        
-            $.ajax({
-                type : "post",
-                url : "idck.sm",
-                data : param,
-                success : function(result) {
-                    $("#id_check").html(result);
-                }
-            })
-        }
-    });
-    //버튼클릭 이벤트
-    /*
-    $("#idck").click(function() {
-        //사용자가 입력한 아이디
-        var mId = $("#mId").val();
-        var param = "mId=" + mId;
-       
-            $.ajax({
-                type : "post",
-                url : "idck.sm",
-                data : param,
-                success : function(result) {
-                    $("#id_check").html(result);
-                }
-            })});
-    */
+
+$("#mId").blur(function() {
+    //사용자가 입력한 아이디
+    var mId = $("#mId").val();
+    var param = "mId=" + mId;
+    if (mId.length >= 2) { 
+    
+        $.ajax({
+            type : "post",
+            url : "idck.sm",
+            data : param,
+            success : function(result) {
+                $("#id_check").html(result);
+            }
+        })
+    }
+});
+//버튼클릭 이벤트
+/*
+$("#idck").click(function() {
+    //사용자가 입력한 아이디
+    var mId = $("#mId").val();
+    var param = "mId=" + mId;
+   
+        $.ajax({
+            type : "post",
+            url : "idck.sm",
+            data : param,
+            success : function(result) {
+                $("#id_check").html(result);
+            }
+        })});
+*/
 
 
 
@@ -131,49 +150,48 @@
 
 
 
-	
+
 
 function execDaumPostcode() {
-    new daum.Postcode({
-        oncomplete: function(data) {
-        var fullRoadAddr = data.roadAddress;
-        var extraRoadAddr = "";
-        // 법정동명이 있을 경우 추가 (법정리는 제외)
-        // 법정동의 경우 마지막 문자가 "동/로/가"로 끝남
-        if (data.bname != "" && /[동|로|가]$/g.test(data.bname)) {
-            extraRoadAddr += data.bname;
-        }
-        // 건물명이 있고, 공동주택일 경우 추가
-        if (data.buildingName != "" && data.apartment == "Y") {
-            extraRoadAddr += (extraRoadAddr !== "" ? ", " + data.buildingName : data.buildingName);
-        }
-        // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열 생성
-        if (extraRoadAddr != "") {
-            extraRoadAddr = " (" + extraRoadAddr + ")" ;
-        }
-        // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소 추가
-        if (fullRoadAddr != "") {
-            fullRoadAddr += extraRoadAddr;
-        }
-        // 우편번호, 주소 값 바인딩
-        $("#zip").val(data.zonecode);
-        $("#addr1").val(fullRoadAddr);
-        $("#addr2").focus();
-        
-        }
-    }).open();
+new daum.Postcode({
+    oncomplete: function(data) {
+    var fullRoadAddr = data.roadAddress;
+    var extraRoadAddr = "";
+    // 법정동명이 있을 경우 추가 (법정리는 제외)
+    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝남
+    if (data.bname != "" && /[동|로|가]$/g.test(data.bname)) {
+        extraRoadAddr += data.bname;
+    }
+    // 건물명이 있고, 공동주택일 경우 추가
+    if (data.buildingName != "" && data.apartment == "Y") {
+        extraRoadAddr += (extraRoadAddr !== "" ? ", " + data.buildingName : data.buildingName);
+    }
+    // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열 생성
+    if (extraRoadAddr != "") {
+        extraRoadAddr = " (" + extraRoadAddr + ")" ;
+    }
+    // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소 추가
+    if (fullRoadAddr != "") {
+        fullRoadAddr += extraRoadAddr;
+    }
+    // 우편번호, 주소 값 바인딩
+    $("#zip").val(data.zonecode);
+    $("#addr1").val(fullRoadAddr);
+    $("#addr2").focus();
+    
+    }
+}).open();
 }
 
 $(document).ready(function(){
 
-	$("#addr2").keyup(function(){
+$("#addr2").keyup(function(){
 
-		$("#address").text($("#addr2").val());
-
-	});
+	$("#address").text($("#addr2").val());
 
 });
 
+});
 </script>
 
 

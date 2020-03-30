@@ -214,20 +214,44 @@ public class ProductDao {
 		return r;
 	}
 	
-	public List<ProductVo> select(String productSearch){
+	public List<ProductVo> select(String productSearch, String category, String check){
+		System.out.println("카테고리 : "+category);
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
-
+		String addCheck = "";
+		
+		if(check.equals("true")) {
+			addCheck = "and item_status='판매'";
+		}
+		
 		try {
-			sql = " select * from itemboard where item_code like ? or item_title like ?";
-			conn = DBConn.getConn();
-			ps = conn.prepareStatement(sql);
+			
+			if(category.equals("")) {
+				sql = " select * from itemboard where (item_code like ? "
+						+ "or item_title like ? )"+addCheck;
+				
+				System.out.println(sql);
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, "%"+productSearch+"%");
+				ps.setString(2, "%"+productSearch+"%");
+				
+			}else {
+				sql = " select * from itemboard where (item_code like ? or item_title like ?) "
+						+ "and item_group = ? "+addCheck;
 
-			ps.setString(1, "%"+productSearch+"%");
-			ps.setString(2, "%"+productSearch+"%");
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, "%"+productSearch+"%");
+				ps.setString(2, "%"+productSearch+"%");
+				ps.setString(3, category);
 
+			}
+			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {

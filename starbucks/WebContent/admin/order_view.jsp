@@ -64,12 +64,13 @@
 	                            <input type='text' name='orderregDate' id='orderregDate' value='${param.orderregDate  }' readonly/>
 	                            </td>
 	                            <td>
-	                            <input type='text' size='8' name='orderStatus' id='orderStatus' value='${param.orderStatus}'/>
 	                            
-	                            <select name='status' id='status'>
-	                            <option value='${param.orderStatus}'>주문취소</option>
-	                            <option value='${param.orderStatus}'>승인대기</option>
-	                            <option value='${param.orderStatus}'>주문완료</option>
+	                            <select name='orderStatus' id='orderStatus'>
+	                            <option value='1'<c:if test="${param.orderStatus eq 1}">selected</c:if> >주문취소</option>
+	                            <option value='2'<c:if test="${param.orderStatus eq 2}">selected</c:if>>승인대기 </option>
+	                            <option value='3'<c:if test="${param.orderStatus eq 3}">selected</c:if>  >주문완료</option>
+	                            <!-- 1 주문취소 2 승인대기 3 주문완료 -->
+	                            
 	                            </select>
 	                          	</td>
 	                            
