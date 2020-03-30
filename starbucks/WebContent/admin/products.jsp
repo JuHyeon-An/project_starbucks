@@ -74,7 +74,7 @@
 									<th class="text-center" scope="col">&nbsp;</th>
 									<!-- 사진 -->
 									<th class="text-center" scope="col" onclick="sortTable(1)">상품코드</th>
-									<th class="text-center" scope="col" onclick="sortTable(2)">상품명</th>
+									<th class="text-center" scope="col" style="width:230px;" onclick="sortTable(2)">상품명</th>
 									<th class="text-center" scope="col" onclick="sortTable(3)">판매가</th>
 									<th class="text-center" scope="col" onclick="sortTable(4)">재고</th>
 									<th class="text-center" scope="col" onclick="sortTable(5)">판매상태</th>

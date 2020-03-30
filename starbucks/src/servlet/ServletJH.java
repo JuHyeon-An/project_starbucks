@@ -62,8 +62,8 @@ public class ServletJH extends HttpServlet{
 			deleteProductsR(req, resp);
 			break;
 			
-		case "/product_group.stb":
-			editGroup(req, resp);
+		case "/dashboard.stb":
+			dashBoard(req, resp);
 			break;
 		}
 
@@ -193,11 +193,18 @@ public class ServletJH extends HttpServlet{
 		out.print(result);
 	}
 	
-	public void editGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void dashBoard(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		String path= urlAdmin+"/product_category.jsp";
+		ProductDao dao = new ProductDao();
+		List<Integer> list = dao.dashBoard();
+		System.out.println("list값1 : "+list.get(0));
+		System.out.println("list값2 : "+list.get(1));
+		System.out.println("list값3 : "+list.get(2));
+		
+		req.setAttribute("list", list);
+		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
