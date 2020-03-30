@@ -13,12 +13,6 @@ let func=function(){
 			$('#review').attr('action', 'review_select.uk').submit();
 		});
 	}
-	if($('#btnRegist')!=null){
-		$('#btnRegist').on('click',function(){
-			$('#review').attr('action', 'review_insertR.uk').submit();
-		});
-		
-	}
 	if($('#msg').val()){	
 		alert($('#msg').val());
 	}
@@ -38,17 +32,21 @@ let notice_view=function(noticeTitle,noticeContent,noticeRegDate ){
 	$('#noticeRegDate').val(noticeRegDate);
 	$('#notice').attr('action','notice_view.uk').submit();
 }
-let review_view=function(review_postnum, member_id, item_code, review_title, review_content, review_like, review_regdate, reivew_view, review_imgs){
+let review_view=function(review_postnum){
 	$('#review_postnum').val(review_postnum);
-	$('#member_id').val(member_id);
-	$('#item_code').val(item_code);
-	$('#review_title').val(review_title);
-	$('#review_content').val(review_content);
-	$('#review_like').val(review_like);
-	$('#review_regdate').val(review_regdate);
-	$('#reivew_view').val(reivew_view);
-	$('#review_imgs').val(review_imgs);
 	$('#review').attr('action','review_view.uk').submit();
+}
+let btn=function(){
+	let div=document.createElement('test');
+	let cnt=0;
+	let b=$('<button>');
+	
+	div.appendChild(b);
+	b.onclick=function(){
+		console.log(cnt);
+		btn();
+	}
+	cnt++;
 }
 
 

@@ -47,7 +47,6 @@ public class ProductDao_YD {
 			
 	         rs.close();
 	         ps.close();
-	         conn.close();
 		} catch (Exception e) {
 			System.out.println("오류뜸" );
 		} finally {
@@ -67,7 +66,7 @@ public class ProductDao_YD {
 		int totList = 0;
 
 		try {
-			sql = " select count(item_code) cnt from itemboard ";
+			sql = " select count(item_code) cnt from itemboard  where item_status='판매' ";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 			
@@ -81,6 +80,7 @@ public class ProductDao_YD {
 					+ "select rownum rn , A.* from ("
 					+ 	" select * "
 					+ 	" from itemboard "
+					+	" where item_status = '판매' "
 					+   " order by item_group ) A "
 					+ ") where rn between ? and ? ";
 			ps = conn.prepareStatement(sql);
@@ -143,7 +143,8 @@ public class ProductDao_YD {
 					+ "select rownum rn , A.* from ("
 					+ 	" select * "
 					+ 	" from itemboard "
-					+ " where item_group = ? or item_theme = ? "
+					+	" where item_status = '판매'  and "
+					+ " ( item_group = ? or item_theme = ? ) "
 					+   " order by item_group ) A "
 					+ ") where rn between ? and ? ";
 			ps = conn.prepareStatement(sql);
@@ -191,7 +192,7 @@ public class ProductDao_YD {
 		int totList = 0;
 
 		try {
-			sql = " select DISTINCT item_theme FROM itemboard order by ITEM_THEME ";
+			sql = " select DISTINCT item_theme FROM itemboard where item_status = '판매'  order by ITEM_THEME ";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 
@@ -270,7 +271,7 @@ public class ProductDao_YD {
 		int totList = 0;
 
 		try {
-			sql = " select count(item_code) cnt from itemboard where item_group like ? or item_theme like ? ";
+			sql = " select count(item_code) cnt from itemboard where (item_group like ? or item_theme like ?) and item_status='판매' ";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, "%"+findStr+"%");
 			ps.setString(2, "%"+findStr+"%");

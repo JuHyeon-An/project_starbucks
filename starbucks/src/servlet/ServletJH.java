@@ -132,7 +132,7 @@ public class ServletJH extends HttpServlet{
 		}
 		
 		
-		String path= urlAdmin+"/add_product_result.jsp";
+		String path= urlAdmin+"/add_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -178,7 +178,7 @@ public class ServletJH extends HttpServlet{
 		}
 		req.setAttribute("msg", msg);
 		
-		String path= urlAdmin+"/edit_product_result.jsp";
+		String path= urlAdmin+"/edit_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

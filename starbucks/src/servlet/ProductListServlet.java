@@ -21,8 +21,9 @@ public class ProductListServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		doPost(req, resp);	}
+		System.out.println("get");
+		doPost(req, resp);	
+		}
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -31,12 +32,12 @@ public class ProductListServlet extends HttpServlet{
 		String temp = req.getRequestURI();
 		int pos = temp.lastIndexOf("/");
 		String tempURL = temp.substring(pos);
+		System.out.println(req.getParameter("nowPage"));
 		
 		switch (tempURL) {
 
 		case "/listPage.pl":
 			pListPage(req, resp);
-//			sortList(5, req, resp);
 			break;
 		case "/listCategories.pl":
 			pListCategories(req, resp);
@@ -62,11 +63,15 @@ public class ProductListServlet extends HttpServlet{
 	
 
 	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("plistPage");
 		int nowPage = 1;
 		String findStr = "";
+		System.out.println(req.getParameter("nowPage")+"나우페이지 전달값");
+		System.out.println(req.getAttribute("nowPage"));
+		
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
-			
+			System.out.println(nowPage);
 		}
 		if(req.getParameter("pd_findStr") != null) {
 			findStr = req.getParameter("pd_findStr");
@@ -92,7 +97,7 @@ public class ProductListServlet extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void pListCategories(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		System.out.println("카테고리");
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
@@ -136,7 +141,7 @@ public class ProductListServlet extends HttpServlet{
 	}
 	
 	public void sortList(int desc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
+		System.out.println("sortPage");
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {

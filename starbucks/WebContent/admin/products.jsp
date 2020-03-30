@@ -64,13 +64,7 @@
 							판매상품만 보기 
 						</label>
 					</div>
-					<div class="col-lg-3"></div>
-					<div class="col-lg-6 text-right">
-						<span>상품코드순 | </span>
-						<span>상품명순 | </span>
-						<span>판매가순 | </span>
-						<span>재고순 </span>
-					</div>
+					<div class="col-lg-9"></div>
 					</div>
 					<div id = "tableContainer" class="tm-product-table-container">
 						<table id="selectTable"
@@ -79,12 +73,12 @@
 								<tr>
 									<th class="text-center" scope="col">&nbsp;</th>
 									<!-- 사진 -->
-									<th class="text-center" scope="col">상품코드</th>
-									<th class="text-center" scope="col">상품명</th>
-									<th class="text-center" scope="col">판매가</th>
-									<th class="text-center" scope="col">재고</th>
-									<th class="text-center" scope="col">판매상태</th>
-									<th class="text-center" scope="col">등록일</th>
+									<th class="text-center" scope="col" onclick="sortTable(1)">상품코드</th>
+									<th class="text-center" scope="col" onclick="sortTable(2)">상품명</th>
+									<th class="text-center" scope="col" onclick="sortTable(3)">판매가</th>
+									<th class="text-center" scope="col" onclick="sortTable(4)">재고</th>
+									<th class="text-center" scope="col" onclick="sortTable(5)">판매상태</th>
+									<th class="text-center" scope="col" onclick="sortTable(6)">등록일</th>
 									<th class="text-center" scope="col">&nbsp;</th>
 								</tr>
 							</thead>
@@ -99,7 +93,7 @@
 
 									<tr>
 										<td scope="row"><img width="95%" height="95%"
-											class="round text-center" alt="Starbucks Starbucks Korea 2020 Spring "
+											class="round text-center" alt="Starbucks Korea 2020 Spring "
 											onclick="image_viewer('img14367')"
 											src="../fileFolder/${vo.item_thumbnailimg }"
 											style="display: block;"></td>
@@ -127,7 +121,6 @@
 						class="btn btn-primary col-lg-4">상품 등록하기</a>
 						<div class="col-lg-4"></div>
 						</div>
-						
 				</div>
 			</div>
 
@@ -140,6 +133,18 @@
    $(document).ready(function(){
 	    $('#proNav').addClass('active');
 	    loadTable();
+	    
+	    /*
+	    $('#selectTable').DataTable(
+	    	{
+	    	"paging" : false,
+	    	"ordering" : true,
+	    	"info" : false,
+	    	"filter" : false
+	    	}
+	    	);
+	    */
+	    
     })
     
     </script>
