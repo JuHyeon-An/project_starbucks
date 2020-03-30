@@ -4,7 +4,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 </head>
 <body>
@@ -34,12 +33,12 @@
 						<div class="input-group">
 							<span class="input-group-addon" style='margin-right: 10px;'><i class="fa fa-user"></i></span>
 							<input type="text" name="mId" value='' placeholder="아이디를 입력하세요"
-								class="form-control" />
+								class="form-control"  required />
 						</div>
 						<div class="input-group">
 							<span class="input-group-addon" style='margin-right: 10px;'><i class="fa fa-lock"></i></span>
 							<input type="password" name="pwd" value=''
-								placeholder="비밀번호를 입력하세요" class="form-control" />
+								placeholder="비밀번호를 입력하세요" class="form-control"  required />
 						</div>
 						<button type="submit" id="login-submit" style='margin-left: 21px;width: 329px;'	class="btn btn-default btn-block" />로그인&nbsp;&nbsp;&nbsp;&nbsp;</button>
 						<span class='text-center' ><a href="idFind.email" class="btn btn-default btn-block">아이디 찾기</a></span>

@@ -9,7 +9,6 @@
 <head>
 <meta http-equiv="content-Type" content="text/html" charset="UTF-8">
 
-<title>로그아웃</title>
 </head>
 <body>
 

@@ -11,7 +11,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>login_result</title>
 <%
 
 	String mId = null;
