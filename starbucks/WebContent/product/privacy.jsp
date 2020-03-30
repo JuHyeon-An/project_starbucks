@@ -19,6 +19,10 @@
 			</div>
 		</div>
 	</div>
+	<br />
+	<div class='col-12 text-center'>
+	<h1>개인정보처리방침</h1>
+	</div>
 <div class="container" >
 <div class="jumbotron" style="overflow-y: scroll; max-height:600px;  margin-top: 50px; margin-bottom:50px;" >
 	<div class="privacy_cont" >

@@ -123,7 +123,7 @@
                                 </ul>
                             </li>
                             <li class="has-children">
-                                <a href="./bbs/">Information</a>
+                                <a href="/starbucks/product/privacy.jsp">Information</a>
                                 <ul class="dropdown">
                                     <li><a href="/starbucks/product/privacy.jsp">개인정보처리방침</a></li>
 <!--                                     <li><a href="/starbucks/bbs/">종료된 이벤트</a></li> -->
