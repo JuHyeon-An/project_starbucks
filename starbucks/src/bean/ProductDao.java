@@ -286,4 +286,35 @@ public class ProductDao {
 		}
 	}
 	
+	public List<Integer> dashBoard() {
+		
+		List<Integer> list = new ArrayList<Integer>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			
+				sql = " select item_title, order_sumnum from itemboard order by order_sumnum desc";
+				
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				list.add(rs.getInt("order_sumnum"));
+				System.out.println("rs.getInt 값 : "+rs.getInt("order_sumnum"));
+			}
+			
+	         rs.close();
+	         ps.close();
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return list;
+		}
+	}
+	
 }
