@@ -3,8 +3,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import bean.FileUpload;
 import bean.ProductDao;
-import bean.ProductDao_YD;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
@@ -198,12 +195,9 @@ public class ServletJH extends HttpServlet{
 		resp.setContentType("text/html;charset=utf-8");
 		
 		ProductDao dao = new ProductDao();
-		List<Integer> list = dao.dashBoard();
-		System.out.println("list값1 : "+list.get(0));
-		System.out.println("list값2 : "+list.get(1));
-		System.out.println("list값3 : "+list.get(2));
+		Map<String, Integer> map = dao.dashBoard();
 		
-		req.setAttribute("list", list);
+		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
