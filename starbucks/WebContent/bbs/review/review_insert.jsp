@@ -13,7 +13,7 @@
       </div>
       <div class="col-md-6">
 <!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 -->
-        <header class='header text-center'>
+        <header class='header text-center' id="reviewHeader">
     <h3 class="text-black">제품 리뷰를 등록해주세요.</h3>
   <p>귀하의 소중한 의견은 저희에게 매우 중요합니다. <b>Starbucks korea</b></p>
 </header>
