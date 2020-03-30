@@ -40,7 +40,8 @@
 							<input type="password" name="pwd" value=''
 								placeholder="비밀번호를 입력하세요" class="form-control"  required />
 						</div>
-						<button type="submit" id="login-submit" style='margin-left: 21px;width: 329px;'	class="btn btn-default btn-block" />로그인&nbsp;&nbsp;&nbsp;&nbsp;</button>
+						<button type="submit" id="login-submit" style='margin-left: 20px;width: 329px;'	class="btn btn-default btn-block" >로그인&nbsp;&nbsp;&nbsp;&nbsp;</button>
+						
 						<span class='text-center' ><a href="idFind.email" class="btn btn-default btn-block">아이디 찾기</a></span>
 						<span class='text-center'><a href="pwFind.email" class="btn btn-default btn-block">비밀번호 찾기</a></span>
 						 <span class='text-center'><a href="/starbucks/member/join.jsp" 	class="btn btn-default btn-block"> 회원가입</a></span>
