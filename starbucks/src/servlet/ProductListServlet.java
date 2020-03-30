@@ -21,7 +21,6 @@ public class ProductListServlet extends HttpServlet{
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("get");
 		doPost(req, resp);	
 		}
 
@@ -32,7 +31,6 @@ public class ProductListServlet extends HttpServlet{
 		String temp = req.getRequestURI();
 		int pos = temp.lastIndexOf("/");
 		String tempURL = temp.substring(pos);
-		System.out.println(req.getParameter("nowPage"));
 		
 		switch (tempURL) {
 
@@ -67,15 +65,11 @@ public class ProductListServlet extends HttpServlet{
 	
 
 	public void pListPage(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("plistPage");
 		int nowPage = 1;
 		String findStr = "";
-		System.out.println(req.getParameter("nowPage")+"나우페이지 전달값");
-		System.out.println(req.getAttribute("nowPage"));
 		
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
-			System.out.println(nowPage);
 		}
 		if(req.getParameter("pd_findStr") != null) {
 			findStr = req.getParameter("pd_findStr");
@@ -101,7 +95,6 @@ public class ProductListServlet extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void pListCategories(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("카테고리");
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
@@ -110,19 +103,17 @@ public class ProductListServlet extends HttpServlet{
 		}
 		if(req.getParameter("pd_findStr") != null) {
 			findStr = req.getParameter("pd_findStr");
+			System.out.println("카테고리" +findStr);
 		}
 		
 		Page_ProductList p = new Page_ProductList();
 		p.setNowPage(nowPage);
 		p.setFindStr(findStr);
 		p.pageCompute();
-		System.out.println("ㅇㅇㅇㅇ다오전");
 		ProductDao_YD dao = new ProductDao_YD();
 		
 		List<ProductVo> list  = dao.select(p, findStr);
-		System.out.println(list.size()+"리스트사이즈");
 		List<ProductVo> listTheme  = dao.theme_view();
-		System.out.println(listTheme.size()+"테마리스트사이즈");
 		
 		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("list", list);
@@ -148,7 +139,6 @@ public class ProductListServlet extends HttpServlet{
 	}
 	
 	public void sortList(int desc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("sortPage");
 		int nowPage = 1;
 		String findStr = "";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
@@ -179,7 +169,6 @@ public class ProductListServlet extends HttpServlet{
 	public void itemFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int nowPage = 1;
 		String findStr = "";
-		System.out.println(req.getAttribute("nowPage"));
 		
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
@@ -187,7 +176,6 @@ public class ProductListServlet extends HttpServlet{
 		}
 		if(req.getParameter("itmeFindStr") != null) {
 			findStr = req.getParameter("itmeFindStr");
-			System.out.println(findStr+"검색어");
 		}
 		
 		Page_ProductList p = new Page_ProductList();

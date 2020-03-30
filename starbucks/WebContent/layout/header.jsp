@@ -29,9 +29,13 @@
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
         
     </head>
-    
-
-
+    <script>
+   let pd_itmeFind = function(findStr){
+	   $('#itmeFindStr').val(findStr);
+	   $('#itmeFind').attr('method', 'post')
+	   $('#itemFind').attr('action', 'itemFind.pl').submit();
+}
+   </script>
 
     
 
@@ -144,11 +148,7 @@
          </div>
          
 <script>
-let pd_itmeFind = function(findStr){
-	   $('#itmeFindStr').val(findStr);
-	   $('#itmeFind').attr('method', 'post')
-	   $('#itemFind').attr('action', 'itemFind.pl').submit();
-}
+
 </script>
 
 

@@ -12,7 +12,10 @@
     List<ProductVo> list = new ArrayList<ProductVo>();
     
     %>
+<script>
 
+
+</script>
 
 
     
@@ -146,6 +149,7 @@
         </div>
                      <form id='pd_frm' name='pd_frm' method='post'>
                    	 	<input type="hidden" name="nowPage" id='nowPage' value='${ empty param.nowPage? 1 : param.nowPage }'/>
+                   	 	<input type="hidden" name="pd_findStr" id='pd_findStr' value='' />
                     </form>
 
         <%@include file="./layout/footer.jsp" %>

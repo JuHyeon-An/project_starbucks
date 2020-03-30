@@ -127,7 +127,7 @@ public class ProductDao_YD {
 		int totList = 0;
 		System.out.println(findStr+"검색어 다오");
 		try {
-			sql = " select count(item_code) cnt from itemboard where item_group = ? or item_theme = ? ";
+			sql = " select count(item_code) cnt from itemboard where ( item_group = ? or item_theme = ? ) and item_status = '판매' ";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, findStr);
 			ps.setString(2, findStr);
@@ -173,7 +173,7 @@ public class ProductDao_YD {
 				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
 				list.add(vo);
 			}
-			
+			System.out.println(list.size()+"다오안 리스트 사이즈");
 	         rs.close();
 	         ps.close();
 		} catch (Exception e) {

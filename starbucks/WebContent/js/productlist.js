@@ -12,8 +12,10 @@
 	   $('#pd_frm').attr('action', 'listCategories.pl').submit();
    }
    let item_view = function(findStr){
+	   $('#nowPage').val(nowPage);
 	   $('#pd_findStr').val(findStr);
 	   $('#pd_frm').attr('method', 'post')
-	   $('#nowPage').val(nowPage);
 	   $('#pd_frm').attr('action', 'item_view.pl').submit();
    } 
+   
+   
