@@ -190,6 +190,7 @@
 				<input type="hidden" name="hiddenFile1" id="hiddenFile1" value="${vo.item_mainimg }">
 				<input type="hidden" name="hiddenFile2" id="hiddenFile2" value="${vo.item_thumbnailimg }">
 				<input type="hidden" name="hiddenFile3" id="hiddenFile3" value="${vo.item_contentimg }">
+				<input type="text" id="editMsg" value="${msg }"/>
 				</form>
 			</div>
 		</div>

@@ -121,7 +121,6 @@
 						class="btn btn-primary col-lg-4">상품 등록하기</a>
 						<div class="col-lg-4"></div>
 						</div>
-						
 				</div>
 			</div>
 
