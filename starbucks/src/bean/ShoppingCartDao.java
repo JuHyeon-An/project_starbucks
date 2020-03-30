@@ -16,12 +16,29 @@ public class ShoppingCartDao {
 	
 	public int insert(ShoppingCartVo vo, String mId) {
 		int result = 0;	
-		System.out.println("sadsda");
+		String sql = null;
+		PreparedStatement ps = null;
 		try {
-			String sql = "select * from shoppingBasket where member_id=? and item_code=?";
+			// member_name 값 세팅하기 
+			sql = "SELECT s.member_name " 
+				+ "from SHOPPING_MEMBER s join SHOPPINGBASKET c " 
+				+ "on s.member_id = c.member_id " 
+				+ "where c.member_id=?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, mId);
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				vo.setmName(rs.getString(1));
+			}
+			
+			System.out.println("vo - mName : " + vo.getmName());
+			
+			// 해당 아이디, 아이템 코드가 일치하는 데이터가 있는지 확인 (중복값 제거)
+			sql = "select * from shoppingBasket where member_id=? and item_code=?";
 			
 			conn.setAutoCommit(false);
-			PreparedStatement ps = conn.prepareStatement(sql);
+			ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			ps.setString(2, vo.getItemCode());
 			
@@ -30,19 +47,16 @@ public class ShoppingCartDao {
 			if(rs.next()) {
 				return 0;
 			}else {
-				sql = "insert into shoppingBasket values(cart_serial_seq.nextval ,?,?,?)";
+				sql = "insert into shoppingBasket values(cart_serial_seq.nextval ,?,?,?,?)";
 				
 				
 				ps = conn.prepareStatement(sql);
 				
-				System.out.println("ps after");
-				
 				ps.setString(1, vo.getmId());
 				ps.setInt(2, vo.getItemEa());
 				ps.setString(3, vo.getItemCode());
-				
-				System.out.println("getItemEa : " +  vo.getItemEa());
-				
+				ps.setString(4, vo.getmName());
+				System.out.println(vo.getmName());
 				int r = ps.executeUpdate();
 				
 				if(r>0) {
@@ -68,9 +82,8 @@ public class ShoppingCartDao {
 	public List<ShoppingCartVo> select(String mId) {
 		
 		List<ShoppingCartVo> list = new ArrayList<ShoppingCartVo>();
-		System.out.println("mId : " + mId);
 		try {
-			String sql  = "SELECT i.ITEM_THUMBNAILIMG, i.ITEM_TITLE, i.ITEM_PRICE, j.itemEa, j.basket_serial " 
+			String sql  = "SELECT i.ITEM_THUMBNAILIMG, i.ITEM_TITLE, i.ITEM_PRICE, j.itemEa, j.basket_serial, j.member_name, i.item_code  " 
 						+ "FROM ITEMBOARD i join SHOPPINGBASKET j " 
 						+ "on i.ITEM_CODE = j.ITEM_CODE " 
 						+ "where j.member_id = ?";
@@ -89,6 +102,9 @@ public class ShoppingCartDao {
 				vo.setItemEa(rs.getInt(4));
 				vo.setTotPrice(rs.getInt(3)*rs.getInt(4));
 				vo.setSerial(rs.getInt(5));
+				vo.setmName(rs.getString(6));
+				vo.setItemCode(rs.getString(7));
+				
 				list.add(vo);
 				
 				
@@ -103,9 +119,9 @@ public class ShoppingCartDao {
 	}
 	
 	
-	public String delete(int serial) {
-		String msg = "";
-		System.out.println("serial" + serial);
+	public int delete(int serial) {
+		int result = 0;
+		
 		try {
 			String sql = "DELETE FROM SHOPPINGBASKET WHERE basket_serial=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
@@ -113,14 +129,14 @@ public class ShoppingCartDao {
 			
 			int r = ps.executeUpdate();
 			if(r>0) {
-				msg = "장바구니에서 해당 상품이 삭제되었습니다.";
+				result = 1;
 			}else {
-				msg = "삭제중 오류가 발생했습니다.";
+				result = 0;
 			}
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}finally {
-			return msg;
+			return result;
 		}
 	}
                                                                              

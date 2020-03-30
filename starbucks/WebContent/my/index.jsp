@@ -21,7 +21,7 @@
             	
                	<!-- content -->
                	<jsp:include page="${param.my }"></jsp:include>
-
+               	
             </div>
         </div>
     </div>
