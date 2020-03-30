@@ -269,17 +269,16 @@
 	        </div>
 	    </div>
 	</div>
-	<form>
+	<form id="dashFrm" name="dashFrm">
 	<c:forEach var="item" items="${map }">
 	<input type="text" name="bestItem" value="${item.key }"/>
 	</c:forEach>
+	
+	<c:forEach var="item" items="${map }">
+	<input type="text" name="bestItemValue" value="${item.value }"/>
+	</c:forEach>
 	</form>
 	<script>
-	
-	// 누적판매량이 많은 순대로 하나씩 배열에 담아서
-	let array = document.getElementsByName("bestItem");
-	console.log(array[0].value);
-	console.log(array[1].value);
 	
 	</script>
 </body>

@@ -3,7 +3,8 @@
  */
 
  let cnt = 1;
-
+let array = [];
+let arrayValue = [];
  function btnFunc(){
 	
 	$('a.nav-link').click(function(){
@@ -136,6 +137,15 @@
 			}
 		})
 		}
+	}
+	
+	if($('#dashFrm')!=null){
+		// 누적판매량이 많은 순대로 하나씩 배열에 담아서
+		
+		array = document.getElementsByName("bestItem");
+		arrayValue = document.getElementsByName("bestItemValue");
+		console.log(array[0].value);
+		console.log(array[1].value);
 	}
 	
 }// end of btnFunc
