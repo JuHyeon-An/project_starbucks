@@ -76,24 +76,12 @@
 
 				</tbody>
 			</table>
-		</div>
-
-		<%
-			OrderVo vo = (OrderVo) request.getAttribute("vo");
-		%>
-
-
-
-
-
-
-
 		<div class="row">
 			<div class="col-4      "></div>
 			<div class="  col-lg-2	     ">
 
 				<button type="submit"
-					class="btn btn-primary btn-block text-uppercase" id="btnModify">수정</button>
+					class="btn btn-primary btn-block text-uppercase margin-top: 30px;" id="btnModify">수정</button>
 			</div>
 			<div class="col-2      ">
 
@@ -102,6 +90,13 @@
 					목록</button>
 			</div>
 		</div>
+	
+		</div>
+
+
+
+
+
 
 
 
