@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 
@@ -283,6 +285,36 @@ public class ProductDao {
 			System.out.println("ㅠㅠ에러" );
 		} finally {
 			return list;
+		}
+	}
+	
+	public Map<String, Integer> dashBoard() {
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			
+				sql = " select item_title, order_sumnum from itemboard order by order_sumnum desc";
+				
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				map.put(rs.getString(1), rs.getInt(2));
+			}
+			
+	         rs.close();
+	         ps.close();
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return map;
 		}
 	}
 	

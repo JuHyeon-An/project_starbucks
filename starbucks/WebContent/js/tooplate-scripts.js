@@ -9,7 +9,7 @@ function drawLineChart() {
           {
             scaleLabel: {
               display: true,
-              labelString: "Hits"
+              labelString: "매출"
             }
           }
         ]
@@ -24,42 +24,25 @@ function drawLineChart() {
       type: "line",
       data: {
         labels: [
-          "January",
-          "February",
-          "March",
-          "April",
-          "May",
-          "June",
-          "July"
+          "1월",
+          "2월",
+          "3월",
+          "4월",
+          "5월",
+          "6월",
+          "7월"
         ],
         datasets: [
           {
-            label: "Latest Hits",
-            data: [88, 68, 79, 57, 50, 55, 70],
-            fill: false,
-            borderColor: "rgb(75, 192, 192)",
-            cubicInterpolationMode: "monotone",
-            pointRadius: 0
-          },
-          {
-            label: "Popular Hits",
-            data: [33, 45, 37, 21, 55, 74, 69],
-            fill: false,
+            label: "월별 매출액",
+            data: [33, 45, 37, 21, 55, 74, 69], //각 월별 매출액 넣으면 됨
+            fill: true,
             borderColor: "rgba(255,99,132,1)",
             cubicInterpolationMode: "monotone",
-            pointRadius: 0
+            pointRadius: 3
           },
-          {
-            label: "Featured",
-            data: [44, 19, 38, 46, 85, 66, 79],
-            fill: false,
-            borderColor: "rgba(153, 102, 255, 1)",
-            cubicInterpolationMode: "monotone",
-            pointRadius: 0
-          }
         ]
-      },
-      options: optionsLine
+      }
     };
 
     lineChart = new Chart(ctxLine, configLine);
@@ -105,7 +88,8 @@ function drawBarChart() {
     configBar = {
       type: "horizontalBar",
       data: {
-        labels: ["Red", "Aqua", "Green", "Yellow", "Purple", "Orange", "Blue"],
+    	  
+        labels: ["상품명1", "상품명2", "상품명3", "상품명4", "상품명5", "상품명6", "상품명7"],
         datasets: [
           {
             label: "# of Hits",
@@ -119,11 +103,19 @@ function drawBarChart() {
               "#DB9C3F",
               "#3889FC"
             ],
+            borderColor : [
+            	 "#F7604D",
+                 "#4ED6B8",
+                 "#A8D582",
+                 "#D7D768",
+                 "#9D66CC",
+                 "#DB9C3F",
+                 "#3889FC"
+            ],
             borderWidth: 0
           }
         ]
-      },
-      options: optionsBar
+      }
     };
 
     barChart = new Chart(ctxBar, configBar);

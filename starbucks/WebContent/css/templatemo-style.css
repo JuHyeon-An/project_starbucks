@@ -90,11 +90,15 @@ button:focus {
   overflow: hidden;
 }
 .tm-block-title {
-  font-size: 1.1rem;
+  font-size: 1.8rem;
   font-weight: 700;
   color: #fff;
   margin-bottom: 30px;
+  margin-top: 30px;
 }
+
+
+
 .nav-link {
   color: #fff;
   height: 100%;
@@ -359,13 +363,7 @@ thead {
 .table td,
 .table th {
   border-top: 1px solid #415a70;
-  padding: 15px 25px;
   vertical-align: middle;
-}
-.tm-table-small td,
-.tm-table-small th {
-  padding-left: 12px;
-  padding-right: 12px;
 }
 .table-hover tbody tr {
   transition: all 0.2s ease;

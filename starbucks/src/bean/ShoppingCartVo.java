@@ -8,10 +8,19 @@ public class ShoppingCartVo {
 	int price;
 	int itemEa;
 	int totPrice;
+	String itemTitle;
 	
 	public ShoppingCartVo() {
 		
 	}  
+	
+	public ShoppingCartVo(String itemTitle, int itemEa, int totPrice, String mId) {
+		this.itemTitle = itemTitle;
+		this.itemEa = itemEa;
+		this.totPrice = totPrice;
+		this.mId = mId;
+		
+	}   
 	
 	public ShoppingCartVo(String mId,String fileName, String itemCode, int price, int itemEa, int totPrice) {
 		this.mId = mId;
@@ -20,6 +29,16 @@ public class ShoppingCartVo {
 		this.price = price;
 		this.itemEa = itemEa;
 		this.totPrice = price * itemEa;
+	}
+	
+	public ShoppingCartVo(String mId,String fileName, String itemCode, int price, int itemEa, int totPrice, String itemTitle) {
+		this.mId = mId;
+		this.fileName = fileName;
+		this.itemCode = itemCode;
+		this.price = price;
+		this.itemEa = itemEa;
+		this.totPrice = price * itemEa;
+		this.itemTitle = itemTitle;
 	}
 
 	public int getSerial() {
@@ -76,6 +95,14 @@ public class ShoppingCartVo {
 
 	public void setTotPrice(int totPrice) {
 		this.totPrice = totPrice;
+	}
+
+	public String getItemTitle() {
+		return itemTitle;
+	}
+
+	public void setItemTitle(String itemTitle) {
+		this.itemTitle = itemTitle;
 	}
 	
 	

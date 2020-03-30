@@ -3,8 +3,8 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -13,11 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.google.gson.Gson;
-
 import bean.FileUpload;
 import bean.ProductDao;
-import bean.ProductDao_YD;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
@@ -62,8 +59,8 @@ public class ServletJH extends HttpServlet{
 			deleteProductsR(req, resp);
 			break;
 			
-		case "/product_group.stb":
-			editGroup(req, resp);
+		case "/dashboard.stb":
+			dashBoard(req, resp);
 			break;
 		}
 
@@ -193,11 +190,15 @@ public class ServletJH extends HttpServlet{
 		out.print(result);
 	}
 	
-	public void editGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void dashBoard(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
 		
-		String path= urlAdmin+"/product_category.jsp";
+		ProductDao dao = new ProductDao();
+		Map<String, Integer> map = dao.dashBoard();
+		
+		
+		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

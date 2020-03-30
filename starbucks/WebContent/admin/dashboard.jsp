@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,7 +11,7 @@
 	<div class="container">
 	    <div class="row">
 	        <div class="col">
-	            <p class="text-white mt-5 mb-5">Welcome back, <b>Admin</b></p>
+	            <p class="text-white mt-5 mb-5">환영합니다, <b>관리자님</b></p>
 	        </div>
 	    </div>
 	    <!-- row -->
@@ -268,5 +269,18 @@
 	        </div>
 	    </div>
 	</div>
+	<form>
+	<c:forEach var="item" items="${list }">
+	<input type="text" name="bestItem" value="${item }"/>
+	</c:forEach>
+	</form>
+	<script>
+	
+	// 누적판매량이 많은 순대로 하나씩 배열에 담아서
+	let array = document.getElementsByName("bestItem");
+	console.log(array[0].value);
+	console.log(array[1].value);
+	
+	</script>
 </body>
 </html>

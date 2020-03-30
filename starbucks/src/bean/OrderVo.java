@@ -15,9 +15,32 @@ public class OrderVo {
 	String orderregDate;//주문날짜
 	int orderStatus;//주문처리상태
 	
+	String zone; //우편번호 
+	String addr1; //주소 
+	String addr2; //상세주소 
+	int savedMoney; // 	적립금   
 	
+	public OrderVo() {
+		
+	}
 	
-	
+	public OrderVo(String mId, String itemCode, String mName, String phone, String email, int orderNum, int orderPrice, String getNm, String getPhone, String orderRegDt, int orderStatus, String zone, String addr1, String addr2) {	
+		this.memberId = mId;
+		this.itemCode = itemCode;
+		this.memberName = mName;
+		this.memberPhone = phone;
+		this.memberEmail = email;
+		this.orderNum = orderNum;
+		this.orderPrice = orderPrice;
+		this.getName = getNm;
+		this.getPhone = getPhone;
+		this.orderregDate = orderRegDt;
+		this.orderStatus = orderStatus;
+		this.zone = zone;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		
+	}
 	
 	public String getOrderNumber() {
 		return orderNumber;
@@ -97,5 +120,30 @@ public class OrderVo {
 	public void setOrderStatus(int orderStatus) {
 		this.orderStatus = orderStatus;
 	}
+	public String getZone() {
+		return zone;
+	}
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+	public String getAddr1() {
+		return addr1;
+	}
+	public void setAddr1(String addr1) {
+		this.addr1 = addr1;
+	}
+	public String getAddr2() {
+		return addr2;
+	}
+	public void setAddr2(String addr2) {
+		this.addr2 = addr2;
+	}
+	public int getSavedMoney() {
+		return savedMoney;
+	}
+	public void setSavedMoney(int savedMoney) {
+		this.savedMoney = savedMoney;
+	}
+	
 	
 }
