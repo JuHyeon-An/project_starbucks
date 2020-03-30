@@ -57,6 +57,10 @@ public class ProductListServlet extends HttpServlet{
 		case "/sort_price_desc.pl":
 			sortList(4, req, resp);
 			break;
+		case "/itemFind.pl":
+			itemFind(req,resp);
+			break;
+			
 	}
 	
 	}
@@ -112,10 +116,13 @@ public class ProductListServlet extends HttpServlet{
 		p.setNowPage(nowPage);
 		p.setFindStr(findStr);
 		p.pageCompute();
-		
+		System.out.println("ㅇㅇㅇㅇ다오전");
 		ProductDao_YD dao = new ProductDao_YD();
+		
 		List<ProductVo> list  = dao.select(p, findStr);
+		System.out.println(list.size()+"리스트사이즈");
 		List<ProductVo> listTheme  = dao.theme_view();
+		System.out.println(listTheme.size()+"테마리스트사이즈");
 		
 		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("list", list);
@@ -157,11 +164,45 @@ public class ProductListServlet extends HttpServlet{
 		p.setFindStr(findStr);
 		p.pageCompute();
 		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list  = dao.select(p, findStr, desc);
+		List<ProductVo> list  = dao.select(p, findStr, desc);//테마 정렬
 		List<ProductVo> listTheme  = dao.theme_view();
 		
 		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("list", list);
+		req.setAttribute("p", p);
+		
+		String path = url+"/list.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	
+	public void itemFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int nowPage = 1;
+		String findStr = "";
+		System.out.println(req.getAttribute("nowPage"));
+		
+		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
+			nowPage = Integer.parseInt(req.getParameter("nowPage"));
+			
+		}
+		if(req.getParameter("itmeFindStr") != null) {
+			findStr = req.getParameter("itmeFindStr");
+			System.out.println(findStr+"검색어");
+		}
+		
+		Page_ProductList p = new Page_ProductList();
+		p.setNowPage(nowPage);
+		p.setFindStr(findStr);
+		p.pageCompute();
+		
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list  = dao.itemFind(p);
+		
+		List<ProductVo> listTheme  = dao.theme_view();
+		
+		
+		req.setAttribute("list", list);
+		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("p", p);
 		
 		String path = url+"/list.jsp";

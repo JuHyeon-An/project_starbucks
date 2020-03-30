@@ -27,7 +27,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
         <!-- datePicker 관련 js -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        
     </head>
+    
+
+
+
     
 
     <body>
@@ -41,9 +46,9 @@
                         <div class="row align-items-center">
 
                             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-                                <form action="" class="site-block-top-search">
+                                <form onsubmit='pd_itmeFind()' id='itemFind' class="site-block-top-search" method='post' >
                                     <span class="icon icon-search2"></span>
-                                    <input type="text" class="form-control border-0" placeholder="Search">
+                                    <input type="text" id='itemFindStr' name='itmeFindStr' class="form-control border-0 basicAutoComplete"  autocomplete="off" placeholder="Search">
                                 </form>
                             </div>
 
@@ -136,5 +141,15 @@
 
                 </nav>
             </header>
-         </div>  
+         </div>
+         
+<script>
+let pd_itmeFind = function(findStr){
+	   $('#itmeFindStr').val(findStr);
+	   $('#itmeFind').attr('method', 'post')
+	   $('#itemFind').attr('action', 'itemFind.pl').submit();
+}
+</script>
+
+
          
