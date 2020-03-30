@@ -71,9 +71,11 @@
                         <span class="" id="orderPrice">$49.00</span>
                     </td>
                     <td>
-                        <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary btn-sm" id="btnCancle">
                             취소요청
+                        </button>
+                        <button type="button" class="btn btn-primary btn-sm" id="btnRegist">
+                            리뷰작성
                         </button>
 
                     </td>
@@ -99,6 +101,9 @@
         </div>
     </div>
 </div>
+<form id=review name=review method=post>
+	<input type='hidden' value='1'/>
+</form>
 
     <script>
         $(function () {

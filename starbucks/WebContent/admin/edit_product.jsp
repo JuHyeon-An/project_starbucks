@@ -51,6 +51,18 @@
 									</label> <input id="item_size" name="item_size" type="text" value="${vo.item_size }"
 										class="form-control validate" required />
 								</div>
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_status">판매상태</label> <select
+										class="custom-select tm-select-accounts" id="item_status"
+										name="item_status">
+										<option value="판매" 
+										<c:if test="${vo.item_status eq '판매' }"> selected </c:if>
+												>판매</option>
+										<option value="판매안함" 
+										<c:if test="${vo.item_status eq '판매안함' }"> selected </c:if>
+												>판매안함</option>
+									</select>
+								</div>
 							</div>
 							<div class="form-group mb-3">
 								<label for="item_content">상품설명</label>
@@ -168,9 +180,9 @@
 				<div class="col-9"></div>
 				<div class="col-3">
 					<div class="row">
-					<span class="col-6 bottom_nav" onclick="history.back();"
+					<span class="col-6 bottom-nav" onclick="toList();"
 						>목록으로</span>
-					<span class="col-6 bottom_nav" onclick="$('html').scrollTop(0);"
+					<span class="col-6 bottom-nav" onclick="$('html').scrollTop(0);"
 						>맨 위로</span>
 						</div>
 				</div>
@@ -196,6 +208,11 @@
           defaultDate: "2020-03-26"
         });
       });
+    
+    var j = jQuery.noConflict();
+    j(document).ready(function(){
+        j('#datetimepicker').datepicker();
+    })
 
     </script>
   </body>

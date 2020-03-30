@@ -17,6 +17,7 @@ public class FileUpload {
 	
 //	String upload = "c:/Users/JHTA/git/web1/1907-web/WebContent/upload/";
 	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
+//	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
 	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
@@ -76,7 +77,7 @@ public class FileUpload {
 				 * value값과 name값을 각각 v와  k에 담는다 
 				 */
 				
-				if(fi.getSize()>0) {
+				if(fi.getSize()>0 && !fi.isFormField()) {
 					// 파일의 값이 있으면
 					
 					String f = fi.getName();
@@ -180,6 +181,10 @@ public class FileUpload {
 						req.setAttribute("nowPage", v);
 						break;
 					
+					case "item_status":
+						vo.setItem_status(v);
+						break;
+						
 					default:
 						break;
 					}

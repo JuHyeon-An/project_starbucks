@@ -72,10 +72,7 @@ public class ReviewUp {
 				}else {
 					if(fileitem.getSize()>0) { 
 						String filename=fileitem.getName();
-						String sysFile="";
-						if(filename!=null) {
-							sysFile=new Date().getTime()+"-"+filename;
-						}
+						String sysFile=new Date().getTime()+"-"+filename;
 						list2.add(sysFile);
 						File filef=new File(dir+sysFile);
 						fileitem.write(filef);
@@ -84,7 +81,7 @@ public class ReviewUp {
 				}
 			}
 			imgs.setSys_imgs(list2);
-			vo.setReview_img(imgs);
+			vo.setReview_imgs(imgs);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

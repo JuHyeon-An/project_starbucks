@@ -24,10 +24,13 @@
 	<link rel="stylesheet" href="/starbucks/css/custom.css" type="text/css" />
 	 <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css?family=Roboto:400,700"
-    />
+      href="https://fonts.googleapis.com/css?family=Roboto:400,700"/>
     <!-- https://fonts.google.com/specimen/Roboto -->
-	
+    <link rel="stylesheet" href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+	<!-- choose a theme file -->
+	<!-- 
+	<link rel="stylesheet" href="../tablesorter-master/css/theme.default.css">
+	 -->
 	
     <script type='text/javascript' src="<%=request.getContextPath() %>/js/jquery-3.3.1.min.js"></script>
     <!-- https://jquery.com/download/ -->
@@ -48,6 +51,17 @@
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	
+	<!-- dataTable -->
+	<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	
+<!-- load jQuery and tablesorter scripts -->
+<script type="text/javascript" src="../tablesorter-master/docs/js/jquery-latest.js"></script>
+<script type="text/javascript" src="../tablesorter-master/js/jquery.tablesorter.js"></script>
+
+<!-- tablesorter widgets (optional) -->
+<script type="text/javascript" src="../tablesorter-master/js/widgets/jquery.tablesorter.widgets.js"></script>
+	
 	
 </head>
 
@@ -97,7 +111,7 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="./add_product.stb">상품 등록</a>
                                 <a class="dropdown-item" href="./select_product.stb">상품 목록</a>
-                                <a class="dropdown-item" href="#">상품분류 관리</a>
+                                <a class="dropdown-item" href="./product_group.stb">상품분류 관리</a>
                             </div>
                         </li>
 

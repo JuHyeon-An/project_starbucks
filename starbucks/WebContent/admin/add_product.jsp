@@ -30,12 +30,22 @@
 									</label> <input id="item_num" name="item_num" type="text"
 										class="form-control validate" required />
 								</div>
+								
 							</div>
 							<div class="row">
 								<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_size">사이즈/크기
 									</label> <input id="item_size" name="item_size" type="text"
 										class="form-control validate" required />
+								</div>
+								<div class="form-group mb-3 col-xs-12 col-sm-6">
+									<label for="item_status">판매상태</label> <select
+										class="custom-select tm-select-accounts" id="item_status"
+										name="item_status">
+										<option selected>판매상태</option>
+										<option value="판매">판매</option>
+										<option value="판매안함">판매안함</option>
+									</select>
 								</div>
 							</div>
 							<div class="form-group mb-3">
@@ -46,7 +56,7 @@
 
 							<hr />
 							<div class="row">
-								<div class="form-group mb-3 col-xs-12 col-sm-6">
+							<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_group">분류</label> <select
 										class="custom-select tm-select-accounts" id="item_group"
 										name="item_group">
@@ -93,7 +103,10 @@
 				<div class="col-12">
 					<button type="submit" id="btnInsert"
 						class="btn btn-primary btn-block text-uppercase">상품등록</button>
-				</div></form>
+				</div>
+				
+				<input type="text" id="resultMsg" value="${msg }"/>
+				</form>
 			</div>
 		</div>
 	</div>
@@ -113,6 +126,11 @@
       
       let main = document.querySelector('#photoRow');
       makeDiv(main);
+      
+      var j = jQuery.noConflict();
+      j(document).ready(function(){
+          j('#datetimepicker').datepicker();
+      })
       
     </script>
   </body>

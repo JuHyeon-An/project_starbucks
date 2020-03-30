@@ -4,7 +4,7 @@
 
  let cnt = 1;
 
-function btnFunc(){
+ function btnFunc(){
 	
 	$('a.nav-link').click(function(){
 		$('a.nav-link').removeClass('active');
@@ -18,35 +18,116 @@ function btnFunc(){
 		})
 	}
 	
-	
-	/*
-	if($('#btnUpdate')!=null){
-		$('#btnUpdate').click(function(){
-			alert("눌린거지..?");
-
-				let form = $("#editFrm").serialize;
-		        console.log(form);
-		        formData.append("message", "ajax로 파일 전송하기");
-		        formData.append("file", $("#fileEdit1")[0].files[0]);
-		        formData.append("file", $("#fileEdit2")[0].files[0]);
-		        formData.append("file", $("#fileEdit3")[0].files[0]);
-		        $.ajax({
-		            url : 'edit_product_result.jsp',
-		            type : 'post',
-		            data : form,
-		            dataType : 'html',
-		            error: function(xhr, status, error){
-		                alert(error);
-		            },
-		            success : function(data){
-		                alert(data);
-		            },
-		        });
+	if($('.category-input')!=null){
+		$('.category-input').on({
+			click:function(){ $(this).removeAttr('readonly'); }
 		});
 	}
+	
+		/*
+		  $("#findStr").on("keyup", function() {
+		    let value = $(this).val().toLowerCase();
+		    $("#selectTable tr").filter(function() {
+		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+		    });
+		  });
+	*/
+	
+	if($('#btnSearch-item')!=null){
+		$('#btnSearch-item').click(function(){
+			loadTable();
+		})
+	}
+	
+	$('#frmSearch').submit(function(){
+		$('#btnSearch-item').click();
+		return false;
+	});
+	
+	if($('#btnTheme')!=null && $('#btnCategory')!=null){
+		 $('#btnTheme').click(function(){
+			 $(this).addClass('active');
+			 $('#btnCategory').removeClass('active');
+		 }),$('#btnCategory').click(function(){
+			 $(this).addClass('active');
+			 $('#btnTheme').removeClass('active');
+		 })
+		 
+	}
+	
+	/*
+	Swal.fire({
+		  title: '등록 성공!',
+		  text: "상품이 성공적으로 등록되었습니다.",
+		  icon: 'success',
+		  showCancelButton: true,
+		  confirmButtonColor: '#3085d6',
+		  cancelButtonColor: '#d33',
+		  confirmButtonText: '상품 등록',
+		  cancelButtonText: '목록으로'
+		}).then((result) => {
+		  if (result.value) {
+			  // 확인을 눌렀으면
+					Swal.fire(
+							'Deleted!',
+							'성공적으로 삭제되었습니다.',
+							'success'
+					).then((result2) => {
+						if(result2.value){
+							location.href="/starbucks/admin/select_product.stb"
+						}
+					})
+	*/
+	
+	
+	
+	/*
+	 * Swal.fire({
+				  icon: 'success',
+				  title: 'Your work has been saved',
+				  showConfirmButton: false,
+				  timer: 1500
+				})
 	 */
-}
-//let table = $('#selectTable').DataTable();
+	
+	if($('#resultMsg')!=null){
+		if($('#resultMsg').val()=='성공'){
+			Swal.fire({
+				  title: '등록 성공!',
+				  text: "상품이 성공적으로 등록되었습니다.",
+				  icon: 'success',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '추가 등록',
+				  cancelButtonText: '목록으로'
+				}).then((result) => {
+				  if (result.value) {
+					  // 확인을 눌렀으면
+		}else{
+			location.href="select_product.stb"
+		}
+	})
+		}else if($('#resultMsg').val()=='DB오류발생'){
+			Swal.fire({
+				  title: '오류 발생',
+				  text: "상품 등록 중 오류가 발생했습니다. 관리자에게 문의하세요.",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '다시 시도',
+				  cancelButtonText: '목록으로'
+				}).then((confirm) => {
+					  if (confirm.value) {
+						  // 확인을 눌렀으면
+			}else{
+				location.href="select_product.stb"
+			}
+		})
+		}
+	}
+}// end of btnFunc
 
 let deleteItem = function(item_code){
 	
@@ -212,3 +293,79 @@ function makeDiv(main){
 			  }
 		});
 	}
+	
+	function loadTable(){
+		 let findStr = $('#findStr').val().toUpperCase();
+		 let category = $('#categorySelect').val();
+		 
+		 if($("#checkSale").is(":checked")){
+	        	
+	        	$('#tableContainer').load('select_product.stb #selectTable', 
+	        			{'findStr' : findStr,
+	        			'category' : category,
+	        			'check' : 'true'});
+	        	
+	        }else{
+	        	$('#tableContainer').load('select_product.stb?findStr='+findStr+
+	    				'&category='+category+
+	    				' #selectTable');
+	        }
+	}
+	
+	function toList(){
+		location.href='select_product.stb';
+		loadTable();
+	}
+	
+	/*
+	function sortTable(index){
+		let table = $('#selectTable');
+		let rows = table[0].rows;
+		// 테이블 전체 행
+		console.log(rows.length)
+		
+		for (var i = 1; i < (rows.length - 1); i++) { 
+			console.log("실행");
+			var fCell = rows[i].cells[index];
+			console.log(fCell.innerHTML.toLowerCase()); // value
+			var sCell = rows[i + 1].cells[index];
+			if (fCell.innerHTML.toLowerCase() > sCell.innerHTML.toLowerCase()) {
+				console.log("몇번실행되는지");
+				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); } 
+			}
+			}
+*/
+
+		let sortType = 'asc';
+		function sortTable(index){
+		    sortType = (sortType === 'asc') ? 'desc':'asc';
+
+		    let table = $('#selectTable');
+			let rows = table[0].rows;
+		    let chkSort = true;
+		   
+		    while (chkSort){
+		        chkSort = false;
+		        for (var i = 1; i < (rows.length - 1); i++) {
+		            let row = rows[i];
+		            
+		            let fCell = row.cells[index].innerHTML;
+		            let sCell = rows[i + 1].cells[index].innerHTML;
+		            
+		            if(index==3 || index==4){
+		            	fCell = parseInt(fCell);
+		            	sCell = parseInt(sCell);
+		            }else{
+		            	fCell = fCell.toLowerCase();
+		            	sCell = sCell.toLowerCase();
+		            }
+//		            let sCell = row.nextSibling.cells[index].innerHTML.toLowerCase();
+		            
+		            if ( (sortType === 'asc'  && fCell > sCell) ||
+		               (sortType === 'desc' && fCell < sCell) ) {
+		                row.parentNode.insertBefore(row.nextSibling, row);
+		                chkSort = true;
+		            }
+		        }   
+		    }
+		}

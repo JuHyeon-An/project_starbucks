@@ -18,6 +18,7 @@ import bean.NoticeVo;
 import bean.Page;
 import bean.ReviewUp;
 import bean.ReviewVo;
+import bean.Review_imgs;
 
 @WebServlet("*.uk")
 public class ServletUk extends HttpServlet{
@@ -92,7 +93,6 @@ public class ServletUk extends HttpServlet{
 	
 	
 	public void review_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
 		String findStr="";
 		int nowPage=1;
 		if(req.getParameter("findStr")!=null) {
@@ -101,18 +101,23 @@ public class ServletUk extends HttpServlet{
 		if(req.getParameter("nowPage")!=null) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
+		Page page=new Page(findStr, nowPage);
 		DaoUk dao=new DaoUk();
-		List<ReviewVo> list=dao.review_select(findStr);
-		
+		List<ReviewVo> list=dao.review_select(page);
 		req.setAttribute("list", list);
+		req.setAttribute("page", page);
+		
 		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
 	public void review_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	
-		
-		
+		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		DaoUk dao=new DaoUk();
+		dao.review_view(review_postnum);
+		ReviewVo vo=dao.review_view2(review_postnum);
+
+		req.setAttribute("vo", vo);
 		String path=url+"?main=./review/review_view.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -133,7 +138,7 @@ public class ServletUk extends HttpServlet{
 		}
 		
 		req.setAttribute("msg", msg);
-		String path=url+"?main=./review/review_insert.jsp&side=./review/review_side.jsp";
+		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

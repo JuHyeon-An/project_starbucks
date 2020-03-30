@@ -3,6 +3,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -12,6 +13,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.gson.Gson;
+
 import bean.FileUpload;
 import bean.ProductDao;
 import bean.ProductDao_YD;
@@ -20,7 +23,7 @@ import bean.ProductVo;
 @WebServlet("*.stb")
 public class ServletJH extends HttpServlet{
 	String urlAdmin = "index.jsp?cont=../admin";
-	static int n = 0;
+	String findStr = "";
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -38,7 +41,7 @@ public class ServletJH extends HttpServlet{
 		case "/select_product.stb":
 			selectProducts(req, resp);
 			break;
-
+			
 		case "/add_productR.stb":
 			insertProductsR(req, resp);
 			break;
@@ -58,6 +61,10 @@ public class ServletJH extends HttpServlet{
 		case "/delete_productR.stb":
 			deleteProductsR(req, resp);
 			break;
+			
+		case "/product_group.stb":
+			editGroup(req, resp);
+			break;
 		}
 
 	}
@@ -67,14 +74,28 @@ public class ServletJH extends HttpServlet{
 	public void selectProducts(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		req.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=utf-8");
+		String category = "";
+		String check = "";
 		
-		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list = dao.select();
-		System.out.println(list.get(0).getItem_code());
-		System.out.println(list.get(1).getItem_code());
+		if(req.getParameter("findStr")!=null) {
+			findStr = req.getParameter("findStr");
+		}
+		
+		
+		if(req.getParameter("category")!=null) {
+			category = req.getParameter("category");
+		}
+		
+		if(req.getParameter("check")!=null) {
+			check = req.getParameter("check");
+		}
+		
+		System.out.println("체크가 됐는지 "+check);
+		ProductDao dao = new ProductDao();
+		List<ProductVo> list = dao.select(findStr, category, check);
 		req.setAttribute("list", list);
 		
-		String path= urlAdmin+"/products.jsp";
+		String path= urlAdmin+"/products.jsp?findStr="+findStr+"&category="+category;
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 		
@@ -111,7 +132,7 @@ public class ServletJH extends HttpServlet{
 		}
 		
 		
-		String path= urlAdmin+"/add_product_result.jsp";
+		String path= urlAdmin+"/add_product.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -170,6 +191,15 @@ public class ServletJH extends HttpServlet{
 		int result = dao.deleteItem(req.getParameter("item_code"));
 		PrintWriter out = resp.getWriter();
 		out.print(result);
+	}
+	
+	public void editGroup(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("utf-8");
+		resp.setContentType("text/html;charset=utf-8");
+		
+		String path= urlAdmin+"/product_category.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
 	}
 	
 }
