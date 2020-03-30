@@ -54,7 +54,6 @@
                                     <a href="/starbucks/" class="js-logo-clone"><img src="/starbucks/images/logo.png" alt="" /></a>
                                 </div>
                             </div>
-<form id='frm' name='frm' method='post'></form>
                             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div class="site-top-icons">
                                     <ul>
@@ -136,9 +135,7 @@
                                 </ul>
                         </ul>
                     </div>
-                    <form id='pd_frm' name='pd_frm'>
-                    <input type="hidden" name="pd_findStr" id='pd_findStr'/>
-                    </form>
+
                 </nav>
             </header>
          </div>  

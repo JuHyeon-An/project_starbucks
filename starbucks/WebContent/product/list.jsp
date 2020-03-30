@@ -14,8 +14,9 @@
             </div>
         </div>
     </div>
-    
+
 	<div class="site-section">
+	    
       <div class="container">
 
         <div class="row mb-5">
@@ -84,7 +85,7 @@
                   <c:forEach var='i' begin='${p.startPage }' end='${p.endPage }'>
                   	 <input type="button" class=<c:if test='${ i == p.nowPage }'>'btn btn-primary btn-arraw-left'</c:if> 
 										<c:if test='${ i != p.nowPage }'>'btn btn-default btn-arraw-left'</c:if>
-							value ='${ i }' onclick='pd_goPage(${i})'/>
+							value ='${ i }' onclick='pd_goPage("${i}")'/>
                   </c:forEach>
                   <c:if test="${p.nowPage < p.totPage }">
 					<input type="button" class='btn btn-default btn-arraw-left' value ='다음' onclick='pd_goPage(${p.nowPage+1})'/>
@@ -131,10 +132,11 @@
           
         </div>
       </div>
-      <form id='pd_frm' >
-      	<input type="hidden" name="nowPage" id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}'/>
-      	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
+      
+      <form id='pd_frm' name='pd_frm' method='post'>
+      	<input type="hidden" name="nowPage" id='nowPage' value='${ empty param.nowPage? 1 : param.nowPage }'/>
       </form>
+      
      </div>
 
 

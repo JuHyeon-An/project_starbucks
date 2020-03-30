@@ -55,43 +55,9 @@
 		 
 	}
 	
-	/*
-	Swal.fire({
-		  title: '등록 성공!',
-		  text: "상품이 성공적으로 등록되었습니다.",
-		  icon: 'success',
-		  showCancelButton: true,
-		  confirmButtonColor: '#3085d6',
-		  cancelButtonColor: '#d33',
-		  confirmButtonText: '상품 등록',
-		  cancelButtonText: '목록으로'
-		}).then((result) => {
-		  if (result.value) {
-			  // 확인을 눌렀으면
-					Swal.fire(
-							'Deleted!',
-							'성공적으로 삭제되었습니다.',
-							'success'
-					).then((result2) => {
-						if(result2.value){
-							location.href="/starbucks/admin/select_product.stb"
-						}
-					})
-	*/
-	
-	
-	
-	/*
-	 * Swal.fire({
-				  icon: 'success',
-				  title: 'Your work has been saved',
-				  showConfirmButton: false,
-				  timer: 1500
-				})
-	 */
-	
 	if($('#resultMsg')!=null){
 		if($('#resultMsg').val()=='성공'){
+			$('#resultMsg').val('');
 			Swal.fire({
 				  title: '등록 성공!',
 				  text: "상품이 성공적으로 등록되었습니다.",
@@ -104,6 +70,7 @@
 				}).then((result) => {
 				  if (result.value) {
 					  // 확인을 눌렀으면
+					  $('#editMsg').val('');
 		}else{
 			location.href="select_product.stb"
 		}
@@ -121,12 +88,56 @@
 				}).then((confirm) => {
 					  if (confirm.value) {
 						  // 확인을 눌렀으면
+						  $('#editMsg').val('');
 			}else{
 				location.href="select_product.stb"
 			}
 		})
 		}
 	}
+	
+	
+	if($('#editMsg')!=null){
+		if($('#editMsg').val()=='성공'){
+			$('#editMsg').val('');
+			Swal.fire({
+				  title: '수정 완료!',
+				  text: "상품이 성공적으로 수정되었습니다.",
+				  icon: 'success',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '추가수정',
+				  cancelButtonText: '목록으로'
+				}).then((result) => {
+				  if (result.value) {
+					  // 확인을 눌렀으면
+				$('#editMsg').val('');
+		}else{
+			location.href="select_product.stb"
+		}
+	})
+		}else if($('#editMsg').val()=='실패'){
+			Swal.fire({
+				  title: '오류 발생',
+				  text: "상품 수정 중 오류가 발생했습니다. 관리자에게 문의하세요.",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '다시 시도',
+				  cancelButtonText: '목록으로'
+				}).then((confirm) => {
+					  if (confirm.value) {
+						  // 확인을 눌렀으면
+						  $('#editMsg').val('');
+			}else{
+				location.href="select_product.stb"
+			}
+		})
+		}
+	}
+	
 }// end of btnFunc
 
 let deleteItem = function(item_code){

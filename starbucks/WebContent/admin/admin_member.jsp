@@ -6,15 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-.here{
-	background-color:#00ff00;
-}
-.ho{
-	backgroud-color:#0000ff;
-}
 
-</style>
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
@@ -25,11 +17,16 @@
 <body>
 
 <form name='frm' id='frmm' method='post'>
-<input type='text' name='findStr' value= '${param.findStr }' id='findStr'/>
-<input type='button' value='검색' name='btnSelect' id='btnSelect'/>
-<input type='text' name='nowPage' id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}' />
 
-<div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
+<div class='row'>
+<div class='col-lg-8'> </div>
+<div class='btn-xs  input-group col-lg-4'  >
+
+<input type='text' name='findStr' value= '${param.findStr }' id='findStr'class="form-control validate 2" placeholder='아이디 또는 이름을 검색해주세요' />
+<input type='button' value='검색' name='btnSelect' id='btnSelect'/>
+<input type='hidden' name='nowPage' id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}' />
+</div>
+</div>
 	                <h2 class="tm-block-title">Member List</h2>
 	                <table class="table">
 	                
@@ -79,18 +76,18 @@
 
 	<div id='page'>
 		<c:if test="${page.nowPage >1}">
-			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'/>
+			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})' class='btn-sm btn-default'/>
 		</c:if>
 		
 		<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
-			<input type='button' value='${i }'
-			${ (i== page.nowPage)? "class='here'" : "class = 'ho'" }
+			<input type='button' value='${i }' class= 
+			'${ (i== page.nowPage)? "btn-sm btn-info" : "btn-sm btn-default" }'
 			 onclick='goPage(${i })'/>
 			
 		</c:forEach>	
 		
 		<c:if test="${page.nowPage<page.totPage }">
-			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'/>
+			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'class='btn-sm btn-default'/>
 		</c:if>
 	</div>
 </form>
