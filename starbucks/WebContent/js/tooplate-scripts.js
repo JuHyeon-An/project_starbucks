@@ -89,11 +89,13 @@ function drawBarChart() {
       type: "horizontalBar",
       data: {
     	  
-        labels: ["상품명1", "상품명2", "상품명3", "상품명4", "상품명5", "상품명6", "상품명7"],
+        labels: [array[0].value, array[1].value, array[2].value, array[3].value, 
+        	array[4].value, array[5].value, array[6].value],
         datasets: [
           {
             label: "# of Hits",
-            data: [33, 40, 28, 49, 58, 38, 44],
+            data: [arrayValue[0].value, arrayValue[1].value, arrayValue[2].value, arrayValue[3].value, 
+            	arrayValue[4].value, arrayValue[5].value, arrayValue[6].value],
             backgroundColor: [
               "#F7604D",
               "#4ED6B8",

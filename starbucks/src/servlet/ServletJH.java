@@ -64,6 +64,7 @@ public class ServletJH extends HttpServlet{
 		case "/dashboard.stb":
 			dashBoard(req, resp);
 			break;
+			
 		}
 
 	}
@@ -199,7 +200,6 @@ public class ServletJH extends HttpServlet{
 		ProductDao dao = new ProductDao();
 		Map<String, Integer> map = dao.dashBoard();
 		
-		
 		req.setAttribute("map", map);
 		
 		Set<String> keySet = map.keySet();
@@ -210,8 +210,6 @@ public class ServletJH extends HttpServlet{
 			System.out.println(key);
 			System.out.println(value);
 		}
-		
-		
 		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
