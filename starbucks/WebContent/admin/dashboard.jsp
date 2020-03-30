@@ -270,15 +270,9 @@
 	    </div>
 	</div>
 	<form>
-	<input type="text" name="bestItem" value=""/>
-	<input type="text" name="bestItem" value=""/>
-	<input type="text" name="bestItem" value="어쩌구"/>
-	<input type="text" name="bestItem" value="저쩌구"/>
-	<input type="text" name="bestItem" value="주전자"/>
-	<input type="text" name="bestItem" value="텀블러"/>
-	<input type="text" name="bestItem" value="보온병"/>
-	<input type="text" name="bestItem" value="그냥"/>
-	
+	<c:forEach var="item" items="${list }">
+	<input type="text" name="bestItem" value="${item }"/>
+	</c:forEach>
 	</form>
 	<script>
 	

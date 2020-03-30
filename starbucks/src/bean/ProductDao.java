@@ -6,7 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import com.google.gson.Gson;
 
@@ -286,9 +288,9 @@ public class ProductDao {
 		}
 	}
 	
-	public List<Integer> dashBoard() {
+	public Map<String, Integer> dashBoard() {
 		
-		List<Integer> list = new ArrayList<Integer>();
+		Map<String, Integer> map = new HashMap<String, Integer>();
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -303,8 +305,7 @@ public class ProductDao {
 				rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				list.add(rs.getInt("order_sumnum"));
-				System.out.println("rs.getInt 값 : "+rs.getInt("order_sumnum"));
+				map.put(rs.getString(1), rs.getInt(2));
 			}
 			
 	         rs.close();
@@ -313,7 +314,7 @@ public class ProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			return list;
+			return map;
 		}
 	}
 	
