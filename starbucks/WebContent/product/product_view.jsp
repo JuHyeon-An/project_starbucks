@@ -62,9 +62,9 @@
 
             <h2 class="text-black">${vo.item_title }</h2>
             <p>${vo.item_content }</p>
-            <p class="mb-4">용량 : ${vo.item_size }</p>
+            <p class="mb-4">사이즈 : ${vo.item_size }</p>
             <p class="mb-4">재고 : ${vo.item_num }</p>
-            <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p>
+<%--             <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p> --%>
             <p><strong id='price'class="text-primary h4">${vo.item_price }</strong><strong class='text-primary h4'>원</strong></p>
 
 
