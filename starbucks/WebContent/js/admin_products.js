@@ -99,7 +99,7 @@
 				  showCancelButton: true,
 				  confirmButtonColor: '#3085d6',
 				  cancelButtonColor: '#d33',
-				  confirmButtonText: '상품 등록',
+				  confirmButtonText: '추가 등록',
 				  cancelButtonText: '목록으로'
 				}).then((result) => {
 				  if (result.value) {
@@ -107,7 +107,24 @@
 		}else{
 			location.href="select_product.stb"
 		}
-	});
+	})
+		}else if($('#resultMsg').val()=='DB오류발생'){
+			Swal.fire({
+				  title: '오류 발생',
+				  text: "상품 등록 중 오류가 발생했습니다. 관리자에게 문의하세요.",
+				  icon: 'warning',
+				  showCancelButton: true,
+				  confirmButtonColor: '#3085d6',
+				  cancelButtonColor: '#d33',
+				  confirmButtonText: '다시 시도',
+				  cancelButtonText: '목록으로'
+				}).then((confirm) => {
+					  if (confirm.value) {
+						  // 확인을 눌렀으면
+			}else{
+				location.href="select_product.stb"
+			}
+		})
 		}
 	}
 }// end of btnFunc

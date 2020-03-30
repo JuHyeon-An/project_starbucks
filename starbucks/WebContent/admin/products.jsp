@@ -93,7 +93,7 @@
 
 									<tr>
 										<td scope="row"><img width="95%" height="95%"
-											class="round text-center" alt="Starbucks Starbucks Korea 2020 Spring "
+											class="round text-center" alt="Starbucks Korea 2020 Spring "
 											onclick="image_viewer('img14367')"
 											src="../fileFolder/${vo.item_thumbnailimg }"
 											style="display: block;"></td>
