@@ -82,7 +82,7 @@ public class OrderMemberDao {
 				vo.setPhone(rs.getString("member_phone"));
 				vo.setEmail(rs.getString("member_email"));
 				vo.setrDate(rs.getString("member_regdate"));
-				vo.setSavedMoney(Integer.parseInt(rs.getString("member_savedmoney")));
+				vo.setSavedMoney(rs.getInt("member_savedmoney"));
 				vo.setAdmin(Integer.parseInt(rs.getString("member_admin")));
 				vo.setZip(rs.getString("member_zip"));
 				vo.setAddr1(rs.getString("member_addr1"));

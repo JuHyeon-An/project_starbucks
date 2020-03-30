@@ -22,6 +22,8 @@
 
         <link rel="stylesheet" href="/starbucks/css/style.css">
         <link rel="stylesheet" href="/starbucks/css/custom.css">
+        <!-- 별 --><!-- 별 --><!-- 별 --><!-- 별 --><!-- 별 -->
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         
 		<!-- datePicker 관련 css -->
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
@@ -52,7 +54,6 @@
                                     <a href="/starbucks/" class="js-logo-clone"><img src="/starbucks/images/logo.png" alt="" /></a>
                                 </div>
                             </div>
-<form id='frm' name='frm' method='post'></form>
                             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div class="site-top-icons">
                                     <ul>
@@ -134,9 +135,7 @@
                                 </ul>
                         </ul>
                     </div>
-                    <form id='pd_frm' name='pd_frm'>
-                    <input type="hidden" name="pd_findStr" id='pd_findStr'/>
-                    </form>
+
                 </nav>
             </header>
          </div>  
