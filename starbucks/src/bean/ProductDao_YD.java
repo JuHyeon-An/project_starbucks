@@ -81,6 +81,7 @@ public class ProductDao_YD {
 					+ "select rownum rn , A.* from ("
 					+ 	" select * "
 					+ 	" from itemboard "
+					+	" where item_board = '판매' "
 					+   " order by item_group ) A "
 					+ ") where rn between ? and ? ";
 			ps = conn.prepareStatement(sql);
@@ -143,6 +144,7 @@ public class ProductDao_YD {
 					+ "select rownum rn , A.* from ("
 					+ 	" select * "
 					+ 	" from itemboard "
+					+	" where item_board = '판매' "
 					+ " where item_group = ? or item_theme = ? "
 					+   " order by item_group ) A "
 					+ ") where rn between ? and ? ";
@@ -191,7 +193,7 @@ public class ProductDao_YD {
 		int totList = 0;
 
 		try {
-			sql = " select DISTINCT item_theme FROM itemboard order by ITEM_THEME ";
+			sql = " select DISTINCT item_theme FROM itemboard where item_board = '판매'  order by ITEM_THEME ";
 			ps = conn.prepareStatement(sql);
 			rs = ps.executeQuery();
 

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+
 import bean.OrderMemberDao;
 import bean.Page;
 import bean.Shopping_MemberVo;
@@ -35,20 +36,23 @@ public class AdminmemberServlet extends HttpServlet {
 			select(req , resp);
 			break;			
 			
-//		case "/order_view.order":
-//			order_view(req, resp);
-//			break;
-//		
-//		case "/modify.order":
-//			order_modify(req, resp);
-//			break;
-//		
+		case "/member_view.adminmember":
+			member_view(req, resp);
+			break;
+
+		case "/modify.adminmember":
+			member_update(req, resp);
+			break;
+	
+			
 		}
 
 	}
 	
 	private void select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-	      String findStr="";
+	     System.out.println("서블릿 시작점");
+		
+		  String findStr="";
 	      int nowPage=1;
 	      OrderMemberDao dao= new OrderMemberDao();
 
@@ -73,22 +77,13 @@ public class AdminmemberServlet extends HttpServlet {
 	      
 	      req.setAttribute("list", list);
 	      req.setAttribute("page", page);
+	      System.out.println(list + "listsssss");
+	      System.out.println(page+ "asdasdpagepage");
 	      System.out.println("여기가 찍히나요");
 	    
 	      
 	      
-	      
-//	      for(Shopping_MemberVo vo:list) {//값을 확인
-//	    	System.out.println("여긴서블");
-//	    	System.out.println(vo.getOrderNumber());
-//	    	System.out.println(vo.getMemberId());
-//	  		System.out.println(vo.getItemCode());
-//	  		System.out.println(vo.getOrderNum());
-//	  		System.out.println(vo.getOrderPrice());
-//	  		System.out.println(vo.getOrderregDate());
-//	  		System.out.println(vo.getOrderStatus());
-//	    	  
-//	      }
+
 
 	      String path=url+"admin_member.jsp"; //
 	      System.out.println(path);
@@ -97,47 +92,57 @@ public class AdminmemberServlet extends HttpServlet {
 	     
 	      
 	   }
-}
-//	public void order_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		
-//		String path=url+"order_view.jsp";
-//		RequestDispatcher rd=req.getRequestDispatcher(path);
-//		rd.forward(req, resp);
-//	}
+	public void member_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-//	public void order_modify(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//		OrderVo vo = new OrderVo();
-//		OrderDao dao = new OrderDao();
-//			
-//		vo.setOrderNumber(req.getParameter("orderNumber"));
-//		vo.setOrderStatus(Integer.parseInt(req.getParameter("orderStatus")));
-//		System.out.println(vo.getOrderNumber() + "서블릿 오더넘버값" );
-//		System.out.println(vo.getOrderStatus() + "서블릿 스테이튜스값");
-//		
-//		  
-//		  
-//		 String msg = dao.modify(vo);
-//         req.setAttribute("msg", msg);
-//
-//			
-//		//vo = dao.view(req.getParameter("memberId"));
-//		
-//	
-//		
-//	
-//		 
-//		System.out.println("서블렛 수정 넘버들어오나"+vo.getOrderNumber()
-//											+vo.getOrderStatus());
-//		
-//		
-//		req.setAttribute("msg", msg); //여기가 뷰의 값
-//		String path=url+"order_view.jsp";
-//		RequestDispatcher rd=req.getRequestDispatcher(path);
-//		rd.forward(req, resp);
-//	
-//		System.out.println("수정 끝");
-//		System.out.println("");
-//		
-//	}
-//
-//}
+		OrderMemberDao dao = new OrderMemberDao();//디비연결 및 vo호출하기위해
+		//String mId = req.getParameter("mId"); //필요이유: 스크립트단에 view에 function(mid)에 넣어서 실행해 셀렉폼태그의 hidden mid에 내가 선택한것이 들어가서
+												//view.mm을 불러들였고 결국req에 들어있다.req폼태그 가져왔음..
+		//MemberVo vo = dao.view(mId); //view가가진 mid호출 
+		Shopping_MemberVo vo = new Shopping_MemberVo();
+		
+		vo = dao.view(req.getParameter("mId"));//
+		
+		System.out.println("우아아아아"+vo.getmId());
+		
+		req.setAttribute("vo", vo);
+		
+		
+	
+		
+		
+		
+		String path=url+"accounts.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+
+	
+	
+
+	public void member_update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		Shopping_MemberVo vo = new Shopping_MemberVo();
+		OrderMemberDao dao = new OrderMemberDao();
+		
+		vo.setmId(req.getParameter("mId"));
+		vo.setrDate(req.getParameter("rDate"));
+		//아이디랑 가입날짜 빼고 모두수정가능
+		
+		vo.setmName(req.getParameter("mName"));
+		vo.setSavedMoney(Integer.parseInt(req.getParameter("savedMoney")));
+		vo.setEmail(req.getParameter("email"));
+		vo.setPhone(req.getParameter("phone"));
+		vo.setZip(req.getParameter("zip"));
+		vo.setAddr1(req.getParameter("addr1"));
+		vo.setAddr2(req.getParameter("addr2"));
+		
+	  
+		String msg = dao.modify(vo);
+		req.setAttribute("msg", msg); //여기가 뷰의 값
+		req.setAttribute("vo", vo);
+		String path=url+"accounts.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	
+		
+	}
+}

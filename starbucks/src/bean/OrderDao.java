@@ -54,7 +54,7 @@ public class OrderDao {
 			    + "      or MEMBER_ID  like ? "
 	            + "      order by ORDER_REGDATE)A"
 				+ " )where rn between ? and ? ";
-			
+	
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + page.getFindStr() + "%");
 			pstmt.setString(2, "%" + page.getFindStr() + "%");

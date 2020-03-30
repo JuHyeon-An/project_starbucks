@@ -56,9 +56,16 @@
 	                            <td>${vo.orderNum}</td>
 	                            <td>${vo.orderPrice}</td>
 	                            <td>${vo.orderregDate}</td>
-	                         	<td>${vo.orderStatus}</td>
-	                         	
 	                         	<td>
+	                         		
+	                         		<c:if test="${vo.orderStatus eq 1}">주문취소</c:if>
+	                         		<c:if test="${vo.orderStatus eq 2}">승인대기</c:if>
+	                         		<c:if test="${vo.orderStatus eq 3 }">주문완료</c:if>
+	                         		
+	                         	
+	                         	</td>
+	                         	
+	                         	
 	                            <input type='hidden' name='orderNumber' id='orderNumber' />
 								<input type='hidden' name='memberId' id='memberId'/>
 								<input type='hidden' name='itemCode' id='itemCode'/>	
@@ -66,7 +73,7 @@
 	                            <input type='hidden' name='orderPrice' id='orderPrice'/>
 	                            <input type='hidden' name='orderregDate' id='orderregDate'/>
 	                            <input type='hidden' name='orderStatus' id='orderStatus'/>
-	                          	</td>
+	                          	
 	                            </tr>
 	                         
 	                            </c:forEach>
