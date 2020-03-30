@@ -102,13 +102,12 @@
                         </li>
 
                         <li class="nav-item dropdown">
-                            <a id="accNav" class="nav-link dropdown-toggle"  href="admin.adminmember" id="navbarDropdown" role="button" data-toggle="dropdown">
+                            <a id="accNav" class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                                 <i class="far fa-user"></i>
                                 <span>Accounts<i class="fas fa-angle-down"></i></span>
                             </a>
                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="accounts.jsp">회원상세보기</a>
-                                <a class="dropdown-item" href="./add_product.stb">회원관리</a>
+                                <a class="dropdown-item" href="admin.adminmember">회원관리</a>
                                
                             </div>
                         </li>

@@ -18,7 +18,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
     <script src="/starbucks/lib/jquery-3.4.1.js"></script>
-    <script src="/starbucks/admin/order.js"></script>
+    <script src="/starbucks/admin/admin_member.js"></script>
 
    
 </head>
@@ -30,43 +30,46 @@
 <input type='text' name='nowPage' id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}' />
 
 <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-	                <h2 class="tm-block-title">Orders List</h2>
+	                <h2 class="tm-block-title">Member List</h2>
 	                <table class="table">
 	                
 	                    <thead>
 	                        <tr>
-	                            <th scope="col">주문번호</th>
 	                            <th scope="col">아이디</th>
-	                            <th scope="col">상품코드</th>
-	                            <th scope="col">상품갯수</th>
-	                            <th scope="col">총가격</th>
-	                            <th scope="col">주문날짜</th>
-	                            <th scope="col">주문상태</th>
+	                            <th scope="col">이름</th>
+	                            <th scope="col">연락처</th>
+	                            <th scope="col">이메일</th>
+	                            <th scope="col">가입날짜</th>
+	                            <th scope="col">적립금</th>
+	                        
 	                        </tr>
 	                    </thead>
 	                    <tbody>
 	               
 								<c:forEach var="vo" items="${list }">	
 								
-	                        <tr id='list' onclick="view('${vo.orderNumber}','${vo.memberId }','${vo.itemCode }','${vo.orderNum } ', '${vo.orderPrice}', '${vo.orderregDate}', '${vo.orderStatus}'  )">
+	                        <tr id='list'onclick="view('${vo.mId}')">
 	                          
-	                           <td><b>${vo.orderNumber}</b></td>
-	                            <td><b>${vo.memberId}</b></td>
-	                            <td><b>${vo.itemCode}</b></td>
-	                            <td>${vo.orderNum}</td>
-	                            <td>${vo.orderPrice}</td>
-	                            <td>${vo.orderregDate}</td>
-	                         	<td>${vo.orderStatus}</td>
-	                         	
-	                         	<td>
-	                            <input type='hidden' name='orderNumber' id='orderNumber' />
-								<input type='hidden' name='memberId' id='memberId'/>
-								<input type='hidden' name='itemCode' id='itemCode'/>	
-								<input type='hidden' name='orderNum' id='orderNum'/>
-	                            <input type='hidden' name='orderPrice' id='orderPrice'/>
-	                            <input type='hidden' name='orderregDate' id='orderregDate'/>
-	                            <input type='hidden' name='orderStatus' id='orderStatus'/>
-	                          	</td>
+	                           <td><b>${vo.mId}</b></td>
+	                            <td><b>${vo.mName}</b></td>
+	                            <td><b>${vo.phone}</b></td>
+	                            
+	                         	<td>${vo.email}</td>
+								<td>${vo.rDate}</td>
+	                         	<td>${vo.savedMoney}</td>
+	                         
+								
+	                         
+	                            <input type='hidden' name='mId' id='mId' />
+								<input type='hidden' name='mName' id='mName'/>
+								<input type='hidden' name='phone' id='phone'/>	
+								
+								<input type='hidden' name='email' id='email'/>
+	                            <input type='hidden' name='rDate' id='rDate'/>
+	                            <input type='hidden' name='savedMoney' id='savedMoney'/>
+	                            
+	                            
+	                         
 	                            </tr>
 	                         
 	                            </c:forEach>
@@ -74,8 +77,7 @@
 	                </table>
 	            </div>
 
-	
-		<div id='page'>
+	<div id='page'>
 		<c:if test="${page.nowPage >1}">
 			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'/>
 		</c:if>
@@ -96,7 +98,7 @@
 
 <script>
 func();
-$('#orderNav').addClass('active');
+$('#accNav').addClass('active');
 
 </script>
 </body>
