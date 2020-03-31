@@ -87,6 +87,7 @@ function drawLineChart() {
 	  if ($("#lineChart").length) {
 	    ctxLine = document.getElementById("lineChart").getContext("2d");
 	    optionsLine = {
+	    	responsive : true, 
 	      scales: {
 	        yAxes: [
 	        	{
@@ -94,7 +95,13 @@ function drawLineChart() {
 	                display: true,
 	                labelString: "매출",
 	                position : 'left',
-	                id : 'a'
+	                id : 'a',
+	                  beginAtZero : true,
+	                  ticks: {
+	                      max: 1000000,
+	                      min: 0,
+	                      stepSize: 200000
+	                  }
 	            },
 	            {
 	          	  type: 'linear',
