@@ -85,7 +85,7 @@
 		</c:forEach>	
 		
 		<c:if test="${page.nowPage<page.totPage }">
-			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'class='btn-sm ok'/>
+			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'class='btn-sm btn-ok'/>
 		</c:if>
 	</div>
 	            </div>
