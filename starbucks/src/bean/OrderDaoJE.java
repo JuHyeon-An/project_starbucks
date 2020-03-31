@@ -91,9 +91,10 @@ public class OrderDaoJE {
 	}
 	
 	public List<OrderVo> select(String mId){
+		
 		List<OrderVo> list = new ArrayList<OrderVo>();
 		try {
-			String sql  = "SELECT o.order_regdate, i.item_thumbnailImg, i.item_title, i.item_price, o.order_num, o.order_status, o.item_code  " 
+			String sql  = "SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price " 
 						+ "FROM SHOPPING_ORDER o join ITEMBOARD i " 
 						+ "ON o.item_code = i.item_code " 
 						+ "WHERE o.member_id=?";
@@ -112,6 +113,7 @@ public class OrderDaoJE {
 				vo.setOrderNum(rs.getInt(5));
 				vo.setOrderStatus(rs.getInt(6));
 				vo.setItemCode(rs.getString(7));
+				vo.setPrice(rs.getInt(8));
 				
 				list.add(vo);
 			}

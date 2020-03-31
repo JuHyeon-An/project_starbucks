@@ -1,15 +1,15 @@
 package bean;
 
 public class ReviewVo {
-	int review_postnum;
-	String member_id;
-	String item_code;
-	String review_title;
-	String review_content;
-	String review_regdate; 
-	int review_like;
-	int reivew_view;
-	Review_imgs review_imgs;
+	int review_postnum;      /*dao에서 seq*/
+	String member_id;        /*ReviewUp에서 받아옴*/
+	String item_code;        /*ReviewUp에서 받아옴*/
+	String review_title;     /*ReviewUp에서 받아옴*/
+	String review_content;   /*ReviewUp에서 받아옴*/
+	String review_regdate;   /*dao에서sysdate*/
+	int review_like;         /*ReviewUp에서 받아옴*/
+	int reivew_view;         /*dao에서 0*/
+	Review_imgs review_imgs; /*ReviewUp에서 받아옴*/
 	
 	public int getReview_postnum() {
 		return review_postnum;

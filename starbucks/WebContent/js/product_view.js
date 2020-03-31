@@ -1,6 +1,4 @@
-/**
- * http://usejsdoc.org/
- */
+
 let priceplus = function(){
 	let price = parseInt($('#price').text());
 	let oriprice = parseInt($('#oriPrice').val());

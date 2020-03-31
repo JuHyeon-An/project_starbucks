@@ -133,7 +133,8 @@ public class ProductListServlet extends HttpServlet{
 		
 		
 		req.setAttribute("list", list);	
-		
+		System.out.println(findStr+"검색어");
+		System.out.println(list.size()+"리스트사이즈");
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

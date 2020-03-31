@@ -1,5 +1,6 @@
 package bean;
 
+import java.io.File;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +15,7 @@ public class DaoUk {
 	
 	Connection conn;
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
+	String review_img="C:/Users/uk/eclipse-workspace/1907-web/WebContent/review_img/";
 	
 	public DaoUk() {
 		conn=DBConn.getConn();
@@ -94,7 +96,7 @@ public class DaoUk {
 		int cnt2=0;
 
 		try {
-			String sql= " insert into REVIEWBOARD values(seq_review_postnum.nextval,?,?,?,?,?,sysdate,?) ";
+			String sql= " insert into REVIEWBOARD values(seq_review_postnum.nextval,?,?,?,?,?,sysdate,0) ";
 			conn.setAutoCommit(false);
 			PreparedStatement pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, vo.getMember_id());
@@ -102,7 +104,6 @@ public class DaoUk {
 			pstmt.setString(3, vo.getReview_title());
 			pstmt.setString(4, vo.getReview_content());
 			pstmt.setInt(5, vo.getReview_like());
-			pstmt.setInt(6, vo.getReivew_view());
 			int cnt=pstmt.executeUpdate();
 			
 			if(cnt>0) {
@@ -114,11 +115,9 @@ public class DaoUk {
 				for(int i=0; i<list2.size(); i++) {
 					int count=i+1;
 					String para=list2.get(i);
-					System.out.println(":"+count);
 					pstmt2.setString(count, para);
 				}
 				for(int i=(list2.size()+1); i<6; i++) {
-					System.out.println("::"+i);
 					pstmt2.setString(i, "");
 				}
 				
@@ -198,7 +197,7 @@ public class DaoUk {
 				vo.setReview_content(rs.getString("review_content"));
 				vo.setReview_like(rs.getInt("review_like"));
 				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
-				vo.setReivew_view(rs.getInt("reivew_view"));
+				vo.setReivew_view(rs.getInt("review_view"));
 				
 				/*reivew_imgs*/
 				String sql2= " select * from review_imgs where review_postnum=? ";
@@ -225,7 +224,7 @@ public class DaoUk {
 	}
 	public int review_view(int review_postnum) {
 		int r=0;
-		String sql= " select reivew_view "
+		String sql= " select review_view "
 				  + " from reviewboard "
 				  + " where review_postnum=? ";
 		PreparedStatement pstmt;
@@ -234,9 +233,9 @@ public class DaoUk {
 			pstmt.setInt(1, review_postnum);
 			ResultSet rs=pstmt.executeQuery();
 			if(rs.next()) {
-				int reivew_view=rs.getInt("reivew_view");
+				int reivew_view=rs.getInt("review_view");
 				reivew_view++;
-				String sql2= " update reviewboard set reivew_view=? where review_postnum=?";
+				String sql2= " update reviewboard set review_view=? where review_postnum=?";
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
 				pstmt2.setInt(1, reivew_view);
 				pstmt2.setInt(2, review_postnum);
@@ -264,7 +263,7 @@ public class DaoUk {
 				vo.setReview_content(rs.getString("review_content"));
 				vo.setReview_like(rs.getInt("review_like"));
 				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
-				vo.setReivew_view(rs.getInt("reivew_view"));
+				vo.setReivew_view(rs.getInt("review_view"));
 				
 				String sql2= " select * from review_imgs where review_postnum=? ";
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
@@ -287,6 +286,91 @@ public class DaoUk {
 		}
 		return vo;
 	}
-	
+	public Review_imgs getImgs(int review_postnum) {
+		Review_imgs imgs=new Review_imgs();
+		List<String> list=new ArrayList<String>();
+
+		try {
+			String sql= " select * from review_imgs where review_postnum=? ";
+			PreparedStatement pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, review_postnum);
+			ResultSet rs=pstmt.executeQuery();
+			if(rs.next()) {
+				list.add(rs.getString("sys_img1"));
+				list.add(rs.getString("sys_img2"));
+				list.add(rs.getString("sys_img3"));
+				list.add(rs.getString("sys_img4"));
+				list.add(rs.getString("sys_img5"));
+				imgs.setSys_imgs(list);
+			}
+
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return imgs;
+	}
+	public String review_delete(int review_postnum) {
+		String msg=null;
+		String sql=" delete from reviewboard where review_postnum = ? ";
+		try {
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, review_postnum);
+		int r=pstmt.executeUpdate();
+		if(r>0) {
+			msg=" 리뷰가 삭제 되었습니다. ";
+			String sql2=" delete from review_imgs where review_postnum = ? ";
+			PreparedStatement pstmt2=conn.prepareStatement(sql2);
+			pstmt2.setInt(1, review_postnum);
+			int r2=pstmt.executeUpdate();
+			if(r2>0) {
+				msg=msg+" 사진도 같이 삭제 되었습니다. ";
+				Review_imgs imgs=getImgs(review_postnum);
+				List<String> list=imgs.getSys_imgs();
+				for(String img:list) {
+					File file=new File(review_img+img);
+					if(file.exists()) {
+						file.delete();
+					}
+				}
+			}else {
+				msg=msg+" 사진은 삭제되지 않았습니다. ";
+			}
+		}else {
+			msg=" 리뷰 삭제 도중 오류가 발생하였습니다. ";
+			conn.rollback();
+		}
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}
+		return msg;
+	}
+	public String review_modify(String review_title, String review_content, int review_like, int review_postnum) {
+		String msg=null;
+		String sql= " update reviewboard "
+				  + " set review_title=?, "
+				  + " review_content=?, "
+				  + " review_like=?, "
+				  + " review_regdate=sysdate "
+				  + " where review_postnum=? ";
+		PreparedStatement pstmt;
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, review_title);
+			pstmt.setString(2, review_content);
+			pstmt.setInt(3, review_like);
+			pstmt.setInt(4, review_postnum);
+			int r=pstmt.executeUpdate();
+			if(r>0) {
+				msg=" 리뷰가 수정되었습니다. ";
+			}else {
+				msg=" 리뷰 수정 도중 오류가 발생하였습니다. ";
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return msg;
+	}
 
 }

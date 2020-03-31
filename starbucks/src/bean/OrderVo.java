@@ -21,6 +21,7 @@ public class OrderVo {
 	int savedMoney; // 	적립금   
 	String productImg;	// 상품이미지 
 	String itemTitle; // 상품명 
+	int price;	// 상품 가격 
 	
 	public OrderVo() {
 		
@@ -161,6 +162,14 @@ public class OrderVo {
 
 	public void setItemTitle(String itemTitle) {
 		this.itemTitle = itemTitle;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	

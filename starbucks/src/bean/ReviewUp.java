@@ -31,6 +31,7 @@ public class ReviewUp {
 		return flag;
 	}
 	public ReviewVo upload() {
+
 		ReviewVo vo=new ReviewVo();
 		Review_imgs imgs=new Review_imgs();
 		List<String> list2=new ArrayList<String>(); 

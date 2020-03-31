@@ -34,7 +34,6 @@
          </div>
 	</div> <!-- <div class="row"> -->
 <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-<input type='hidden' id='msg' value='${msg }'/>
 <input type='hidden' name='review_postnum' id='review_postnum' />
     <div class="site-blocks-table mb-3">
     <table class="table">
