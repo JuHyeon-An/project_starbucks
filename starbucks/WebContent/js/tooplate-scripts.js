@@ -174,8 +174,7 @@ function drawBarChart() {
               beginAtZero: true
             },
             scaleLabel: {
-              display: true,
-              labelString: "Hits"
+              display: true
             }
           }
         ]
@@ -248,14 +247,14 @@ function drawPieChart() {
       maintainAspectRatio: false,
       layout: {
         padding: {
-          left: 10,
-          right: 10,
-          top: 10,
-          bottom: 10
+          left: 0,
+          right: 0,
+          top: 0,
+          bottom: 0
         }
       },
       legend: {
-        position: "top"
+        position: "bottom"
       }
     };
 
@@ -264,15 +263,16 @@ function drawPieChart() {
       data: {
         datasets: [
           {
-            data: [18.24, 6.5, 9.15],
-            backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582"],
-            label: "Storage"
+            data: [themeValue[0].value, themeValue[1].value, themeValue[2].value, themeValue[3].value],
+            backgroundColor: ["#F7604D", "#4ED6B8", "#A8D582", "#DB9C3F"],
+            label: "theme"
           }
         ],
         labels: [
-          "Used Storage (18.240GB)",
-          "System Storage (6.500GB)",
-          "Available Storage (9.150GB)"
+        	themeArray[0].value,
+        	themeArray[1].value,
+        	themeArray[2].value,
+        	themeArray[3].value
         ]
       },
       options: optionsPie

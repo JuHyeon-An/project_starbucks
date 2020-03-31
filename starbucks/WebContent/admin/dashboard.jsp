@@ -18,27 +18,13 @@
 	    <div class="row tm-content-row">
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block summary-layout" >
-	                <h3 class="tm-block-title text-center">매출현황</h3>
-	                <canvas id="lineChart"></canvas>
+	                <h3 class="tm-block-title text-center">월별 매출</h3>
+	                <canvas id="lineChart" style="margin-top:30px;"></canvas>
 	            </div>
 	        </div>
-	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block summary-layout">
-	                <h3 class="tm-block-title text-center">베스트 상품</h3>
-	                <canvas id="barChart"></canvas>
-	            </div>
-	        </div>
-	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block tm-block-taller">
-	                <h2 class="tm-block-title">Storage Information</h2>
-	                <div id="pieChartContainer">
-	                    <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-	                </div>                        
-	            </div>
-	        </div>
-	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-	                <h2 class="tm-block-title">Notification List</h2>
+	        	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow summary-layout">
+	                <h2 class="tm-block-title text-center">Daily Report</h2>
 	                <div class="tm-notification-items">
 	                    <div class="media tm-notification-item">
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
@@ -115,6 +101,21 @@
 	                </div>
 	            </div>
 	        </div>
+	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	            <div class="tm-bg-primary-dark tm-block summary-layout">
+	                <h3 class="tm-block-title text-center">TOP7 인기상품</h3>
+	                <canvas id="barChart"></canvas>
+	            </div>
+	        </div>
+	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	            <div class="tm-bg-primary-dark tm-block tm-block-taller summary-layout">
+	                <h2 class="tm-block-title text-center">테마별 판매량</h2>
+	                <div id="pieChartContainer">
+	                    <canvas id="pieChart" class="chartjs-render-monitor" style="margin-top:30px;"></canvas>
+	                </div>                        
+	            </div>
+	        </div>
+
 	        <div class="col-12 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
 	                <h2 class="tm-block-title">Orders List</h2>
@@ -276,8 +277,14 @@
 	</c:forEach>
 	
 	<c:forEach var="item" items="${sum }">
-	<input type="text" name="totalSum" value="${item }"/>
+	<input type="hidden" name="totalSum" value="${item }"/>
 	</c:forEach>
+	
+	<c:forEach var="item" items="${list2 }">
+	<input type="hidden" name="themeSum" value="${item.item_theme }"/>
+	<input type="hidden" name="themeSumValue" value="${item.salesSum}"/>
+	</c:forEach>
+	
 	</form>
 	<script>
 	   $(document).ready(function(){

@@ -325,7 +325,10 @@ public class ProductDao {
 		ResultSet rs = null;
 		
 		try {
-				sql = " select sum(order_price), to_char(order_regdate, 'rrrr-mm') regdate from shopping_order group by to_char(order_regdate, 'rrrr-mm') order by to_char(order_regdate, 'rrrr-mm')";
+				sql = " select sum(order_price), to_char(order_regdate, 'rrrr-mm') regdate \r\n" + 
+						"from shopping_order where order_status = 3 " + 
+						"group by to_char(order_regdate, 'rrrr-mm') " + 
+						"order by to_char(order_regdate, 'rrrr-mm')";
 				
 				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
@@ -334,7 +337,35 @@ public class ProductDao {
 			
 			while(rs.next()) {
 				sum.add(rs.getInt(1));
-				System.out.println("월 : "+rs.getString(2));
+			}
+			
+	         rs.close();
+	         ps.close();
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return sum;
+		}
+	}
+	
+	public List<ThemeVo> themeSum() {
+		List<ThemeVo> sum = new ArrayList<ThemeVo>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			
+				sql = "select item_theme, sum(order_sumnum) from itemboard group by item_theme";
+				
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				sum.add(new ThemeVo(rs.getString(1), rs.getInt(2)));
 			}
 			
 	         rs.close();
