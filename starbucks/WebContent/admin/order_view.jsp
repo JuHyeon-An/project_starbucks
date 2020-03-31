@@ -109,6 +109,7 @@
 func();
 $(function(){
     var responseMessage = "<c:out value="${msg}" />";
+    
     if(responseMessage != ""){
         alert(responseMessage)
     }
