@@ -26,16 +26,15 @@ public class MyServlet extends HttpServlet{
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String temp = req.getRequestURI(); //   /insert.mm
+		String temp = req.getRequestURI(); 
 		int pos = temp.lastIndexOf("/");	
 		String tempUrl = temp.substring(pos);
-		//System.out.println(url + tempUrl);
 		
 		switch(tempUrl) {
-		case "/my.my":
+		case "/my.my": 
 			my(req, resp);
 			break;
-		case "/account.my":
+		case "/account.my": 
 			account(req, resp);
 			break;
 		case "/cart.my":
@@ -78,12 +77,16 @@ public class MyServlet extends HttpServlet{
 		case "/order.my":
 			order(req, resp);
 			break;
+		case "/singleOrder.my":
+			singleOrder(req, resp);
+			break;
 		case "/delete.my":
 			delete(req, resp);
 			break;
 		}
 	}
 	
+	// 마이페이지 인덱스 
 	public void my (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Shopping_MemberDao dao = new Shopping_MemberDao();
 		String mId = req.getParameter("mId2");
@@ -170,17 +173,20 @@ public class MyServlet extends HttpServlet{
 		int totPrice = 0;
 		int flag = 0;
 		
-		
 		while(true) {
 			
 			if(req.getParameter("itemTitle_"+i)==null) {
 				break;
 			}
+			
+			
 			flag = Integer.parseInt(req.getParameter("chkFlag_"+i));
 			itemCode = req.getParameter("itemCode_"+i);
 			title = req.getParameter("itemTitle_"+i);
-			ea = Integer.parseInt(req.getParameter("itemEa_"+i));
-			totPrice = Integer.parseInt(req.getParameter("totPrice_"+i));
+			ea = Integer.parseInt(req.getParameter("itemEaVal_"+i));
+			
+			totPrice = Integer.parseInt(req.getParameter("totPriceVal_"+i));
+			
 			String mId = req.getParameter("mId");
 			String mName = req.getParameter("mName_"+i);
 			if(flag == 1) {
@@ -205,6 +211,26 @@ public class MyServlet extends HttpServlet{
 		
 	}
 	
+	// 상품 상세페이지에서 주문처리 
+	public void singleOrder (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String totPrice = req.getParameter("totPrice");
+		String itemTitle = req.getParameter("itemTitle");
+		int ea = Integer.parseInt(req.getParameter("itemEa"));
+		
+		OrderDaoJE dao = new OrderDaoJE();
+		OrderVo vo = new OrderVo();
+		vo = dao.view(req.getParameter("mId"));
+		
+		req.setAttribute("vo", vo);
+		
+		String path = url + "?my=./order.jsp";
+		RequestDispatcher rd = req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		
+	}
+	
+	// 주문내역 
 	public void orderList (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String mId = req.getParameter("mId2");
 		OrderVo vo = new OrderVo();
@@ -243,6 +269,8 @@ public class MyServlet extends HttpServlet{
 		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
+		
+		
 		List<OrderVo> list = new ArrayList<OrderVo>();
 		int result = 0;
 		
@@ -254,6 +282,7 @@ public class MyServlet extends HttpServlet{
 			}
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("memberNm_"+i);
+			System.out.println("mName : " + mName);
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
 			
 			//int serial = Integer.parseInt(req.getParameter("serial_"+i));

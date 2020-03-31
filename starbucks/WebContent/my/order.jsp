@@ -82,7 +82,7 @@
                                     <span class="text-black ml-auto h5" id="memberSavedmoney">${vo.savedMoney }</span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="text" class="form-control" id="savedMoney" placeholder="">
+                                    <input type="number" class="form-control" id="savedMoney" placeholder="">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary btn-sm" type="button" id="btnUseSaveMoney">전액 사용</button>
                                     </div>
@@ -106,6 +106,9 @@
                                         <th>Total</th>
                                     </thead>
                                     <tbody>
+                                    	<c:if test="${not empty list}">
+                                    	
+                                    	
                                         <c:forEach var="vo" items="${list }" varStatus="i">
                                             <tr>
                                                 <td>${vo.itemTitle } <strong class="mx-2">x</strong>${vo.itemEa }</td>
@@ -118,6 +121,7 @@
 
                                             </tr>
                                         </c:forEach>
+                                        </c:if>
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>Point</strong></td>
                                             <td class="text-black" id="discountCash"><strong class="mx-2">-</strong></td>
@@ -170,10 +174,35 @@
             $(function () {
             	btnClickEvent();
             	
+            	
+            	// 적립금 입력 
+            	var savedMoney = Number($("#memberSavedmoney").html());	// 적립금 
+            	
+            	$( "#savedMoney" )
+            	  .keyup(function() {
+            	    var value = Number($( this ).val());
+            	    console.log(value);
+            	    
+            	    if(savedMoney >= value){
+            	    	$( "#memberSavedmoney" ).text( savedMoney - value );
+            	    }else if(savedMoney < value){
+            	    	$( this ).val(0);
+            	    }
+            		 // 적립금 계산 
+                    $("#discountCash").html(${cartTotalPrice} - value);
+                    // 주문 합계 - 적립금 
+                    $("#orderTotPrice").html(${cartTotalPrice} - value);
+            	  })
+            	  .keyup();
+            	
                 $("#btnUseSaveMoney").on("click", function () {
+            	    
                     $("#savedMoney").val($("#memberSavedmoney").html());
+                    $( "#memberSavedmoney" ).text("0");
                     
+                    // 적립금 계산 
                     $("#discountCash").html(${cartTotalPrice} - Number($("#savedMoney").val()));
+                    // 주문 합계 - 적립금 
                     $("#orderTotPrice").html(${cartTotalPrice} - Number($("#savedMoney").val()));
                 })
 

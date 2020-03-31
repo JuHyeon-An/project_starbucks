@@ -60,7 +60,7 @@
                     
                   </figure>
                   <div class="block-4-text p-4">
-                    <h3><a href="shop-single.html">${vo.item_title}</a></h3>
+                    <h3><a href="#">${vo.item_title}</a></h3>
                     <p class="mb-0">${vo.item_size }</p>
                     <p class="text-primary font-weight-bold">${vo.item_price}원</p>
                   </div>
@@ -152,7 +152,6 @@ let categories = function(findStr){
    $('#pd_frm').attr('action', 'listCategories.pl').submit();
 }
 let item_view = function(findStr){
-   $('#nowPage').val(nowPage);
    $('#pd_findStr').val(findStr);
    $('#pd_frm').attr('method', 'post');
    $('#pd_frm').attr('action', 'item_view.pl').submit();

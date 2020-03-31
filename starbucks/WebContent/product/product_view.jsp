@@ -98,7 +98,7 @@
 				<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="#" id='btnOrder' onclick="cart_go('order')" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+				    <p><a href="#" id='btnOrder' onclick="cart_go('singleOrder')" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
 				<%}%>
 				
 					<p><a href="listPage.pl" onclick='' class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
@@ -108,7 +108,7 @@
         </div>
       </div>
     </div>
-           	
+           	<input type="hidden" name="itemTitle" value="${vo.item_title }" />
 	        <input type="hidden" name="fileName" value="${vo.item_thumbnailimg }" />
             <input type="hidden" name="mId" value="${mId }" />
             <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
@@ -127,9 +127,11 @@ let cart_go = function(page){
 	$('#view_frm').attr('action','/starbucks/my/'+page+'.my').submit();
 }
 $(function(){
+	
+	var mId = view_frm.mId.value;
+	
+	$("#totPrice").val($("#price").html());
 	$("#btnAddToCart").click(function () {
-    	
-        var mId = view_frm.mId.value;
         cart_go('cart');
     });
 })
@@ -174,7 +176,7 @@ $(function(){
 	                )
 	            }) // swal end
 	
-	   // }) // click end
+	   		//}) // click end
 	//} // if end
 	</script>
 	
