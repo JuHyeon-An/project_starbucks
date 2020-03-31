@@ -288,9 +288,9 @@ public class ProductDao {
 		}
 	}
 	
-	public Map<String, Integer> dashBoard() {
+	public List<ProductSumVo> dashBoard() {
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductSumVo> list = new ArrayList<ProductSumVo>();
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
@@ -305,16 +305,21 @@ public class ProductDao {
 				rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				map.put(rs.getString(1), rs.getInt(2));
+				list.add(new ProductSumVo(rs.getString(1), rs.getInt(2)));
+				System.out.println("dao : "+rs.getString(1));
+				System.out.println("dao : "+rs.getInt(2));
 			}
 			
 	         rs.close();
 	         ps.close();
 	         
+	         System.out.println("dao결과 : "+list.get(0).getItem_title());
+	 		System.out.println("dao결과 : "+list.get(0).getOrder_sumnum());
+	         
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			return map;
+			return list;
 		}
 	}
 	

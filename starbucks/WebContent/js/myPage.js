@@ -5,7 +5,20 @@
  */
 
 
-
+function btnClickEvent(){
+	if($("#btnCheckOut") != null){
+		$("#btnCheckOut").click(function(){
+			$("#cartTotPriceHd").val($("#cartTotPrice").html());	// cart 주문 상품 전체 가격 세팅
+			$("#cartFrm").attr("action", "order.my").submit();
+		});
+	}
+	
+	if($("#btnPay") != null){
+		$("#btnPay").click(function(){
+			$("#prodOrderFrm").attr("action", "orderResult.my").submit();
+		});
+	}   
+}
 function userInfoUpdate() {
     // 	회원정보 수정 버튼
     if ($("#btnSave") != null) {
@@ -36,6 +49,55 @@ function userInfoUpdate() {
 		});
 		
 	}
+}
+
+
+
+// 장바구니 전체 가격 관련 
+function cartTotPrice(){
+	var tot = 0;
+	
+	for(var i=0; i<$("tbody tr").length; i++){
+		if($("#chkCnt_"+i).is(":checked")){
+			var totPrice = Number($("#totPrice_"+i).html());
+			tot = tot + totPrice;
+			$("#chkFlag_"+i).val("1");
+		}else{
+			$("#chkFlag_"+i).val("0");
+		}
+		
+	}
+
+	$("#cartTotPrice").html(tot);
+	
+}
+
+$
+// 장바구니 상품 개수 클릭 이벤트 (+)
+function pricePlus(i){
+	
+	var price = Number($("#price_"+i).html());
+	var ea = Number($("#itemEa_"+i).val())+1;
+	
+	$("#totPrice_"+i).html(price*ea);
+	cartTotPrice();
+	
+}
+
+//장바구니 상품 개수 클릭 이벤트 (-)
+function priceMinus(i){
+	var price = Number($("#price_"+i).html());
+	var ea = Number($("#itemEa_"+i).val())-1;
+	
+	if(price*ea >= price ){	// 전체 가격이 상품 가격과 동일하거나 클 경우만 감
+		$("#totPrice_"+i).html(price*ea);
+		cartTotPrice();
+	}else if(ea == 0){
+		$("#totPrice_"+i).html(0);
+	}
+	//$("#itemEa_"+i).val(ea);
+	
+	
 }
 
 

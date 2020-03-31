@@ -18,13 +18,13 @@
 	    <div class="row tm-content-row">
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block">
-	                <h2 class="tm-block-title">Latest Hits</h2>
+	                <h2 class="tm-block-title">매출현황</h2>
 	                <canvas id="lineChart"></canvas>
 	            </div>
 	        </div>
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block">
-	                <h2 class="tm-block-title">Performance</h2>
+	                <h2 class="tm-block-title">베스트 상품</h2>
 	                <canvas id="barChart"></canvas>
 	            </div>
 	        </div>
@@ -270,16 +270,18 @@
 	    </div>
 	</div>
 	<form id="dashFrm" name="dashFrm">
-	<c:forEach var="item" items="${map }">
-	<input type="text" name="bestItem" value="${item.key }"/>
+	<c:forEach var="item" items="${pList }">
+	<input type="hidden" name="bestItem" value="${item.item_title }"/>
+	<input type="hidden" name="bestItemValue" value="${item.order_sumnum }"/>
 	</c:forEach>
 	
-	<c:forEach var="item" items="${map }">
-	<input type="text" name="bestItemValue" value="${item.value }"/>
+	<c:forEach var="item" items="${pList }">
 	</c:forEach>
 	</form>
 	<script>
-	
+	   $(document).ready(function(){
+		    $('#dashNav').addClass('active');
+	   });
 	</script>
 </body>
 </html>

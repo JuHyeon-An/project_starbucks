@@ -122,13 +122,7 @@
                                     
                                 </ul>
                             </li>
-                            <li class="has-children">
-                                <a href="/starbucks/product/privacy.jsp">Information</a>
-                                <ul class="dropdown">
-                                    <li><a href="/starbucks/product/privacy.jsp">개인정보처리방침</a></li>
-<!--                                     <li><a href="/starbucks/bbs/">종료된 이벤트</a></li> -->
-<!--                                     <li><a href="/starbucks/bbs/">당첨자 발표</a></li> -->
-                                </ul>
+
                             <li class="has-children">
                                 <a href="/starbucks/bbs/">Community</a>
                                 <ul class="dropdown">
@@ -141,6 +135,13 @@
                                 <ul class="dropdown">
                                     <li><a href="notice_select.uk?nowPage=1">Notice</a></li>
                                     <li><a href="review_select.uk?nowPage=1">Review</a></li>
+                                </ul>
+                                                          <li class="has-children">
+                                <a href="/starbucks/infomation/privacy.jsp">Information</a>
+                                <ul class="dropdown">
+                                    <li><a href="/starbucks/infomation/privacy.jsp">개인정보처리방침</a></li>
+                                    <li><a href="/starbucks/infomation/homePage.jsp">홈페이지이용약관</a></li>
+                                    <li><a href="/starbucks/infomation/location.jsp">위치정보이용약관</a></li>
                                 </ul>
                         </ul>
                     </div>

@@ -93,7 +93,7 @@ function drawBarChart() {
         	array[4].value, array[5].value, array[6].value],
         datasets: [
           {
-            label: "# of Hits",
+            label: "판매량",
             data: [arrayValue[0].value, arrayValue[1].value, arrayValue[2].value, arrayValue[3].value, 
             	arrayValue[4].value, arrayValue[5].value, arrayValue[6].value],
             backgroundColor: [
