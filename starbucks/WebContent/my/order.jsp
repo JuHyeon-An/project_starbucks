@@ -109,16 +109,15 @@
                                     	<c:if test="${not empty list}">
                                     	
                                     	
-                                        <c:forEach var="vo" items="${list }" varStatus="i">
+                                        <c:forEach var="list" items="${list }" varStatus="i">
                                             <tr>
-                                                <td>${vo.itemTitle } <strong class="mx-2">x</strong>${vo.itemEa }</td>
-                                                <td>${vo.totPrice }</td>
+                                                <td>${list.itemTitle } <strong class="mx-2">x</strong>${list.itemEa }</td>
+                                                <td>${list.totPrice }</td>
                                                 
-                                                <input type="hidden" name="itemCode_${i.index }" value="${vo.itemCode }" />
-                                                <input type="hidden" name="itemEa_${i.index }" value="${vo.itemEa }" />
-                                                <input type="hidden" name="price_${i.index }" value="${vo.totPrice }" />, 	aut4]
-                                               	<input type="hidden" name="memberNm_${i.index }" value="${vo.mName }" />
-
+                                                <input type="hidden" name="itemCode_${i.index }" value="${list.itemCode }" />
+                                                <input type="hidden" name="itemEa_${i.index }" value="${list.itemEa }" />
+                                                <input type="hidden" name="price_${i.index }" value="${list.totPrice }" />
+                                               	
                                             </tr>
                                         </c:forEach>
                                         </c:if>
