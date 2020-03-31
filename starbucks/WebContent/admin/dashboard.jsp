@@ -275,7 +275,8 @@
 	<input type="hidden" name="bestItemValue" value="${item.order_sumnum }"/>
 	</c:forEach>
 	
-	<c:forEach var="item" items="${pList }">
+	<c:forEach var="item" items="${sum }">
+	<input type="hidden" name="totalSum" value="${item }"/>
 	</c:forEach>
 	</form>
 	<script>

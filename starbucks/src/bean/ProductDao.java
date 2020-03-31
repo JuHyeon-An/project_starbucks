@@ -306,20 +306,44 @@ public class ProductDao {
 			
 			while(rs.next()) {
 				list.add(new ProductSumVo(rs.getString(1), rs.getInt(2)));
-				System.out.println("dao : "+rs.getString(1));
-				System.out.println("dao : "+rs.getInt(2));
 			}
 			
 	         rs.close();
 	         ps.close();
 	         
-	         System.out.println("dao결과 : "+list.get(0).getItem_title());
-	 		System.out.println("dao결과 : "+list.get(0).getOrder_sumnum());
-	         
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			return list;
+		}
+	}
+	
+	public List<Integer> totalSales() {
+		List<Integer> sum = new ArrayList<Integer>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+				sql = " select sum(order_price), to_char(order_regdate, 'rrrr-mm') regdate from shopping_order group by to_char(order_regdate, 'rrrr-mm') order by to_char(order_regdate, 'rrrr-mm')";
+				
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				sum.add(rs.getInt(1));
+				System.out.println("월 : "+rs.getString(2));
+			}
+			
+	         rs.close();
+	         ps.close();
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return sum;
 		}
 	}
 	
