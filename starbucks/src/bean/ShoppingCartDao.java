@@ -48,7 +48,7 @@ public class ShoppingCartDao {
 			if(rs.next()) {
 				return 0;
 			}else {
-				sql = "insert into shoppingBasket values(cart_serial_seq.nextval ,?,?,?,?)";
+				sql = "insert into shoppingBasket(basket_serial, member_id, itemEa, item_code, member_name) values(cart_serial_seq.nextval ,?,?,?,?)";
 				
 				
 				ps = conn.prepareStatement(sql);

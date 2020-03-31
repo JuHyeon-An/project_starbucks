@@ -9,8 +9,8 @@ public class Review_imgs {
 		return sys_imgs;
 	}
 
-	public void setSys_imgs(List<String> sys_imgg) {
-		this.sys_imgs = sys_imgg;
+	public void setSys_imgs(List<String> sys_img) {
+		this.sys_imgs = sys_img;
 	}
 
 	

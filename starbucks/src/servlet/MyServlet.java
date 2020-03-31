@@ -216,12 +216,16 @@ public class MyServlet extends HttpServlet{
 		
 		String totPrice = req.getParameter("totPrice");
 		String itemTitle = req.getParameter("itemTitle");
-		int ea = Integer.parseInt(req.getParameter("itemEa"));
+		//int ea = Integer.parseInt(req.getParameter("itemEa"));
 		
+		System.out.println("itemEa" + req.getParameter("itemEa"));
 		OrderDaoJE dao = new OrderDaoJE();
 		OrderVo vo = new OrderVo();
 		vo = dao.view(req.getParameter("mId"));
 		
+		req.setAttribute("itemTitle", itemTitle);
+		req.setAttribute("totPrice", totPrice);
+		//req.setAttribute("ea", ea);
 		req.setAttribute("vo", vo);
 		
 		String path = url + "?my=./order.jsp";
