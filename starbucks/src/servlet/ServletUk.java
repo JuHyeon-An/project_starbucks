@@ -58,10 +58,17 @@ public class ServletUk extends HttpServlet{
 		case"/review_insertR.uk":
 			review_insertR(req,resp);
 			break;
+		case"/review_modify.uk":
+			review_modify(req,resp);
+			break;
+		case"/review_delete.uk":
+			review_delete(req,resp);
+			break;
 		}
 	}
 
 	public void notice_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		System.out.println("실행됨");
 		String findStr="";
 		int nowPage=1;
 		
@@ -80,7 +87,7 @@ public class ServletUk extends HttpServlet{
 		req.setAttribute("page", page);
 		req.setAttribute("list", list);
 		
-		String path=url+"?main=./notice/notice_select.jsp&side=./notice/notice_side.jsp";
+		String path=url+"?main=./notice/notice_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -107,7 +114,8 @@ public class ServletUk extends HttpServlet{
 		req.setAttribute("list", list);
 		req.setAttribute("page", page);
 		
-		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
+		
+		String path=url+"?main=./review/review_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -118,12 +126,12 @@ public class ServletUk extends HttpServlet{
 		ReviewVo vo=dao.review_view2(review_postnum);
 
 		req.setAttribute("vo", vo);
-		String path=url+"?main=./review/review_view.jsp&side=./review/review_side.jsp";
+		String path=url+"?main=./review/review_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
 	public void review_insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String path=url+"?main=./review/review_insert.jsp&side=./review/review_side.jsp";
+		String path=url+"?main=./review/review_insert.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
@@ -138,7 +146,26 @@ public class ServletUk extends HttpServlet{
 		}
 		
 		req.setAttribute("msg", msg);
-		String path=url+"?main=./review/review_select.jsp&side=./review/review_side.jsp";
+		String path="review_select.uk";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	public void review_modify(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		DaoUk dao=new DaoUk();
+		ReviewVo vo=dao.review_view2(review_postnum);
+		
+		req.setAttribute("vo", vo);
+		String path=url+"?main=./review/review_modify.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	}
+	public void review_delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		DaoUk dao=new DaoUk();
+		
+		
+		String path=url+"?main=./review/review_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

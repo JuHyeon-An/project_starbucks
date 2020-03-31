@@ -1,15 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+            <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
     <script src="/starbucks/js/uk.js"></script> 
 
 
-<form action="review_insertR.uk" id='review' name='review' method="post" enctype="multipart/form-data">
+<form id='review' name='review' method="post" enctype="multipart/form-data">
   <div class="p-3 p-lg-5 border">
     <div class="form-group row">
       <div class="col-md-6">
       	<h2 class="text-black">머그이름</h2>
-      	<span>머그사진</span>
+      	<span>img</span>
       </div>
       <div class="col-md-6">
 <!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 -->
@@ -21,19 +22,19 @@
   <!-- Rating Stars Box -->
   <div class='rating-stars text-center'>
     <ul id='stars'>
-      <li class='star' title='Poor' data-value='1'>
+      <li class='star' title='Poor' data-value='1' id='star1'>
         <i class='fa fa-star fa-fw'></i>
       </li>
-      <li class='star' title='Fair' data-value='2'>
+      <li class='star' title='Fair' data-value='2' id='star2'>
         <i class='fa fa-star fa-fw'></i>
       </li>
-      <li class='star' title='Good' data-value='3'>
+      <li class='star' title='Good' data-value='3' id='star3'>
         <i class='fa fa-star fa-fw'></i>
       </li>
-      <li class='star' title='Excellent' data-value='4'>
+      <li class='star' title='Excellent' data-value='4' id='star4'>
         <i class='fa fa-star fa-fw'></i>
       </li>
-      <li class='star' title='WOW!!!' data-value='5'>
+      <li class='star' title='WOW!!!' data-value='5' id='star5'>
         <i class='fa fa-star fa-fw'></i>
       </li>
     </ul>
@@ -51,38 +52,50 @@
     <div class="form-group row">
       <div class="col-md-12">
         <label for="review_title" class="text-black">제목 <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="review_title" name="review_title" oninvalid="alert('제목을 입력하세요!');" >
+        <input type="text" class="form-control" id="review_title" name="review_title" oninvalid="alert('제목을 입력하세요!');" value='${vo.review_title }' >
       </div>
     </div>
     <div class="form-group row">
       <div class="col-md-12">
         <label for="review_content" class="text-black">본문 내용<span class="text-danger">*</span> </label>
-        <textarea name="review_content" id="review_content" cols="30" rows="7" class="form-control"></textarea>
+        <textarea name="review_content" id="review_content" cols="30" rows="7" class="form-control" >${vo.review_content }</textarea>
       </div>
     </div>
 
     <div class="form-group row">
       <div class="col-md-12">
       <label for="review_content" class="text-black">Image</label>
-        <div class="border p-3 " id='board' ></div>
+        <div class="border p-3 " id='board' >
+        		<c:set var="imgs" value="${vo.review_imgs }"/>
+				<c:forEach var="img" items="${imgs.sys_imgs}" varStatus="i">
+					<input type='text' id='target' name='target' value='${img }'/>
+				</c:forEach>
+			<%--<c:forEach var="img" items="${imgs.sys_imgs}">
+					${(img==null)? "":"<div><input type='file'/><img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
+				</c:forEach> --%>
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-lg-6">
-        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Review Regist">
+        <input type="button" id='btnUpdate' class="btn btn-primary btn-lg btn-block" value="Update">
       </div>
       <div class="col-lg-6">
         <input type="button" id='btnList' class="btn btn-primary btn-lg btn-block" value="Delete">
       </div>
     </div>
   </div>
-  <input type='text' id='member_id' name='member_id' value='${mId }'/>
-  <input type='text' id='review_like' name='review_like'/> 
+  <input type='hidden' id='member_id' name='member_id' value='${mId }'/>
+  <input type='hidden' id='review_like' name='review_like' value='${vo.review_like }'/> 
   <input type='text' id='item_code' name='item_code' value='MG200330-93'/>
   <input type='text' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
   <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
   <input type='text' name='findStr' id='findStr' value='${param.findStr }'/>
 </form>
 <script>
-addImg();
+aaa();
+/* let cntImg=$('img').length;
+if(cntImg<7	){
+	addImg();
+} */
 </script>

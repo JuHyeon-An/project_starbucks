@@ -102,7 +102,8 @@
     </div>
 </div>
 <form id=review name=review method=post>
-	<input type='hidden' value='1'/>
+	<input type='hidden' name='item_code' id='item_code' value='1'/><!-- 아이템번호 -->
+	<input type='text' value='${msg }'/>
 </form>
 
     <script>

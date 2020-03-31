@@ -97,18 +97,14 @@
 }
 
 
-/* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 */
-
-
+/* 리뷰 별 */
 .clearfix {
   clear:both;
 }
-
 #reviewHeader {
   padding:20px 0;
   position:relative;
   margin-bottom:10px;
-  
 }
 #reviewHeader:after {
   content:"";
@@ -165,13 +161,11 @@
 .rating-stars ul {
   list-style-type:none;
   padding:0;
-  
   -moz-user-select:none;
   -webkit-user-select:none;
 }
 .rating-stars ul > li.star {
   display:inline-block;
-  
 }
 /* Idle State of the stars */
 .rating-stars ul > li.star > i.fa {
@@ -186,5 +180,5 @@
 .rating-stars ul > li.star.selected > i.fa {
   color:#FF912C;
 }
-/* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 *//* 여기 */
+/* 리뷰 별 */
 
