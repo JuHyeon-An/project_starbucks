@@ -114,6 +114,9 @@
             <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
             <input type="hidden" id="totPrice" value='' />
             <input type="hidden" name="item_code" value='${vo.item_code }' />
+            <input type="hidden" name="review_postnum" id="review_postnum" />
+			<input type="hidden" name="nowPage" id="nowPage" />
+			<input type='hidden' name='pd_findStr' id='pd_findStr' value='${page.findStr }'/>
 </form>
 
 </c:forEach>
@@ -184,7 +187,7 @@ let goPageR=function(nowPage){
 
 
 
-</c:forEach>
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="/starbucks/js/productlist.js"></script>
 <script>
