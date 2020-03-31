@@ -47,14 +47,14 @@
 
           <div class="wrap col-md-5 ">
           	<div class='row'>
-            <img id='imgView' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
+            <img id='imgView' src="/starbucks/fileFolder/${vo.item_thumbnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
             </div>
             <div class='row'>
             <br />
             
-            <img id='img1' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
-            <img id='img2'  src="./fileFolder/${vo.item_mainimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
-            <img id='img3'  src="./fileFolder/${vo.item_contentimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
+            <img id='img1' src="/starbucks/fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
+            <img id='img2'  src="/starbucks/fileFolder/${vo.item_mainimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
+            <img id='img3'  src="/starbucks/fileFolder/${vo.item_contentimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
 
             </div>
           </div>
