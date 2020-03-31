@@ -18,7 +18,10 @@ public class OrderDaoJE {
 		int result = 0;
 		for(OrderVo vo:list) {
 			try {
-				String sql = "insert into SHOPPING_ORDER values(order_orderNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+				String sql = "insert into SHOPPING_ORDER"
+							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
+							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
+							+ "values(order_orderNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
 				PreparedStatement ps = conn.prepareStatement(sql);
 				conn.setAutoCommit(false);
 			
