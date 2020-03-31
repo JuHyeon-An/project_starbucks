@@ -11,9 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.DaoUk;
+import bean.Page_Item;
 import bean.Page_ProductList;
 import bean.ProductDao_YD;
 import bean.ProductVo;
+import bean.ReviewVo;
 
 @WebServlet("*.pl")
 public class ProductListServlet extends HttpServlet{
@@ -125,6 +128,41 @@ public class ProductListServlet extends HttpServlet{
 	}
 	
 	public void item_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String findStr = "";
+		int nowPage=1;
+
+		if(req.getParameter("nowPage")!=null) {
+			nowPage=Integer.parseInt(req.getParameter("nowPage"));
+		}
+		if(req.getParameter("pd_findStr") != null) {
+			findStr = req.getParameter("pd_findStr");
+		}
+		
+		Page_Item page=new Page_Item(findStr, nowPage);
+		DaoUk daoR=new DaoUk();
+		List<ReviewVo> listR=daoR.review_select(page);
+		req.setAttribute("listR", listR);
+		req.setAttribute("page", page);
+		
+		
+		
+		
+		String path = url+"/product_view.jsp";
+		
+		ProductDao_YD dao = new ProductDao_YD();
+		List<ProductVo> list = new ArrayList<ProductVo>();
+		list = dao.item_view(findStr);
+		
+		
+		req.setAttribute("list", list);	
+		System.out.println(findStr+"검색어");
+		System.out.println(list.size()+"리스트사이즈");
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		
+		
+		
+	/*	
 		String path = url+"/product_view.jsp";
 		String findStr = req.getParameter("pd_findStr");
 		ProductDao_YD dao = new ProductDao_YD();
@@ -137,6 +175,7 @@ public class ProductListServlet extends HttpServlet{
 		System.out.println(list.size()+"리스트사이즈");
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
+		*/
 	}
 	
 	public void sortList(int desc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

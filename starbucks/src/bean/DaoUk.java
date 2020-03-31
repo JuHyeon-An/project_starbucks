@@ -9,8 +9,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-import oracle.security.o3logon.a;
-
 public class DaoUk {
 	
 	Connection conn;
@@ -372,5 +370,85 @@ public class DaoUk {
 		}
 		return msg;
 	}
-
+	public List<ReviewVo> review_select(Page_Item page) { // 아이템 상세보기 페이지 셀렉트 메소드 -영덕
+		List<ReviewVo> list=new ArrayList<ReviewVo>();
+		String sql=null;
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		int totList=0;
+		/*전체 건수*/
+		sql= " select count(review_postnum) cnt "
+			+ " from reviewboard "
+			+ " where member_id like ? "
+			+ " or item_code like ? "
+			+ " or review_title like ? "
+			+ " or review_content like ? ";
+		try {
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+page.getFindStr()+"%");
+			pstmt.setString(2, "%"+page.getFindStr()+"%");
+			pstmt.setString(3, "%"+page.getFindStr()+"%");
+			pstmt.setString(4, "%"+page.getFindStr()+"%");
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				totList=rs.getInt("cnt");
+			}
+			
+			page.setTotListSize(totList);
+			page.pageCompute();
+			
+			/*reviewboard*/
+			sql= " select * from( "
+					   + "   select rownum rn, A.*from( "
+					   + "      select * "
+					   + "      from reviewboard "
+					   + "      where member_id like ? "
+					   + "      or item_code like ? "
+					   + "      or item_code like ? "
+					   + "      or review_content like ? "
+					   + "      order by review_regdate desc)A"
+					   + " )where rn between ? and ? ";
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+page.getFindStr()+"%");
+			pstmt.setString(2, "%"+page.getFindStr()+"%");
+			pstmt.setString(3, "%"+page.getFindStr()+"%");
+			pstmt.setString(4, "%"+page.getFindStr()+"%");
+			pstmt.setInt(5, page.getStartNo());
+			pstmt.setInt(6, page.getEndNo());
+			rs=pstmt.executeQuery();
+			while(rs.next()) {
+				ReviewVo vo=new ReviewVo();
+				vo.setReview_postnum(rs.getInt("review_postnum"));
+				vo.setMember_id(rs.getString("member_id"));
+				vo.setItem_code(rs.getString("item_code"));
+				vo.setReview_title(rs.getString("review_title"));
+				vo.setReview_content(rs.getString("review_content"));
+				vo.setReview_like(rs.getInt("review_like"));
+				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
+				vo.setReivew_view(rs.getInt("review_view"));
+				
+				/*reivew_imgs*/
+				String sql2= " select * from review_imgs where review_postnum=? ";
+				PreparedStatement pstmt2=conn.prepareStatement(sql2);
+				pstmt2.setInt(1, vo.getReview_postnum());
+				ResultSet rs2=pstmt2.executeQuery();
+				if(rs2.next()) {
+					Review_imgs imgs=new Review_imgs();
+					List<String> list2=new ArrayList<String>();
+					list2.add(rs2.getString("sys_img1"));
+					list2.add(rs2.getString("sys_img2"));
+					list2.add(rs2.getString("sys_img3"));
+					list2.add(rs2.getString("sys_img4"));
+					list2.add(rs2.getString("sys_img5"));
+					imgs.setSys_imgs(list2);
+					vo.setReview_imgs(imgs);
+				}
+				list.add(vo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
 }
