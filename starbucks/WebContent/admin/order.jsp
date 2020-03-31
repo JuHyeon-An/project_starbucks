@@ -15,8 +15,8 @@
 
 </head>
 <body>
-
 	<form name='frm' id='frmm' method='post' style='margin:130px'>
+<div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
 
 
 		<h2 class="tm-block-title text-center">Orders List</h2>
@@ -24,14 +24,16 @@
 
 			<div class='col-lg-8'></div>
 
-			<div class='btn-xs  input-group col-lg-4'>
+			<div class='btn-xs mb-2 input-group col-lg-4'>
 
 
 				<input type='text' name='findStr' value='${param.findStr }'
 					id='findStr' class="form-control validate 2"
-					placeholder='주문번호 또는 아이디를 검색해주세요' /> <input type='button'
+					placeholder='주문번호 또는 아이디를 검색해주세요' />
+				<input type='button'
 					value='검색' name='btnSelect' id='btnSelect'
-					class='input-group-text search-span' /> <input type='hidden'
+					class='input-group-text search-span' /> 
+				<input type='hidden'
 					name='nowPage' id='nowPage'
 					value='${empty param.nowPage? 1 : param.nowPage}' />
 			</div>
@@ -81,29 +83,29 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div id='page' class='text-center mt-5'>
+		<div id='page' class='text-center mt-1'>
 			<c:if test="${page.nowPage >1}">
 				<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'
-					class='btn-sm btn-default' />
+					class='btn-sm btn-ok' />
 			</c:if>
 
 			<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
 				<input type='button' value='${i }'
-					class='${ (i== page.nowPage)? "btn-sm btn-success" : "btn-sm btn-default" }'
+					class='${ (i== page.nowPage)? "btn-sm btn-sw" : "btn-sm btn-ok" }'
 					onclick='goPage(${i })' />
 
 			</c:forEach>
 
 			<c:if test="${page.nowPage<page.totPage }">
 				<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'
-					class='btn-sm btn-default' />
+					class='btn-sm btn-ok' />
 			</c:if>
 		</div>
 		</div>
 
 
+</div>
 	</form>
-
 
 	<script>
 func();
