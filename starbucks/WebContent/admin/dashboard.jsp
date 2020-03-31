@@ -25,7 +25,7 @@
 	        	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow summary-layout">
 	                <h2 class="tm-block-title text-center">Daily Report</h2>
-	                <div class="tm-notification-items">
+	                <div class="tm-notification-items" style="height:300px;">
 	                    <div class="media tm-notification-item">
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%""></div>
 	                        <div class="media-body">
