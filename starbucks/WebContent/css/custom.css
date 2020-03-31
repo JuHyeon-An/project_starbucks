@@ -24,6 +24,7 @@
     border:none;
 }
 
+.word-keep-all {word-break:keep-all;}
 .min-width-125 { min-width: 125px;}
 
 /* sweetalert */ 

@@ -32,7 +32,6 @@ public class ShoppingCartDao {
 				vo.setmName(rs.getString(1));
 			}
 			
-			System.out.println("vo - mName : " + vo.getmName());
 			
 			// 해당 아이디, 아이템 코드가 일치하는 데이터가 있는지 확인 (중복값 제거)
 			sql = "select * from shoppingBasket where member_id=? and item_code=?";
@@ -56,7 +55,7 @@ public class ShoppingCartDao {
 				ps.setInt(2, vo.getItemEa());
 				ps.setString(3, vo.getItemCode());
 				ps.setString(4, vo.getmName());
-				System.out.println(vo.getmName());
+				
 				int r = ps.executeUpdate();
 				
 				if(r>0) {
