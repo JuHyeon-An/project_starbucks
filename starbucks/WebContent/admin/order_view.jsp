@@ -104,10 +104,16 @@
 
 	</form>
 
-	${msg }
-
 </body>
 <script>
-	func();
+func();
+$(function(){
+    var responseMessage = "<c:out value="${msg}" />";
+    if(responseMessage != ""){
+        alert(responseMessage)
+    }
+}) 
+
+
 </script>
 </html>
