@@ -16,19 +16,22 @@ public class OrderDao {
 	public OrderDao() {
 		conn=DBConn.getConn();
 	}
-	public List<OrderVo> select(Page page) {
+	public List<OrderVo> select(Page page, int orderStatus) {
 		List<OrderVo> list=new ArrayList<OrderVo>();
 		String sql = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int totList = 0;
 		
+		
+		
 		//System.out.println(" dao   시자자작");
 			  sql= " select count(ordernumber) cnt "
 				  + " from shopping_order "
 				  + " where ORDERNUMBER like ? "
 				  + " or MEMBER_ID like ? ";
-		try {
+
+			  try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + page.getFindStr() + "%");
 			pstmt.setString(2, "%" + page.getFindStr() + "%");
@@ -39,7 +42,7 @@ public class OrderDao {
 			}
 			page.setTotListSize(totList);
 			page.pageCompute();
-
+			if(orderStatus==0) {
 			sql= "select * from( "
 				+ " select rownum rn, A.*from( "
 				+ " 	select ORDERNUMBER, "  
@@ -52,6 +55,7 @@ public class OrderDao {
 				+ " from SHOPPING_ORDER "
 				+ "      where  ORDERNUMBER like ? "
 			    + "      or MEMBER_ID  like ? "
+				
 	            + "      order by ORDER_REGDATE)A"
 				+ " )where rn between ? and ? ";
 	
@@ -61,7 +65,32 @@ public class OrderDao {
 			System.out.println("endno" + page.getEndNo());
 			pstmt.setInt(3, page.getStartNo());
 			pstmt.setInt(4, page.getEndNo());
-			
+		}else {  
+		sql= "select * from( "
+				+ " select rownum rn, A.*from( "
+				+ " 	select ORDERNUMBER, "  
+				+ "		MEMBER_ID, " 
+				+ "	 	ITEM_CODE, "  
+				+ "		ORDER_NUM, "  
+				+ "		ORDER_PRICE, "  
+				+ " 	ORDER_REGDATE, "  
+				+ "		ORDER_STATUS "
+				+ " from SHOPPING_ORDER "
+				+ "      where  (ORDERNUMBER like ? "
+			    + "      or MEMBER_ID  like ?) "
+				+ " and order_status= ? "
+	            + "      order by ORDER_REGDATE)A"
+				+ " )where rn between ? and ? ";
+	
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + page.getFindStr() + "%");
+			pstmt.setString(2, "%" + page.getFindStr() + "%");
+			pstmt.setInt(3, orderStatus);
+			pstmt.setInt(4, page.getStartNo());
+			pstmt.setInt(5, page.getEndNo());
+		
+		
+		}
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 		

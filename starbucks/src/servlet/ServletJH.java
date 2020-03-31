@@ -19,6 +19,7 @@ import bean.FileUpload;
 import bean.ProductDao;
 import bean.ProductSumVo;
 import bean.ProductVo;
+import bean.ThemeVo;
 
 @WebServlet("*.stb")
 public class ServletJH extends HttpServlet{
@@ -200,14 +201,15 @@ public class ServletJH extends HttpServlet{
 		
 		ProductDao dao = new ProductDao();
 		List<ProductSumVo> list = dao.dashBoard();
+		List<Integer> sum = dao.totalSales();
+		List<ThemeVo> list2 = dao.themeSum();
 		
-		System.out.println("서블릿 : "+list.get(0).getItem_title());
-		System.out.println("서블릿 : "+list.get(0).getOrder_sumnum());
+		System.out.println("서블릿 : "+list2.get(0).getItem_theme());
+		System.out.println("서블릿 : "+list2.get(0).getSalesSum());
 		
 		req.setAttribute("pList", list);
-		
-		List<Integer> sum = dao.totalSales();
 		req.setAttribute("sum", sum);
+		req.setAttribute("list2", list2);
 		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

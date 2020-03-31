@@ -6,6 +6,8 @@
 let array = [];
 let arrayValue = [];
 let sumArray = [];
+let themeArray = [];
+let themeValue = [];
 
  function btnFunc(){
 	
@@ -147,6 +149,10 @@ let sumArray = [];
 		array = document.getElementsByName("bestItem");
 		arrayValue = document.getElementsByName("bestItemValue");
 		sumArray = document.getElementsByName("totalSum");
+		themeArray = document.getElementsByName("themeSum");
+		themeValue = document.getElementsByName("themeSumValue");
+		
+		console.log(themeValue[0].value);
 	}
 	
 	

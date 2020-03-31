@@ -141,7 +141,7 @@ public class MyServlet extends HttpServlet{
 		String itemCode = req.getParameter("item_code");
 		int price = Integer.parseInt(req.getParameter("oriPrice"));
 		int itemEa = Integer.parseInt(req.getParameter("itemEa"));
-		System.out.println(itemEa);
+		
 		int totPrice = price*itemEa;
 		
 		ShoppingCartVo vo = new ShoppingCartVo(mId, fileName, itemCode, price, itemEa, totPrice);
@@ -149,6 +149,7 @@ public class MyServlet extends HttpServlet{
 
 		
 		int result = dao.insert(vo, mId);
+		
 		
 		req.setAttribute("result", result);
 		String path = url + "/item_view.pl";
@@ -254,6 +255,8 @@ public class MyServlet extends HttpServlet{
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("memberNm_"+i);
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			
+			//int serial = Integer.parseInt(req.getParameter("serial_"+i));
 			int price = Integer.parseInt(req.getParameter("price_"+i));
 
 			String orderDt = sdf.format(new Date());
@@ -263,6 +266,11 @@ public class MyServlet extends HttpServlet{
 			list.add(vo);
 			OrderDaoJE dao = new OrderDaoJE();
 			result = dao.insert(list);
+			
+			/*if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
+				ShoppingCartDao cartDao = new ShoppingCartDao();
+				cartDao.delete(serial); 
+			}*/
 			i++;
 		}
 		 

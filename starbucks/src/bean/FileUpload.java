@@ -3,7 +3,9 @@ package bean;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -78,7 +80,7 @@ public class FileUpload {
 				 */
 				
 				if(fi.getSize()>0 && !fi.isFormField()) {
-					// 파일의 값이 있으면
+					// 파일의 값이 있으면 (수정됐다는 뜻!)
 					
 					String f = fi.getName();
 					// file name을 가지고 오는 작업
@@ -103,7 +105,6 @@ public class FileUpload {
 						break;
 						
 					}
-					
 					
 					File file = new File(upload + sysFile);
 					// upload 경로 안에 sysFile 더해서 만들고 : upload라는 path에 저장됨
