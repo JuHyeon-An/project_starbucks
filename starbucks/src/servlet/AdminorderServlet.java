@@ -56,18 +56,20 @@ public class AdminorderServlet extends HttpServlet {
 	      int orderStatus=0;
 	      OrderDao dao=new OrderDao();
 
-	      System.out.println(req.getParameter("findStr"));
-	      if(req.getParameter("nowPage")!=null) {
+	      //System.out.println(req.getParameter("findStr"));
+	      if(req.getParameter("nowPage")!=null && req.getParameter("nowPage")!="") {
+	    	  System.out.println("페이지 : "+req.getParameter("nowPage"));
 	    	  nowPage=Integer.parseInt(req.getParameter("nowPage"));
 	      }
 	      
-		  if(req.getParameter("findStr")!=null) {
+		  if(req.getParameter("findStr")!=null && req.getParameter("findStr")!="") {
 			  System.out.println("------------------------");
 			  findStr=req.getParameter("findStr");
-			  System.out.println(findStr+" 문자 값이  안아아오아아아아아왜애애애");
+			  System.out.println("findStr이 넘어오는지 : "+req.getParameter("findStr"));
 		  }
-		  if(req.getParameter("orderStatus")!=null) {
+		  if(req.getParameter("orderStatus")!=null && req.getParameter("orderStatus")!="") {
 			  orderStatus =  Integer.parseInt( req.getParameter("orderStatus"));
+			  System.out.println("orderStatus : "+req.getParameter("orderStatus"));
 		  }
 		  
 		  Page page =new Page();
@@ -85,8 +87,6 @@ public class AdminorderServlet extends HttpServlet {
 	      System.out.println("여기가 찍히나요");
 	    
 	      
-	      
-	      
 	      for(OrderVo vo:list) {//값을 확인
 	    	System.out.println("여긴서블");
 	    	System.out.println(vo.getOrderNumber());
@@ -103,7 +103,6 @@ public class AdminorderServlet extends HttpServlet {
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
-	     
 	      
 	   }
 	public void order_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

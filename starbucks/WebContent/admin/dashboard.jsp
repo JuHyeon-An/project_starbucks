@@ -35,7 +35,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/buy.png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/money.jpg" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
 	                                    class="tm-notification-link">product updates</a>. Read more reports.</p>

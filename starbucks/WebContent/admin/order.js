@@ -36,17 +36,13 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 function loadsw(){
 	 let findStr = $('#findStr').val().toUpperCase();
 	 let orderstatus = $('#categorySelect').val();
-	 
+	 let nowPage = $('#nowPage').val();
        	
-       	
-       	$('#tableContainer').load('order.order?findStr='+findStr+
-   				'&orderStatus='+orderstatus+
+     $('#tableContainer').load('order.order?findStr='+findStr+
+   				'&orderStatus='+orderstatus+'&nowPage='+nowPage+
    				' #ordertable');
        
 }
-
-
-
 
 function toList(){
 	location.href='select_product.stb';
