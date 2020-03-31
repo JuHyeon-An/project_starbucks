@@ -1,15 +1,26 @@
 /**
  * http://usejsdoc.org/
  */
-let cnt=0;	
+let cnt=1;	
 let func=function(){
 	if($('#btnSelect')!=null){
 		$('#btnSelect').on('click', function(){
 			$('#notice').attr('action', 'notice_select.uk').submit();
 		});
 	}
-	if($('#btnSelect2')!=null){
-		$('#btnSelect2').on('click', function(){
+	if($('#review_btnRegist')!=null){
+		$('#review_btnRegist').on('click',function(){
+			$('#review').attr('action', 'review_insertR.uk').submit();
+		});
+	}
+	if($('#review_btnUpdate')!=null){
+		$('#review_btnUpdate').on('click',function(){
+			$('#review').attr('action','review_modifyR.uk').submit();
+		});
+	}
+	
+	if($('#review_btnSelect')!=null){
+		$('#review_btnSelect').on('click', function(){
 			$('#review').attr('action', 'review_select.uk').submit();
 		});
 	}
@@ -18,9 +29,9 @@ let func=function(){
 			$('#review').attr('action','review_modify.uk').submit();
 		});
 	}
-	if($('#btnDelete')!=null){
-		$('#btnDelete').on('click',function(){
-			$('#review.').attr('action','review_delete.uk').submit();
+	if($('#review_view_btnDelete')!=null){
+		$('#review_view_btnDelete').on('click',function(){
+			$('#review').attr('action','review_delete.uk').submit();
 		});
 	}
 	if($('#msg').val()){	
@@ -28,8 +39,8 @@ let func=function(){
 		alam();
 	}
 	/*수정에 별 뿌려주기*/
-	var cnt = $('#review_like').val();
-	for(var i=1; i<=cnt; i++){
+	var ccnt = $('#review_like').val();
+	for(var i=1; i<=ccnt; i++){
 		if($('#stars li').data('value')<=i){
 			$("#stars li:nth-child("+i+")").addClass("selected");
 		}
@@ -159,8 +170,8 @@ let addImg=function(){
 	});
 	cnt++
 }
-/*수정가능 이미지, 파일, 미리보기 뿌려주기*/ 
-let addImg2=function(sysImage){
+/*수정할때 이미지, 파일, 미리보기 뿌려주기*/ 
+let modify_addImg=function(sysImage){
 	func();
 	let $div = $('<div></div>');
 	$div.attr('style','width:120px; height:180px;');
@@ -194,24 +205,21 @@ let addImg2=function(sysImage){
 			reader.onload=function(ev){
 				$img.attr('src',ev.target.result);
 			}
-			
-			let cntImg=$('img').length;
-			console.log(cntImg)
-			if($file.attr('modify')=='no' && cntImg<8){
-				addImg();
-			}	
 			$file.attr('modify','yes');
 		});
 	});
 	cnt++
 }
 /*수정에 이미지 뿌려주고, 이미지 추가 수정 가능하게*/
-let aaa=function(){
+let modify_addImgs=function(){
 	let length=$("input[name='target']").length;
+	console.log(length);
 	for(let i=0; i<length; i++){
-		if(($("input[name='target']").eq(i).attr("value"))!=null){}
 			let sysImage=$("input[name='target']").eq(i).attr("value");
-			addImg2(sysImage);
+			modify_addImg(sysImage);
+	}
+	if(length<5){
+		addImg();
 	}
 }
 /*메세지 뿌려주기*/
