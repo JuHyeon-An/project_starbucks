@@ -176,7 +176,7 @@ $(function(){
 	                )
 	            }) // swal end
 	
-	   		/}) // click end
+	   		//}) // click end
 	//} // if end
 	</script>
 	
