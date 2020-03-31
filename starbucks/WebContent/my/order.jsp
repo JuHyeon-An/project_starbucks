@@ -116,12 +116,13 @@
                                                 
                                                 <input type="hidden" name="itemCode_${i.index }" value="${vo.itemCode }" />
                                                 <input type="hidden" name="itemEa_${i.index }" value="${vo.itemEa }" />
-                                                <input type="hidden" name="price_${i.index }" value="${vo.totPrice }" />
+                                                <input type="hidden" name="price_${i.index }" value="${vo.totPrice }" />, 	aut4]
                                                	<input type="hidden" name="memberNm_${i.index }" value="${vo.mName }" />
 
                                             </tr>
                                         </c:forEach>
                                         </c:if>
+                                        
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>Point</strong></td>
                                             <td class="text-black" id="discountCash"><strong class="mx-2">-</strong></td>
