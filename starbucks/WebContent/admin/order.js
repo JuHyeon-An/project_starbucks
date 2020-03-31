@@ -36,11 +36,11 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 function loadsw(){
 	 let findStr = $('#findStr').val().toUpperCase();
 	 let orderstatus = $('#categorySelect').val();
-	 
+	 let nowPage =  $('#nowPage').val();
        	
        	
        	$('#tableContainer').load('order.order?findStr='+findStr+
-   				'&orderStatus='+orderstatus+
+   				'&orderStatus='+orderstatus+'&nowPage='+nowPage+
    				' #ordertable');
        
 }
