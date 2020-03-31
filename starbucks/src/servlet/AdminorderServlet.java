@@ -53,33 +53,39 @@ public class AdminorderServlet extends HttpServlet {
 	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	      String findStr="";
 	      int nowPage=1;
+	      int orderStatus=0;
 	      OrderDao dao=new OrderDao();
 
-	      System.out.println(req.getParameter("findStr"));
-	      if(req.getParameter("nowPage")!=null) {
+	      //System.out.println(req.getParameter("findStr"));
+	      if(req.getParameter("nowPage")!=null && req.getParameter("nowPage")!="") {
+	    	  System.out.println("페이지 : "+req.getParameter("nowPage"));
 	    	  nowPage=Integer.parseInt(req.getParameter("nowPage"));
 	      }
 	      
-		  if(req.getParameter("findStr")!=null) {
+		  if(req.getParameter("findStr")!=null && req.getParameter("findStr")!="") {
 			  System.out.println("------------------------");
 			  findStr=req.getParameter("findStr");
-			  System.out.println(findStr+" 문자 값이  안아아오아아아아아왜애애애");
+			  System.out.println("findStr이 넘어오는지 : "+req.getParameter("findStr"));
 		  }
+		  if(req.getParameter("orderStatus")!=null && req.getParameter("orderStatus")!="") {
+			  orderStatus =  Integer.parseInt( req.getParameter("orderStatus"));
+			  System.out.println("orderStatus : "+req.getParameter("orderStatus"));
+		  }
+		  
 		  Page page =new Page();
 		  page.setNowPage(nowPage);
 		  page.setFindStr(findStr);
 		  System.out.println(findStr+"서블렛검색어");
 		  page.pageCompute();
 		
-	      List<OrderVo> list = dao.select(page);
+		  req.getParameter("orderStatus");
+	      List<OrderVo> list = dao.select(page,orderStatus);
 	     
 	      
 	      req.setAttribute("list", list);
 	      req.setAttribute("page", page);
 	      System.out.println("여기가 찍히나요");
 	    
-	      
-	      
 	      
 	      for(OrderVo vo:list) {//값을 확인
 	    	System.out.println("여긴서블");
@@ -97,7 +103,6 @@ public class AdminorderServlet extends HttpServlet {
 	      System.out.println(path);
 	      RequestDispatcher rd = req.getRequestDispatcher(path);
 	      rd.forward(req, resp);
-	     
 	      
 	   }
 	public void order_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

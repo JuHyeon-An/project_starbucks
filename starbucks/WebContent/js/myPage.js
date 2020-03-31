@@ -82,20 +82,30 @@ function pricePlus(i){
 	$("#totPrice_"+i).html(price*ea);
 	cartTotPrice();
 	
+	// value 업데이트
+	$("#itemEaVal_"+i).val(ea);
+	$("#totPriceVal_"+i).val($("#totPrice_"+i).html());
 }
 
 //장바구니 상품 개수 클릭 이벤트 (-)
 function priceMinus(i){
 	var price = Number($("#price_"+i).html());
-	var ea = Number($("#itemEa_"+i).val())-1;
+	var ea = Number($("#itemEa_"+i).val());
 	
 	if(price*ea >= price ){	// 전체 가격이 상품 가격과 동일하거나 클 경우만 감
 		$("#totPrice_"+i).html(price*ea);
+		$("#itemEa_"+i).val(ea);
+		
 		cartTotPrice();
 	}else if(ea == 0){
 		$("#totPrice_"+i).html(0);
 	}
-	//$("#itemEa_"+i).val(ea);
+	
+	
+	// value 업데이트 
+	$("#itemEaVal_"+i).val(ea);
+	$("#totPriceVal_"+i).val($("#totPrice_"+i).html());
+	
 	
 	
 }

@@ -18,30 +18,16 @@
 	    <div class="row tm-content-row">
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block summary-layout" >
-	                <h3 class="tm-block-title text-center">매출현황</h3>
-	                <canvas id="lineChart"></canvas>
+	                <h3 class="tm-block-title text-center">월별 매출</h3>
+	                <canvas id="lineChart" style="margin-top:30px;"></canvas>
 	            </div>
 	        </div>
-	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block summary-layout">
-	                <h3 class="tm-block-title text-center">베스트 상품</h3>
-	                <canvas id="barChart"></canvas>
-	            </div>
-	        </div>
-	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block tm-block-taller">
-	                <h2 class="tm-block-title">Storage Information</h2>
-	                <div id="pieChartContainer">
-	                    <canvas id="pieChart" class="chartjs-render-monitor" width="200" height="200"></canvas>
-	                </div>                        
-	            </div>
-	        </div>
-	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow">
-	                <h2 class="tm-block-title">Notification List</h2>
-	                <div class="tm-notification-items">
+	        	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow summary-layout">
+	                <h2 class="tm-block-title text-center">Daily Report</h2>
+	                <div class="tm-notification-items" style="height:300px;">
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%""></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#"
 	                                    class="tm-notification-link">product updates</a>. Check new orders.</p>
@@ -49,7 +35,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/money.jpg" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
 	                                    class="tm-notification-link">product updates</a>. Read more reports.</p>
@@ -57,64 +43,31 @@
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>Victoria</b> and <b>6 others</b> sent you <a href="#"
 	                                    class="tm-notification-link">order updates</a>. Read order information.</p>
 	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
 	                        </div>
 	                    </div>
-	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-	                        <div class="media-body">
-	                            <p class="mb-2"><b>Laura Cute</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">product records</a>.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-	                        </div>
-	                    </div>
-	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-	                        <div class="media-body">
-	                            <p class="mb-2"><b>Samantha</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">order stuffs</a>.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-	                        </div>
-	                    </div>
-	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-	                        <div class="media-body">
-	                            <p class="mb-2"><b>Sophie</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">product updates</a>.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-	                        </div>
-	                    </div>
-	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-01.jpg" alt="Avatar Image" class="rounded-circle"></div>
-	                        <div class="media-body">
-	                            <p class="mb-2"><b>Lily A</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">product updates</a>.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-	                        </div>
-	                    </div>
-	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-02.jpg" alt="Avatar Image" class="rounded-circle"></div>
-	                        <div class="media-body">
-	                            <p class="mb-2"><b>Amara</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">product updates</a>.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-	                        </div>
-	                    </div>
-	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/notification-03.jpg" alt="Avatar Image" class="rounded-circle"></div>
-	                        <div class="media-body">
-	                            <p class="mb-2"><b>Cinthela</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">product updates</a>.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
-	                        </div>
-	                    </div>
 	                </div>
 	            </div>
 	        </div>
+	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	            <div class="tm-bg-primary-dark tm-block summary-layout">
+	                <h3 class="tm-block-title text-center">TOP7 인기상품</h3>
+	                <canvas id="barChart"></canvas>
+	            </div>
+	        </div>
+	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
+	            <div class="tm-bg-primary-dark tm-block tm-block-taller summary-layout">
+	                <h2 class="tm-block-title text-center" style="margin-bottom:10px;">테마별 판매량</h2>
+	                <div id="pieChartContainer">
+	                    <canvas id="pieChart" class="chartjs-render-monitor"></canvas>
+	                </div>                        
+	            </div>
+	        </div>
+
 	        <div class="col-12 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
 	                <h2 class="tm-block-title">Orders List</h2>
@@ -276,8 +229,14 @@
 	</c:forEach>
 	
 	<c:forEach var="item" items="${sum }">
-	<input type="text" name="totalSum" value="${item }"/>
+	<input type="hidden" name="totalSum" value="${item }"/>
 	</c:forEach>
+	
+	<c:forEach var="item" items="${list2 }">
+	<input type="hidden" name="themeSum" value="${item.item_theme }"/>
+	<input type="hidden" name="themeSumValue" value="${item.salesSum}"/>
+	</c:forEach>
+	
 	</form>
 	<script>
 	   $(document).ready(function(){

@@ -48,8 +48,7 @@ public class OrderDaoJE {
 					conn.rollback();
 				}
 				
-				ps.close();
-				conn.close();
+				
 				
 			}catch(Exception ex) {
 				ex.printStackTrace();

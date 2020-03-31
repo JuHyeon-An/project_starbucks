@@ -17,11 +17,11 @@
 <body>
 
 <form name='frm' id='frmm' method='post' style='margin:130px'>
-
+<div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
 	               <h2 class="tm-block-title text-center" >Member List</h2>
 <div class='row'>
 <div class='col-lg-8'> </div>
-<div class='btn-xs  input-group col-lg-4'  >
+<div class='btn-xs  input-group col-lg-4 mb-2'  >
 
 <input type='text' name='findStr' value= '${param.findStr }' id='findStr'class="form-control validate 2" placeholder='아이디 또는 이름을 검색해주세요' />
 <input type='button' value='검색' name='btnSelect' id='btnSelect' class='input-group-text search-span'/>
@@ -72,24 +72,24 @@
 	                            </c:forEach>
 	                    </tbody>
 	            	    </table>
-	<div id='page' class='text-center'>
+	<div id='page' class='text-center mt-1'>
 		<c:if test="${page.nowPage >1}">
-			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})' class='btn-sm btn-default'/>
+			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})' class='btn-sm btn-ok'/>
 		</c:if>
 		
 		<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
 			<input type='button' value='${i }' class= 
-			'${ (i== page.nowPage)? "btn-sm btn-info" : "btn-sm btn-default" }'
+			'${ (i== page.nowPage)? "btn-sm btn-sw" : "btn-sm btn-ok" }'
 			 onclick='goPage(${i })'/>
 			
 		</c:forEach>	
 		
 		<c:if test="${page.nowPage<page.totPage }">
-			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'class='btn-sm btn-default'/>
+			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'class='btn-sm btn-ok'/>
 		</c:if>
 	</div>
 	            </div>
-
+</div>
 </form>
 	
 

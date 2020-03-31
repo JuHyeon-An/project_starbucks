@@ -6,7 +6,7 @@
 <div class="col-md-9 order-2">
     <div class="row">
         <div class="col-md-12 mb-3">
-            <h2 class="h3 mb-3 text-black">구매내역</h2>
+            <h2 class="h3 mb-3 text-black">주문내역</h2>
         </div>
         <form class="col-md-12" name="" >
         	<input type="hidden" name="mId2" value="${mId }"  />

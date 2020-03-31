@@ -32,3 +32,23 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 	$('#orderStatus').val(orderStatus);
 	$('#frmm').attr('action', 'order_view.order').submit();
 }
+
+function loadsw(){
+	 let findStr = $('#findStr').val().toUpperCase();
+	 let orderstatus = $('#categorySelect').val();
+
+	 let nowPage =  $('#nowPage').val();
+       	
+       	
+     $('#tableContainer').load('order.order?findStr='+findStr+
+   				'&orderStatus='+orderstatus+'&nowPage='+nowPage+
+   				' #ordertable');
+       
+}
+
+function toList(){
+	location.href='select_product.stb';
+	loadTable();
+}
+
+
