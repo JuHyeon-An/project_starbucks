@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,7 +15,9 @@
 
 </head>
 <body>
-	<form name='frm' id='frmm' method='post' style='margin:130px'>
+	<form name='frm' id='frmm' method='post'  style='margin:130px'>
+	 	
+		 
 <div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
 
 
@@ -25,7 +27,14 @@
 			<div class='col-lg-8'></div>
 
 			<div class='btn-xs mb-2 input-group col-lg-4'>
-
+	
+	 	
+	 	<select id="categorySelect" class="select-custom " onchange="loadsw();">
+			<option value="">전체</option>
+		  <option value= "1" >주문취소</option>
+		  <option value= "2" >승인대기</option>
+		  <option value= "3" >주문완료</option>
+		</select>
 
 				<input type='text' name='findStr' value='${param.findStr }'
 					id='findStr' class="form-control validate 2"
@@ -38,8 +47,8 @@
 					value='${empty param.nowPage? 1 : param.nowPage}' />
 			</div>
 		</div>
-
-		<table class="table">
+<div id = "tableContainer" class="tm-product-table-container">
+		<table id='ordertable' class="table">
 
 			<thead>
 				<tr>
@@ -83,6 +92,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
+</div>
 		<div id='page' class='text-center mt-1'>
 			<c:if test="${page.nowPage >1}">
 				<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'

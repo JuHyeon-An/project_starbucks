@@ -53,6 +53,7 @@ public class AdminorderServlet extends HttpServlet {
 	private void order(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	      String findStr="";
 	      int nowPage=1;
+	      int orderStatus=0;
 	      OrderDao dao=new OrderDao();
 
 	      System.out.println(req.getParameter("findStr"));
@@ -65,13 +66,18 @@ public class AdminorderServlet extends HttpServlet {
 			  findStr=req.getParameter("findStr");
 			  System.out.println(findStr+" 문자 값이  안아아오아아아아아왜애애애");
 		  }
+		  if(req.getParameter("orderStatus")!=null) {
+			  orderStatus =  Integer.parseInt( req.getParameter("orderStatus"));
+		  }
+		  
 		  Page page =new Page();
 		  page.setNowPage(nowPage);
 		  page.setFindStr(findStr);
 		  System.out.println(findStr+"서블렛검색어");
 		  page.pageCompute();
 		
-	      List<OrderVo> list = dao.select(page);
+		  req.getParameter("orderStatus");
+	      List<OrderVo> list = dao.select(page,orderStatus);
 	     
 	      
 	      req.setAttribute("list", list);
