@@ -7,11 +7,27 @@ function drawLineChart() {
       scales: {
         yAxes: [
           {
-            scaleLabel: {
+        	  type: 'linear',
               display: true,
-              labelString: "매출"
+              labelString: "매출",
+              postion : 'left',
+              id : 'y-axis-1'
+            
+          },
+          {
+        	  type: 'linear',
+                display: true,
+                labelString: "회원유입",
+                position : 'right',
+                id : 'y-axis-2',
+                beginAtZero : true,
+                ticks: {
+                    max: 100,
+                    min: 0,
+                    stepSize: 10
+                }
+              
             }
-          }
         ]
       }
     };
@@ -24,24 +40,35 @@ function drawLineChart() {
       type: "line",
       data: {
         labels: [
-          "1월",
+          "19년 10월",
+          "11월",
+          "12월",
+          "20년 1월",
           "2월",
           "3월",
-          "4월",
-          "5월",
-          "6월",
-          "7월"
+          "4월"
         ],
         datasets: [
           {
             label: "월별 매출액",
-            data: [33, 45, 37, 21, 55, 74, 69], //각 월별 매출액 넣으면 됨
+            data: [sumArray[0].value, sumArray[1].value, sumArray[2].value, 
+            	   sumArray[3].value, sumArray[4].value, sumArray[5].value, sumArray[6].value], //각 월별 매출액 넣으면 됨
             fill: true,
             borderColor: "rgba(255,99,132,1)",
             cubicInterpolationMode: "monotone",
-            pointRadius: 3
+            pointRadius: 3,
+            yAxisId: 'y-axis-1'
           },
-        ]
+          {
+              label: "두번째",
+              data: [88, 68, 79, 57, 50, 55, 70],  
+              fill: true,
+              borderColor: "rgba(153, 102, 255, 1)",
+              cubicInterpolationMode: "monotone",
+              pointRadius: 3,
+              yAxisId: 'y-axis-2'
+            },
+        ],
       }
     };
 
