@@ -69,7 +69,7 @@
 	                                    <div class="input-group-prepend">
 	                                        <button class="btn btn-outline-primary js-btn-minus" id="btnMinus_${i.index }" onclick="priceMinus('${i.index}');" type="button">&minus;</button>
 	                                    </div>
-	                                    <input type="text" class="form-control text-center itemEa" id="itemEa_${i.index }" value="${vo.itemEa}" onchange="alert('sdf');" placeholder="">
+	                                    <input type="button" class="form-control text-center itemEa" id="itemEa_${i.index }" name="itemEa_${i.index }" value="${vo.itemEa}" />
 	                                    <div class="input-group-append">
 	                                        <button class="btn btn-outline-primary js-btn-plus" id="btnPlus_${i.index }" onclick="pricePlus('${i.index}');" type="button">&plus;</button>
 	                                    </div>
@@ -83,9 +83,9 @@
                             	</td>
 	                        </tr>
 	                        <input type="hidden" name="itemTitle_${i.index }" value="${vo.itemTitle }" />
-	                        <input type="hidden" name="itemEa_${i.index }" value="${vo.itemEa}" />
+	                        <input type="hidden" name="itemEaVal_${i.index }" id="itemEaVal_${i.index }" value="${vo.itemEa }" />
 	                        
-	                        <input type="hidden" name="totPrice_${i.index }" value="${vo.totPrice }" />
+	                        <input type="hidden" name="totPriceVal_${i.index }" id="totPriceVal_${i.index }" value="${vo.totPrice }" />
 	                        <input type="hidden" name="mId" value="${mId }" />
 	                        <input type="hidden" name="itemCode_${i.index }" value="${vo.itemCode }"  />
 	                        <input type="hidden" name="chkFlag_${i.index }" id="chkFlag_${i.index }" value="" />
@@ -181,15 +181,6 @@
 	        cartTotPrice();
 		});		
 		
-		/*for(var i=0; i<$("tbody tr").length; i++){
-			if($(".product-checkbox input").is(":checked")){
-				$("#chkFlag_"+i).val("1");
-			}else{
-				$("#chkFlag_"+i).val("0");
-			}
-			console.log($("#chkFlag_"+i).html("ss"));
-		}
-		*/
 		
 	});
 

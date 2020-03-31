@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class DaoUk {
 	
@@ -310,20 +311,14 @@ public class DaoUk {
 	}
 	public String review_delete(int review_postnum) {
 		String msg=null;
-		String sql=" delete from reviewboard where review_postnum = ? ";
+		Review_imgs imgs=getImgs(review_postnum);
 		try {
-		PreparedStatement pstmt=conn.prepareStatement(sql);
-		pstmt.setInt(1, review_postnum);
-		int r=pstmt.executeUpdate();
-		if(r>0) {
-			msg=" 리뷰가 삭제 되었습니다. ";
 			String sql2=" delete from review_imgs where review_postnum = ? ";
 			PreparedStatement pstmt2=conn.prepareStatement(sql2);
 			pstmt2.setInt(1, review_postnum);
-			int r2=pstmt.executeUpdate();
+			int r2=pstmt2.executeUpdate();
 			if(r2>0) {
-				msg=msg+" 사진도 같이 삭제 되었습니다. ";
-				Review_imgs imgs=getImgs(review_postnum);
+				msg=" 사진이 삭제 되었습니다. ";
 				List<String> list=imgs.getSys_imgs();
 				for(String img:list) {
 					File file=new File(review_img+img);
@@ -331,19 +326,25 @@ public class DaoUk {
 						file.delete();
 					}
 				}
+				String sql=" delete from reviewboard where review_postnum = ? ";
+				PreparedStatement pstmt=conn.prepareStatement(sql);
+				pstmt.setInt(1, review_postnum);
+				int r=pstmt.executeUpdate();
+				if(r>0) {
+				msg=" 리뷰가 삭제 되었습니다. ";
+				}else {
+				msg=" 리뷰 삭제 도중 오류가 발생하였습니다. ";
+				conn.rollback();
+				}
 			}else {
-				msg=msg+" 사진은 삭제되지 않았습니다. ";
+				msg=" 삭제중 오류가 발생했습니다. ";
 			}
-		}else {
-			msg=" 리뷰 삭제 도중 오류가 발생하였습니다. ";
-			conn.rollback();
-		}
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
 		return msg;
 	}
-	public String review_modify(String review_title, String review_content, int review_like, int review_postnum) {
+	public String review_modify(ReviewVo vo) {
 		String msg=null;
 		String sql= " update reviewboard "
 				  + " set review_title=?, "
@@ -354,15 +355,104 @@ public class DaoUk {
 		PreparedStatement pstmt;
 		try {
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, review_title);
-			pstmt.setString(2, review_content);
-			pstmt.setInt(3, review_like);
-			pstmt.setInt(4, review_postnum);
+			pstmt.setString(1, vo.getReview_title());
+			pstmt.setString(2, vo.getReview_content());
+			pstmt.setInt(3, vo.getReview_like());
+			pstmt.setInt(4, vo.getReview_postnum());
 			int r=pstmt.executeUpdate();
 			if(r>0) {
 				msg=" 리뷰가 수정되었습니다. ";
+				
+				
+				
+				Review_imgs imgs=vo.getReview_imgs();
+				List<String> list=imgs.getSys_imgs();
+				List<String> fileImageName=vo.getList();
+				Review_imgs dbImgs=getImgs(vo.getReview_postnum());
+				List<String> dbList=dbImgs.getSys_imgs();
+
+				for(int i=0; i<list.size(); i++) {
+					String img=list.get(i);
+					String file=fileImageName.get(i);
+					
+					int last=file.lastIndexOf("e");
+					String c=file.substring(last+1);
+					switch(c) {
+					case "1":
+						String sql1= " update review_imgs set sys_img1=? where review_postnum=? ";
+						PreparedStatement pstmt1=conn.prepareStatement(sql1);
+						pstmt1.setString(1, img);
+						pstmt1.setInt(2, vo.getReview_postnum());
+						int r1=pstmt1.executeUpdate();
+						if(dbList.get(5)!=null) {
+							String dbImg1=dbList.get(1);
+							File filef1=new File(review_img+dbImg1);
+							if(filef1.exists()) {
+								filef1.delete();
+							}
+						}
+						break;
+					case "2":
+						String sql2= " update review_imgs set sys_img2=? where review_postnum=? ";
+						PreparedStatement pstmt2=conn.prepareStatement(sql2);
+						pstmt2.setString(1, img);
+						pstmt2.setInt(2, vo.getReview_postnum());
+						int r2=pstmt2.executeUpdate();
+						if(dbList.get(2)!=null) {
+							String dbImg2=dbList.get(2);
+							File filef2=new File(review_img+dbImg2);
+							if(filef2.exists()) {
+								filef2.delete();
+							}
+						}
+						break;
+					case "3":
+						String sql3= " update review_imgs set sys_img3=? where review_postnum=? ";
+						PreparedStatement pstmt3=conn.prepareStatement(sql3);
+						pstmt3.setString(1, img);
+						pstmt3.setInt(2, vo.getReview_postnum());
+						int r3=pstmt3.executeUpdate();
+						if(dbList.get(3)!=null) {
+							String dbImg3=dbList.get(2);
+							File filef3=new File(review_img+dbImg3);
+							if(filef3.exists()) {
+								filef3.delete();
+							}
+						}
+						break;
+					case "4":
+						String sql4= " update review_imgs set sys_img4=? where review_postnum=? ";
+						PreparedStatement pstmt4=conn.prepareStatement(sql4);
+						pstmt4.setString(1, img);
+						pstmt4.setInt(2, vo.getReview_postnum());
+						int r4=pstmt4.executeUpdate();
+						if(dbList.get(4)!=null) {
+							String dbImg4=dbList.get(4);
+							File filef4=new File(review_img+dbImg4);
+							if(filef4.exists()) {
+								filef4.delete();
+							}
+						}
+						break;
+					case "5":
+						String sql5= " update review_imgs set sys_img5=? where review_postnum=? ";
+						PreparedStatement pstmt5=conn.prepareStatement(sql5);
+						pstmt5.setString(1, img);
+						pstmt5.setInt(2, vo.getReview_postnum());
+						int r5=pstmt5.executeUpdate();
+						if(dbList.get(5)!=null) {
+							String dbImg5=dbList.get(5);
+							File filef5=new File(review_img+dbImg5);
+							if(filef5.exists()) {
+								filef5.delete();
+							}
+						}
+						break;
+					}
+				}
 			}else {
 				msg=" 리뷰 수정 도중 오류가 발생하였습니다. ";
+				conn.rollback();
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

@@ -25,7 +25,7 @@
 	        	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-overflow summary-layout">
 	                <h2 class="tm-block-title text-center">Daily Report</h2>
-	                <div class="tm-notification-items">
+	                <div class="tm-notification-items" style="height:300px;">
 	                    <div class="media tm-notification-item">
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%""></div>
 	                        <div class="media-body">
@@ -35,7 +35,7 @@
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/buy.png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/money.jpg" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
 	                                    class="tm-notification-link">product updates</a>. Read more reports.</p>

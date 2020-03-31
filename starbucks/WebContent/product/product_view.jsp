@@ -74,8 +74,8 @@
                 <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
               
-              <input id='itemEa' name="itemEa" type="button" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
-<!--               <input type="button" name="testNum" id="testNum" /> -->
+              <input id='itemEa' name="itemEa" type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              
               <div class="input-group-append">
                 <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
               </div>
@@ -98,29 +98,22 @@
 				<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="#" id='btnOrder' onclick="cart_go('order')" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
+				    <p><a href="#" id='btnOrder' onclick="cart_go('singleOrder')" class="buy-now btn btn-sm btn-primary  offset-1">구매하기</a></p>
 				<%}%>
 				
 					<p><a href="listPage.pl" onclick='' class="buy-now btn btn-sm btn-primary offset-3">목록</a></p>
 				</div>
 
-
-
-
-
           </div>
         </div>
       </div>
-      </div>
-           	
+    </div>
+           	<input type="hidden" name="itemTitle" value="${vo.item_title }" />
 	        <input type="hidden" name="fileName" value="${vo.item_thumbnailimg }" />
             <input type="hidden" name="mId" value="${mId }" />
             <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
             <input type="hidden" id="totPrice" value='' />
             <input type="hidden" name="item_code" value='${vo.item_code }' />
-            <input type="hidden" name="review_postnum" id="review_postnum" />
-			<input type="hidden" name="nowPage" id="nowPage" />
-			<input type='hidden' name='pd_findStr' id='pd_findStr' value='${page.findStr }'/>
 </form>
 
 </c:forEach>
@@ -191,6 +184,7 @@ let goPageR=function(nowPage){
 
 
 
+</c:forEach>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 <script src="/starbucks/js/productlist.js"></script>
 <script>
@@ -198,9 +192,11 @@ let cart_go = function(page){
 	$('#view_frm').attr('action','/starbucks/my/'+page+'.my').submit();
 }
 $(function(){
+	
+	var mId = view_frm.mId.value;
+	
+	$("#totPrice").val($("#price").html());
 	$("#btnAddToCart").click(function () {
-    	
-        var mId = view_frm.mId.value;
         cart_go('cart');
     });
 })
@@ -245,7 +241,7 @@ $(function(){
 	                )
 	            }) // swal end
 	
-	   // }) // click end
+	   		//}) // click end
 	//} // if end
 	</script>
 	
@@ -270,5 +266,5 @@ $(function(){
 	<!-- Content -->    
 	
 	<!-- Content END-->    
-<%-- <%@include file="../product/review.jsp" %>     --%>
+    
 <%@include file="../layout/footer.jsp" %>

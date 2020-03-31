@@ -13,6 +13,7 @@ public class DBConn {
 		String url = "jdbc:oracle:thin:@192.168.0.32:1521:xe";
 		String dbUser = "hr";
 		String dbPwd = "hr";
+		String dbPwd = "1234";
 		Connection conn = null;
 		
 		try {

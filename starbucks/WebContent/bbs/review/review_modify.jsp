@@ -66,22 +66,22 @@
       <div class="col-md-12">
       <label for="review_content" class="text-black">Image</label>
         <div class="border p-3 " id='board' >
-        		<c:set var="imgs" value="${vo.review_imgs }"/>
-				<c:forEach var="img" items="${imgs.sys_imgs}" varStatus="i">
-					<input type='text' id='target' name='target' value='${img }'/>
-				</c:forEach>
-			<%--<c:forEach var="img" items="${imgs.sys_imgs}">
-					${(img==null)? "":"<div><input type='file'/><img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
-				</c:forEach> --%>
+       		<c:set var="imgs" value="${vo.review_imgs }"/>
+			<c:forEach var="img" items="${imgs.sys_imgs}" varStatus="i">
+				<c:if test="${!empty img }">
+					<input type='hidden' id='target' name='target' value='${img }'/>
+					<input type='hidden' id='ggg' name='sys_img${i.count } value='${img }'/>
+				</c:if>
+			</c:forEach>
         </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-lg-6">
-        <input type="button" id='btnUpdate' class="btn btn-primary btn-lg btn-block" value="Update">
+        <input type="button" id='review_btnUpdate' class="btn btn-primary btn-lg btn-block" value="Update">
       </div>
       <div class="col-lg-6">
-        <input type="button" id='btnList' class="btn btn-primary btn-lg btn-block" value="Delete">
+        <input type="button" id='review_btnSelect' class="btn btn-primary btn-lg btn-block" value="Cancel">
       </div>
     </div>
   </div>
@@ -93,9 +93,5 @@
   <input type='text' name='findStr' id='findStr' value='${param.findStr }'/>
 </form>
 <script>
-aaa();
-/* let cntImg=$('img').length;
-if(cntImg<7	){
-	addImg();
-} */
+modify_addImgs();
 </script>
