@@ -81,7 +81,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		<div id='page' class='text-center'>
+		<div id='page' class='text-center mt-5'>
 			<c:if test="${page.nowPage >1}">
 				<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'
 					class='btn-sm btn-default' />
@@ -89,7 +89,7 @@
 
 			<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
 				<input type='button' value='${i }'
-					class='${ (i== page.nowPage)? "btn-sm btn-info" : "btn-sm btn-default" }'
+					class='${ (i== page.nowPage)? "btn-sm btn-success" : "btn-sm btn-default" }'
 					onclick='goPage(${i })' />
 
 			</c:forEach>
