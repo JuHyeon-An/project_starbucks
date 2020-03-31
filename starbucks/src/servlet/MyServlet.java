@@ -188,7 +188,7 @@ public class MyServlet extends HttpServlet{
 			totPrice = Integer.parseInt(req.getParameter("totPriceVal_"+i));
 			
 			String mId = req.getParameter("mId");
-			String mName = req.getParameter("mName_"+i);
+			String mName = req.getParameter("mName");
 			if(flag == 1) {
 				ShoppingCartVo cartVo = new ShoppingCartVo(mName, itemCode, title, ea, totPrice, mId);
 				list.add(cartVo);
@@ -285,7 +285,7 @@ public class MyServlet extends HttpServlet{
 				break;
 			}
 			code = req.getParameter("itemCode_"+i);
-			String mName = req.getParameter("memberNm_"+i);
+			String mName = req.getParameter("mName");
 			System.out.println("mName : " + mName);
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
 			
