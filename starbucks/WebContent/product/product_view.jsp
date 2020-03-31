@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@include file="../layout/header.jsp" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
     <!-- Breadcrumb -->
     <style>
     .wrap {
@@ -25,6 +27,8 @@
 	}
  
     </style>
+
+ 
     
     <c:forEach var='vo' items='${list }'>
  <form id='view_frm' name='view_frm' method='post'>  
@@ -180,6 +184,8 @@ let goPageR=function(nowPage){
 	$('#nowPage').val(nowPage);
 	$('#view_frm').attr('action','item_view.pl').submit();
 }
+
+
 
 </script>
 
