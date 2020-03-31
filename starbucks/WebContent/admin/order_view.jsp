@@ -25,7 +25,7 @@
 
 		<div
 			class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-			<h2 class="tm-block-title">Orders List</h2>
+			<h2 class="tm-block-title text-center">주문      내역</h2>
 			<table class="table">
 
 				<thead>
@@ -43,22 +43,22 @@
 
 
 
-					<tr id='order' name='orderl method='post' >
-
-
+					<tr id='order' name='orderl method='post'>
 
 						<td><input type='text' name='orderNumber' id='orderNumber'
-							value='${param.orderNumber}' readonly /></td>
+							value='${param.orderNumber}'style='background-color: transparent; border: none; color: aliceblue;'   readonly /></td>
 						<td><input type='text' name='memberId' id='memberId'
-							value='${param.memberId   }' readonly /></td>
+							value='${param.memberId   }'style='background-color: transparent; border: none; color: aliceblue;' readonly /></td>
 						<td><input type='text' name='itemCode' id='itemCode'
-							value='${param.itemCode  }' readonly /></td>
+							value='${param.itemCode  }' style='background-color: transparent; border: none; color: aliceblue;'readonly /></td>
 						<td><input type='text' name='orderNum' id='orderNum'
-							value='${param.orderNum   }' readonly /></td>
+							value='${param.orderNum   }'style='background-color: transparent; border: none; color: aliceblue;' readonly /></td>
 						<td><input type='text' name='orderPrice' id='orderPrice'
-							value='${param.orderPrice  }' readonly /></td>
+							value='${param.orderPrice  }'style='background-color: transparent; border: none; color: aliceblue;' readonly /></td>
 						<td><input type='text' name='orderregDate' id='orderregDate'
-							value='${param.orderregDate  }' readonly /></td>
+							value='${param.orderregDate  }'style='background-color: transparent; border: none; color: aliceblue;' readonly /></td>
+						
+					
 						<td><select name='orderStatus' id='orderStatus'>
 								<option value='1'
 									<c:if test="${param.orderStatus eq 1}">selected</c:if>>주문취소</option>
@@ -76,12 +76,12 @@
 
 				</tbody>
 			</table>
-		<div class="row">
+		<div class="row mt-4">
 			<div class="col-4      "></div>
 			<div class="  col-lg-2	     ">
 
 				<button type="submit"
-					class="btn btn-primary btn-block text-uppercase margin-top: 30px;" id="btnModify">수정</button>
+					class="btn btn-primary btn-block text-uppercase" id="btnModify">수정</button>
 			</div>
 			<div class="col-2      ">
 
