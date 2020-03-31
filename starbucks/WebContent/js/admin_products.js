@@ -3,6 +3,9 @@
  */
 
  let cnt = 1;
+let array = [];
+let arrayValue = [];
+let sumArray = [];
 
  function btnFunc(){
 	
@@ -137,6 +140,15 @@
 		})
 		}
 	}
+	
+	if($('#dashFrm')!=null){
+		// 누적판매량이 많은 순대로 하나씩 배열에 담아서
+		
+		array = document.getElementsByName("bestItem");
+		arrayValue = document.getElementsByName("bestItemValue");
+		sumArray = document.getElementsByName("totalSum");
+	}
+	
 	
 }// end of btnFunc
 

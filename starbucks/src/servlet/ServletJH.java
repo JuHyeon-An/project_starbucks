@@ -3,8 +3,10 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -15,6 +17,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.FileUpload;
 import bean.ProductDao;
+import bean.ProductSumVo;
 import bean.ProductVo;
 
 @WebServlet("*.stb")
@@ -62,6 +65,7 @@ public class ServletJH extends HttpServlet{
 		case "/dashboard.stb":
 			dashBoard(req, resp);
 			break;
+			
 		}
 
 	}
@@ -195,8 +199,15 @@ public class ServletJH extends HttpServlet{
 		resp.setContentType("text/html;charset=utf-8");
 		
 		ProductDao dao = new ProductDao();
-		Map<String, Integer> map = dao.dashBoard();
+		List<ProductSumVo> list = dao.dashBoard();
 		
+		System.out.println("서블릿 : "+list.get(0).getItem_title());
+		System.out.println("서블릿 : "+list.get(0).getOrder_sumnum());
+		
+		req.setAttribute("pList", list);
+		
+		List<Integer> sum = dao.totalSales();
+		req.setAttribute("sum", sum);
 		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

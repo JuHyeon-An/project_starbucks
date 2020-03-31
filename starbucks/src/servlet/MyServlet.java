@@ -1,6 +1,10 @@
 package servlet;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,6 +13,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.OrderDaoJE;
+import bean.OrderVo;
+import bean.ShoppingCartDao;
+import bean.ShoppingCartVo;
 import bean.Shopping_MemberDao;
 import bean.Shopping_MemberVo;
 
@@ -31,10 +39,7 @@ public class MyServlet extends HttpServlet{
 			account(req, resp);
 			break;
 		case "/cart.my":
-			cart(req, resp);
-			break;
-		case "/order.my":
-			order(req, resp);
+			goCart(req, resp);
 			break;
 		case "/orderList.my":
 			orderList(req, resp);
@@ -73,11 +78,26 @@ public class MyServlet extends HttpServlet{
 		case "/order.my":
 			order(req, resp);
 			break;
+		case "/delete.my":
+			delete(req, resp);
+			break;
 		}
 	}
 	
 	public void my (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
+		Shopping_MemberDao dao = new Shopping_MemberDao();
+		String mId = req.getParameter("mId2");
+		
+		Shopping_MemberVo vo = dao.view(mId);
+		req.setAttribute("vo", vo);
+		
+		OrderVo orderVo = new OrderVo();
+		OrderDaoJE orderDao = new OrderDaoJE();
+		
+		List<OrderVo> list = orderDao.select(mId);
+		
+		req.setAttribute("list", list);
+		 
 		String path = url + "?my=./my.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -99,7 +119,14 @@ public class MyServlet extends HttpServlet{
 		
 	}
 	
-	public void cart (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void goCart (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+		String mId = req.getParameter("mId2");
+		ShoppingCartDao dao = new ShoppingCartDao();
+		
+		List<ShoppingCartVo> list = dao.select(mId);
+		
+		req.setAttribute("list", list);
 		
 		String path = url + "?my=./cart.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
@@ -107,8 +134,70 @@ public class MyServlet extends HttpServlet{
 		
 	}
 	
-	public void order (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	public void cart (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		String mId = req.getParameter("mId");
+		String fileName = req.getParameter("fileName");
+		String itemCode = req.getParameter("item_code");
+		int price = Integer.parseInt(req.getParameter("oriPrice"));
+		int itemEa = Integer.parseInt(req.getParameter("itemEa"));
+		System.out.println(itemEa);
+		int totPrice = price*itemEa;
+		
+		ShoppingCartVo vo = new ShoppingCartVo(mId, fileName, itemCode, price, itemEa, totPrice);
+		ShoppingCartDao dao = new ShoppingCartDao();
+
+		
+		int result = dao.insert(vo, mId);
+		
+		req.setAttribute("result", result);
+		String path = url + "/item_view.pl";
+		RequestDispatcher rd = req.getRequestDispatcher(path);
+		rd.forward(req, resp); 
+		
+	}
+	
+	public void order (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
+		int cartTotalPrice = Integer.parseInt(req.getParameter("cartTotPriceHd"));
+		List<ShoppingCartVo> list = new ArrayList<ShoppingCartVo>();
+		int i=0;
+		String title="";
+		String itemCode = "";
+		int ea = 0;
+		int totPrice = 0;
+		int flag = 0;
+		
+		
+		while(true) {
+			
+			if(req.getParameter("itemTitle_"+i)==null) {
+				break;
+			}
+			flag = Integer.parseInt(req.getParameter("chkFlag_"+i));
+			itemCode = req.getParameter("itemCode_"+i);
+			title = req.getParameter("itemTitle_"+i);
+			ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			totPrice = Integer.parseInt(req.getParameter("totPrice_"+i));
+			String mId = req.getParameter("mId");
+			String mName = req.getParameter("mName_"+i);
+			if(flag == 1) {
+				ShoppingCartVo cartVo = new ShoppingCartVo(mName, itemCode, title, ea, totPrice, mId);
+				list.add(cartVo);
+			}
+			
+			
+			i++;
+		}
+		req.setAttribute("cartTotalPrice", cartTotalPrice);
+		req.setAttribute("list", list);
+		
+		OrderDaoJE dao = new OrderDaoJE();
+		OrderVo vo = new OrderVo();
+		vo = dao.view(req.getParameter("mId"));
+		
+		req.setAttribute("vo", vo);
 		String path = url + "?my=./order.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -116,6 +205,13 @@ public class MyServlet extends HttpServlet{
 	}
 	
 	public void orderList (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String mId = req.getParameter("mId2");
+		OrderVo vo = new OrderVo();
+		OrderDaoJE dao = new OrderDaoJE();
+		
+		List<OrderVo> list = dao.select(mId);
+		
+		req.setAttribute("list", list);
 		
 		String path = url + "?my=./order_list.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
@@ -131,6 +227,47 @@ public class MyServlet extends HttpServlet{
 		
 	}
 	public void orderResult (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
+		String mId = req.getParameter("mId");
+		String code = req.getParameter("itemCode");
+		
+		String phone = req.getParameter("memPhone");
+		String email = req.getParameter("memEmail");
+		String zone = req.getParameter("zonecode");
+		String addr1 = req.getParameter("address");
+		String addr2 = req.getParameter("address2");
+		String getNm = req.getParameter("getName");
+		String getPhone = req.getParameter("getPhone");
+		
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+		
+		List<OrderVo> list = new ArrayList<OrderVo>();
+		int result = 0;
+		
+ 		int i = 0;
+		while(true) {
+			
+			if(req.getParameter("itemCode_"+i)==null) {
+				break;
+			}
+			code = req.getParameter("itemCode_"+i);
+			String mName = req.getParameter("memberNm_"+i);
+			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			int price = Integer.parseInt(req.getParameter("price_"+i));
+
+			String orderDt = sdf.format(new Date());
+			int orderStatus = 2;	// 주문처리상태 : 승인대기 설전 
+			
+			OrderVo vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, addr2);
+			list.add(vo);
+			OrderDaoJE dao = new OrderDaoJE();
+			result = dao.insert(list);
+			i++;
+		}
+		 
+		req.setAttribute("list", list);
+		req.setAttribute("result", result);
 		
 		String path = url + "?my=./order_result.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
@@ -183,5 +320,21 @@ public class MyServlet extends HttpServlet{
 		
 	}
 	
+	// 장바구니 삭제 	
+	public void delete (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		int result = 0;
+		
+		int serial = Integer.parseInt(req.getParameter("delSerial"));
+		ShoppingCartDao dao = new ShoppingCartDao();
+		result = dao.delete(serial);
+		
+		req.setAttribute("result", result);
+		
+		String path = url + "?my=./cart.jsp";
+		RequestDispatcher rd = req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+		
+	}
 	
 }

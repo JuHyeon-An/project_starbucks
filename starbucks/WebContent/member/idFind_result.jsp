@@ -19,7 +19,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 </head>

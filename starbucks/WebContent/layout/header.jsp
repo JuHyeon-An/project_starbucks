@@ -29,7 +29,16 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/css/bootstrap-datepicker.min.css">
         <!-- datePicker 관련 js -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha256-pasqAKBDmFT4eHoN2ndd6lN370kFiGUFyTiUHWhU7k8=" crossorigin="anonymous"></script>
+        
     </head>
+    <script>
+   let pd_itmeFind = function(findStr){
+	   $('#itmeFindStr').val(findStr);
+	   $('#itmeFind').attr('method', 'post')
+	   $('#itemFind').attr('action', 'itemFind.pl').submit();
+}
+   </script>
+
     
 
     <body>
@@ -43,9 +52,9 @@
                         <div class="row align-items-center">
 
                             <div class="col-6 col-md-4 order-2 order-md-1 site-search-icon text-left">
-                                <form action="" class="site-block-top-search">
+                                <form onsubmit='pd_itmeFind()' id='itemFind' class="site-block-top-search" method='post' >
                                     <span class="icon icon-search2"></span>
-                                    <input type="text" class="form-control border-0" placeholder="Search">
+                                    <input type="text" id='itemFindStr' name='itmeFindStr' class="form-control border-0 basicAutoComplete"  autocomplete="off" placeholder="Search">
                                 </form>
                             </div>
 
@@ -74,9 +83,9 @@
 	                                        </li>
                                         <%}else{ %>
                                        		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
-                                       		 <li><a href="/starbucks/my/my.my"><span class="icon icon-person"></span></a></li>
+                                       		 <li><a href="/starbucks/my/my.my?mId2=${mId }"><span class="icon icon-person"></span></a></li>
                                        		 <li>
-	                                            <a href="/starbucks/my/cart.my" class="site-cart">
+	                                            <a href="/starbucks/my/cart.my?mId2=${mId }" class="site-cart">
 	                                                <span class="icon icon-shopping_cart"></span>
 	                                                <span class="count">2</span>
 	                                            </a>
@@ -113,13 +122,7 @@
                                     
                                 </ul>
                             </li>
-                            <li class="has-children">
-                                <a href="./bbs/">Events</a>
-                                <ul class="dropdown">
-                                    <li><a href="/starbucks/bbs/">진행중인 이벤트</a></li>
-                                    <li><a href="/starbucks/bbs/">종료된 이벤트</a></li>
-                                    <li><a href="/starbucks/bbs/">당첨자 발표</a></li>
-                                </ul>
+
                             <li class="has-children">
                                 <a href="/starbucks/bbs/">Community</a>
                                 <ul class="dropdown">
@@ -133,10 +136,23 @@
                                     <li><a href="notice_select.uk?nowPage=1">Notice</a></li>
                                     <li><a href="review_select.uk?nowPage=1">Review</a></li>
                                 </ul>
+                                                          <li class="has-children">
+                                <a href="/starbucks/infomation/privacy.jsp">Information</a>
+                                <ul class="dropdown">
+                                    <li><a href="/starbucks/infomation/privacy.jsp">개인정보처리방침</a></li>
+                                    <li><a href="/starbucks/infomation/homePage.jsp">홈페이지이용약관</a></li>
+                                    <li><a href="/starbucks/infomation/location.jsp">위치정보이용약관</a></li>
+                                </ul>
                         </ul>
                     </div>
 
                 </nav>
             </header>
-         </div>  
+         </div>
+         
+<script>
+
+</script>
+
+
          

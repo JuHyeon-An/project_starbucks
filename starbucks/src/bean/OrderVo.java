@@ -19,6 +19,9 @@ public class OrderVo {
 	String addr1; //주소 
 	String addr2; //상세주소 
 	int savedMoney; // 	적립금   
+	String productImg;	// 상품이미지 
+	String itemTitle; // 상품명 
+	int price;	// 상품 가격 
 	
 	public OrderVo() {
 		
@@ -143,6 +146,30 @@ public class OrderVo {
 	}
 	public void setSavedMoney(int savedMoney) {
 		this.savedMoney = savedMoney;
+	}
+
+	public String getProductImg() {
+		return productImg;
+	}
+
+	public void setProductImg(String productImg) {
+		this.productImg = productImg;
+	}
+
+	public String getItemTitle() {
+		return itemTitle;
+	}
+
+	public void setItemTitle(String itemTitle) {
+		this.itemTitle = itemTitle;
+	}
+
+	public int getPrice() {
+		return price;
+	}
+
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	
 	

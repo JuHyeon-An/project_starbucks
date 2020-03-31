@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
 
 <script src='<%=request.getContextPath() %>/lib/jquery-3.4.1.js'></script>
 <script src="<%=request.getContextPath() %>/js/bootstrap.js"></script>
@@ -29,24 +28,22 @@
 	<div class="container form-inline col-12">
 
 		<div class="row text-center col-12">
-			<div class="offset-4 col-sm-3">
+			<div class="offset-5 col-sm-2">
 
 				<div class="login-box well">
 					<form accept-charset="UTF-8" role="form" method="post" action="pwFindR.email">
 						<legend>비밀번호 찾기</legend>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" name="mName" value='' placeholder="이름을 입력하세요"
-								class="form-control" />
+								class="form-control"  required/>
 						</div>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-user"></i></span>
 							<input type="text" name="mId" value='' placeholder="아이디를 입력하세요"
-								class="form-control" />
+								class="form-control"  required/>
 						</div>
 						<div class="input-group">
-							<span class="input-group-addon"><i class="fa fa-lock"></i></span>
-							<input type="text" name="email" value='' placeholder="이메일을 입력하세요" class="form-control" />
+<!-- 							<span class="input-group-addon"><i class="fa fa-lock"></i></span> -->
+							<input type="text" name="email" value='' placeholder="이메일을 입력하세요" class="form-control"  required/>
 						</div>
 						<button type="submit" id="login-submit"	 class="btn btn-default btn-block" />
 						비밀번호 찾기

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- left side menu -->
 	<%@include file="./left.jsp" %>
 <div class="col-md-9 order-2">
@@ -7,7 +8,8 @@
         <div class="col-md-12 mb-3">
             <h2 class="h3 mb-3 text-black">구매내역</h2>
         </div>
-        <div class="col-md-12">
+        <form class="col-md-12" name="" >
+        	<input type="hidden" name="mId2" value="${mId }"  />
             <div class="float-md-left">
                 <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,7 +35,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </form>
 
     </div>
 
@@ -51,36 +53,47 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td class="">
-                        <span id="orderRegDate">2020-03-02</span>
-                    </td>
-                    <td class="product-thumbnail">
-                        <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/02/[11104968]_20200219105812789.jpg" alt="Image" class="img-fluid">
-                    </td>
-                    <td class="product-name text-left">
-                        <a href="" class="text-black" id="itemTitle">Top Up T-Shirt</a>
-                    </td>
-                    <td>
-                        <span id="itemPrice">$49.00</span>
-                    </td>
-                    <td>
-                        <span id="orderNum">2</span>
-                    </td>
-                    <td>
-                        <span class="" id="orderPrice">$49.00</span>
-                    </td>
-                    <td>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnCancle">
-                            취소요청
-                        </button>
-                        <button type="button" class="btn btn-primary btn-sm" id="btnRegist">
-                            리뷰작성
-                        </button>
-
-                    </td>
-                </tr>
-
+            	<c:forEach var="vo" items="${list }" varStatus="i"  >
+	                <tr>
+	                    <td class="">
+	                        <span id="orderRegDate">${vo.orderregDate }</span>
+	                    </td>
+	                    <td class="product-thumbnail">
+	                        <img src="./fileFolder/${vo.productImg }" alt="Image" class="img-fluid">
+	                    </td>
+	                    <td class="product-name text-left">
+	                        <a href="" class="text-black" id="itemTitle">${vo.itemTitle }</a>
+	                    </td>
+	                    <td>
+	                        <span id="itemPrice">${vo.price }</span>
+	                    </td>
+	                    <td>
+	                        <span id="orderNum">${vo.orderNum }</span>
+	                    </td>
+	                    <td>
+	                        <span class="" id="orderPrice">${vo.orderPrice }</span>
+	                    </td>
+	                    <td>
+	                    	<input type="hidden" name="orderStatus_${i.index }" value="${vo.orderStatus }" />
+	                    	<c:set var="status" value="${vo.orderStatus }" scope="page"/>
+						    <c:if test="${status == 1}">
+						        <button type="button" class="btn btn-primary btn-sm  disabled" id="btnCancle_${i.index }">
+		                            승인대기
+		                        </button>
+						    </c:if>
+						    <c:if test="${status == 2}">
+						        <button type="button" class="btn btn-primary btn-sm" id="btnRegist_${i.index }">
+		                            취소요청
+		                        </button>
+						    </c:if>
+						    <c:if test="${status == 3}">
+						        <button type="button" class="btn btn-primary btn-sm" id="btnRegist_${i.index }">
+		                            리뷰작성
+		                        </button>
+						    </c:if>
+	                    </td>
+	                </tr>
+				</c:forEach>
 
             </tbody>
         </table>

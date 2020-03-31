@@ -47,14 +47,14 @@
 
           <div class="wrap col-md-5 ">
           	<div class='row'>
-            <img id='imgView' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
+            <img id='imgView' src="/starbucks/fileFolder/${vo.item_thumbnailimg }" alt="Image" class="target img-fluid" data-zoom="3" />
             </div>
             <div class='row'>
             <br />
             
-            <img id='img1' src="./fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
-            <img id='img2'  src="./fileFolder/${vo.item_mainimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
-            <img id='img3'  src="./fileFolder/${vo.item_contentimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
+            <img id='img1' src="/starbucks/fileFolder/${vo.item_thumbnailimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(1)' />
+            <img id='img2'  src="/starbucks/fileFolder/${vo.item_mainimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(2)' />
+            <img id='img3'  src="/starbucks/fileFolder/${vo.item_contentimg }" alt="Image" class="img-fluid col-4 img-thumbnail" data-zoom="3" onclick='imgchang(3)' />
 
             </div>
           </div>
@@ -62,9 +62,9 @@
 
             <h2 class="text-black">${vo.item_title }</h2>
             <p>${vo.item_content }</p>
-            <p class="mb-4">용량 : ${vo.item_size }</p>
+            <p class="mb-4">사이즈 : ${vo.item_size }</p>
             <p class="mb-4">재고 : ${vo.item_num }</p>
-            <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p>
+<%--             <p class="mb-4">적립금 : ${vo.item_savedmoney }원</p> --%>
             <p><strong id='price'class="text-primary h4">${vo.item_price }</strong><strong class='text-primary h4'>원</strong></p>
 
 
@@ -74,7 +74,7 @@
                 <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
               
-              <input id='itemEa' type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input id='itemEa' name="itemEa" type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               
               <div class="input-group-append">
                 <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
@@ -90,7 +90,7 @@
 		 		<%}%>
 				
 				<%if(session.getAttribute("mId") != null){ %> 
-				    <p><a href="#" onclick="cart_go('cart')" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
+				    <p><a href="#" id="btnAddToCart" onclick="" class="buy-now btn btn-sm btn-primary">장바구니</a></p>
 				<%}%>
 				    
 				<%if(session.getAttribute("mId") == null){ %> 
@@ -109,10 +109,11 @@
       </div>
     </div>
            	
-	        <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
+	        <input type="hidden" name="fileName" value="${vo.item_thumbnailimg }" />
+            <input type="hidden" name="mId" value="${mId }" />
+            <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
             <input type="hidden" id="totPrice" value='' />
-            <input type="hidden" name="item_code" value='${item_code }'/>
-
+            <input type="hidden" name="item_code" value='${vo.item_code }' />
 </form>
             
             
@@ -125,11 +126,70 @@
 let cart_go = function(page){
 	$('#view_frm').attr('action','/starbucks/my/'+page+'.my').submit();
 }
-
+$(function(){
+	$("#btnAddToCart").click(function () {
+    	
+        var mId = view_frm.mId.value;
+        cart_go('cart');
+    });
+})
 </script>
 
-
-
+<c:if test="${result == 1}">
+	<!-- 장바구니 추가 성공 -->
+	<script>
+	    //장바구니 담기 버튼 클릭 이벤트
+	    //if ($("#btnAddToCart") != null) {
+	        
+	
+	   // $("#btnAddToCart").click(function () {
+	        const swalWithBootstrapButtons = Swal.mixin({
+	            customClass: {
+	                confirmButton: 'swal2-confirm btn btn-primary mb-2',
+	                cancelButton: 'swal2-cancel btn btn-outline-primary mr-2 mb-2'
+	            },
+	            buttonsStyling: false
+	        })
+	
+	        swalWithBootstrapButtons.fire({
+	                title: 'Add To Cart!',
+	                text: "해당 상품이 장바구니에 추가되었습니다!",
+	                icon: 'success',
+	                showCancelButton: true,
+	                confirmButtonText: '장바구니 확인하기 ',
+	                cancelButtonText: '쇼핑 계속하기 ',
+	                reverseButtons: true
+	            }).then((result) => {
+	                if (result.value) {
+	
+	                    // $("#view_frm").attr("action", "cart.my").submit();
+	                    //location.href = '/starbucks/my/cart.my';
+	                    cart_go('cart');
+	                } else(
+	                    /* Read more about handling dismissals below */
+	                    // $("#view_frm").attr("action", "cart.my").submit();
+	                    result.dismiss === Swal.DismissReason.cancel
+	                )
+	            }) // swal end
+	
+	   // }) // click end
+	//} // if end
+	</script>
+	
+	</c:if>
+	
+	<c:if test="${result == 0 }">
+	<script>
+	
+	    Swal.fire({
+	        icon: 'info',
+	        title: 'Oops...',
+	        text: '이미 존재하는 상품입니다!'
+	    })
+	
+	</script>
+	
+	</c:if>
     <!-- Breadcrumb END -->
     
 	<!-- Content -->    

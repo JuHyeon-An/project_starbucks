@@ -9,12 +9,25 @@ public class ShoppingCartVo {
 	int itemEa;
 	int totPrice;
 	String itemTitle;
+	String mName;
 	
 	public ShoppingCartVo() {
 		
 	}  
 	
-	public ShoppingCartVo(String itemTitle, int itemEa, int totPrice, String mId) {
+	public ShoppingCartVo(String itemCode, String itemTitle, int itemEa, int totPrice, String mId) {
+		this.itemCode = itemCode;
+		this.itemTitle = itemTitle;
+		this.itemEa = itemEa;
+		this.totPrice = totPrice;
+		this.mId = mId;
+		
+	}   
+	
+	
+	public ShoppingCartVo(String mName, String itemCode, String itemTitle, int itemEa, int totPrice, String mId) {
+		this.mName = mName;
+		this.itemCode = itemCode;
 		this.itemTitle = itemTitle;
 		this.itemEa = itemEa;
 		this.totPrice = totPrice;
@@ -103,6 +116,14 @@ public class ShoppingCartVo {
 
 	public void setItemTitle(String itemTitle) {
 		this.itemTitle = itemTitle;
+	}
+
+	public String getmName() {
+		return mName;
+	}
+
+	public void setmName(String mName) {
+		this.mName = mName;
 	}
 	
 	

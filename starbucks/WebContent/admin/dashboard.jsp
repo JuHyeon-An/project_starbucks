@@ -17,14 +17,14 @@
 	    <!-- row -->
 	    <div class="row tm-content-row">
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block">
-	                <h2 class="tm-block-title">Latest Hits</h2>
+	            <div class="tm-bg-primary-dark tm-block summary-layout" >
+	                <h3 class="tm-block-title text-center">매출현황</h3>
 	                <canvas id="lineChart"></canvas>
 	            </div>
 	        </div>
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block">
-	                <h2 class="tm-block-title">Performance</h2>
+	            <div class="tm-bg-primary-dark tm-block summary-layout">
+	                <h3 class="tm-block-title text-center">베스트 상품</h3>
 	                <canvas id="barChart"></canvas>
 	            </div>
 	        </div>
@@ -269,18 +269,20 @@
 	        </div>
 	    </div>
 	</div>
-	<form>
-	<c:forEach var="item" items="${list }">
-	<input type="text" name="bestItem" value="${item }"/>
+	<form id="dashFrm" name="dashFrm">
+	<c:forEach var="item" items="${pList }">
+	<input type="hidden" name="bestItem" value="${item.item_title }"/>
+	<input type="hidden" name="bestItemValue" value="${item.order_sumnum }"/>
+	</c:forEach>
+	
+	<c:forEach var="item" items="${sum }">
+	<input type="text" name="totalSum" value="${item }"/>
 	</c:forEach>
 	</form>
 	<script>
-	
-	// 누적판매량이 많은 순대로 하나씩 배열에 담아서
-	let array = document.getElementsByName("bestItem");
-	console.log(array[0].value);
-	console.log(array[1].value);
-	
+	   $(document).ready(function(){
+		    $('#dashNav').addClass('active');
+	   });
 	</script>
 </body>
 </html>

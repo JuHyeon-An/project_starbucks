@@ -16,18 +16,18 @@
 </head>
 <body>
 
-<form name='frm' id='frmm' method='post'>
+<form name='frm' id='frmm' method='post' style='margin:130px'>
 
+	               <h2 class="tm-block-title text-center" >Member List</h2>
 <div class='row'>
 <div class='col-lg-8'> </div>
 <div class='btn-xs  input-group col-lg-4'  >
 
 <input type='text' name='findStr' value= '${param.findStr }' id='findStr'class="form-control validate 2" placeholder='아이디 또는 이름을 검색해주세요' />
-<input type='button' value='검색' name='btnSelect' id='btnSelect'/>
+<input type='button' value='검색' name='btnSelect' id='btnSelect' class='input-group-text search-span'/>
 <input type='hidden' name='nowPage' id='nowPage' value='${empty param.nowPage? 1 : param.nowPage}' />
 </div>
 </div>
-	                <h2 class="tm-block-title">Member List</h2>
 	                <table class="table">
 	                
 	                    <thead>
@@ -71,10 +71,8 @@
 	                         
 	                            </c:forEach>
 	                    </tbody>
-	                </table>
-	            </div>
-
-	<div id='page'>
+	            	    </table>
+	<div id='page' class='text-center'>
 		<c:if test="${page.nowPage >1}">
 			<input type='button' value='이전' onclick='goPage(${page.nowPage -1})' class='btn-sm btn-default'/>
 		</c:if>
@@ -90,6 +88,8 @@
 			<input type='button' value='다음' onclick='goPage(${page.nowPage +1})'class='btn-sm btn-default'/>
 		</c:if>
 	</div>
+	            </div>
+
 </form>
 	
 

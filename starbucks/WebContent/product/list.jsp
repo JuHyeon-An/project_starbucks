@@ -56,7 +56,7 @@
                <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" onclick="item_view('${vo.item_code}')">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="#" ><img src="./fileFolder/${vo.item_thumbnailimg }" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="#" ><img src="/starbucks/fileFolder/${vo.item_thumbnailimg }" alt="Image placeholder" class="img-fluid"></a>
                     
                   </figure>
                   <div class="block-4-text p-4">
@@ -135,10 +135,30 @@
       
       <form id='pd_frm' name='pd_frm' method='post'>
       	<input type="hidden" name="nowPage" id='nowPage' value='${ empty param.nowPage? 1 : param.nowPage }'/>
+      	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
       </form>
-      
-     </div>
 
+     </div>
+<script>
+
+let pd_goPage = function(nowPage){
+	$('#nowPage').val(nowPage);
+	$('#pd_frm').attr('method', 'post');
+	$('#pd_frm').attr('action', 'listPage.pl').submit();
+}
+let categories = function(findStr){
+   $('#pd_findStr').val(findStr);
+   $('#pd_frm').attr('method', 'post');
+   $('#pd_frm').attr('action', 'listCategories.pl').submit();
+}
+let item_view = function(findStr){
+   $('#nowPage').val(nowPage);
+   $('#pd_findStr').val(findStr);
+   $('#pd_frm').attr('method', 'post');
+   $('#pd_frm').attr('action', 'item_view.pl').submit();
+} 
+
+</script>
 
     <!-- Breadcrumb END -->
     

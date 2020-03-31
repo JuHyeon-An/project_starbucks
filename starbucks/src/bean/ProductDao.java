@@ -288,16 +288,16 @@ public class ProductDao {
 		}
 	}
 	
-	public Map<String, Integer> dashBoard() {
+	public List<ProductSumVo> dashBoard() {
 		
-		Map<String, Integer> map = new HashMap<String, Integer>();
+		List<ProductSumVo> list = new ArrayList<ProductSumVo>();
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		
 		try {
 			
-				sql = " select item_title, order_sumnum from itemboard order by order_sumnum desc";
+				sql = " select * from (select item_title, ORDER_SUMNUM from itemboard order by order_sumnum desc) where rownum <= 7";
 				
 				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
@@ -305,7 +305,7 @@ public class ProductDao {
 				rs = ps.executeQuery();
 			
 			while(rs.next()) {
-				map.put(rs.getString(1), rs.getInt(2));
+				list.add(new ProductSumVo(rs.getString(1), rs.getInt(2)));
 			}
 			
 	         rs.close();
@@ -314,7 +314,36 @@ public class ProductDao {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			return map;
+			return list;
+		}
+	}
+	
+	public List<Integer> totalSales() {
+		List<Integer> sum = new ArrayList<Integer>();
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+				sql = " select sum(order_price), to_char(order_regdate, 'rrrr-mm') regdate from shopping_order group by to_char(order_regdate, 'rrrr-mm') order by to_char(order_regdate, 'rrrr-mm')";
+				
+				conn = DBConn.getConn();
+				ps = conn.prepareStatement(sql);
+
+				rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				sum.add(rs.getInt(1));
+				System.out.println("월 : "+rs.getString(2));
+			}
+			
+	         rs.close();
+	         ps.close();
+	         
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			return sum;
 		}
 	}
 	

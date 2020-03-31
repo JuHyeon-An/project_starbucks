@@ -1,5 +1,9 @@
 const width_threshold = 480;
 
+
+
+
+/*
 function drawLineChart() {
   if ($("#lineChart").length) {
     ctxLine = document.getElementById("lineChart").getContext("2d");
@@ -7,11 +11,27 @@ function drawLineChart() {
       scales: {
         yAxes: [
           {
-            scaleLabel: {
+        	  type: 'linear',
               display: true,
-              labelString: "매출"
+              labelString: "매출",
+              position : 'left',
+              id : 'y-axis-1'
+            
+          },
+          {
+        	  type: 'linear',
+                display: true,
+                labelString: "회원유입",
+                position : 'right',
+                id : 'y-axis-2',
+                beginAtZero : true,
+                ticks: {
+                    max: 100,
+                    min: 0,
+                    stepSize: 10
+                }
+              
             }
-          }
         ]
       }
     };
@@ -24,30 +44,121 @@ function drawLineChart() {
       type: "line",
       data: {
         labels: [
-          "1월",
+          "19년 10월",
+          "11월",
+          "12월",
+          "20년 1월",
           "2월",
           "3월",
-          "4월",
-          "5월",
-          "6월",
-          "7월"
+          "4월"
         ],
         datasets: [
           {
             label: "월별 매출액",
-            data: [33, 45, 37, 21, 55, 74, 69], //각 월별 매출액 넣으면 됨
+            data: [sumArray[0].value, sumArray[1].value, sumArray[2].value, 
+            	   sumArray[3].value, sumArray[4].value, sumArray[5].value, sumArray[6].value], //각 월별 매출액 넣으면 됨
             fill: true,
             borderColor: "rgba(255,99,132,1)",
             cubicInterpolationMode: "monotone",
-            pointRadius: 3
+            pointRadius: 3,
+            yAxisID: 'y-axis-1'
           },
-        ]
+          {
+              label: "두번째",
+              data: [88, 68, 79, 57, 50, 55, 70],  
+              fill: true,
+              borderColor: "rgba(153, 102, 255, 1)",
+              cubicInterpolationMode: "monotone",
+              pointRadius: 3,
+              yAxisID: 'y-axis-2'
+            },
+        ],
       }
     };
 
     lineChart = new Chart(ctxLine, configLine);
   }
 }
+*/
+
+
+
+function drawLineChart() {
+	  if ($("#lineChart").length) {
+	    ctxLine = document.getElementById("lineChart").getContext("2d");
+	    optionsLine = {
+	      scales: {
+	        yAxes: [
+	        	{
+	          	  type: 'linear',
+	                display: true,
+	                labelString: "매출",
+	                position : 'left',
+	                id : 'a'
+	            },
+	            {
+	          	  type: 'linear',
+	                  display: true,
+	                  labelString: "회원유입",
+	                  position : 'right',
+	                  id : 'b',
+	                  beginAtZero : true,
+	                  ticks: {
+	                      max: 100,
+	                      min: 0,
+	                      stepSize: 10
+	                  }
+	                
+	              }
+	        ]
+	      }
+	    };
+
+	    // Set aspect ratio based on window width
+	    optionsLine.maintainAspectRatio =
+	      $(window).width() < width_threshold ? false : true;
+
+	    configLine = {
+	      type: "line",
+	      data: {
+	        labels: [
+	        	 "19년 10월",
+	             "11월",
+	             "12월",
+	             "20년 1월",
+	             "2월",
+	             "3월",
+	             "4월"
+	        ],
+	        datasets: [
+	          {
+	            label: "월별매출액",
+	            data: [sumArray[0].value, sumArray[1].value, sumArray[2].value, 
+	            	   sumArray[3].value, sumArray[4].value, sumArray[5].value, sumArray[6].value], //각 월별 매출액 넣으면 됨,
+	            fill: true,
+	            borderColor: "rgb(75, 192, 192)",
+	            cubicInterpolationMode: "monotone",
+	            pointRadius: 3,
+	            yAxisID: 'a'
+	          },
+	          {
+	            label: "회원가입수",
+	            data: [33, 45, 37, 21, 55, 74, 69],
+	            fill: true,
+	            borderColor: "rgba(255,99,132,1)",
+	            cubicInterpolationMode: "monotone",
+	            pointRadius: 3,
+	            yAxisID: 'b'
+	          },
+	        ]
+	      },
+	      options: optionsLine
+	    };
+
+	    lineChart = new Chart(ctxLine, configLine);
+	  }
+	}
+
 
 function drawBarChart() {
   if ($("#barChart").length) {
@@ -89,11 +200,13 @@ function drawBarChart() {
       type: "horizontalBar",
       data: {
     	  
-        labels: ["상품명1", "상품명2", "상품명3", "상품명4", "상품명5", "상품명6", "상품명7"],
+        labels: [array[0].value, array[1].value, array[2].value, array[3].value, 
+        	array[4].value, array[5].value, array[6].value],
         datasets: [
           {
-            label: "# of Hits",
-            data: [33, 40, 28, 49, 58, 38, 44],
+            label: "판매량",
+            data: [arrayValue[0].value, arrayValue[1].value, arrayValue[2].value, arrayValue[3].value, 
+            	arrayValue[4].value, arrayValue[5].value, arrayValue[6].value],
             backgroundColor: [
               "#F7604D",
               "#4ED6B8",

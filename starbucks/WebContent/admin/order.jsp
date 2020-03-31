@@ -16,7 +16,7 @@
 </head>
 <body>
 
-	<form name='frm' id='frmm' method='post'>
+	<form name='frm' id='frmm' method='post' style='margin:130px'>
 
 
 		<h2 class="tm-block-title text-center">Orders List</h2>
@@ -81,10 +81,7 @@
 				</c:forEach>
 			</tbody>
 		</table>
-		</div>
-
-
-		<div id='page'>
+		<div id='page' class='text-center'>
 			<c:if test="${page.nowPage >1}">
 				<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'
 					class='btn-sm btn-default' />
@@ -102,6 +99,9 @@
 					class='btn-sm btn-default' />
 			</c:if>
 		</div>
+		</div>
+
+
 	</form>
 
 
