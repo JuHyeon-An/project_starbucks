@@ -81,12 +81,13 @@ public class AdminorderServlet extends HttpServlet {
 		  req.getParameter("orderStatus");
 	      List<OrderVo> list = dao.select(page,orderStatus);
 	     
-	      
+	      System.out.println("start page : "+page.getStartPage());
+	      System.out.println("end page : "+page.getEndPage());
 	      req.setAttribute("list", list);
 	      req.setAttribute("page", page);
-	      System.out.println("여기가 찍히나요");
 	    
 	      
+	      /*
 	      for(OrderVo vo:list) {//값을 확인
 	    	System.out.println("여긴서블");
 	    	System.out.println(vo.getOrderNumber());
@@ -98,6 +99,7 @@ public class AdminorderServlet extends HttpServlet {
 	  		System.out.println(vo.getOrderStatus());
 	    	  
 	      }
+	      */
 
 	      String path=url+"order.jsp"; //
 	      System.out.println(path);

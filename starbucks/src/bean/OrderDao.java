@@ -22,27 +22,27 @@ public class OrderDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int totList = 0;
-		
-		
-		
-		//System.out.println(" dao   시자자작");
+
+		try {
+			if(orderStatus==0) {
+			
+			// 전체 조회하는 경우
 			  sql= " select count(ordernumber) cnt "
 				  + " from shopping_order "
 				  + " where ORDERNUMBER like ? "
 				  + " or MEMBER_ID like ? ";
 
-			  try {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%" + page.getFindStr() + "%");
 			pstmt.setString(2, "%" + page.getFindStr() + "%");
 			rs=pstmt.executeQuery();		
-			
+
 			if(rs.next()) {
 				totList = rs.getInt("cnt");
 			}
 			page.setTotListSize(totList);
 			page.pageCompute();
-			if(orderStatus==0) {
+			
 			sql= "select * from( "
 				+ " select rownum rn, A.*from( "
 				+ " 	select ORDERNUMBER, "  
@@ -65,7 +65,27 @@ public class OrderDao {
 			System.out.println("endno" + page.getEndNo());
 			pstmt.setInt(3, page.getStartNo());
 			pstmt.setInt(4, page.getEndNo());
-		}else {  
+		}else { 
+			
+			// 전체 조회하는 경우
+			  sql= " select count(ordernumber) cnt "
+				  + " from shopping_order "
+				  + " where (ORDERNUMBER like ? "
+				  + " or MEMBER_ID like ? )" 
+				  + " and order_status=?";
+
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, "%" + page.getFindStr() + "%");
+			pstmt.setString(2, "%" + page.getFindStr() + "%");
+			pstmt.setInt(3, orderStatus);
+			rs=pstmt.executeQuery();		
+
+			if(rs.next()) {
+				totList = rs.getInt("cnt");
+			}
+			page.setTotListSize(totList);
+			page.pageCompute();
+			
 		sql= "select * from( "
 				+ " select rownum rn, A.*from( "
 				+ " 	select ORDERNUMBER, "  
