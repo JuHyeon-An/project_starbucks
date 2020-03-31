@@ -13,8 +13,27 @@ let func=function(){
 			$('#review').attr('action', 'review_select.uk').submit();
 		});
 	}
+	if($('#btnModify')!=null){
+		$('#btnModify').on('click',function(){
+			$('#review').attr('action','review_modify.uk').submit();
+		});
+	}
+	if($('#btnDelete')!=null){
+		$('#btnDelete').on('click',function(){
+			$('#review.').attr('action','review_delete.uk').submit();
+		});
+	}
 	if($('#msg').val()){	
-		alert($('#msg').val());
+		console.log($('#msg').val());
+		alam();
+	}
+	/*수정에 별 뿌려주기*/
+	var cnt = $('#review_like').val();
+	for(var i=1; i<=cnt; i++){
+		if($('#stars li').data('value')<=i){
+			$("#stars li:nth-child("+i+")").addClass("selected");
+		}
+		
 	}
 /*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*/	
 	$(document).ready(function(){
@@ -58,6 +77,7 @@ let func=function(){
 		    var msg = "";
 		    if (ratingValue > 0) {
 		        msg = " 귀하의 소중한 의견 감사합니다. 별점 "  + ratingValue + " 개를 주셨습니다.";
+		        $('#review_like').val(ratingValue);
 		    }
 		    else {
 		        msg = "We will improve ourselves. You rated this " + ratingValue + " stars.";
@@ -75,8 +95,7 @@ let func=function(){
 		  $('.success-box div.text-message').html("<span>" + msg + "</span>");
 		}
 	/*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*/	
-}
-
+}		
 let goPage=function(nowPage){
 	$('#nowPage').val(nowPage);
 	$('#notice').attr('action','notice_select.uk').submit();
@@ -95,6 +114,7 @@ let review_view=function(review_postnum){
 	$('#review_postnum').val(review_postnum);
 	$('#review').attr('action','review_view.uk').submit();
 }
+/*이미지, 파일, 미리보기 제공*/ 
 let addImg=function(){
 	func();
 	let $div = $('<div></div>');
@@ -112,7 +132,6 @@ let addImg=function(){
 	let $file=$('<input>');
 	$file.attr('type','file');
 	$file.attr('name','file'+cnt);
-	console.log($file.attr('name'));
 	$file.attr('modify','no')
 	$file.attr('style', 'display:none');
 	$div.append($file);
@@ -131,9 +150,8 @@ let addImg=function(){
 				$img.attr('src',ev.target.result);
 			}
 			
-			let filename=$file.attr('name');
-			console.log(filename);
-			if($file.attr('modify')=='no' && filename!='file4'){
+			let fileName=$file.attr('name');
+			if($file.attr('modify')=='no' && fileName!='file4'){
 				addImg();
 			}	
 			$file.attr('modify','yes');
@@ -141,70 +159,68 @@ let addImg=function(){
 	});
 	cnt++
 }
-function makeDiv(main){
+/*수정가능 이미지, 파일, 미리보기 뿌려주기*/ 
+let addImg2=function(sysImage){
 	func();
-	let div=document.createElement('div');
-	div.setAttribute('style','border:1px solid #f00; width:120px; height:180px;');
+	let $div = $('<div></div>');
+	$div.attr('style','width:120px; height:180px;');
+	$div.attr('class','d-inline-block mr-2');
+	$('#board').append($div);
 	
-	//img tag
-	let img=document.createElement('img');
-	img.setAttribute('name', 'img'+cnt);
-	img.setAttribute('width', '120px');
-	img.setAttribute('height','180px');
-	img.src= 'http://placehold.it/120x180';
-	div.appendChild(img);
+	let $img=$('<img>');
+	$img.attr('name','img'+cnt)
+	$img.attr('width', '120px');
+	$img.attr('height','180px');
+	$img.attr('src','/starbucks/review_img/'+sysImage);
+	$div.append($img);
 	
-	//삭제 버튼
-	let btnDel=document.createElement('input');
-	btnDel.setAttribute('name','btnDel'+cnt);
-	btnDel.setAttribute('type','button');
-	btnDel.setAttribute('value','X');
-	btnDel.setAttribute('class','btnDel');
+	let $file=$('<input>');
+	$file.attr('type','file');
+	$file.attr('name','file'+cnt);
+	$file.attr('modify','no')
+	$file.attr('style', 'display:none');
+	$div.append($file);
 	
-	btnDel.onclick=function(ev){//삭제 이벤트 처리
-		let obj=ev.srcElement;
-		let parent=obj.parentNode;
-		let tag=parent.getElementsByTagName('input')[1];
-		if(tag.getAttribute('modify')=='yes'){
-			main.removeChild(parent);
-		}
-	}
-	div.appendChild(btnDel);
-	
-	//이미지당 file tag
-	let file=document.createElement('input');
-	file.setAttribute('type','file');
-	file.setAttribute('name','attFile'+cnt);
-	file.setAttribute('style', 'display:none');
-	file.setAttribute('modify','no');
-	div.appendChild(file);
-	
-	//이미지를 클릭하면
-	img.onclick=function(){
-		file.click();
-	}
-	
-	file.onclick=function imagePreView(event){
-		let btn = event.srcElement;	
-		btn.onchange=function(){
-			let url = btn.files[0];
-			let reader = new FileReader();
-			reader.readAsDataURL(url);
+	$img.on('click',function(){
+		$file.trigger('click');
+	});
+	$file.on('click',function(event){
+		$target=$(event.target);
+		$target.on('change',function(){
+			let src=$target.get(0).files[0];
+			let reader=new FileReader();
+			reader.readAsDataURL(src);
 			
 			reader.onload=function(ev){
-				let temp=new Image();
-				temp.src=ev.target.result;
-				img.src=temp.src;
+				$img.attr('src',ev.target.result);
 			}
-			if(file.getAttribute('modify')=='no'){
-				makeDiv(main);
-			}
-			file.setAttribute('modify','yes');
-		}
-	}
-	main.appendChild(div);
-	cnt++;
+			
+			let cntImg=$('img').length;
+			console.log(cntImg)
+			if($file.attr('modify')=='no' && cntImg<8){
+				addImg();
+			}	
+			$file.attr('modify','yes');
+		});
+	});
+	cnt++
 }
-
-
-
+/*수정에 이미지 뿌려주고, 이미지 추가 수정 가능하게*/
+let aaa=function(){
+	let length=$("input[name='target']").length;
+	for(let i=0; i<length; i++){
+		if(($("input[name='target']").eq(i).attr("value"))!=null){}
+			let sysImage=$("input[name='target']").eq(i).attr("value");
+			addImg2(sysImage);
+	}
+}
+/*메세지 뿌려주기*/
+let alam=function(){
+	Swal.fire({
+		  position: 'top-end',
+		  icon: 'success',
+		  title: 'Your work has been saved',
+		  showConfirmButton: false,
+		  timer: 1500
+		})
+}

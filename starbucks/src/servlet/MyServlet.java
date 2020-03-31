@@ -85,7 +85,19 @@ public class MyServlet extends HttpServlet{
 	}
 	
 	public void my (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-			
+		Shopping_MemberDao dao = new Shopping_MemberDao();
+		String mId = req.getParameter("mId2");
+		
+		Shopping_MemberVo vo = dao.view(mId);
+		req.setAttribute("vo", vo);
+		
+		OrderVo orderVo = new OrderVo();
+		OrderDaoJE orderDao = new OrderDaoJE();
+		
+		List<OrderVo> list = orderDao.select(mId);
+		
+		req.setAttribute("list", list);
+		 
 		String path = url + "?my=./my.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -129,6 +141,7 @@ public class MyServlet extends HttpServlet{
 		String itemCode = req.getParameter("item_code");
 		int price = Integer.parseInt(req.getParameter("oriPrice"));
 		int itemEa = Integer.parseInt(req.getParameter("itemEa"));
+		System.out.println(itemEa);
 		int totPrice = price*itemEa;
 		
 		ShoppingCartVo vo = new ShoppingCartVo(mId, fileName, itemCode, price, itemEa, totPrice);
@@ -138,7 +151,7 @@ public class MyServlet extends HttpServlet{
 		int result = dao.insert(vo, mId);
 		
 		req.setAttribute("result", result);
-		String path = url + "../product/product_view.jsp";
+		String path = url + "/item_view.pl";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp); 
 		
@@ -192,6 +205,13 @@ public class MyServlet extends HttpServlet{
 	}
 	
 	public void orderList (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String mId = req.getParameter("mId2");
+		OrderVo vo = new OrderVo();
+		OrderDaoJE dao = new OrderDaoJE();
+		
+		List<OrderVo> list = dao.select(mId);
+		
+		req.setAttribute("list", list);
 		
 		String path = url + "?my=./order_list.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
@@ -237,7 +257,7 @@ public class MyServlet extends HttpServlet{
 			int price = Integer.parseInt(req.getParameter("price_"+i));
 
 			String orderDt = sdf.format(new Date());
-			int orderStatus = 1;
+			int orderStatus = 2;	// 주문처리상태 : 승인대기 설전 
 			
 			OrderVo vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, addr2);
 			list.add(vo);
@@ -245,7 +265,7 @@ public class MyServlet extends HttpServlet{
 			result = dao.insert(list);
 			i++;
 		}
-		
+		 
 		req.setAttribute("list", list);
 		req.setAttribute("result", result);
 		

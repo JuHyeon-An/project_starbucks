@@ -17,14 +17,14 @@
 	    <!-- row -->
 	    <div class="row tm-content-row">
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block">
-	                <h2 class="tm-block-title">매출현황</h2>
+	            <div class="tm-bg-primary-dark tm-block summary-layout" >
+	                <h3 class="tm-block-title text-center">매출현황</h3>
 	                <canvas id="lineChart"></canvas>
 	            </div>
 	        </div>
 	        <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 tm-block-col">
-	            <div class="tm-bg-primary-dark tm-block">
-	                <h2 class="tm-block-title">베스트 상품</h2>
+	            <div class="tm-bg-primary-dark tm-block summary-layout">
+	                <h3 class="tm-block-title text-center">베스트 상품</h3>
 	                <canvas id="barChart"></canvas>
 	            </div>
 	        </div>
@@ -276,7 +276,7 @@
 	</c:forEach>
 	
 	<c:forEach var="item" items="${sum }">
-	<input type="hidden" name="totalSum" value="${item }"/>
+	<input type="text" name="totalSum" value="${item }"/>
 	</c:forEach>
 	</form>
 	<script>

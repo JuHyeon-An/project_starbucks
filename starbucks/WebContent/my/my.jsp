@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     <!-- left side menu -->
 	<%@include file="./left.jsp" %>
 	
@@ -10,20 +11,20 @@
         </div>
     </div>
     <div class="row mb-5">
-        <div class="col-md-12">
+        <div class="col-md-12 word-keep-all">
 
             <div class="row mb-3">
                 <div class="col-md-3">
                     <span class="text-black">이름</span>
                 </div>
                 <div class="col-md-3">
-                    <strong class="text-black">홍길동</strong>
+                    <strong class="text-black">${vo.mName }</strong>
                 </div>
                 <div class="col-md-3">
                     <span class="text-black">연락처</span>
                 </div>
                 <div class="col-md-3 text-right">
-                    <strong class="text-black">010-0000-000</strong>
+                    <strong class="text-black">${vo.phone }</strong>
                 </div>
             </div>
             <div class="row mb-3">
@@ -31,13 +32,13 @@
                     <span class="text-black">이메일</span>
                 </div>
                 <div class="col-md-3">
-                    <strong class="text-black">abc@domain.com</strong>
+                    <strong class="text-black">${vo.email }</strong>
                 </div>
                 <div class="col-md-3">
                     <span class="text-black">주소</span>
                 </div>
                 <div class="col-md-3 text-right">
-                    <strong class="text-black">서울특별시 종로구</strong>
+                    <strong class="text-black">${vo.addr1 } ${vo.addr2 }</strong>
                 </div>
             </div>
             <div class="row mb-3">
@@ -45,7 +46,7 @@
                     <span class="text-black">보유 포인트</span>
                 </div>
                 <div class="col-md-3">
-                    <strong class="text-black" id="">34,530</strong>
+                    <strong class="text-black" id="">${vo.savedMoney }</strong>
                 </div>
                 <div class="col-md-3">
                     <span class="text-black">리뷰</span>
@@ -77,34 +78,42 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="">
-                                <span id="orderRegDate">2020-03-02</span>
-                            </td>
-                            <td class="product-thumbnail">
-                                <img src="https://image.istarbucks.co.kr/upload/store/skuimg/2020/02/[11104968]_20200219105812789.jpg" alt="Image" class="img-fluid">
-                            </td>
-                            <td class="product-name text-left">
-                                <a href="" class="text-black" id="itemTitle">Top Up T-Shirt</a>
-                            </td>
-                            <td>
-                                <span id="itemPrice">$49.00</span>
-                            </td>
-                            <td>
-                                <span id="orderNum">2</span>
-                            </td>
-                            <td>
-                                <span class="" id="orderPrice">$49.00</span>
-                            </td>
-                            <td>
-                                <!-- Button trigger modal -->
-                                <button type="button" class="btn btn-primary btn-sm" id="btnCancle">
-                                    취소요청
-                                </button>
-
-                            </td>
-                        </tr>
-
+                         <c:forEach var="orderVo" items="${list }" varStatus="i" >
+			                <tr>
+			                    <td class="">
+			                        <span id="orderRegDate_${i.index }">${orderVo.orderregDate }</span>
+			                    </td>
+			                    <td class="product-thumbnail">
+			                        <img src="./fileFolder/${orderVo.productImg }" alt="Image" class="img-fluid">
+			                    </td>
+			                    <td class="product-name text-left">
+			                        <a href="" class="text-black" id="itemTitle_${i.index }">${orderVo.itemTitle }</a>
+			                    </td>
+			                    <td>
+			                        <span id="itemPrice_${i.index }">${orderVo.price }</span>
+			                    </td>
+			                    <td>
+			                        <span id="orderNum_${i.index }">${orderVo.orderNum }</span>
+			                    </td>
+			                    <td>
+			                        <span class="" id="orderPrice_${i.index }">${orderVo.orderPrice }</span>
+			                    </td>
+			                    <td>
+			                    	<input type="hidden" name="orderStatus_${i.index }" value="${orderVo.orderStatus }" />
+			                    	<c:set var="status" value="${orderVo.orderStatus }" scope="page"/>
+								    <c:if test="${status == 1 || status == 2}">
+								        <button type="button" class="btn btn-primary btn-sm" id="btnCancle_${i.index }">
+				                            취소요청
+				                        </button>
+								    </c:if>
+								    <c:if test="${status == 3}">
+								        <button type="button" class="btn btn-primary btn-sm" id="btnRegist_${i.index }">
+				                            리뷰작성
+				                        </button>
+								    </c:if>
+			                    </td>
+			                </tr>
+						</c:forEach>
 
                     </tbody>
                 </table>
@@ -123,4 +132,7 @@
 
         </div>
     </div>
+    <form action="">
+    	<input type="hidden" name="mId2" value="${mId }" />
+    </form>
 </div>

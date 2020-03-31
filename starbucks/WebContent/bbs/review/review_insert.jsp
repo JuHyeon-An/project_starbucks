@@ -4,17 +4,17 @@
     <script src="/starbucks/js/uk.js"></script> 
 
 
-<form action="#" id='review' name='review' method="post" enctype="multipart/form-data">
+<form action="review_insertR.uk" id='review' name='review' method="post" enctype="multipart/form-data">
   <div class="p-3 p-lg-5 border">
     <div class="form-group row">
       <div class="col-md-6">
       	<h2 class="text-black">머그이름</h2>
-      	<span>img</span>
+      	<span>머그사진</span>
       </div>
       <div class="col-md-6">
 <!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 -->
         <header class='header text-center' id="reviewHeader">
-    <h3 class="text-black">제품 리뷰를 등록해주세요.</h3>
+    <h3 class="text-black">제품 리뷰를 등록해주세요.<span class="text-danger">*</span></h3>
   <p>귀하의 소중한 의견은 저희에게 매우 중요합니다. <b>Starbucks korea</b></p>
 </header>
 <section class='rating-widget'>
@@ -51,7 +51,7 @@
     <div class="form-group row">
       <div class="col-md-12">
         <label for="review_title" class="text-black">제목 <span class="text-danger">*</span></label>
-        <input type="text" class="form-control" id="review_title" name="review_title" placeholder="">
+        <input type="text" class="form-control" id="review_title" name="review_title" oninvalid="alert('제목을 입력하세요!');" >
       </div>
     </div>
     <div class="form-group row">
@@ -68,11 +68,20 @@
       </div>
     </div>
     <div class="form-group row">
-      <div class="col-lg-12">
-        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Send Message">
+      <div class="col-lg-6">
+        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Review Regist">
+      </div>
+      <div class="col-lg-6">
+        <input type="button" id='btnList' class="btn btn-primary btn-lg btn-block" value="Delete">
       </div>
     </div>
   </div>
+  <input type='text' id='member_id' name='member_id' value='${mId }'/>
+  <input type='text' id='review_like' name='review_like'/> 
+  <input type='text' id='item_code' name='item_code' value='MG200330-93'/>
+  <input type='text' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
+  <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+  <input type='text' name='findStr' id='findStr' value='${param.findStr }'/>
 </form>
 <script>
 addImg();

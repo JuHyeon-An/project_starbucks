@@ -28,10 +28,10 @@
 	<div class="col-12">
 		<div class="row mb-3">
 			<div class="col-12 mb-3">
-				<c:set var="imgs" value="${vo.review_imgs }" />
-				<c:forEach var="img" items="${imgs.sys_imgs}">
-					${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
-				</c:forEach>
+				<c:set var="imgs" value="${vo.review_imgs }"/>
+					<c:forEach var="img" items="${imgs.sys_imgs}">
+						${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
+					</c:forEach>
 			</div>
 			<div class="col-12 mb-3">${vo.review_content }</div>
 		</div>
@@ -46,14 +46,15 @@
 </div>
 <div class="row">
 	<div class="col-12 text-right">
-		<button class="btn btn-outline-primary mr-2">수정</button>
-		<button class="btn btn-outline-primary mr-2">삭제</button>
+		<button id='btnModify' class="btn btn-outline-primary mr-2">수정</button>
+		<button id='btnDelete' class="btn btn-outline-primary mr-2">삭제</button>
 		<button id='btnSelect2' class="btn btn-outline-primary">목록</button>
 	</div>
 </div>
 <form id='review' name='review' method='post'>
-	<input type='hidden' name='findStr' value='${param.findStr }' /> <input
-		type='hidden' name='nowPage' value='${param.nowPage }' />
+	<input type='hidden' name='findStr' value='${param.findStr }' /> 
+	<input type='hidden' name='nowPage' value='${param.nowPage }' />
+	<input type='hidden' name='review_postnum' value='${vo.review_postnum }' /> 
 </form>
 
 
