@@ -29,7 +29,7 @@
 			<div class='btn-xs mb-2 input-group col-lg-4'>
 	
 	 	
-	 	<select id="categorySelect" class="select-custom " onchange="loadsw();">
+	 	<select name="orderStatus" id="categorySelect" class="select-custom " onchange="loadsw();">
 			<option value="">전체</option>
 		  <option value= "1" >주문취소</option>
 		  <option value= "2" >승인대기</option>
@@ -42,14 +42,14 @@
 				<input type='button'
 					value='검색' name='btnSelect' id='btnSelect'
 					class='input-group-text search-span' /> 
-				<input type='hidden'
+				<input type='text'
 					name='nowPage' id='nowPage'
 					value='${empty param.nowPage? 1 : param.nowPage}' />
+					
 			</div>
 		</div>
 <div id = "tableContainer" class="tm-product-table-container">
 		<table id='ordertable' class="table">
-
 			<thead>
 				<tr>
 					<th scope="col">주문번호</th>
@@ -62,7 +62,7 @@
 				</tr>
 			</thead>
 			<tbody>
-
+				
 				<c:forEach var="vo" items="${list }">
 
 					<tr id='list'
@@ -79,20 +79,18 @@
 								test="${vo.orderStatus eq 3 }">주문완료</c:if></td>
 
 
-						<input type='hidden' name='orderNumber' id='orderNumber' />
-						<input type='hidden' name='memberId' id='memberId' />
-						<input type='hidden' name='itemCode' id='itemCode' />
-						<input type='hidden' name='orderNum' id='orderNum' />
-						<input type='hidden' name='orderPrice' id='orderPrice' />
-						<input type='hidden' name='orderregDate' id='orderregDate' />
-						<input type='hidden' name='orderStatus' id='orderStatus' />
+						
 
 					</tr>
 
 				</c:forEach>
 			</tbody>
-		</table>
-</div>
+
+</table>
+
+
+		
+
 		<div id='page' class='text-center mt-1'>
 			<c:if test="${page.nowPage >1}">
 				<input type='button' value='이전' onclick='goPage(${page.nowPage -1})'
@@ -100,8 +98,8 @@
 			</c:if>
 
 			<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
-				<input type='button' value='${i }'
-					class='${ (i== page.nowPage)? "btn-sm btn-sw" : "btn-sm btn-ok" }'
+				<input type='button' value='${i }' 
+					class='${ (i== page.nowPage)? "btn-sm btn-sw" : "btn-sm btn-ok" }' 
 					onclick='goPage(${i })' />
 
 			</c:forEach>
@@ -112,15 +110,24 @@
 			</c:if>
 		</div>
 		</div>
-
-
+		<input type='hidden' name='orderNumber' id='orderNumber' />
+		<input type='hidden' name='memberId' id='memberId' />
+		<input type='hidden' name='itemCode' id='itemCode' />
+		<input type='hidden' name='orderNum' id='orderNum' />
+		<input type='hidden' name='orderPrice' id='orderPrice' />
+		<input type='hidden' name='orderregDate' id='orderregDate' />
+		<input type='hidden' name='orderStatus' id='orderStatus' />
+		
+		<input type="text" value="${page.nowPage }"/>
+		<input type="text" value="${page.totPage }"/>
+		<input type="text" value="${page.endPage }"/>
+		<input type="text" value="${page.startPage }"/>	</form>
 </div>
-	</form>
-
 	<script>
 func();
 $('#orderNav').addClass('active');
-
+console.log(<%=request.getParameter("list")%>);
+console.log(<%=request.getParameter("page")%>);
 </script>
 </body>
 </html>

@@ -18,7 +18,9 @@ let func = function() {
 
 let goPage = function(nowPage) {
 	$('#nowPage').val(nowPage);
-	$('#frmm').attr('action', 'order.order').submit();
+	//$('#frmm').attr('action', 'order.order').submit();
+	
+	loadsw();
 }
 
 let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
@@ -36,14 +38,16 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 function loadsw(){
 	 let findStr = $('#findStr').val().toUpperCase();
 	 let orderstatus = $('#categorySelect').val();
-
 	 let nowPage =  $('#nowPage').val();
-       	
-       	
+     
+	 /*
      $('#tableContainer').load('order.order?findStr='+findStr+
    				'&orderStatus='+orderstatus+'&nowPage='+nowPage+
    				' #ordertable');
-       
+       */
+     
+     let form_data = $('#frmm').serializeArray();
+     $('#tableContainer').load('order.order #tableContainer', form_data);
 }
 
 function toList(){

@@ -95,6 +95,7 @@ public class ServletJH extends HttpServlet{
 		System.out.println("체크가 됐는지 "+check);
 		ProductDao dao = new ProductDao();
 		List<ProductVo> list = dao.select(findStr, category, check);
+		
 		req.setAttribute("list", list);
 		
 		String path= urlAdmin+"/products.jsp?findStr="+findStr+"&category="+category;
