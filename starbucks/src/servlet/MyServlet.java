@@ -280,7 +280,7 @@ public class MyServlet extends HttpServlet{
 		
  		int i = 0;
 		while(true) {
-			
+			 
 			if(req.getParameter("itemCode_"+i)==null) {
 				break;
 			}
