@@ -26,15 +26,14 @@
                     <div class="input-group input-group-sm input-daterange">
                         <input type='text' class="form-control" name='findStr' value='${param.findStr }'/>
                         <div class="input-group-append">
-						<input type='button' class="btn btn-primary btn-sm" name='btnSelect' id='btnSelect' value='검색'/>
+						<input type='button' class="btn btn-primary btn-sm" name='review_btnSelect' id='review_btnSelect' value='검색'/>
                         </div>
                     </div>
                 </div>
             </div>
          </div>
 	</div> <!-- <div class="row"> -->
-<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-<input type='hidden' name='review_postnum' id='review_postnum' />
+<input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
     <div class="site-blocks-table mb-3">
     <table class="table">
         <thead>

@@ -1,5 +1,8 @@
 package bean;
 
+import java.util.List;
+import java.util.Map;
+
 public class ReviewVo {
 	int review_postnum;      /*dao에서 seq*/
 	String member_id;        /*ReviewUp에서 받아옴*/
@@ -10,6 +13,8 @@ public class ReviewVo {
 	int review_like;         /*ReviewUp에서 받아옴*/
 	int reivew_view;         /*dao에서 0*/
 	Review_imgs review_imgs; /*ReviewUp에서 받아옴*/
+	
+	List<String> list;       /*수정한 파일 순서 알 수 있음*/
 	
 	public int getReview_postnum() {
 		return review_postnum;
@@ -64,5 +69,11 @@ public class ReviewVo {
 	}
 	public void setReview_imgs(Review_imgs review_imgs) {
 		this.review_imgs = review_imgs;
+	}
+	public List<String> getList() {
+		return list;
+	}
+	public void setList(List<String> list) {
+		this.list = list;
 	}
 }

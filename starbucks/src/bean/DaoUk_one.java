@@ -12,13 +12,13 @@ import java.util.Map;
 
 import oracle.security.o3logon.a;
 
-public class DaoUk {
+public class DaoUk_one {
 	
 	Connection conn;
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
 	String review_img="C:/Users/uk/eclipse-workspace/1907-web/WebContent/review_img/";
 	
-	public DaoUk() {
+	public DaoUk_one() {
 		conn=DBConn.getConn();
 	}
 	public List<NoticeVo> notice_select(Page page) {
@@ -313,14 +313,20 @@ public class DaoUk {
 	}
 	public String review_delete(int review_postnum) {
 		String msg=null;
-		Review_imgs imgs=getImgs(review_postnum);
+		String sql=" delete from reviewboard where review_postnum = ? ";
 		try {
+		PreparedStatement pstmt=conn.prepareStatement(sql);
+		pstmt.setInt(1, review_postnum);
+		int r=pstmt.executeUpdate();
+		if(r>0) {
+			msg=" 리뷰가 삭제 되었습니다. ";
 			String sql2=" delete from review_imgs where review_postnum = ? ";
 			PreparedStatement pstmt2=conn.prepareStatement(sql2);
 			pstmt2.setInt(1, review_postnum);
-			int r2=pstmt2.executeUpdate();
+			int r2=pstmt.executeUpdate();
 			if(r2>0) {
-				msg=" 사진이 삭제 되었습니다. ";
+				msg=msg+" 사진도 같이 삭제 되었습니다. ";
+				Review_imgs imgs=getImgs(review_postnum);
 				List<String> list=imgs.getSys_imgs();
 				for(String img:list) {
 					File file=new File(review_img+img);
@@ -328,19 +334,13 @@ public class DaoUk {
 						file.delete();
 					}
 				}
-				String sql=" delete from reviewboard where review_postnum = ? ";
-				PreparedStatement pstmt=conn.prepareStatement(sql);
-				pstmt.setInt(1, review_postnum);
-				int r=pstmt.executeUpdate();
-				if(r>0) {
-				msg=" 리뷰가 삭제 되었습니다. ";
-				}else {
-				msg=" 리뷰 삭제 도중 오류가 발생하였습니다. ";
-				conn.rollback();
-				}
 			}else {
-				msg=" 삭제중 오류가 발생했습니다. ";
+				msg=msg+" 사진은 삭제되지 않았습니다. ";
 			}
+		}else {
+			msg=" 리뷰 삭제 도중 오류가 발생하였습니다. ";
+			conn.rollback();
+		}
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}

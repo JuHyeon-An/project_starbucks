@@ -4,7 +4,7 @@
     <script src="/starbucks/js/uk.js"></script> 
 
 
-<form action="review_insertR.uk" id='review' name='review' method="post" enctype="multipart/form-data">
+<form id='review' name='review' method="post" enctype="multipart/form-data">
   <div class="p-3 p-lg-5 border">
     <div class="form-group row">
       <div class="col-md-6">
@@ -69,10 +69,10 @@
     </div>
     <div class="form-group row">
       <div class="col-lg-6">
-        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Review Regist">
+        <input type="button" id='review_btnRegist' class="btn btn-primary btn-lg btn-block" value="Review Regist">
       </div>
       <div class="col-lg-6">
-        <input type="button" id='btnList' class="btn btn-primary btn-lg btn-block" value="Delete">
+        <input type="button" id='review_btnSelect' class="btn btn-primary btn-lg btn-block" value="Cancel">
       </div>
     </div>
   </div>

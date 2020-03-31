@@ -47,8 +47,8 @@
 <div class="row">
 	<div class="col-12 text-right">
 		<button id='btnModify' class="btn btn-outline-primary mr-2">수정</button>
-		<button id='btnDelete' class="btn btn-outline-primary mr-2">삭제</button>
-		<button id='btnSelect2' class="btn btn-outline-primary">목록</button>
+		<button id='review_view_btnDelete' class="btn btn-outline-primary mr-2">삭제</button>
+		<button id='review_btnSelect' class="btn btn-outline-primary">목록</button>
 	</div>
 </div>
 <form id='review' name='review' method='post'>
