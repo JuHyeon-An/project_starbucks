@@ -5,6 +5,8 @@
  let cnt = 1;
 let array = [];
 let arrayValue = [];
+let sumArray = [];
+
  function btnFunc(){
 	
 	$('a.nav-link').click(function(){
@@ -144,9 +146,9 @@ let arrayValue = [];
 		
 		array = document.getElementsByName("bestItem");
 		arrayValue = document.getElementsByName("bestItemValue");
-		console.log(array[0].value);
-		console.log(array[1].value);
+		sumArray = document.getElementsByName("totalSum");
 	}
+	
 	
 }// end of btnFunc
 

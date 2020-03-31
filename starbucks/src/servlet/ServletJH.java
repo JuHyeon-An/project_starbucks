@@ -206,6 +206,9 @@ public class ServletJH extends HttpServlet{
 		
 		req.setAttribute("pList", list);
 		
+		List<Integer> sum = dao.totalSales();
+		req.setAttribute("sum", sum);
+		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
