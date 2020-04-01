@@ -213,10 +213,12 @@ public class MyServlet extends HttpServlet{
 	
 	// 상품 상세페이지에서 주문처리 
 	public void singleOrder (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
 		
 		String totPrice = req.getParameter("totPrice");
 		String itemTitle = req.getParameter("itemTitle");
 		//int ea = Integer.parseInt(req.getParameter("itemEa"));
+		String itemCode = req.getParameter("item_code");
 		
 		System.out.println("itemEa" + req.getParameter("itemEa"));
 		OrderDaoJE dao = new OrderDaoJE();
