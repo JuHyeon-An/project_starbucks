@@ -78,9 +78,6 @@
 								test="${vo.orderStatus eq 2}">승인대기</c:if> <c:if
 								test="${vo.orderStatus eq 3 }">주문완료</c:if></td>
 
-
-						
-
 					</tr>
 
 				</c:forEach>
