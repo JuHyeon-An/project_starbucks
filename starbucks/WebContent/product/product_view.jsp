@@ -148,7 +148,7 @@
                 <td>${rVo.review_like }/5</td>
                 <td>${rVo.review_title }</td>
                 <td>${rVo.member_id }</td>
-                <td>${rVo.review_regdate }</td>
+                <td>${rVo.review_regdate }</td> 
                 <td>${rVo.reivew_view }</td>
             </tr>
         </c:forEach>
