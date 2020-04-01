@@ -44,11 +44,8 @@
 
 
 
-<<<<<<< HEAD
 					<tr id='order' name='order'>
-=======
 					<tr id='order'>
->>>>>>> 235aaf5eb7f3331cd0bf772ee4c69432d8a669c6
 
 						<td><input type='text' name='orderNumber' id='orderNumber'
 							value='${param.orderNumber}'style='background-color: transparent; border: none; color: aliceblue;'   readonly /></td>
@@ -64,7 +61,6 @@
 							value='${param.orderregDate  }'style='background-color: transparent; border: none; color: aliceblue;' readonly /></td>
 						
 					
-<<<<<<< HEAD
 						<td><select name='orderStatus' id='orderStatus'>
 							<option value='1'
 									 <c:if test="${param.orderStatus eq '1'}">selected</c:if>>주문취소</option> 
@@ -72,16 +68,6 @@
 									<c:if test="${param.orderStatus eq '2'}">selected</c:if>>승인대기</option>
 								<option value='3'
 									<c:if test="${param.orderStatus eq '3'}">selected</c:if>>주문완료</option>
-=======
-						<td><select name='orderStatus2' id='orderStatus2'>
-								<option value='1' 
-									<c:if test="${param.orderStatus2 eq '1' }"> selected </c:if>>주문취소</option>
-								<option value='2' 
-									<c:if test="${param.orderStatus2 eq '2' }"> selected </c:if>>승인대기
-								</option>
-								<option value='3' 
-									<c:if test="${param.orderStatus2 eq '3' }"> selected </c:if>>주문완료</option>
->>>>>>> 235aaf5eb7f3331cd0bf772ee4c69432d8a669c6
 								<!-- 1 주문취소 2 승인대기 3 주문완료 -->
 
 						</select></td>
