@@ -63,11 +63,11 @@
 					
 						<td><select name='orderStatus' id='orderStatus'>
 							<option value='1'
-									 <c:if test="${param.orderStatus eq '1'}">selected</c:if>>주문취소</option> 
+									 <c:if test="${param.orderStatus2 eq '1'}">selected</c:if>>주문취소</option> 
 							<option value='2'
-									<c:if test="${param.orderStatus eq '2'}">selected</c:if>>승인대기</option>
+									<c:if test="${param.orderStatus2 eq '2'}">selected</c:if>>승인대기</option>
 								<option value='3'
-									<c:if test="${param.orderStatus eq '3'}">selected</c:if>>주문완료</option>
+									<c:if test="${param.orderStatus2 eq '3'}">selected</c:if>>주문완료</option>
 								<!-- 1 주문취소 2 승인대기 3 주문완료 -->
 
 						</select></td>
