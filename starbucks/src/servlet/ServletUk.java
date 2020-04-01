@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletResponse;
 import bean.DaoUk;
 import bean.NoticeVo;
 import bean.Page;
+import bean.ProductDao_YD;
+import bean.ProductVo;
 import bean.ReviewModify;
 import bean.ReviewUp;
 import bean.ReviewVo;
@@ -117,6 +119,8 @@ public class ServletUk extends HttpServlet{
 		req.setAttribute("list", list);
 		req.setAttribute("page", page);
 		
+		String msg=(String) req.getAttribute("msg");
+		req.setAttribute("msg", msg);
 		
 		String path=url+"?main=./review/review_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
@@ -137,6 +141,11 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String reviewItemCode=req.getParameter("reviewItemCode");
+		ProductDao_YD dao=new ProductDao_YD();
+		ProductVo vo=dao.reviewItemCode(reviewItemCode);
+		
+		req.setAttribute("vo",vo);
 		String path=url+"?main=./review/review_insert.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);

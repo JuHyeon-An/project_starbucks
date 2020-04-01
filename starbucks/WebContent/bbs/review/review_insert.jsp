@@ -8,8 +8,9 @@
   <div class="p-3 p-lg-5 border">
     <div class="form-group row">
       <div class="col-md-6">
-      	<h2 class="text-black">머그이름</h2>
-      	<span>머그사진</span>
+      	<h2 class="text-black">${vo.ITEM_TITLE }</h2>
+      	<span>${vo.ITEM_THUMBNAILIMG }</span>
+      	<span>${vo.ITEM_CONTENT }</span>
       </div>
       <div class="col-md-6">
 <!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 -->
@@ -78,7 +79,7 @@
   </div>
   <input type='text' id='member_id' name='member_id' value='${mId }'/>
   <input type='text' id='review_like' name='review_like'/> 
-  <input type='text' id='item_code' name='item_code' value='MG200330-93'/>
+  <input type='text' id='item_code' name='item_code' value='${param.reviewItemCode }'/>
   <input type='text' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
   <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
   <input type='text' name='findStr' id='findStr' value='${param.findStr }'/>

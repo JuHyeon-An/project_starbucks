@@ -21,6 +21,9 @@ let func=function(){
 	
 	if($('#review_btnSelect')!=null){
 		$('#review_btnSelect').on('click', function(){
+			if($('#review').attr('enctype')!=null){
+				$('#review').attr('enctype','');
+			}	
 			$('#review').attr('action', 'review_select.uk').submit();
 		});
 	}
@@ -33,10 +36,6 @@ let func=function(){
 		$('#review_view_btnDelete').on('click',function(){
 			$('#review').attr('action','review_delete.uk').submit();
 		});
-	}
-	if($('#msg').val()){	
-		console.log($('#msg').val());
-		alam();
 	}
 	/*수정에 별 뿌려주기*/
 	var ccnt = $('#review_like').val();
@@ -106,6 +105,16 @@ let func=function(){
 		  $('.success-box div.text-message').html("<span>" + msg + "</span>");
 		}
 	/*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*/	
+/*메세지 뿌려주기*/
+	if($('#msg').val()){
+		let msg=$('#msg').val();
+		Swal.fire({
+			icon: 'success',
+			title: msg,
+			showConfirmButton: false,
+			timer: 1500
+		});
+	}
 }		
 let goPage=function(nowPage){
 	$('#nowPage').val(nowPage);
@@ -213,7 +222,6 @@ let modify_addImg=function(sysImage){
 /*수정에 이미지 뿌려주고, 이미지 추가 수정 가능하게*/
 let modify_addImgs=function(){
 	let length=$("input[name='target']").length;
-	console.log(length);
 	for(let i=0; i<length; i++){
 			let sysImage=$("input[name='target']").eq(i).attr("value");
 			modify_addImg(sysImage);
@@ -230,5 +238,5 @@ let alam=function(){
 		  title: 'Your work has been saved',
 		  showConfirmButton: false,
 		  timer: 1500
-		})
+		});
 }

@@ -58,7 +58,7 @@
 	                                </label>
 	                            </td>
 	                            <td class="product-thumbnail">
-	                                <img src="./fileFolder/${vo.fileName }" alt="상품이미지" class="img-fluid">
+	                                <img src="/starbucks/fileFolder/${vo.fileName }" alt="상품이미지" class="img-fluid">
 	                            </td>
 	                            <td class="product-name text-left">
 	                                <h2 class="h6 text-black"><a href="">${vo.itemTitle}</a></h2>

@@ -29,7 +29,7 @@
 			<div class='btn-xs mb-2 input-group col-lg-4'>
 	
 	 	
-	 	<select name="orderStatus" id="categorySelect" class="select-custom " onchange="loadsw();">
+	 	<select name="orderStatus" id="categorySelect" class="select-custom " onchange="LoadSelect();" >
 			<option value="">전체</option>
 		  <option value= "1" >주문취소</option>
 		  <option value= "2" >승인대기</option>
@@ -42,7 +42,7 @@
 				<input type='button'
 					value='검색' name='btnSelect' id='btnSelect'
 					class='input-group-text search-span' /> 
-				<input type='text'
+				<input type='hidden'
 					name='nowPage' id='nowPage'
 					value='${empty param.nowPage? 1 : param.nowPage}' />
 					
@@ -118,16 +118,12 @@
 		<input type='hidden' name='orderregDate' id='orderregDate' />
 		<input type='hidden' name='orderStatus' id='orderStatus' />
 		
-		<input type="text" value="${page.nowPage }"/>
-		<input type="text" value="${page.totPage }"/>
-		<input type="text" value="${page.endPage }"/>
-		<input type="text" value="${page.startPage }"/>	</form>
+		</form>
 </div>
 	<script>
 func();
 $('#orderNav').addClass('active');
-console.log(<%=request.getParameter("list")%>);
-console.log(<%=request.getParameter("page")%>);
+
 </script>
 </body>
 </html>

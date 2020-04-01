@@ -121,7 +121,17 @@
                                             </tr>
                                         </c:forEach>
                                         </c:if>
-                                        
+                                        <c:if test="${empty list}">
+                                        	<tr>
+                                                <td>${itemTitle } <strong class="mx-2">x</strong>${ea }</td>
+                                                <td>${totPrice }</td>
+                                                
+                                                <input type="hidden" name="itemCode_0" value="${itemCode }" />
+                                                <input type="hidden" name="itemEa_0" value="${ea }" />
+                                                <input type="hidden" name="price_0" value="${totPrice }" />
+                                               	
+                                            </tr>
+                                        </c:if>
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>Point</strong></td>
                                             <td class="text-black" id="discountCash"><strong class="mx-2">-</strong></td>

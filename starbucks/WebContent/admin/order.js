@@ -19,7 +19,6 @@ let func = function() {
 let goPage = function(nowPage) {
 	$('#nowPage').val(nowPage);
 	//$('#frmm').attr('action', 'order.order').submit();
-	
 	loadsw();
 }
 
@@ -35,7 +34,22 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 	$('#frmm').attr('action', 'order_view.order').submit();
 }
 
+function LoadSelect(){ //다른페이지에서 페이지 초기화
+	$('#nowPage').val('');
+	loadsw();
+}
+
 function loadsw(){
+//	if($('#categorySelect').selectedIndex == 0){
+//		$('#nowPage').val(1);
+//	
+//	}
+//	if($('categorySelect').isChanged){
+//		$('#nowPage').val();
+//	}	
+//	$('#nowPage').val('');
+	 
+	
 	 let findStr = $('#findStr').val().toUpperCase();
 	 let orderstatus = $('#categorySelect').val();
 	 let nowPage =  $('#nowPage').val();
