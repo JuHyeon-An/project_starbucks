@@ -53,7 +53,7 @@
 </div>
 <form id='review' name='review' method='post'>
 	<input type='hidden' name='findStr' value='${param.findStr }' /> 
-	<input type='hidden' name='nowPage' value='${param.nowPage }' />
+	<input type='text' name='nowPage' value='${param.nowPage }' />
 	<input type='hidden' name='review_postnum' value='${vo.review_postnum }' /> 
 </form>
 

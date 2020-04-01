@@ -78,7 +78,7 @@
                 <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
               </div>
               
-              <input id='itemEa' name="itemEa" type="text" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
+              <input id='itemEa' name="itemEa" type="button" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               
               <div class="input-group-append">
                 <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
@@ -112,11 +112,13 @@
         </div>
       </div>
     </div>
+    		
+    		<input type="hidden" name="itemEaVal" id="itemEaVal" value="1" />
            	<input type="hidden" name="itemTitle" value="${vo.item_title }" />
 	        <input type="hidden" name="fileName" value="${vo.item_thumbnailimg }" />
             <input type="hidden" name="mId" value="${mId }" />
             <input type="hidden" id="oriPrice" name='oriPrice' value='${vo.item_price }' />
-            <input type="hidden" id="totPrice" value='' />
+            <input type="hidden" id="totPrice" name="totPrice" value='' />
             <input type="hidden" name="item_code" value='${vo.item_code }' />
             <input type="hidden" name="review_postnum" id="review_postnum" />
 			<input type="hidden" name="nowPage" id="nowPage" />
@@ -204,6 +206,7 @@ $(function(){
 	
 	var mId = view_frm.mId.value;
 	
+	$("#totPrice").val($("#cartTotPriceHd").html());
 	$("#totPrice").val($("#price").html());
 	$("#btnAddToCart").click(function () {
         cart_go('cart');

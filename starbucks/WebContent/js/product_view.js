@@ -4,6 +4,8 @@ let priceplus = function(){
 	let oriprice = parseInt($('#oriPrice').val());
 		
 	$('#price').text(price+oriprice);
+	$('#totPrice').val(price+oriprice);
+	$("#itemEaVal").val($("#itemEa").val());
 
 }
 let priceminus = function(){
@@ -15,6 +17,8 @@ let priceminus = function(){
 	$('#price').text(price-oriprice);
 	$('#totPrice').val(price-oriprice);
 	$('#itemEa').text(ea-oriea);
+	
+	$("#itemEaVal").val($("#itemEa").val());
 }
 
 let alert_login = function(){

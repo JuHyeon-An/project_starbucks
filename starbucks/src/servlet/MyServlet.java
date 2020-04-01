@@ -143,7 +143,7 @@ public class MyServlet extends HttpServlet{
 		String fileName = req.getParameter("fileName");
 		String itemCode = req.getParameter("item_code");
 		int price = Integer.parseInt(req.getParameter("oriPrice"));
-		int itemEa = Integer.parseInt(req.getParameter("itemEa"));
+		int itemEa = Integer.parseInt(req.getParameter("itemEaVal"));
 		
 		int totPrice = price*itemEa;
 		
@@ -155,6 +155,9 @@ public class MyServlet extends HttpServlet{
 		
 		
 		req.setAttribute("result", result);
+		
+		System.out.println("result : " + result);
+		
 		String path = url + "/item_view.pl";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp); 
@@ -213,19 +216,26 @@ public class MyServlet extends HttpServlet{
 	
 	// 상품 상세페이지에서 주문처리 
 	public void singleOrder (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		req.setCharacterEncoding("UTF-8");
+		
+		String cartTotalPrice = req.getParameter("totPrice");
 		
 		String totPrice = req.getParameter("totPrice");
 		String itemTitle = req.getParameter("itemTitle");
-		//int ea = Integer.parseInt(req.getParameter("itemEa"));
+		int ea = Integer.parseInt(req.getParameter("itemEaVal"));
+		String itemCode = req.getParameter("item_code");
 		
-		System.out.println("itemEa" + req.getParameter("itemEa"));
+		System.out.println("itemEa" + req.getParameter("itemEaVal"));
+		System.out.println("totPrice" + req.getParameter("totPrice"));
+		System.out.println("item_code" + req.getParameter("item_code"));
 		OrderDaoJE dao = new OrderDaoJE();
 		OrderVo vo = new OrderVo();
 		vo = dao.view(req.getParameter("mId"));
 		
+		req.setAttribute("cartTotalPrice", cartTotalPrice);
 		req.setAttribute("itemTitle", itemTitle);
 		req.setAttribute("totPrice", totPrice);
-		//req.setAttribute("ea", ea);
+		req.setAttribute("ea", ea);
 		req.setAttribute("vo", vo);
 		
 		String path = url + "?my=./order.jsp";

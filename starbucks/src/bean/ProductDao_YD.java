@@ -259,6 +259,48 @@ public class ProductDao_YD {
 			return list;
 		}
 	}
+	public ProductVo reviewItemCode(String findStr){
+		ProductVo vo = new ProductVo();
+		
+		String sql = null;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		
+		try {
+			sql = " select * FROM itemboard where item_code = ? ";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, findStr);
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				vo.setItem_code(rs.getString("ITEM_CODE"));
+				vo.setItem_postnum(rs.getInt("ITEM_POSTNUM"));
+				vo.setItem_group(rs.getString("ITEM_GROUP"));
+				vo.setItem_title(rs.getString("ITEM_TITLE"));
+				vo.setItem_content(rs.getString("ITEM_CONTENT"));
+				vo.setItem_savedmoney(rs.getInt("ITEM_SAVEDMONEY"));
+				vo.setItem_theme(rs.getString("ITEM_THEME"));
+				vo.setItem_size(rs.getString("ITEM_SIZE"));
+				vo.setItem_price(rs.getInt("ITEM_PRICE"));
+				vo.setItem_num(rs.getInt("ITEM_NUM"));
+				vo.setItem_mainimg(rs.getString("ITEM_MAINIMG"));
+				vo.setItem_thumbnailimg(rs.getString("ITEM_THUMBNAILIMG"));
+				vo.setItem_contentimg(rs.getString("ITEM_CONTENTIMG"));
+				vo.setOrder_sumnum(rs.getInt("ORDER_SUMNUM"));
+				vo.setItem_regDate(rs.getString("ITEM_REGDATE"));
+			}
+			
+			rs.close();
+			ps.close();
+			
+		} catch (Exception e) {
+			System.out.println("오류뜸" );
+		} finally {
+			
+			return vo;
+		}
+	}
 	
 	
 	//정렬하여 상품 뿌려주기
