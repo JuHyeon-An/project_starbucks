@@ -35,6 +35,16 @@ public class ReviewUp {
 		ReviewVo vo=new ReviewVo();
 		Review_imgs imgs=new Review_imgs();
 		List<String> list2=new ArrayList<String>(); 
+		String sys_img1="";
+		String sys_img2="";
+		String sys_img3="";
+		String sys_img4="";
+		String sys_img5="";
+		
+		
+		
+		
+		
 		DiskFileItemFactory factory=new DiskFileItemFactory();
 		
 		factory.setSizeThreshold(4096);
@@ -68,12 +78,33 @@ public class ReviewUp {
 					case"review_like":
 						vo.setReview_like(Integer.parseInt(value));
 						break;
+					case"1":
+						sys_img1=value;
+						System.out.println(sys_img1);
+						break;
+					case"2":
+						sys_img2=value;
+						System.out.println(sys_img2);
+						break;
+					case"3":
+						sys_img3=value;
+						System.out.println(sys_img3);
+						break;
+					case"4":
+						sys_img4=value;
+						System.out.println(sys_img4);
+						break;
+					case"5":
+						sys_img5=value;
+						System.out.println(sys_img5);
+						break;
 					default: break;
 					}
 				}else {
 					if(fileitem.getSize()>0) { 
 						String filename=fileitem.getName();
 						String sysFile=new Date().getTime()+"-"+filename;
+						System.out.println(sysFile);
 						list2.add(sysFile);
 						File filef=new File(dir+sysFile);
 						fileitem.write(filef);
