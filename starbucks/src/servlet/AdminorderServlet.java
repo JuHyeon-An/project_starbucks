@@ -119,6 +119,7 @@ public class AdminorderServlet extends HttpServlet {
 		OrderDao dao = new OrderDao();
 		String msg ="";
 		vo.setOrderNumber(req.getParameter("orderNumber"));
+		System.out.println(vo.getOrderStatus() + "아니이이이이이이!!!!!!!!!");
 		vo.setOrderStatus(Integer.parseInt(req.getParameter("orderStatus")));
 		System.out.println(vo.getOrderNumber() + "서블릿 오더넘버값" );
 		System.out.println(vo.getOrderStatus() + "서블릿 스테이튜스값");
