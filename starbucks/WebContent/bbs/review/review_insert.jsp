@@ -8,9 +8,9 @@
   <div class="p-3 p-lg-5 border">
     <div class="form-group row">
       <div class="col-md-6">
-      	<h2 class="text-black">${vo.ITEM_TITLE }</h2>
-      	<span>${vo.ITEM_THUMBNAILIMG }</span>
-      	<span>${vo.ITEM_CONTENT }</span>
+      	<h2 class="text-black">${ydVo.item_title }</h2>
+      	<img src='/starbucks/fileFolder/${ydVo.item_mainimg }' style='max-width:300px; max-height:300px;'/>
+      	<span>${ydVo.item_content }</span>
       </div>
       <div class="col-md-6">
 <!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 -->
@@ -73,14 +73,13 @@
         <input type="button" id='review_btnRegist' class="btn btn-primary btn-lg btn-block" value="Review Regist">
       </div>
       <div class="col-lg-6">
-        <input type="button" id='review_btnSelect' class="btn btn-primary btn-lg btn-block" value="Cancel">
+        <input type="button" id='btnOrderList' class="btn btn-primary btn-lg btn-block" value="Cancel" onclick="location.href='orderList.my?mId2=${mId }'"/>
       </div>
     </div>
   </div>
   <input type='text' id='member_id' name='member_id' value='${mId }'/>
-  <input type='text' id='review_like' name='review_like'/> 
   <input type='text' id='item_code' name='item_code' value='${param.reviewItemCode }'/>
-  <input type='text' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
+  <input type='text' id='review_like' name='review_like' />
   <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
   <input type='text' name='findStr' id='findStr' value='${param.findStr }'/>
 </form>
