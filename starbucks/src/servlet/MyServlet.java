@@ -285,7 +285,8 @@ public class MyServlet extends HttpServlet{
 		
 		List<OrderVo> list = new ArrayList<OrderVo>();
 		int result = 0;
-		
+		int serial = 0;
+		int price = 0;
  		int i = 0;
 		while(true) {
 			 
@@ -295,9 +296,13 @@ public class MyServlet extends HttpServlet{
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("mName");
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			if(req.getParameter("serial_"+i) != null && req.getParameter("serial_"+i) != "") {
+				serial = Integer.parseInt(req.getParameter("serial_"+i));
+			}
+			if(req.getParameter("price_"+i) != null && req.getParameter("price_"+i) != "") {
+				price = Integer.parseInt(req.getParameter("price_"+i));
+			}
 			
-			int serial = Integer.parseInt(req.getParameter("serial_"+i));
-			int price = Integer.parseInt(req.getParameter("price_"+i));
 				
 			String orderDt = sdf.format(new Date());
 			int orderStatus = 2;	// 주문처리상태 : 승인대기 설전 
@@ -313,7 +318,7 @@ public class MyServlet extends HttpServlet{
 			}
 			i++;
 		}
-		 
+		  
 		req.setAttribute("list", list);
 		req.setAttribute("result", result);
 		

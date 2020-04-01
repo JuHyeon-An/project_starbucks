@@ -26,11 +26,12 @@ public class ShoppingCartDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			rs = ps.executeQuery();
-			 
+			
 			while(rs.next()) {
 				vo.setmName(rs.getString(1));
 			}
 			
+			System.out.println("mId ???" + mId);
 			// 해당 아이디, 아이템 코드가 일치하는 데이터가 있는지 확인 (중복값 제거)
 			sql = "select * from shoppingBasket where member_id=? and item_code=?";
 			
@@ -42,7 +43,6 @@ public class ShoppingCartDao {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				System.out.println("rs next ????");
 				return 0;
 			}else {
 				sql = "insert into shoppingBasket(basket_serial, member_id, itemEa, item_code, member_name) values(cart_serial_seq.nextval ,?,?,?,?)";
@@ -51,14 +51,10 @@ public class ShoppingCartDao {
 				ps = conn.prepareStatement(sql);
 				
 				ps.setString(1, mId);
-				ps.setString(2, vo.getItemCode());
-				ps.setInt(3, vo.getItemEa());
+				ps.setInt(2, vo.getItemEa());
+				ps.setString(3, vo.getItemCode());
 				ps.setString(4, vo.getmName());
-				
-				System.out.println("mName    - " + mId);
-				System.out.println("getItemCode    - " + vo.getItemCode());
-				System.out.println("getItemEa    - " + vo.getItemEa());
-				System.out.println("getmName    - " + vo.getmName());
+			
 				int r = ps.executeUpdate();
 				
 				if(r>0) {
@@ -74,7 +70,6 @@ public class ShoppingCartDao {
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("여기?????");
 			return 0;
 		}
 		
