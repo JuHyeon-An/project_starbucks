@@ -73,7 +73,6 @@ public class ServletUk extends HttpServlet{
 	}
 
 	public void notice_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("실행됨");
 		String findStr="";
 		int nowPage=1;
 		
@@ -83,7 +82,7 @@ public class ServletUk extends HttpServlet{
 		if(req.getParameter("nowPage")!=null) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
-		
+
 		Page page=new Page(findStr, nowPage);
 		DaoUk dao=new DaoUk();
 		
@@ -144,7 +143,6 @@ public class ServletUk extends HttpServlet{
 		String reviewItemCode=req.getParameter("reviewItemCode");
 		ProductDao_YD dao=new ProductDao_YD();
 		ProductVo vo=dao.reviewItemCode(reviewItemCode);
-		System.out.println(vo.getItem_mainimg());
 		
 		req.setAttribute("ydVo",vo);
 		String path=url+"?main=./review/review_insert.jsp";
