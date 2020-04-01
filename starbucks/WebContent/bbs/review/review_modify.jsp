@@ -92,11 +92,6 @@
   <input type='hidden' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
   <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
   <input type='hidden' name='findStr' id='findStr' value='${param.findStr }'/>
-  <input type='text' name='1' id='1' />
-  <input type='text' name='2' id='2' />
-  <input type='text' name='3' id='3' />
-  <input type='text' name='4' id='4' />
-  <input type='text' name='5' id='5' />
 </form>
 <script>
 modify_addImgs();

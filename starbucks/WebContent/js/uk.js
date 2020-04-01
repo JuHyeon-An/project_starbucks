@@ -10,25 +10,11 @@ let func=function(){
 	}
 	if($('#review_btnRegist')!=null){
 		$('#review_btnRegist').on('click',function(){
-			for(i=0; i<$("input[type=file]").length; i++){
-				let src=$("input[type=file]")[i].files[0];
-				if(src!=null){
-					let j=i+1
-					$('#'+j).attr('value',src.name);
-				}
-			}
 			$('#review').attr('action', 'review_insertR.uk').submit();
 		});
 	}
 	if($('#review_btnUpdate')!=null){
 		$('#review_btnUpdate').on('click',function(){
-			for(i=0; i<$("input[type=file]").length; i++){
-				let src=$("input[type=file]")[i].files[0];
-				if(src!=null){
-					let j=i+1
-					$('#'+j).attr('value',src.name);
-				}
-			}
 			$('#review').attr('action','review_modifyR.uk').submit();
 		});
 	}
@@ -167,7 +153,7 @@ let addImg=function(){
 	$img.attr('name','img'+cnt)
 	$img.attr('width', '180px');
 	$img.attr('height','180px');
-	$img.attr('src','/starbucks/img/ukUp.png');
+	$img.attr('src','http://placehold.it/180x180');
 	$div.append($img);
 	
 	let $file=$('<input>');
