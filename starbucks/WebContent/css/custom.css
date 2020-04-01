@@ -403,3 +403,6 @@
 .noLogin{
 	display: none;
 }
+.carousel-control-next, .carousel-control-prev{
+	opacity: 1;
+}

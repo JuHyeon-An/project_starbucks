@@ -69,30 +69,28 @@
                 	<!-- 여기 -->
                 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 					  <div class="carousel-inner">
-					    <div class="carousel-item active">
-					      <img src="…" class="d-block w-100" alt="…">
-					    </div>
-					    <div class="carousel-item">
-					      <img src="…" class="d-block w-100" alt="…">
-					    </div>
-					    <div class="carousel-item">
-					      <img src="…" class="d-block w-100" alt="…">
-					    </div>
+					    
+				   	 	<c:set var="imgs" value="${vo.review_imgs }"/>
+						<c:forEach var="img" items="${imgs.sys_imgs}">
+							${(img==null)? "":"<div class='carousel-item'><img class='d-block w-100' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
+						</c:forEach>
+				      
+					    
 					  </div>
 					  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <i class="fa fa-angle-left fa-3x"></i>
 					    <span class="sr-only">Previous</span>
 					  </a>
 					  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					   <i class="fa fa-angle-right fa-3x"></i>
 					    <span class="sr-only">Next</span>
 					  </a>
 					</div>
                 	<!-- 여기 -->
-                	<c:set var="imgs" value="${vo.review_imgs }"/>
+                	<%-- <c:set var="imgs" value="${vo.review_imgs }"/>
 					<c:forEach var="img" items="${imgs.sys_imgs}">
 						${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
-					</c:forEach>
+					</c:forEach> --%>
                 </td>
                 <td>
                     <span>${vo.review_regdate }</span>
@@ -137,4 +135,8 @@
 	  </div>
 </form>
 
-
+<script>
+$(function(){
+	$(".carousel-item:first-child").addClass("active");
+})
+</script>
