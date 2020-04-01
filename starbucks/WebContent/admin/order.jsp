@@ -24,9 +24,9 @@
 		<h2 class="tm-block-title text-center">Orders List</h2>
 		<div class='row'>
 
-			<div class='col-lg-7'></div>
+			<div class='col-lg-8'></div>
 
-			<div class='btn-xs mb-2 input-group col-lg-5'>
+			<div class='btn-xs mb-2 input-group col-lg-4'>
 	
 	 	
 	 	<select name="orderStatus" id="categorySelect" class="select-custom " onchange="LoadSelect();" >
@@ -48,7 +48,7 @@
 					
 			</div>
 		</div>
-<div id = "tableContainer" class="tm-product-table-containersw">
+<div id = "tableContainer" class="tm-product-table-container">
 		<table id='ordertable' class="table">
 			<thead>
 				<tr>
@@ -77,6 +77,9 @@
 						<td><c:if test="${vo.orderStatus eq 1}">주문취소</c:if> <c:if
 								test="${vo.orderStatus eq 2}">승인대기</c:if> <c:if
 								test="${vo.orderStatus eq 3 }">주문완료</c:if></td>
+
+
+						
 
 					</tr>
 
