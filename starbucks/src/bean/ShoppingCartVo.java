@@ -25,14 +25,14 @@ public class ShoppingCartVo {
 	}   
 	
 	
-	public ShoppingCartVo(String mName, String itemCode, String itemTitle, int itemEa, int totPrice, String mId) {
+	public ShoppingCartVo(String mName, String itemCode, String itemTitle, int itemEa, int totPrice, String mId, int serial) {
 		this.mName = mName;
 		this.itemCode = itemCode;
 		this.itemTitle = itemTitle;
 		this.itemEa = itemEa;
 		this.totPrice = totPrice;
 		this.mId = mId;
-		
+		this.serial = serial;
 	}   
 	
 	public ShoppingCartVo(String mId,String fileName, String itemCode, int price, int itemEa, int totPrice) {

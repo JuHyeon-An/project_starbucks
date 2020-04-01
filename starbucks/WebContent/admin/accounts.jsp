@@ -37,7 +37,7 @@
 						<div class="row">
 							<div class="form-group col-lg-4">
 								<label for="mId">아이디</label> <input id="mId" name="mId"
-									type="text" value="${vo.mId }" readonly class="form-control validate  " />
+									type="text" value="${vo.mId }" readonly class="form-control validate" />
 							</div>
 							<div class="form-group col-lg-4	">
 								<label for="mName">이름</label> <input id="mName" name="mName"

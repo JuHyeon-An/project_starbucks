@@ -107,10 +107,10 @@ public class ServletUk extends HttpServlet{
 	public void review_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String findStr="";
 		int nowPage=1;
-		if(req.getParameter("findStr")!="") {
+		if(req.getParameter("findStr")!="" && req.getParameter("findStr")!=null) {
 			findStr=req.getParameter("findStr");
 		}
-		if(req.getParameter("nowPage")!="" || req.getParameter("nowPage")!=null ) {
+		if(req.getParameter("nowPage")!="" && req.getParameter("nowPage")!=null ) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
 		Page page=new Page(findStr, nowPage);
