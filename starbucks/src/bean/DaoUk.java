@@ -178,14 +178,12 @@ public class DaoUk {
 			pstmt.setString(3, "%"+page.getFindStr()+"%");
 			pstmt.setString(4, "%"+page.getFindStr()+"%");
 			rs=pstmt.executeQuery();
-			
 			if(rs.next()) {
 				totList=rs.getInt("cnt");
 			}
 			
 			page.setTotListSize(totList);
 			page.pageCompute();
-			
 			/*reviewboard*/
 			sql= " select * from( "
 					   + "   select rownum rn, A.*from( "
@@ -204,7 +202,7 @@ public class DaoUk {
 			pstmt.setString(4, "%"+page.getFindStr()+"%");
 			pstmt.setInt(5, page.getStartNo());
 			pstmt.setInt(6, page.getEndNo());
-			rs=pstmt.executeQuery();
+			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ReviewVo vo=new ReviewVo();
 				vo.setReview_postnum(rs.getInt("review_postnum"));
@@ -215,7 +213,6 @@ public class DaoUk {
 				vo.setReview_like(rs.getInt("review_like"));
 				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
 				vo.setReivew_view(rs.getInt("review_view"));
-				
 				/*reivew_imgs*/
 				String sql2= " select * from review_imgs where review_postnum=? ";
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
