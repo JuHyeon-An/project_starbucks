@@ -326,10 +326,10 @@ public class ProductDao {
 		ResultSet rs = null;
 		
 		try {
-				sql = " select sum(order_price), to_char(order_regdate, 'rrrr-mm') regdate \r\n" + 
-						"from shopping_order where order_status = 3 " + 
-						"group by to_char(order_regdate, 'rrrr-mm') " + 
-						"order by to_char(order_regdate, 'rrrr-mm')";
+				sql = "select sum(order_price), to_char(order_regdate, 'rrrr-mm') regdate"   
+						+" from shopping_order where order_status = 3 and to_char(order_regdate, 'rrrr-mm') >='2019-10'"
+						+" group by to_char(order_regdate, 'rrrr-mm')   "
+						+" order by to_char(order_regdate, 'rrrr-mm')";
 				
 				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
