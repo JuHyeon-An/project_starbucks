@@ -229,6 +229,7 @@ public class MyServlet extends HttpServlet{
 		OrderVo vo = new OrderVo();
 		vo = dao.view(req.getParameter("mId"));
 		
+		req.setAttribute("itemCode", itemCode);
 		req.setAttribute("cartTotalPrice", cartTotalPrice);
 		req.setAttribute("itemTitle", itemTitle);
 		req.setAttribute("totPrice", totPrice);
@@ -318,7 +319,7 @@ public class MyServlet extends HttpServlet{
 			}
 			i++;
 		}
-		  
+		req.setAttribute("itemCode", code);
 		req.setAttribute("list", list);
 		req.setAttribute("result", result);
 		
