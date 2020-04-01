@@ -117,7 +117,7 @@ public class AdminorderServlet extends HttpServlet {
 	public void order_modify(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		OrderVo vo = new OrderVo();
 		OrderDao dao = new OrderDao();
-			
+		String msg ="";
 		vo.setOrderNumber(req.getParameter("orderNumber"));
 		vo.setOrderStatus(Integer.parseInt(req.getParameter("orderStatus")));
 		System.out.println(vo.getOrderNumber() + "서블릿 오더넘버값" );
@@ -125,7 +125,13 @@ public class AdminorderServlet extends HttpServlet {
 		
 		  
 		  
-		 String msg = dao.modify(vo);
+		 int r = dao.modify(vo);
+		 if(r>0) {
+			 msg="성공";
+		 }else {
+			 msg="실패";
+		 }
+		 
          req.setAttribute("msg", msg);
 
 			

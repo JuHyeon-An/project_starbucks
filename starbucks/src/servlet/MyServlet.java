@@ -175,7 +175,7 @@ public class MyServlet extends HttpServlet{
 		int ea = 0;
 		int totPrice = 0;
 		int flag = 0;
-		
+		int serial = 0;
 		while(true) {
 			
 			if(req.getParameter("itemTitle_"+i)==null) {
@@ -187,13 +187,13 @@ public class MyServlet extends HttpServlet{
 			itemCode = req.getParameter("itemCode_"+i);
 			title = req.getParameter("itemTitle_"+i);
 			ea = Integer.parseInt(req.getParameter("itemEaVal_"+i));
-			
 			totPrice = Integer.parseInt(req.getParameter("totPriceVal_"+i));
+			serial = Integer.parseInt(req.getParameter("serial_"+i));
 			
 			String mId = req.getParameter("mId");
 			String mName = req.getParameter("mName");
 			if(flag == 1) {
-				ShoppingCartVo cartVo = new ShoppingCartVo(mName, itemCode, title, ea, totPrice, mId);
+				ShoppingCartVo cartVo = new ShoppingCartVo(mName, itemCode, title, ea, totPrice, mId, serial);
 				list.add(cartVo);
 			}
 			
@@ -225,13 +225,11 @@ public class MyServlet extends HttpServlet{
 		int ea = Integer.parseInt(req.getParameter("itemEaVal"));
 		String itemCode = req.getParameter("item_code");
 		
-		System.out.println("itemEa" + req.getParameter("itemEaVal"));
-		System.out.println("totPrice" + req.getParameter("totPrice"));
-		System.out.println("item_code" + req.getParameter("item_code"));
 		OrderDaoJE dao = new OrderDaoJE();
-		OrderVo vo = new OrderVo();
+		OrderVo vo = new OrderVo();  
 		vo = dao.view(req.getParameter("mId"));
 		
+		req.setAttribute("itemCode", itemCode);
 		req.setAttribute("cartTotalPrice", cartTotalPrice);
 		req.setAttribute("itemTitle", itemTitle);
 		req.setAttribute("totPrice", totPrice);
@@ -281,13 +279,15 @@ public class MyServlet extends HttpServlet{
 		String getNm = req.getParameter("getName");
 		String getPhone = req.getParameter("getPhone");
 		
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
 		
 		
 		List<OrderVo> list = new ArrayList<OrderVo>();
 		int result = 0;
-		
+		int serial = 0;
+		int price = 0;
  		int i = 0;
 		while(true) {
 			 
@@ -296,12 +296,15 @@ public class MyServlet extends HttpServlet{
 			}
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("mName");
-			System.out.println("mName : " + mName);
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			if(req.getParameter("serial_"+i) != null && req.getParameter("serial_"+i) != "") {
+				serial = Integer.parseInt(req.getParameter("serial_"+i));
+			}
+			if(req.getParameter("price_"+i) != null && req.getParameter("price_"+i) != "") {
+				price = Integer.parseInt(req.getParameter("price_"+i));
+			}
 			
-			//int serial = Integer.parseInt(req.getParameter("serial_"+i));
-			int price = Integer.parseInt(req.getParameter("price_"+i));
-
+				
 			String orderDt = sdf.format(new Date());
 			int orderStatus = 2;	// 주문처리상태 : 승인대기 설전 
 			
@@ -310,13 +313,13 @@ public class MyServlet extends HttpServlet{
 			OrderDaoJE dao = new OrderDaoJE();
 			result = dao.insert(list);
 			
-			/*if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
+			if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
 				ShoppingCartDao cartDao = new ShoppingCartDao();
 				cartDao.delete(serial); 
-			}*/
+			}
 			i++;
 		}
-		 
+		req.setAttribute("itemCode", code);
 		req.setAttribute("list", list);
 		req.setAttribute("result", result);
 		

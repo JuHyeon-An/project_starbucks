@@ -77,13 +77,15 @@
                    	     삭제
                     </button>
                 </td>
-            
                 
             </tr>
             </c:forEach>
         </tbody>
-    </table>		
-
+    </table>	
+    
+    <%if(session.getAttribute("admin") != null){ %> 
+			<input type="button" class='btn btn-primary offset-10 ' value="입력" />
+     <%}%>
 </div>
     <div class="row">
 	      <div class="col-md-12 text-center">

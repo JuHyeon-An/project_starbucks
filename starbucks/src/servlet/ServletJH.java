@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.FileUpload;
+import bean.OrderVo;
 import bean.ProductDao;
 import bean.ProductSumVo;
 import bean.ProductVo;
@@ -204,17 +205,20 @@ public class ServletJH extends HttpServlet{
 		List<ProductSumVo> list = dao.dashBoard();
 		List<Integer> sum = dao.totalSales();
 		List<ThemeVo> list2 = dao.themeSum();
-		
-		System.out.println("서블릿 : "+list2.get(0).getItem_theme());
-		System.out.println("서블릿 : "+list2.get(0).getSalesSum());
+		List<OrderVo> orderList = dao.selectOrder();
+
+		System.out.println(orderList.get(0).getGetPhone());
 		
 		req.setAttribute("pList", list);
 		req.setAttribute("sum", sum);
 		req.setAttribute("list2", list2);
+		req.setAttribute("orderList", orderList);
 		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}
+	
+	
 	
 }
