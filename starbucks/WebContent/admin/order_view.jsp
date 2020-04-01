@@ -22,7 +22,7 @@
 		<input type='hidden' name='findStr' value='${param.findStr }'id='findStr' /> 
 		<input type='hidden' name='findStr' value='${param.findStr }' /> 
 		<input type='hidden' name='nowPage'	value='${param.nowPage }' />
-		<input type="hidden" id="editMsg" value="${msg }"/>
+		<input type="hidden" id="editMsg2" value="${msg }"/>
 	
 		<div
 			class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
@@ -107,9 +107,9 @@ func();
     }
 })  */ 
 
-if($('#editMsg')!=null){
-	if($('#editMsg').val()=='성공'){
-		$('#editMsg').val('');
+if($('#editMsg2')!=null){
+	if($('#editMsg2').val()=='성공'){
+		$('#editMsg2').val('');
 		Swal.fire({
 			  title: '수정 완료!',
 			  text: "상품이 성공적으로 수정되었습니다.",
@@ -122,12 +122,12 @@ if($('#editMsg')!=null){
 			}).then((result) => {
 			  if (result.value) {
 				  // 확인을 눌렀으면
-			$('#editMsg').val('');
+			$('#editMsg2').val('');
 	}else{
 		location.href="order.order"
 	}
 })
-	}else if($('#editMsg').val()=='실패'){
+	}else if($('#editMsg2').val()=='실패'){
 		Swal.fire({
 			  title: '오류 발생',
 			  text: "상품 수정 중 오류가 발생했습니다. 관리자에게 문의하세요.",
@@ -140,7 +140,7 @@ if($('#editMsg')!=null){
 			}).then((confirm) => {
 				  if (confirm.value) {
 					  // 확인을 눌렀으면
-					  $('#editMsg').val('');
+					  $('#editMsg2').val('');
 		}else{
 			location.href="order.order"
 		}
