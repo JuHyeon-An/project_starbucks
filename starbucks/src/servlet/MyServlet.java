@@ -156,7 +156,7 @@ public class MyServlet extends HttpServlet{
 		
 		req.setAttribute("result", result);
 		
-		System.out.println("result : " + result);
+		
 		
 		String path = url + "/item_view.pl";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
