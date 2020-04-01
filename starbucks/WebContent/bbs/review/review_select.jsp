@@ -37,6 +37,7 @@
 <input type='text' name='review_postnum' id='review_postnum' value='${vo.review_postnum }'/>
 <input type='text' name='msg' id='msg' value='${msg }'/>
 
+
     <div class="site-blocks-table mb-3">
     <table class="table">
         <thead>
@@ -51,7 +52,8 @@
             </tr>
         </thead>
         <tbody>
-        	<c:forEach var="vo" items="${list }">
+        	
+        	<c:forEach var="vo" items="${list }" varStatus="i">
             <tr>
             <tr onclick="review_view('${vo.review_postnum}')">
                 <td class="">
@@ -64,6 +66,29 @@
                     <span>${vo.review_title }</span>
                 </td>
                 <td>
+                	<!-- 여기 -->
+                	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner">
+					    <div class="carousel-item active">
+					      <img src="…" class="d-block w-100" alt="…">
+					    </div>
+					    <div class="carousel-item">
+					      <img src="…" class="d-block w-100" alt="…">
+					    </div>
+					    <div class="carousel-item">
+					      <img src="…" class="d-block w-100" alt="…">
+					    </div>
+					  </div>
+					  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+					    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Previous</span>
+					  </a>
+					  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+					    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+					    <span class="sr-only">Next</span>
+					  </a>
+					</div>
+                	<!-- 여기 -->
                 	<c:set var="imgs" value="${vo.review_imgs }"/>
 					<c:forEach var="img" items="${imgs.sys_imgs}">
 						${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}

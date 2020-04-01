@@ -114,9 +114,19 @@ public class DaoUk {
 			int cnt=pstmt.executeUpdate();
 			
 			if(cnt>0) {
+				conn.commit();
 				sql2= " insert into review_imgs values(seq_review_postnum.currval,?,?,?,?,?) ";
 				pstmt2=conn.prepareStatement(sql2);
 				
+				if(vo.getReview_imgs()==null) {
+					List<String> list=new ArrayList<String>();
+					for(int i=0; i<5; i++) {
+						list.add(null);
+					}
+					Review_imgs imgs=new Review_imgs();
+					imgs.setSys_imgs(list);
+					vo.setReview_imgs(imgs);
+				}
 				Review_imgs imgs=vo.getReview_imgs();
 				List<String> list2=imgs.getSys_imgs();
 				for(int i=0; i<list2.size(); i++) {
@@ -222,12 +232,9 @@ public class DaoUk {
 					imgs.setSys_imgs(list2);
 					vo.setReview_imgs(imgs);
 				}
+				vo.setTotList(totList);
 				list.add(vo);
-				conn.commit();
 			}
-		rs.close();
-		pstmt.close();
-		conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -326,7 +333,6 @@ public class DaoUk {
 			}
 		rs.close();
 		pstmt.close();
-		conn.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -392,14 +398,11 @@ public class DaoUk {
 			if(r>0) {
 				msg=" 리뷰가 수정되었습니다. ";
 				
-				
-				
 				Review_imgs imgs=vo.getReview_imgs();
 				List<String> list=imgs.getSys_imgs();
 				List<String> fileImageName=vo.getList();
 				Review_imgs dbImgs=getImgs(vo.getReview_postnum());
 				List<String> dbList=dbImgs.getSys_imgs();
-
 				for(int i=0; i<list.size(); i++) {
 					String img=list.get(i);
 					String file=fileImageName.get(i);
@@ -414,9 +417,8 @@ public class DaoUk {
 						pstmt1.setInt(2, vo.getReview_postnum());
 						int r1=pstmt1.executeUpdate();
 						conn.commit();
-						pstmt1.close();
-						if(dbList.get(5)!=null) {
-							String dbImg1=dbList.get(1);
+						if(dbList.get(0)!=null) {
+							String dbImg1=dbList.get(0);
 							File filef1=new File(review_img+dbImg1);
 							if(filef1.exists()) {
 								filef1.delete();
@@ -430,9 +432,8 @@ public class DaoUk {
 						pstmt2.setInt(2, vo.getReview_postnum());
 						int r2=pstmt2.executeUpdate();
 						conn.commit();
-						pstmt2.close();
-						if(dbList.get(2)!=null) {
-							String dbImg2=dbList.get(2);
+						if(dbList.get(1)!=null) {
+							String dbImg2=dbList.get(1);
 							File filef2=new File(review_img+dbImg2);
 							if(filef2.exists()) {
 								filef2.delete();
@@ -446,8 +447,7 @@ public class DaoUk {
 						pstmt3.setInt(2, vo.getReview_postnum());
 						int r3=pstmt3.executeUpdate();
 						conn.commit();
-						pstmt3.close();
-						if(dbList.get(3)!=null) {
+						if(dbList.get(2)!=null) {
 							String dbImg3=dbList.get(2);
 							File filef3=new File(review_img+dbImg3);
 							if(filef3.exists()) {
@@ -462,9 +462,8 @@ public class DaoUk {
 						pstmt4.setInt(2, vo.getReview_postnum());
 						int r4=pstmt4.executeUpdate();
 						conn.commit();
-						pstmt4.close();
-						if(dbList.get(4)!=null) {
-							String dbImg4=dbList.get(4);
+						if(dbList.get(3)!=null) {
+							String dbImg4=dbList.get(3);
 							File filef4=new File(review_img+dbImg4);
 							if(filef4.exists()) {
 								filef4.delete();
@@ -478,9 +477,8 @@ public class DaoUk {
 						pstmt5.setInt(2, vo.getReview_postnum());
 						int r5=pstmt5.executeUpdate();
 						conn.commit();
-						pstmt5.close();
-						if(dbList.get(5)!=null) {
-							String dbImg5=dbList.get(5);
+						if(dbList.get(4)!=null) {
+							String dbImg5=dbList.get(4);
 							File filef5=new File(review_img+dbImg5);
 							if(filef5.exists()) {
 								filef5.delete();
@@ -564,8 +562,6 @@ public class DaoUk {
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
 				pstmt2.setInt(1, vo.getReview_postnum());
 				ResultSet rs2=pstmt2.executeQuery();
-				rs2.close();
-				pstmt2.close();
 				if(rs2.next()) {
 					Review_imgs imgs=new Review_imgs();
 					List<String> list2=new ArrayList<String>();
@@ -577,11 +573,7 @@ public class DaoUk {
 					imgs.setSys_imgs(list2);
 					vo.setReview_imgs(imgs);
 				}
-				conn.commit();
-				list.add(vo);
 			}
-		rs.close();
-		pstmt.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
