@@ -44,7 +44,6 @@
 
 
 
-					<tr id='order' name='order'>
 					<tr id='order'>
 
 						<td><input type='text' name='orderNumber' id='orderNumber'
