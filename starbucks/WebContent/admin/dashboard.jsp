@@ -122,17 +122,17 @@
 	</div>
 	<form id="dashFrm" name="dashFrm">
 	<c:forEach var="item" items="${pList }">
-	<input type="hidden" name="bestItem" value="${item.item_title }"/>
-	<input type="hidden" name="bestItemValue" value="${item.order_sumnum }"/>
+	<input type="text" name="bestItem" value="${item.item_title }"/>
+	<input type="text" name="bestItemValue" value="${item.order_sumnum }"/>
 	</c:forEach>
 	
-	<c:forEach var="item" items="${sum }">
-	<input type="hidden" name="totalSum" value="${item }"/>
+	<c:forEach var="text" items="${sum }">
+	<input type="text" name="totalSum" value="${item }"/>
 	</c:forEach>
 	
 	<c:forEach var="item" items="${list2 }">
-	<input type="hidden" name="themeSum" value="${item.item_theme }"/>
-	<input type="hidden" name="themeSumValue" value="${item.salesSum}"/>
+	<input type="text" name="themeSum" value="${item.item_theme }"/>
+	<input type="text" name="themeSumValue" value="${item.salesSum}"/>
 	</c:forEach>
 	
 	</form>

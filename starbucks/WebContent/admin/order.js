@@ -47,7 +47,7 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 	$('#orderNum').val(orderNum);
 	$('#orderPrice').val(orderPrice);
 	$('#orderregDate').val(orderregDate);
-	$('#orderStatus').val(orderStatus);
+	$('#orderStatus2').val(orderStatus);
 	$('#frmm').attr('action', 'order_view.order').submit();
 }
 

@@ -399,7 +399,7 @@ public class ProductDao {
 //				vo.setMemberEmail(rs.getString("MEMBER_EMAIL"));
 				vo.setOrderNum(rs.getInt("ORDER_NUM")); // 수량
 				vo.setOrderPrice(rs.getInt("ORDER_PRICE")); // 결제금액
-				vo.setGetAddress(rs.getString("GET_ADDRESS")); //주소
+				vo.setGetAddress(rs.getString("MEMBER_ADDR1")); //주소
 				vo.setOrderregDate(rs.getString("ORDER_REGDATE")); //주문일자
 				vo.setOrderStatus(rs.getInt("ORDER_STATUS")); // 주문상태
 				orderList.add(vo);
