@@ -131,10 +131,10 @@ public class ProductListServlet extends HttpServlet{
 		String findStr = "";
 		int nowPage=1;
 
-		if(req.getParameter("nowPage")!=null) {
+		if(req.getParameter("nowPage")!=null && req.getParameter("nowPage")!= "" ) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
-		if(req.getParameter("pd_findStr") != null) {
+		if(req.getParameter("pd_findStr") != null && req.getParameter("pd_findStr") != "") {
 			findStr = req.getParameter("pd_findStr");
 		}
 		

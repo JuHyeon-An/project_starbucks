@@ -188,7 +188,7 @@ public class MyServlet extends HttpServlet{
 			totPrice = Integer.parseInt(req.getParameter("totPriceVal_"+i));
 			
 			String mId = req.getParameter("mId");
-			String mName = req.getParameter("mName_"+i);
+			String mName = req.getParameter("mName");
 			if(flag == 1) {
 				ShoppingCartVo cartVo = new ShoppingCartVo(mName, itemCode, title, ea, totPrice, mId);
 				list.add(cartVo);
@@ -216,12 +216,16 @@ public class MyServlet extends HttpServlet{
 		
 		String totPrice = req.getParameter("totPrice");
 		String itemTitle = req.getParameter("itemTitle");
-		int ea = Integer.parseInt(req.getParameter("itemEa"));
+		//int ea = Integer.parseInt(req.getParameter("itemEa"));
 		
+		System.out.println("itemEa" + req.getParameter("itemEa"));
 		OrderDaoJE dao = new OrderDaoJE();
 		OrderVo vo = new OrderVo();
 		vo = dao.view(req.getParameter("mId"));
 		
+		req.setAttribute("itemTitle", itemTitle);
+		req.setAttribute("totPrice", totPrice);
+		//req.setAttribute("ea", ea);
 		req.setAttribute("vo", vo);
 		
 		String path = url + "?my=./order.jsp";
@@ -276,12 +280,12 @@ public class MyServlet extends HttpServlet{
 		
  		int i = 0;
 		while(true) {
-			
+			 
 			if(req.getParameter("itemCode_"+i)==null) {
 				break;
 			}
 			code = req.getParameter("itemCode_"+i);
-			String mName = req.getParameter("memberNm_"+i);
+			String mName = req.getParameter("mName");
 			System.out.println("mName : " + mName);
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
 			
