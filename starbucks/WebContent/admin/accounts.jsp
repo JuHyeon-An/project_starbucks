@@ -17,11 +17,10 @@
 </head>
 
 <form name='frm' id='frmm' method='post'>
-	<input type='hidden' name='findStr' value='${param.findStr }'
-		id='findStr' /> <input type='hidden' name='findStr'
-		value='${param.findStr }' /> <input type='hidden' name='nowPage'
-		value='${param.nowPage }' />
-
+	<input type='hidden' name='findStr' value='${param.findStr }'id='findStr' />
+	<input type='hidden' name='findStr' value='${param.findStr }' /> 
+	<input type='hidden' name='nowPage'	value='${param.nowPage }' />
+	<input type="hidden" id="editMsg" value="${msg }"/>
 
 	<div class="container mt-5">
 		<div class="row tm-content-row">
@@ -169,13 +168,53 @@
 		
 		
 		
-		 $(function(){
+/* 		 $(function(){
 		        var responseMessage = "<c:out value="${msg}" />";
 		        if(responseMessage != ""){
 		            alert(responseMessage)
 		        }
-		    }) 
+		    })  */
 
+		    if($('#editMsg')!=null){
+		    	if($('#editMsg').val()=='성공'){
+		    		$('#editMsg').val('');
+		    		Swal.fire({
+		    			  title: '수정 완료!',
+		    			  text: "상품이 성공적으로 수정되었습니다.",
+		    			  icon: 'success',
+		    			  showCancelButton: true,
+		    			  confirmButtonColor: '#3085d6',
+		    			  cancelButtonColor: '#d33',
+		    			  confirmButtonText: '추가수정',
+		    			  cancelButtonText: '목록으로'
+		    			}).then((result) => {
+		    			  if (result.value) {
+		    				  // 확인을 눌렀으면
+		    			$('#editMsg').val('');
+		    	}else{
+		    		location.href="admin.adminmember"
+		    	}
+		    })
+		    	}else if($('#editMsg').val()=='실패'){
+		    		Swal.fire({
+		    			  title: '오류 발생',
+		    			  text: "상품 수정 중 오류가 발생했습니다. 관리자에게 문의하세요.",
+		    			  icon: 'warning',
+		    			  showCancelButton: true,
+		    			  confirmButtonColor: '#3085d6',
+		    			  cancelButtonColor: '#d33',
+		    			  confirmButtonText: '다시 시도',
+		    			  cancelButtonText: '목록으로'
+		    			}).then((confirm) => {
+		    				  if (confirm.value) {
+		    					  // 확인을 눌렀으면
+		    					  $('#editMsg').val('');
+		    		}else{
+		    			location.href="admin.adminmember"
+		    		}
+		    	})
+		    	}
+		    }
 
 	
 		

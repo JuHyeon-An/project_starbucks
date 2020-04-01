@@ -124,7 +124,7 @@ public class AdminmemberServlet extends HttpServlet {
 	public void member_update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		Shopping_MemberVo vo = new Shopping_MemberVo();
 		OrderMemberDao dao = new OrderMemberDao();
-		
+		String msg="";
 		vo.setmId(req.getParameter("mId"));
 		vo.setrDate(req.getParameter("rDate"));
 		//아이디랑 가입날짜 빼고 모두수정가능
@@ -137,8 +137,14 @@ public class AdminmemberServlet extends HttpServlet {
 		vo.setAddr1(req.getParameter("addr1"));
 		vo.setAddr2(req.getParameter("addr2"));
 		
-	  
-		String msg = dao.modify(vo);
+		int r =dao.modify(vo);
+		if(r>0) {
+			msg="성공";
+		}else {
+			msg="실패";
+		}
+		
+		
 		req.setAttribute("msg", msg); //여기가 뷰의 값
 		req.setAttribute("vo", vo);
 		String path=url+"accounts.jsp";

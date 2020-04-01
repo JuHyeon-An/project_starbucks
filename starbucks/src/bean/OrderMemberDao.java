@@ -147,9 +147,9 @@ public class OrderMemberDao {
 	
 	
 	
-	public String modify(Shopping_MemberVo vo) {
+	public int modify(Shopping_MemberVo vo) {
 		System.out.println("modify dao 시작");
-		String msg ="수정됐어요";
+		String msg ="수정완료오!";
 		int r = 0;
 		
 	
@@ -190,7 +190,7 @@ public class OrderMemberDao {
 			
 			System.out.println(msg);
 			
-			return msg;
+			return r;
 		}
 	}
 	
