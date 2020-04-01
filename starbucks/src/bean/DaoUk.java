@@ -564,8 +564,7 @@ public class DaoUk {
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);
 				pstmt2.setInt(1, vo.getReview_postnum());
 				ResultSet rs2=pstmt2.executeQuery();
-				rs2.close();
-				pstmt2.close();
+				
 				if(rs2.next()) {
 					Review_imgs imgs=new Review_imgs();
 					List<String> list2=new ArrayList<String>();

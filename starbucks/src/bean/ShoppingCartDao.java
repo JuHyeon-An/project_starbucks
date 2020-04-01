@@ -43,7 +43,6 @@ public class ShoppingCartDao {
 			rs = ps.executeQuery();
 			
 			if(rs.next()) {
-				System.out.println("rs next ????");
 				return 0;
 			}else {
 				sql = "insert into shoppingBasket(basket_serial, member_id, itemEa, item_code, member_name) values(cart_serial_seq.nextval ,?,?,?,?)";
@@ -52,14 +51,10 @@ public class ShoppingCartDao {
 				ps = conn.prepareStatement(sql);
 				
 				ps.setString(1, mId);
-				ps.setString(2, vo.getItemCode());
-				ps.setInt(3, vo.getItemEa());
+				ps.setInt(2, vo.getItemEa());
+				ps.setString(3, vo.getItemCode());
 				ps.setString(4, vo.getmName());
-				
-				System.out.println("mName    - " + mId);
-				System.out.println("getItemCode    - " + vo.getItemCode());
-				System.out.println("getItemEa    - " + vo.getItemEa());
-				System.out.println("getmName    - " + vo.getmName());
+			
 				int r = ps.executeUpdate();
 				
 				if(r>0) {
@@ -75,7 +70,6 @@ public class ShoppingCartDao {
 			
 		}catch(Exception ex) {
 			ex.printStackTrace();
-			System.out.println("여기?????");
 			return 0;
 		}
 		

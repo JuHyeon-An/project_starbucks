@@ -156,6 +156,7 @@
 </table>
 
 </div>
+<div class="container">
     <div class="row">
 	      <div class="col-md-12 text-center">
 	          <div class="site-block-27">
@@ -175,7 +176,7 @@
 	          </div>
 	      </div>
 	  </div>
-
+</div>
 
 <script>
 let review_view=function(review_postnum){
@@ -217,44 +218,47 @@ $(function(){
 
 <c:if test="${result == 1}">
 	<!-- 장바구니 추가 성공 -->
+	
 	<script>
 	    //장바구니 담기 버튼 클릭 이벤트
-	    //if ($("#btnAddToCart") != null) {
-	        
-	
-	   // $("#btnAddToCart").click(function () {
-	        const swalWithBootstrapButtons = Swal.mixin({
-	            customClass: {
-	                confirmButton: 'swal2-confirm btn btn-primary mb-2',
-	                cancelButton: 'swal2-cancel btn btn-outline-primary mr-2 mb-2'
-	            },
-	            buttonsStyling: false
-	        })
-	
-	        swalWithBootstrapButtons.fire({
-	                title: 'Add To Cart!',
-	                text: "해당 상품이 장바구니에 추가되었습니다!",
-	                icon: 'success',
-	                showCancelButton: true,
-	                confirmButtonText: '장바구니 확인하기 ',
-	                cancelButtonText: '쇼핑 계속하기 ',
-	                reverseButtons: true
-	            }).then((result) => {
-	                if (result.value) {
-	
-	                    // $("#view_frm").attr("action", "cart.my").submit();
-	                    //location.href = '/starbucks/my/cart.my';
-	                    cart_go('cart');
-	                } else(
-	                    /* Read more about handling dismissals below */
-	                    // $("#view_frm").attr("action", "cart.my").submit();
-	                    result.dismiss === Swal.DismissReason.cancel;
-	                    history.back();
-	                )
-	            }) // swal end
-	
-	   		//}) // click end
-	//} // if end
+	    Swal.fire({
+	    	title: 'Add To Cart!',
+            text: "해당 상품이 장바구니에 추가되었습니다!",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: '장바구니 확인하기',
+            cancelButtonText: '쇼핑 계속하기'
+	    }).then((result) => {
+	    	if (result.value) {
+	    		location.href='cart.my?mId2=${mId }'
+              
+            } else(
+            	result.dismiss === Swal.DismissReason.cancel
+                
+            )
+        }) // swal end
+
+        /*
+        Swal.fire({
+	    	title: 'Add To Cart!',
+            text: "해당 상품이 장바구니에 추가되었습니다!",
+            icon: 'success',
+            showCancelButton: true,
+            confirmButtonText: '장바구니 확인하기 ',
+            cancelButtonText: '쇼핑 계속하기 ',
+            reverseButtons: true
+		}).then((result) => {
+			if (result.value) {
+
+             
+                cart_go('cart');
+            } else(
+                
+                result.dismiss === Swal.DismissReason.cancel;
+                history.back();
+            )
+		})
+		*/
 	</script>
 	
 	</c:if>
@@ -267,7 +271,7 @@ $(function(){
 	        title: 'Oops...',
 	        text: '이미 존재하는 상품입니다!'
 	    }).then((result) => {
-            history.back();
+	    	result.dismiss === Swal.DismissReason.cancel
         }) // swal end
 	
 	</script>
