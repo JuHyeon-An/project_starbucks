@@ -117,6 +117,8 @@ public class ServletUk extends HttpServlet{
 		req.setAttribute("list", list);
 		req.setAttribute("page", page);
 		
+		String msg=(String) req.getAttribute("msg");
+		req.setAttribute("msg", msg);
 		
 		String path=url+"?main=./review/review_select.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

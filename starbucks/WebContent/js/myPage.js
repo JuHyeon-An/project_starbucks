@@ -43,8 +43,11 @@ function userInfoUpdate() {
 
         })
     }
-    if($('#btnRegist')!=null){
-		$('#btnRegist').on('click',function(){
+    if($("button[name='btnWrite']")!=null){
+		$("button[name='btnWrite']").on('click',function(){
+			let target=$(this).index();
+			console.log(target);
+			let itemCode=$("input[name='itemCode']").eq(i).attr("value");
 			$('#review').attr('action', 'review_insert.uk').submit();
 		});
 		

@@ -54,8 +54,8 @@ public class ShoppingCartDao {
 				ps = conn.prepareStatement(sql);
 				
 				ps.setString(1, vo.getmId());
-				ps.setInt(2, vo.getItemEa());
-				ps.setString(3, vo.getItemCode());
+				ps.setString(2, vo.getItemCode());
+				ps.setInt(3, vo.getItemEa());
 				ps.setString(4, vo.getmName());
 				
 				int r = ps.executeUpdate();

@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
     
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
-<!DOCTYPE html>
 
 <form name='review' id='review' method='post'> 
     <div class="row">
@@ -34,6 +34,9 @@
          </div>
 	</div> <!-- <div class="row"> -->
 <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+<input type='text' name='review_postnum' id='review_postnum' value='${vo.review_postnum }'/>
+<input type='text' name='msg' id='msg' value='${msg }'/>
+
     <div class="site-blocks-table mb-3">
     <table class="table">
         <thead>

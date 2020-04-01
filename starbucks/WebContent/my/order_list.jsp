@@ -8,7 +8,7 @@
         <div class="col-md-12 mb-3">
             <h2 class="h3 mb-3 text-black">주문내역</h2>
         </div>
-        <form class="col-md-12" name="" >
+        <form class="col-md-12" name="review"  >
         	<input type="hidden" name="mId2" value="${mId }"  />
             <div class="float-md-left">
                 <div class="dropdown mr-1 ml-md-auto">
@@ -35,6 +35,8 @@
                     </div>
                 </div>
             </div>
+
+<input type='text' value='${msg }'/>
         </form>
 
     </div>
@@ -75,6 +77,8 @@
 	                    </td>
 	                    <td>
 	                    	<input type="hidden" name="orderStatus_${i.index }" value="${vo.orderStatus }" />
+	                    	<input type='hidden' name='itemCode' id='itemCode' value='${vo.itemCode }'/>
+	                    	<input type='hidden' name='cnt' id='cnt' value='${vo.itemCode }'/>
 	                    	<c:set var="status" value="${vo.orderStatus }" scope="page"/>
 						    <c:if test="${status == 1}">
 						        <button type="button" class="btn btn-primary btn-sm  disabled" id="btnCancle_${i.index }">
@@ -82,13 +86,13 @@
 		                        </button>
 						    </c:if>
 						    <c:if test="${status == 2}">
-						        <button type="button" class="btn btn-primary btn-sm" id="btnRegist_${i.index }">
+						        <button type="button" class="btn btn-primary btn-sm" id="btnWrite" name='btnWrite'>
 		                            취소요청
 		                        </button>
 						    </c:if>
 						    <c:if test="${status == 3}">
 						        <button type="button" class="btn btn-primary btn-sm" id="btnRegist_${i.index }">
-		                            리뷰작성
+                                              리뷰작성
 		                        </button>
 						    </c:if>
 	                    </td>
@@ -114,10 +118,6 @@
         </div>
     </div>
 </div>
-<form id=review name=review method=post>
-	<input type='hidden' name='item_code' id='item_code' value='1'/><!-- 아이템번호 -->
-	<input type='text' value='${msg }'/>
-</form>
 
     <script>
         $(function () {
