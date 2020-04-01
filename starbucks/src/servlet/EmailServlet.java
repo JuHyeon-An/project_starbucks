@@ -72,15 +72,19 @@ public class EmailServlet extends HttpServlet {
 	public void idFindR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String mName = null;
 		String email = null;
+		
+		System.out.println("아이디 찾기");
+		System.out.println(req.getParameter("mName")+req.getParameter("email"));;
 		if(req.getParameter("mName") != null && req.getParameter("mName") != "") {
 			mName = req.getParameter("mName");
 		}
 		if(req.getParameter("email") != null && req.getParameter("email") != "") {
 			email = req.getParameter("email");
 		}
+		System.out.println(mName + email +"아이디 이멜 확인");
 		EmailDao dao = new EmailDao();
 		Shopping_MemberVo vo = dao.idFind(mName, email);
-		
+		System.out.println("다오다음 이메일"+vo.getmId());
 		if(vo.getmId() != null) {
 			int flag = 1 ; // 아이디 찾는경우
 			String msg = mName+"회원님의 아이디는 [ "+vo.getmId()+" ] 입니다.";
