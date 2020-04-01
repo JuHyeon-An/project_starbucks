@@ -16,8 +16,8 @@ public class ProductDao {
 
 	Connection conn;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
-//	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
+//	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
+	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder";
 	
 	String sql="";
 	
