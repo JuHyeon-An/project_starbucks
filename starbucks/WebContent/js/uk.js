@@ -171,7 +171,7 @@ let addImg=function(){
 			}
 			
 			let fileName=$file.attr('name');
-			if($file.attr('modify')=='no' && fileName!='file4'){
+			if($file.attr('modify')=='no' && fileName!='file5'){
 				addImg();
 			}	
 			$file.attr('modify','yes');

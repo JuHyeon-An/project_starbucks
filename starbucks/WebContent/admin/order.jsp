@@ -116,7 +116,7 @@
 		<input type='hidden' name='orderNum' id='orderNum' />
 		<input type='hidden' name='orderPrice' id='orderPrice' />
 		<input type='hidden' name='orderregDate' id='orderregDate' />
-		<input type='hidden' name='orderStatus' id='orderStatus' />
+		<input type='hidden' name='orderStatus2' id='orderStatus2' />
 		
 		</form>
 </div>

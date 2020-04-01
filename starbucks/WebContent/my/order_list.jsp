@@ -36,8 +36,8 @@
                 </div>
             </div>
 
-<input type='text' id='msg' name='msg' value='${msg }'/>
-<input type='text' id='reviewItemCode' name='reviewItemCode'/>
+<input type='hidden' id='msg' name='msg' value='${msg }'/>
+<input type='hidden' id='reviewItemCode' name='reviewItemCode'/>
 
         </form>
 
@@ -79,7 +79,7 @@
 	                    </td>
 	                    <td>
 	                    	<input type="hidden" name="orderStatus_${i.index }" value="${vo.orderStatus }" />
-	                    	<input type='text' name='itemCode' id='itemCode' value='${vo.itemCode }'/>
+	                    	<input type='hidden' name='itemCode' id='itemCode' value='${vo.itemCode }'/>
 	                    	<input type='hidden' name='cnt' id='cnt' value='${vo.itemCode }'/>
 	                    	<c:set var="status" value="${vo.orderStatus }" scope="page"/>
 						    <c:if test="${status == 1}">

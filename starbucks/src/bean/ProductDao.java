@@ -16,8 +16,8 @@ public class ProductDao {
 
 	Connection conn;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
-//	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
+//	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
+	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder/";
 //	String upload = "c:/Users/JHTA/git/project_starbucks/starbucks/WebContent/fileFolder/";
 	
 	String sql="";
@@ -40,7 +40,7 @@ public class ProductDao {
 			ps.setString(10, vo.getItem_mainimg()); // 메인 이미지 path
 			ps.setString(11, vo.getItem_thumbnailimg()); // 썸네일 이미지 path
 			ps.setString(12, vo.getItem_contentimg()); // contentimg path
-			ps.setInt(13, 10); // 누적판매개수
+			ps.setInt(13, 0); // 누적판매개수
 			ps.setString(14, vo.getItem_regDate()); // 등록날짜
 			ps.setString(15, vo.getItem_status());
 			
@@ -399,7 +399,7 @@ public class ProductDao {
 //				vo.setMemberEmail(rs.getString("MEMBER_EMAIL"));
 				vo.setOrderNum(rs.getInt("ORDER_NUM")); // 수량
 				vo.setOrderPrice(rs.getInt("ORDER_PRICE")); // 결제금액
-				vo.setGetAddress(rs.getString("GET_ADDRESS")); //주소
+				vo.setGetAddress(rs.getString("MEMBER_ADDR1")); //주소
 				vo.setOrderregDate(rs.getString("ORDER_REGDATE")); //주문일자
 				vo.setOrderStatus(rs.getInt("ORDER_STATUS")); // 주문상태
 				orderList.add(vo);

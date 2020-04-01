@@ -203,9 +203,13 @@ public class ServletJH extends HttpServlet{
 		
 		ProductDao dao = new ProductDao();
 		List<ProductSumVo> list = dao.dashBoard();
+		System.out.println("1 : "+list.get(0).getItem_title());
 		List<Integer> sum = dao.totalSales();
+		System.out.println("2 : "+sum.get(0));
 		List<ThemeVo> list2 = dao.themeSum();
+		System.out.println("3 : "+list2.get(0).getItem_theme());
 		List<OrderVo> orderList = dao.selectOrder();
+		System.out.println("4 : "+orderList.get(0).getItemCode());
 
 		System.out.println(orderList.get(0).getGetPhone());
 		

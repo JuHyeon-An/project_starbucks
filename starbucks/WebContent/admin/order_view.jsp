@@ -22,7 +22,7 @@
 		<input type='hidden' name='findStr' value='${param.findStr }'id='findStr' /> 
 		<input type='hidden' name='findStr' value='${param.findStr }' /> 
 		<input type='hidden' name='nowPage'	value='${param.nowPage }' />
-		<input type="hidden" id="editMsg" value="${msg }"/>
+		<input type="hidden" id="editMsg2" value="${msg }"/>
 	
 		<div
 			class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
@@ -44,7 +44,11 @@
 
 
 
+<<<<<<< HEAD
 					<tr id='order' name='order'>
+=======
+					<tr id='order'>
+>>>>>>> 235aaf5eb7f3331cd0bf772ee4c69432d8a669c6
 
 						<td><input type='text' name='orderNumber' id='orderNumber'
 							value='${param.orderNumber}'style='background-color: transparent; border: none; color: aliceblue;'   readonly /></td>
@@ -60,6 +64,7 @@
 							value='${param.orderregDate  }'style='background-color: transparent; border: none; color: aliceblue;' readonly /></td>
 						
 					
+<<<<<<< HEAD
 						<td><select name='orderStatus' id='orderStatus'>
 							<option value='1'
 									 <c:if test="${param.orderStatus eq '1'}">selected</c:if>>주문취소</option> 
@@ -67,6 +72,16 @@
 									<c:if test="${param.orderStatus eq '2'}">selected</c:if>>승인대기</option>
 								<option value='3'
 									<c:if test="${param.orderStatus eq '3'}">selected</c:if>>주문완료</option>
+=======
+						<td><select name='orderStatus2' id='orderStatus2'>
+								<option value='1' 
+									<c:if test="${param.orderStatus2 eq '1' }"> selected </c:if>>주문취소</option>
+								<option value='2' 
+									<c:if test="${param.orderStatus2 eq '2' }"> selected </c:if>>승인대기
+								</option>
+								<option value='3' 
+									<c:if test="${param.orderStatus2 eq '3' }"> selected </c:if>>주문완료</option>
+>>>>>>> 235aaf5eb7f3331cd0bf772ee4c69432d8a669c6
 								<!-- 1 주문취소 2 승인대기 3 주문완료 -->
 
 						</select></td>
@@ -104,10 +119,9 @@ func();
         alert(responseMessage)
     }
 })  */ 
-
-if($('#editMsg')!=null){
-	if($('#editMsg').val()=='성공'){
-		$('#editMsg').val('');
+if($('#editMsg2')!=null){
+	if($('#editMsg2').val()=='성공'){
+		$('#editMsg2').val('');
 		Swal.fire({
 			  title: '수정 완료!',
 			  text: "상품이 성공적으로 수정되었습니다.",
@@ -120,12 +134,12 @@ if($('#editMsg')!=null){
 			}).then((result) => {
 			  if (result.value) {
 				  // 확인을 눌렀으면
-			$('#editMsg').val('');
+			$('#editMsg2').val('');
 	}else{
 		location.href="order.order"
 	}
 })
-	}else if($('#editMsg').val()=='실패'){
+	}else if($('#editMsg2').val()=='실패'){
 		Swal.fire({
 			  title: '오류 발생',
 			  text: "상품 수정 중 오류가 발생했습니다. 관리자에게 문의하세요.",
@@ -138,7 +152,7 @@ if($('#editMsg')!=null){
 			}).then((confirm) => {
 				  if (confirm.value) {
 					  // 확인을 눌렀으면
-					  $('#editMsg').val('');
+					  $('#editMsg2').val('');
 		}else{
 			location.href="order.order"
 		}

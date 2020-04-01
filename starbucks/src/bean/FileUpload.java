@@ -18,9 +18,10 @@ public class FileUpload {
 	// 파일 업로드하는 고유한 기능 갖도록
 	
 //	String upload = "c:/Users/JHTA/git/web1/1907-web/WebContent/upload/";
-	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
-//	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
-	// 업로드되는 경로명 
+//	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
+	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder/";
+	
+	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
 	
