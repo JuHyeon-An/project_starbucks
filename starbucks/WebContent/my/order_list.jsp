@@ -8,7 +8,7 @@
         <div class="col-md-12 mb-3">
             <h2 class="h3 mb-3 text-black">주문내역</h2>
         </div>
-        <form class="col-md-12" name="review"  >
+        <form class="col-md-12" name="review" id='review' method='post' >
         	<input type="hidden" name="mId2" value="${mId }"  />
             <div class="float-md-left">
                 <div class="dropdown mr-1 ml-md-auto">
@@ -36,7 +36,9 @@
                 </div>
             </div>
 
-<input type='text' value='${msg }'/>
+<input type='text' id='msg' name='msg' value='${msg }'/>
+<input type='text' id='reviewItemCode' name='reviewItemCode'/>
+
         </form>
 
     </div>
@@ -77,7 +79,7 @@
 	                    </td>
 	                    <td>
 	                    	<input type="hidden" name="orderStatus_${i.index }" value="${vo.orderStatus }" />
-	                    	<input type='hidden' name='itemCode' id='itemCode' value='${vo.itemCode }'/>
+	                    	<input type='text' name='itemCode' id='itemCode' value='${vo.itemCode }'/>
 	                    	<input type='hidden' name='cnt' id='cnt' value='${vo.itemCode }'/>
 	                    	<c:set var="status" value="${vo.orderStatus }" scope="page"/>
 						    <c:if test="${status == 1}">
@@ -86,12 +88,12 @@
 		                        </button>
 						    </c:if>
 						    <c:if test="${status == 2}">
-						        <button type="button" class="btn btn-primary btn-sm" id="btnWrite" name='btnWrite'>
+						        <button type="button" class="btn btn-primary btn-sm" id="" name=''>
 		                            취소요청
 		                        </button>
 						    </c:if>
 						    <c:if test="${status == 3}">
-						        <button type="button" class="btn btn-primary btn-sm" id="btnRegist_${i.index }">
+						        <button type="button" class="btn btn-primary btn-sm" id="btnWrite" name="btnWrite">
                                               리뷰작성
 		                        </button>
 						    </c:if>

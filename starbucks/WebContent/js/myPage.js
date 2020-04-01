@@ -43,15 +43,23 @@ function userInfoUpdate() {
 
         })
     }
+    /*김관욱이 만든 클릭이벤트*/
     if($("button[name='btnWrite']")!=null){
-		$("button[name='btnWrite']").on('click',function(){
-			let target=$(this).index();
-			console.log(target);
-			let itemCode=$("input[name='itemCode']").eq(i).attr("value");
-			$('#review').attr('action', 'review_insert.uk').submit();
-		});
-		
+    	$("button[name='btnWrite']").on('click',function(){
+    		$ind=$("button[name='btnWrite']").index($(this));
+    		console.log("index::"+$ind);
+    		/*itemCode 밸류 가져오기*/
+    		let itemCode=$("input[name='itemCode']").eq($ind).attr("value");
+    		console.log(itemCode);
+    		reviewItemCode(itemCode);
+    	});
 	}
+}
+/*김관욱이 만든 펑션*/
+let reviewItemCode=function(itemCode){
+	console.log('fung');
+	$('#reviewItemCode').attr('value',itemCode);
+	$('#review').attr('action','review_insert.uk').submit();
 }
 
 

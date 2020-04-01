@@ -582,7 +582,6 @@ public class DaoUk {
 			}
 		rs.close();
 		pstmt.close();
-		conn.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
