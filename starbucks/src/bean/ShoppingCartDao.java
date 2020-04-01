@@ -30,8 +30,6 @@ public class ShoppingCartDao {
 			
 			while(rs.next()) {
 				vo.setmName(rs.getString(1));
-				
-				System.out.println("vo.getName ------ 쇼팡카트 insert " + vo.getmName());
 			}
 			
 			
