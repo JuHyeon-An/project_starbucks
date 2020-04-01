@@ -44,7 +44,7 @@
 
 
 
-					<tr id='order' name='orderl method='post'>
+					<tr id='order' name='order'>
 
 						<td><input type='text' name='orderNumber' id='orderNumber'
 							value='${param.orderNumber}'style='background-color: transparent; border: none; color: aliceblue;'   readonly /></td>
@@ -61,13 +61,12 @@
 						
 					
 						<td><select name='orderStatus' id='orderStatus'>
-								<option value='1'
-									<c:if test="${param.orderStatus eq 1}">selected</c:if>>주문취소</option>
-								<option value='2'
-									<c:if test="${param.orderStatus eq 2}">selected</c:if>>승인대기
-								</option>
+							<option value='1'
+									 <c:if test="${param.orderStatus eq '1'}">selected</c:if>>주문취소</option> 
+							<option value='2'
+									<c:if test="${param.orderStatus eq '2'}">selected</c:if>>승인대기</option>
 								<option value='3'
-									<c:if test="${param.orderStatus eq 3}">selected</c:if>>주문완료</option>
+									<c:if test="${param.orderStatus eq '3'}">selected</c:if>>주문완료</option>
 								<!-- 1 주문취소 2 승인대기 3 주문완료 -->
 
 						</select></td>
@@ -87,8 +86,7 @@
 			<div class="col-2      ">
 
 				<button type="submit"
-					class="btn btn-primary btn-block text-uppercase" id="btnSelect">
-					목록</button>
+					class="btn btn-primary btn-block text-uppercase" id="btnSelect">목록</button>
 			</div>
 		</div>
 	
