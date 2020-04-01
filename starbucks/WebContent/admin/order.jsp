@@ -66,7 +66,7 @@
 				<c:forEach var="vo" items="${list }">
 
 					<tr id='list'
-						onclick="view('${vo.orderNumber}','${vo.memberId }','${vo.itemCode }','${vo.orderNum } ', '${vo.orderPrice}', '${vo.orderregDate}', '${vo.orderStatus}'  )">
+						onclick="view('${vo.orderNumber}','${vo.memberId }','${vo.itemCode }','${vo.orderNum } ', '${vo.orderPrice}', '${vo.orderregDate}', '${vo.orderStatus}'   )">
 
 						<td><b>${vo.orderNumber}</b></td>
 						<td><b>${vo.memberId}</b></td>
@@ -74,9 +74,9 @@
 						<td>${vo.orderNum}</td>
 						<td>${vo.orderPrice}</td>
 						<td>${vo.orderregDate}</td>
-						<td><c:if test="${vo.orderStatus eq 1}">주문취소</c:if> <c:if
-								test="${vo.orderStatus eq 2}">승인대기</c:if> <c:if
-								test="${vo.orderStatus eq 3 }">주문완료</c:if></td>
+						<td><c:if test="${vo.orderStatus eq '1'}">주문취소</c:if> 
+						<c:if  test="${vo.orderStatus eq '2'}">승인대기</c:if> 
+						<c:if  test="${vo.orderStatus eq '3'}">주문완료</c:if></td>
 
 
 						
@@ -116,7 +116,7 @@
 		<input type='hidden' name='orderNum' id='orderNum' />
 		<input type='hidden' name='orderPrice' id='orderPrice' />
 		<input type='hidden' name='orderregDate' id='orderregDate' />
-		<input type='hidden' name='orderStatus' id='orderStatus' />
+		<input type='hidden' name='orderStatus2' id='orderStatus2' />
 		
 		</form>
 </div>

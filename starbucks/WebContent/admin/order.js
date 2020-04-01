@@ -14,23 +14,6 @@ let func = function() {
 			$('#frmm').attr('action', 'modify.order').submit();
 		})
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 let goPage = function(nowPage) {
@@ -47,7 +30,7 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 	$('#orderNum').val(orderNum);
 	$('#orderPrice').val(orderPrice);
 	$('#orderregDate').val(orderregDate);
-	$('#orderStatus').val(orderStatus);
+	$('#orderStatus2').val(orderStatus);
 	$('#frmm').attr('action', 'order_view.order').submit();
 }
 
@@ -86,6 +69,12 @@ function toList(){
 	loadTable();
 }
 
+var test = document.getElementsByClassName("selectTest");
+//test 변수에 selectTest란 클래스명을 가진 요소를 저장
 
+var indexNo = test[0].selectedIndex;
+//test 변수의 선택된 값을 indexNo에 저장
+
+console.log(indexNo);
 
 
