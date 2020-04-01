@@ -40,7 +40,7 @@ public class ProductDao {
 			ps.setString(10, vo.getItem_mainimg()); // 메인 이미지 path
 			ps.setString(11, vo.getItem_thumbnailimg()); // 썸네일 이미지 path
 			ps.setString(12, vo.getItem_contentimg()); // contentimg path
-			ps.setInt(13, 10); // 누적판매개수
+			ps.setInt(13, 0); // 누적판매개수
 			ps.setString(14, vo.getItem_regDate()); // 등록날짜
 			ps.setString(15, vo.getItem_status());
 			
