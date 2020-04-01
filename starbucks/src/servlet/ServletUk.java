@@ -45,9 +45,6 @@ public class ServletUk extends HttpServlet{
 		case"/notice_view.uk":
 			notice_view(req, resp);
 			break;
-		
-		
-		
 		case"/review_select.uk":
 			review_select(req,resp);
 			break;

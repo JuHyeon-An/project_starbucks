@@ -84,7 +84,7 @@
     </table>	
     
     <%if(session.getAttribute("admin") != null){ %> 
-			<input type="button" class='btn btn-primary offset-10 ' value="입력" />
+			<input type="button" class='btn btn-primary offset-10 ' value="입력" onclick="location.href='notice_insert.nn'"/>
      <%}%>
 </div>
     <div class="row">
