@@ -77,7 +77,6 @@
                    	     삭제
                     </button>
                 </td>
-            
                 
             </tr>
             </c:forEach>
@@ -85,7 +84,7 @@
     </table>	
     
     <%if(session.getAttribute("admin") != null){ %> 
-			<input type="button" class='btn btn-primary float-right ' value="입력" />
+			<input type="button" class='btn btn-primary offset-10 ' value="입력" />
      <%}%>
 </div>
     <div class="row">
