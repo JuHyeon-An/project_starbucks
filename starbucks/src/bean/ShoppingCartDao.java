@@ -26,7 +26,7 @@ public class ShoppingCartDao {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			rs = ps.executeQuery();
-			
+			 
 			while(rs.next()) {
 				vo.setmName(rs.getString(1));
 			}
