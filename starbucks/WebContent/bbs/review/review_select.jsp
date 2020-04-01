@@ -33,9 +33,10 @@
             </div>
          </div>
 	</div> <!-- <div class="row"> -->
-<input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-<input type='text' name='review_postnum' id='review_postnum' value='${vo.review_postnum }'/>
-<input type='text' name='msg' id='msg' value='${msg }'/>
+<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+<input type='hidden' name='review_postnum' id='review_postnum' value='${vo.review_postnum }'/>
+<input type='hidden' name='item_code' id='item_code' value='${vo.item_code }'/>
+<input type='hidden' name='msg' id='msg' value='${msg }'/>
 
 
     <div class="site-blocks-table mb-3">
@@ -43,30 +44,24 @@
         <thead>
             <tr>
                 <th class="">no</th>
-                <th class="product-thumbnail">아이디</th>
-                <th class="product-name">제목</th>
                 <th class="product-price">사진</th>
-                <th class="product-quantity">등록일</th>
+                <th class="product-name">제목</th>
                 <th class="product-total">평점</th>
-                <th class="product-remove">-</th>
+                <th class="product-thumbnail">아이디</th>
+                <th class="product-quantity">등록일</th>
+                <th class="product-quantity">조회수</th>
             </tr>
         </thead>
         <tbody>
         	
         	<c:forEach var="vo" items="${list }" varStatus="i">
             <tr>
-            <tr onclick="review_view('${vo.review_postnum}')">
+            <tr>
                 <td class="">
-                    <span>${vo.review_postnum }</span>
-                </td>
-                <td class="product-thumbnail">
-                   <span>${vo.member_id }</span>
-                </td>
-                <td class="product-name text-left">
-                    <span>${vo.review_title }</span>
+                    <a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.review_postnum }</a>
                 </td>
                 <td>
-                	<!-- 여기 -->
+                	<!-- 사진-->
                 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 					  <div class="carousel-inner">
 					    
@@ -74,8 +69,7 @@
 						<c:forEach var="img" items="${imgs.sys_imgs}">
 							${(img==null)? "":"<div class='carousel-item'><img class='d-block w-100' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
 						</c:forEach>
-				      
-					    
+					  <!-- 화살표 --> 
 					  </div>
 					  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
 					    <i class="fa fa-angle-left fa-3x"></i>
@@ -86,26 +80,26 @@
 					    <span class="sr-only">Next</span>
 					  </a>
 					</div>
-                	<!-- 여기 -->
+                	<!-- 사진 예전버전 -->
                 	<%-- <c:set var="imgs" value="${vo.review_imgs }"/>
 					<c:forEach var="img" items="${imgs.sys_imgs}">
 						${(img==null)? "":"<img width='100px' height='100px' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/>"}
 					</c:forEach> --%>
                 </td>
-                <td>
-                    <span>${vo.review_regdate }</span>
+                <td class="product-name text-left">
+                    <a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.review_title }</a>
                 </td>
                 <td>
-                  	<span>${vo.review_like }</span>
+                  	<a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.review_like }</a>
+                </td>
+                <td class="product-thumbnail">
+                   <a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.member_id }</a>
                 </td>
                 <td>
-                  	<span>${vo.reivew_view }</span>
+                    <a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.review_regdate }</a>
                 </td>
                 <td>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-primary btn-sm" id="btnCancle">
-                   	     삭제
-                    </button>
+                  	<a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.reivew_view }</a>
                 </td>
             </tr>
             	

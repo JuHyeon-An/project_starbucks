@@ -133,6 +133,12 @@ public class ServletUk extends HttpServlet{
 		DaoUk dao=new DaoUk();
 		dao.review_view(review_postnum);
 		ReviewVo vo=dao.review_view2(review_postnum);
+		
+		String reviewItemCode=req.getParameter("item_code");
+		ProductDao_YD ydDao=new ProductDao_YD();
+		ProductVo ydVo=ydDao.reviewItemCode(reviewItemCode);
+		
+		req.setAttribute("ydVo",ydVo);
 
 		req.setAttribute("vo", vo);
 		String path=url+"?main=./review/review_view.jsp";
@@ -141,10 +147,10 @@ public class ServletUk extends HttpServlet{
 	}
 	public void review_insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String reviewItemCode=req.getParameter("reviewItemCode");
-		ProductDao_YD dao=new ProductDao_YD();
-		ProductVo vo=dao.reviewItemCode(reviewItemCode);
+		ProductDao_YD ydDao=new ProductDao_YD();
+		ProductVo ydVo=ydDao.reviewItemCode(reviewItemCode);
 		
-		req.setAttribute("ydVo",vo);
+		req.setAttribute("ydVo",ydVo);
 		String path=url+"?main=./review/review_insert.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
@@ -165,9 +171,18 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_modify(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		int review_postnum=0;
+		if(req.getParameter("review_postnum")!=null &&req.getParameter("review_postnum")!="") {
+			review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		}
 		DaoUk dao=new DaoUk();
 		ReviewVo vo=dao.review_view2(review_postnum);
+		
+		String reviewItemCode=req.getParameter("item_code");
+		ProductDao_YD ydDao=new ProductDao_YD();
+		ProductVo ydVo=ydDao.reviewItemCode(reviewItemCode);
+		
+		req.setAttribute("ydVo",ydVo);
 		
 		req.setAttribute("vo", vo);
 		String path=url+"?main=./review/review_modify.jsp";
@@ -189,7 +204,10 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		int review_postnum=0;
+		if(req.getParameter("review_postnum")!=null &&req.getParameter("review_postnum")!="") {
+			review_postnum=Integer.parseInt(req.getParameter("review_postnum"));
+		}
 		DaoUk dao=new DaoUk();
 		String msg=dao.review_delete(review_postnum);
 		

@@ -19,12 +19,6 @@ public class DaoUk {
 	
 	public DaoUk() {
 		conn=DBConn.getConn();
-		try {
-			conn.setAutoCommit(false);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 	}
 	public List<NoticeVo> notice_select(Page page) {
 		List<NoticeVo> list=new ArrayList<NoticeVo>();
