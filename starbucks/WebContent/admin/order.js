@@ -14,6 +14,23 @@ let func = function() {
 			$('#frmm').attr('action', 'modify.order').submit();
 		})
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 let goPage = function(nowPage) {
@@ -68,5 +85,7 @@ function toList(){
 	location.href='select_product.stb';
 	loadTable();
 }
+
+
 
 

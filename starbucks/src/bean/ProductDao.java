@@ -16,8 +16,9 @@ public class ProductDao {
 
 	Connection conn;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
-	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder";
+	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
+//	String upload = "c:/Users/yuope/git/project_starbucks/starbucks/WebContent/fileFolder/";
+//	String upload = "c:/Users/JHTA/git/project_starbucks/starbucks/WebContent/fileFolder/";
 	
 	String sql="";
 	
@@ -375,6 +376,42 @@ public class ProductDao {
 			e.printStackTrace();
 		} finally {
 			return sum;
+		}
+	}
+	
+	public List<OrderVo> selectOrder(){
+		List<OrderVo> orderList = new ArrayList<OrderVo>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		sql = "select * from SHOPPING_ORDER where to_char(ORDER_REGDATE, 'rrrr-mm-dd') = to_char(sysdate, 'rrrr-mm-dd')";
+		try {
+			conn = DBConn.getConn();
+			ps = conn.prepareStatement(sql);
+
+			rs = ps.executeQuery();
+			
+			while(rs.next()) {
+				OrderVo vo = new OrderVo();
+				vo.setOrderNumber(rs.getString("ORDERNUMBER")); // 주문번호
+				vo.setMemberId(rs.getString("MEMBER_ID")); // 아이디
+				vo.setItemCode(rs.getString("ITEM_CODE")); // 아이템코드
+				vo.setGetPhone(rs.getString("GET_PHONE")); // 연락처
+//				vo.setMemberEmail(rs.getString("MEMBER_EMAIL"));
+				vo.setOrderNum(rs.getInt("ORDER_NUM")); // 수량
+				vo.setOrderPrice(rs.getInt("ORDER_PRICE")); // 결제금액
+				vo.setGetAddress(rs.getString("GET_ADDRESS")); //주소
+				vo.setOrderregDate(rs.getString("ORDER_REGDATE")); //주문일자
+				vo.setOrderStatus(rs.getInt("ORDER_STATUS")); // 주문상태
+				orderList.add(vo);
+			}
+			
+			rs.close();
+			ps.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return orderList;
 		}
 	}
 	
