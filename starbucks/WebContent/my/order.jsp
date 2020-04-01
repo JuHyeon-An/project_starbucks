@@ -113,7 +113,7 @@
                                             <tr>
                                                 <td>${list.itemTitle } <strong class="mx-2">x</strong>${list.itemEa }</td>
                                                 <td>${list.totPrice }</td>
-                                                
+                                                <input type="hidden" name="serial_${i.index }" value="${list.serial}" />
                                                 <input type="hidden" name="itemCode_${i.index }" value="${list.itemCode }" />
                                                 <input type="hidden" name="itemEa_${i.index }" value="${list.itemEa }" />
                                                 <input type="hidden" name="price_${i.index }" value="${list.totPrice }" />
@@ -191,7 +191,7 @@
             	$( "#savedMoney" )
             	  .keyup(function() {
             	    var value = Number($( this ).val());
-            	    console.log(value);
+	          	    console.log(value);
             	    
             	    if(savedMoney >= value){
             	    	$( "#memberSavedmoney" ).text( savedMoney - value );

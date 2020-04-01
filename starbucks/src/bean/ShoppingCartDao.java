@@ -31,7 +31,6 @@ public class ShoppingCartDao {
 				vo.setmName(rs.getString(1));
 			}
 			
-			System.out.println("mId ???" + mId);
 			// 해당 아이디, 아이템 코드가 일치하는 데이터가 있는지 확인 (중복값 제거)
 			sql = "select * from shoppingBasket where member_id=? and item_code=?";
 			
