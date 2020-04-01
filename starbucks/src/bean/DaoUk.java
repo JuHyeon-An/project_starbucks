@@ -580,8 +580,7 @@ public class DaoUk {
 				conn.commit();
 				list.add(vo);
 			}
-		rs.close();
-		pstmt.close();
+		
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
