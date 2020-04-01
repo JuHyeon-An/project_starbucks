@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.catalina.Session;
+
 import bean.FileUpload;
 import bean.OrderVo;
 import bean.ProductDao;
@@ -217,6 +219,7 @@ public class ServletJH extends HttpServlet{
 		req.setAttribute("sum", sum);
 		req.setAttribute("list2", list2);
 		req.setAttribute("orderList", orderList);
+
 		
 		String path= urlAdmin+"/dashboard.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
