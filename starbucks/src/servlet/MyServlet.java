@@ -226,7 +226,7 @@ public class MyServlet extends HttpServlet{
 		String itemCode = req.getParameter("item_code");
 		
 		OrderDaoJE dao = new OrderDaoJE();
-		OrderVo vo = new OrderVo();
+		OrderVo vo = new OrderVo();  
 		vo = dao.view(req.getParameter("mId"));
 		
 		req.setAttribute("itemCode", itemCode);
