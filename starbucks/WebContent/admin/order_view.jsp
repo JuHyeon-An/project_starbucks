@@ -142,7 +142,7 @@ if($('#editMsg')!=null){
 					  // 확인을 눌렀으면
 					  $('#editMsg').val('');
 		}else{
-			location.href="select_product.stb"
+			location.href="order.order"
 		}
 	})
 	}

@@ -5,7 +5,6 @@ public class Page {
 	int totListSize;   //검색된 데이터의 총 개수        ->매개변수로 받아옴
 	int nowPage;       //현재페이지                          ->매개변수로 받아옴
 	int listSize=10;    //한 페이지에 목록 개수           ->디폴트값
-	int listSize=7;    //한 페이지에 목록 개수           ->디폴트값
 	int blockSize=5;   //페이지 블럭 개수                  ->디폴트값
 	int totPage;       //전체 페이지                         ->산출됨
 	int startNo;       //페이지의 목록번호 시작 숫자  ->산출됨
