@@ -46,15 +46,18 @@
 </div>
 <div class="row">
 	<div class="col-12 text-right">
-		<button id='btnModify' class="btn btn-outline-primary mr-2">수정</button>
-		<button id='review_view_btnDelete' class="btn btn-outline-primary mr-2">삭제</button>
+		<button id='btnModify' class="btn btn-outline-primary mr-2 noLogin">수정</button>
+		<button id='review_view_btnDelete' class="btn btn-outline-primary mr-2 noLogin">삭제</button>
 		<button id='review_btnSelect' class="btn btn-outline-primary">목록</button>
 	</div>
 </div>
 <form id='review' name='review' method='post'>
 	<input type='hidden' name='findStr' value='${param.findStr }' /> 
-	<input type='text' name='nowPage' value='${param.nowPage }' />
+	<input type='hidden' name='nowPage' value='${param.nowPage }' />
 	<input type='hidden' name='review_postnum' value='${vo.review_postnum }' /> 
+	<input type='hidden' name='mId' id='mId' value='${mId }' />
+	<input type='hidden' name='member_id' id='member_id' value='${vo.member_id }' />
+	
 </form>
 
 
