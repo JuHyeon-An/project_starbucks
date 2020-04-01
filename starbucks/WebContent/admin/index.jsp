@@ -8,7 +8,14 @@
 	if (request.getParameter("cont") != null) {
 		cont = request.getParameter("cont");
 	}
+	
 %>
+
+	<%if(session.getAttribute("aa") == null){ %> 
+          <script> location.href='dashboard.stb';</script>
+          
+     <%} session.setAttribute("aa",1) ;   %>
+     
 <%@include file="../layout/header_admin.jsp"%>
 
 <div id='main_content'>
@@ -16,7 +23,12 @@
 </div>
 <%@include file="../layout/footer_admin.jsp"%>
 
+
+     
+
+     
 <script>
+	
 	btnFunc();
 
 </script>
