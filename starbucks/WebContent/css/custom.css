@@ -396,3 +396,7 @@
 	background-color:#4d6984;
 	color:white;
 }
+.tm-product-table-containersw {
+    max-height: 465px;
+    margin-bottom: 15px;
+}

@@ -24,9 +24,9 @@
 		<h2 class="tm-block-title text-center">Orders List</h2>
 		<div class='row'>
 
-			<div class='col-lg-8'></div>
+			<div class='col-lg-7'></div>
 
-			<div class='btn-xs mb-2 input-group col-lg-4'>
+			<div class='btn-xs mb-2 input-group col-lg-5'>
 	
 	 	
 	 	<select name="orderStatus" id="categorySelect" class="select-custom " onchange="LoadSelect();" >
@@ -48,7 +48,7 @@
 					
 			</div>
 		</div>
-<div id = "tableContainer" class="tm-product-table-container">
+<div id = "tableContainer" class="tm-product-table-containersw">
 		<table id='ordertable' class="table">
 			<thead>
 				<tr>
