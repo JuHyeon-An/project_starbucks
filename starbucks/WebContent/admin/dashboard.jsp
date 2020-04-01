@@ -27,27 +27,30 @@
 	                <h2 class="tm-block-title text-center">Daily Report</h2>
 	                <div class="tm-notification-items" style="height:300px;">
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%""></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" class="rounded-circle" width="100%" height="100%""></div>
 	                        <div class="media-body">
-	                            <p class="mb-2"><b>Jessica</b> and <b>6 others</b> sent you new <a href="#"
-	                                    class="tm-notification-link">product updates</a>. Check new orders.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                            <p class="mb-2"><b>주문완료</b> : <a href="#"
+	                                    class="tm-notification-link">1 </a>건. </p>
+	                                    <h3>21000원</h3>
+	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/money.jpg" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/refund (3).png" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
-	                            <p class="mb-2"><b>Oliver Too</b> and <b>6 others</b> sent you existing <a href="#"
-	                                    class="tm-notification-link">product updates</a>. Read more reports.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                            <p class="mb-2"><b>주문취소</b> : <a href="#"
+	                                    class="tm-notification-link">1 </a>건. </p>
+	                                    <h3>10000원</h3>
+	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
-	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" alt="Avatar Image" class="rounded-circle" width="100%" height="100%"></div>
+	                        <div class="tm-gray-circle"><img src="/starbucks/images/order.jpg" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
-	                            <p class="mb-2"><b>Victoria</b> and <b>6 others</b> sent you <a href="#"
-	                                    class="tm-notification-link">order updates</a>. Read order information.</p>
-	                            <span class="tm-small tm-text-color-secondary">6h ago.</span>
+	                            <p class="mb-2"><b>승인대기</b> : <a href="#"
+	                                    class="tm-notification-link">1 </a>건. </p>
+	                                    <h3>10000원</h3>
+	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
 	                </div>

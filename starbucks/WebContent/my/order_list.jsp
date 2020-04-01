@@ -63,7 +63,7 @@
 	                        <span id="orderRegDate">${vo.orderregDate }</span>
 	                    </td>
 	                    <td class="product-thumbnail">
-	                        <img src="./fileFolder/${vo.productImg }" alt="Image" class="img-fluid">
+	                        <img src="/starbucks/fileFolder/${vo.productImg }" alt="Image" class="img-fluid">
 	                    </td>
 	                    <td class="product-name text-left">
 	                        <a href="" class="text-black" id="itemTitle">${vo.itemTitle }</a>

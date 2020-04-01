@@ -84,7 +84,7 @@
 			                        <span id="orderRegDate_${i.index }">${orderVo.orderregDate }</span>
 			                    </td>
 			                    <td class="product-thumbnail">
-			                        <img src="./fileFolder/${orderVo.productImg }" alt="Image" class="img-fluid">
+			                        <img src="/starbucks/fileFolder/${orderVo.productImg }" alt="Image" class="img-fluid">
 			                    </td>
 			                    <td class="product-name text-left">
 			                        <a href="" class="text-black" id="itemTitle_${i.index }">${orderVo.itemTitle }</a>
