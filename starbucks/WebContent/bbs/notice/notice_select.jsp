@@ -82,8 +82,11 @@
             </tr>
             </c:forEach>
         </tbody>
-    </table>		
-
+    </table>	
+    
+    <%if(session.getAttribute("admin") != null){ %> 
+			<input type="button" class='btn btn-primary float-right ' value="입력" />
+     <%}%>
 </div>
     <div class="row">
 	      <div class="col-md-12 text-center">
