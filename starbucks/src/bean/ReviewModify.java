@@ -91,7 +91,7 @@ public class ReviewModify {
 			
 			imgs.setSys_imgs(list2);
 			vo.setReview_imgs(imgs);
-			vo.setList(list3);
+			/*vo.setList(list3);*/
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
