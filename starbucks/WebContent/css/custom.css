@@ -410,7 +410,6 @@
 .tm-product-table-container-order {
     max-height: 465px;
     margin-bottom: 15px;
-    overflow-y: scroll;
 }
 
 
