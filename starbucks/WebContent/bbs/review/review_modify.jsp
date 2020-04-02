@@ -9,8 +9,9 @@
   <div class="p-3 p-lg-5 border">
     <div class="form-group row">
       <div class="col-md-6">
-      	<h2 class="text-black">머그이름</h2>
-      	<span>img</span>
+      	<h2 class="text-black">${ydVo.item_title }</h2>
+      	<span>${ydVo.item_content }</span>
+      	<img src='/starbucks/fileFolder/${ydVo.item_mainimg }' style='max-width:300px; max-height:300px;'/>
       </div>
       <div class="col-md-6">
 <!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 --><!-- 여기 -->
@@ -87,10 +88,15 @@
   </div>
   <input type='hidden' id='member_id' name='member_id' value='${mId }'/>
   <input type='hidden' id='review_like' name='review_like' value='${vo.review_like }'/> 
-  <input type='text' id='item_code' name='item_code' value='MG200330-93'/>
-  <input type='text' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
-  <input type='text' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-  <input type='text' name='findStr' id='findStr' value='${param.findStr }'/>
+  <input type='hidden' id='item_code' name='item_code' value='MG200330-93'/>
+  <input type='hidden' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
+  <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+  <input type='hidden' name='findStr' id='findStr' value='${param.findStr }'/>
+  <input type='text' name='1' id='1' />
+  <input type='text' name='2' id='2' />
+  <input type='text' name='3' id='3' />
+  <input type='text' name='4' id='4' />
+  <input type='text' name='5' id='5' />
 </form>
 <script>
 modify_addImgs();

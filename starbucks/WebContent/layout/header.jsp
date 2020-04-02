@@ -3,11 +3,11 @@
     <!DOCTYPE html>
     <html lang="en">
     <head>
-    
-        <title>Starbucks shop</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <title>Starbucks shop</title>
+        
+		<link rel="shortcut icon" href="/starbucks/images/favicon.ico" type="image/ico">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
         <link rel="stylesheet" href="/starbucks/fonts/icomoon/style.css">
 
@@ -32,11 +32,11 @@
         
     </head>
     <script>
-   let pd_itmeFind = function(findStr){
+   	let pd_itmeFind = function(findStr){
 	   $('#itmeFindStr').val(findStr);
 	   $('#itmeFind').attr('method', 'post')
 	   $('#itemFind').attr('action', 'itemFind.pl').submit();
-}
+	}
    </script>
 
     
@@ -150,9 +150,5 @@
             </header>
          </div>
          
-<script>
-
-</script>
-
 
          
