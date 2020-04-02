@@ -3,6 +3,7 @@ package servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.catalina.Session;
 
+import bean.DailyReport;
 import bean.FileUpload;
 import bean.OrderVo;
 import bean.ProductDao;
@@ -216,6 +218,19 @@ public class ServletJH extends HttpServlet{
 
 		//System.out.println(orderList.get(0).getGetPhone());
 		
+		List<DailyReport> dr = new ArrayList<DailyReport>();
+		dr = dao.dailyReport();
+
+//		System.out.println("이것만 하고 가자"+dr.get(0).getOrderCnt());
+//		System.out.println("이것만 하고 가자"+dr.get(0).getOrderTotal());
+//		
+//		System.out.println("이것만 하고 가자"+dr.get(1).getOrderCnt());
+//		System.out.println("이것만 하고 가자"+dr.get(1).getOrderTotal());
+//		
+//		System.out.println("이것만 하고 가자"+dr.get(2).getOrderCnt());
+//		System.out.println("이것만 하고 가자"+dr.get(2).getOrderTotal());
+		
+		req.setAttribute("dr", dr);
 		req.setAttribute("pList", list);
 		req.setAttribute("sum", sum);
 		req.setAttribute("list2", list2);

@@ -30,8 +30,8 @@
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" class="rounded-circle" width="100%" height="100%""></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>주문완료</b> : <a href="#"
-	                                    class="tm-notification-link">1 </a>건. </p>
-	                                    <h3>21000원</h3>
+	                                    class="tm-notification-link">${dr[2].orderCnt } </a>건. </p>
+	                                    <h3>${dr[2].orderTotal } 원</h3>
 	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
@@ -39,8 +39,8 @@
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/refund (3).png" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>주문취소</b> : <a href="#"
-	                                    class="tm-notification-link">1 </a>건. </p>
-	                                    <h3>10000원</h3>
+	                                    class="tm-notification-link">${dr[0].orderCnt } </a>건. </p>
+	                                    <h3>${dr[0].orderTotal } 원</h3>
 	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
@@ -48,8 +48,8 @@
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/order.jpg" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>승인대기</b> : <a href="#"
-	                                    class="tm-notification-link">1 </a>건. </p>
-	                                    <h3>10000원</h3>
+	                                    class="tm-notification-link">${dr[1].orderCnt } </a>건. </p>
+	                                    <h3>${dr[1].orderTotal } 원</h3>
 	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
