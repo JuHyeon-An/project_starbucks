@@ -67,7 +67,7 @@
                             <div class="item">
                                 <div class="block-4 text-center" onclick="item_view('<%=vo.getItem_code()%>')"  style="cursor:pointer">
                                     <figure class="block-4-image">
-                                        <img src="./fileFolder/<%=vo.getItem_thumbnailimg() %>" alt="Image placeholder" class="img-fluid">
+                                        <img src="./fileFolder/<%=vo.getItem_mainimg() %>" alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a href="#" ><%=vo.getItem_title() %></a></h3>
@@ -109,7 +109,7 @@
                             <div class="item">
                                 <div class="block-4 text-center" onclick="item_view('<%=vo.getItem_code()%>')"  style="cursor:pointer">
                                     <figure class="block-4-image">
-                                        <img src="./fileFolder/<%=vo.getItem_thumbnailimg() %>" alt="Image placeholder" class="img-fluid">
+                                        <img src="./fileFolder/<%=vo.getItem_mainimg() %>" alt="Image placeholder" class="img-fluid">
                                     </figure>
                                     <div class="block-4-text p-4">
                                         <h3><a href="#" ><%=vo.getItem_title() %></a></h3>

@@ -22,11 +22,17 @@ public class ProductDao {
 	
 	String sql="";
 	
+	
+	
+	
+	public ProductDao() {
+		conn = DBConn.getConn();
+	}
+
 	public String insert(ProductVo vo) {
 		
 		sql = "insert into itemboard values(?||to_char(sysdate,'rrmmdd')||'-'||seq_itemcode.nextval, seq_item_postnum.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		try {
-			conn = DBConn.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getItem_group()); // 자동생성 item_code
 			ps.setString(2, vo.getItem_group()); // selected box에서 가져옴
@@ -71,7 +77,6 @@ public class ProductDao {
 		PreparedStatement ps = null;
 		
 		try {
-			conn = DBConn.getConn();
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, item_code);
 			
@@ -128,7 +133,6 @@ public class ProductDao {
 		sql = "select * from itemboard where item_code = ?";
 		ProductVo vo = new ProductVo();
 		try {
-			conn = DBConn.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, item_code);
 			
@@ -170,7 +174,6 @@ public class ProductDao {
 				+ "item_savedmoney = ?, item_status = ? where item_code = ?";
 		// 누적판매개수만 수정 못 함
 		try {
-			conn = DBConn.getConn();
 			PreparedStatement ps = conn.prepareStatement(sql);
 			
 			ps.setString(1, vo.getItem_title()); // 자동생성 item_code
@@ -236,7 +239,6 @@ public class ProductDao {
 						+ "or item_title like ? )"+addCheck;
 				
 				System.out.println(sql);
-				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
 				
 				ps.setString(1, "%"+productSearch+"%");
@@ -246,7 +248,6 @@ public class ProductDao {
 				sql = " select * from itemboard where (item_code like ? or item_title like ?) "
 						+ "and item_group = ? "+addCheck;
 
-				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
 				
 				ps.setString(1, "%"+productSearch+"%");
@@ -300,7 +301,6 @@ public class ProductDao {
 			
 				sql = " select * from (select item_title, ORDER_SUMNUM from itemboard order by order_sumnum desc) where rownum <= 7";
 				
-				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
 
 				rs = ps.executeQuery();
@@ -331,7 +331,6 @@ public class ProductDao {
 						+" group by to_char(order_regdate, 'rrrr-mm')   "
 						+" order by to_char(order_regdate, 'rrrr-mm')";
 				
-				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
 
 				rs = ps.executeQuery();
@@ -360,7 +359,6 @@ public class ProductDao {
 			
 				sql = "select item_theme, sum(order_sumnum) from itemboard group by item_theme";
 				
-				conn = DBConn.getConn();
 				ps = conn.prepareStatement(sql);
 
 				rs = ps.executeQuery();
@@ -385,7 +383,6 @@ public class ProductDao {
 		ResultSet rs = null;
 		sql = "select * from SHOPPING_ORDER where to_char(ORDER_REGDATE, 'rrrr-mm-dd') = to_char(sysdate, 'rrrr-mm-dd')";
 		try {
-			conn = DBConn.getConn();
 			ps = conn.prepareStatement(sql);
 
 			rs = ps.executeQuery();
@@ -413,6 +410,51 @@ public class ProductDao {
 		}finally {
 			return orderList;
 		}
+	}
+	
+	public List<DailyReport> dailyReport(){
+
+		List<DailyReport> list = new ArrayList<DailyReport>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		try {
+			
+			for(int i=1; i<=3; i++) {
+				DailyReport dr = new DailyReport();
+
+				// 주문완료건 카운트
+				sql = "select count(*) from shopping_order where order_status = ?";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, i);
+				rs = ps.executeQuery();
+				
+				if(rs.next()) {
+					dr.setOrderCnt(rs.getInt(1));
+				}
+				
+				sql = "select sum(order_price) from shopping_order where order_status = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, i);
+				rs = ps.executeQuery();
+				
+				if(rs.next()) {
+					dr.setOrderTotal(rs.getInt(1));
+				}
+				
+				list.add(dr);
+			}
+			
+			rs.close();
+			ps.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return list;
+		}
+		
 	}
 	
 }

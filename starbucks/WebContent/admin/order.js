@@ -18,7 +18,7 @@ let func = function() {
 
 let goPage = function(nowPage) {
 	$('#nowPage').val(nowPage);
-	//$('#frmm').attr('action', 'order.order').submit();
+	// $('#frmm').attr('action', 'order.order').submit();
 	loadsw();
 }
 
@@ -34,47 +34,29 @@ let view = function(orderNumber, memberId, itemCode, orderNum, orderPrice,
 	$('#frmm').attr('action', 'order_view.order').submit();
 }
 
-function LoadSelect(){ //다른페이지에서 페이지 초기화
+function LoadSelect() { // 다른페이지에서 페이지 초기화
 	$('#nowPage').val('');
 	loadsw();
 }
 
-function loadsw(){
-//	if($('#categorySelect').selectedIndex == 0){
-//		$('#nowPage').val(1);
-//	
-//	}
-//	if($('categorySelect').isChanged){
-//		$('#nowPage').val();
-//	}	
-//	$('#nowPage').val('');
-	 
-	
-	 let findStr = $('#findStr').val().toUpperCase();
-	 let orderstatus = $('#categorySelect').val();
-	 let nowPage =  $('#nowPage').val();
-     
-	 /*
-     $('#tableContainer').load('order.order?findStr='+findStr+
-   				'&orderStatus='+orderstatus+'&nowPage='+nowPage+
-   				' #ordertable');
-       */
-     
-     let form_data = $('#frmm').serializeArray();
-     $('#tableContainer').load('order.order #tableContainer', form_data);
+function loadsw() {
+
+	let findStr = $('#findStr').val().toUpperCase();
+	let orderstatus = $('#categorySelect').val();
+	let nowPage = $('#nowPage').val();
+	let form_data = $('#frmm').serializeArray();
+	$('#tableContainer').load('order.order #tableContainer', form_data);
 }
 
-function toList(){
-	location.href='select_product.stb';
+function toList() {
+	location.href = 'select_product.stb';
 	loadTable();
 }
 
 var test = document.getElementsByClassName("selectTest");
-//test 변수에 selectTest란 클래스명을 가진 요소를 저장
+// test 변수에 selectTest란 클래스명을 가진 요소를 저장
 
 var indexNo = test[0].selectedIndex;
-//test 변수의 선택된 값을 indexNo에 저장
+// test 변수의 선택된 값을 indexNo에 저장
 
 console.log(indexNo);
-
-
