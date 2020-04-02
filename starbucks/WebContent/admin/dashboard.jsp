@@ -98,7 +98,7 @@
 	                                		<div class=	"tm-status-circle cancelled"></div>주문취소
 	                                	</c:when>
 										<c:when test="${vo.orderStatus eq '2'}">
-											<div class=	"tm-status-circle pendig"></div>상태대기
+											<div class=	"tm-status-circle pending"></div>승인대기
 										</c:when>
 										<c:when test="${vo.orderStatus eq '3'}">
 											<div class=	"tm-status-circle moving"></div>주문완료
