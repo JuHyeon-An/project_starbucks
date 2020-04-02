@@ -211,9 +211,10 @@ public class ServletJH extends HttpServlet{
 		List<ThemeVo> list2 = dao.themeSum();
 		System.out.println("3 : "+list2.get(0).getItem_theme());
 		List<OrderVo> orderList = dao.selectOrder();
-		System.out.println("4 : "+orderList.get(0).getItemCode());
+		
+		//System.out.println("4 : "+orderList.get(0).getItemCode());
 
-		System.out.println(orderList.get(0).getGetPhone());
+		//System.out.println(orderList.get(0).getGetPhone());
 		
 		req.setAttribute("pList", list);
 		req.setAttribute("sum", sum);
