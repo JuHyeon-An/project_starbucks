@@ -66,7 +66,7 @@
                             <div class="col-6 col-md-4 order-3 order-md-3 text-right">
                                 <div class="site-top-icons">
                                     <ul>
-                                    	<li><a href="/starbucks/admin/">admin</a></li>
+<!--                                     	<li><a href="/starbucks/admin/">admin</a></li> -->
                                     	
                                     	<%if(session.getAttribute("admin") != null){ %> 
                                         		<li><a href="/starbucks/admin/">admin</a></li>

@@ -73,7 +73,7 @@ public class Shopping_MemberDao {
 			           rs.close();
 			            ps.close();
 			            conn.close();
-						return 1; //로그인성공
+						return 1; //고객 로그인성공
 					
 				}else {
 			           rs.close();
