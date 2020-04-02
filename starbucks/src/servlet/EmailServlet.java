@@ -57,7 +57,7 @@ public class EmailServlet extends HttpServlet {
 			break;
 		}
 
-	}
+	} 
 	public void idFind(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String path = url+"/idFind.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
