@@ -57,7 +57,7 @@
                <div class="col-sm-6 col-lg-4 mb-4" data-aos="fade-up" onclick="item_view('${vo.item_code}')">
                 <div class="block-4 text-center border">
                   <figure class="block-4-image">
-                    <a href="#" ><img src="/starbucks/fileFolder/${vo.item_thumbnailimg }" alt="Image placeholder" class="img-fluid"></a>
+                    <a href="#" ><img src="/starbucks/fileFolder/${vo.item_mainimg }" alt="Image placeholder" class="img-fluid"></a>
                     
                   </figure>
                   <div class="block-4-text p-4">
