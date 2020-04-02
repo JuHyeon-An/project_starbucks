@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.NoticeDao;
+import bean.NoticeVo;
+
 @WebServlet("*.nn")
 public class NoticeServlet extends HttpServlet{
 	String url = "/bbs/list.jsp";
@@ -40,8 +43,15 @@ public class NoticeServlet extends HttpServlet{
 	}
 	
 	public void notice_insert(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String msg = "";
+		NoticeVo vo = new NoticeVo();
+		NoticeDao dao = new NoticeDao();
+		//vo 넘기는 부분  //  오라클 시퀀스
 		
-		String path=url+"?main=../notice/notice_insert.jsp";
+		
+		dao.insert(vo);
+		req.setAttribute("msg", msg);
+		String path=url+"?main=./notice/notice_insert.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}

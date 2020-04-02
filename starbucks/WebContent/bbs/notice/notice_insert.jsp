@@ -5,19 +5,47 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script src="/starbucks/lib/jquery-3.4.1.js"></script>
+<script src="/starbucks/js/us_notice.js"></script>
+
 </head>
 <body>
-<div>
-<h3>공지사항 작성</h3>
-<form>
-<label>제목</label>
-<input type='text'>
-<label>내용</label>
-<input type='text'>
-<input type='text' value='session.getAttribute("mId")'>
-<input type='text' value='session.getAttribute("admin")'>
-
-</form>
-</div>
+	<div class="col-md-12 order-2">
+	    <div class="row mb-3">
+	        <div class="col-md-12">
+	            <h2 class="h3 mb-3 text-black">공지사항 작성</h2>
+	        </div>
+	    </div>
+	    <form class="row" method="post" name="formmm" id="formmm">
+	        <div class="col-md-12">
+	        	<div class="form-group row">
+	                <div class="col-md-3">
+	                    <label for="memberId" class="text-black">글쓴이</label>
+	                    <input type="text" class="form-control" id="memberId" value="<%out.println(session.getAttribute("mId"));%>" name="memberId" readonly="readonly">
+	                </div>
+	            </div>
+	            <div class="form-group row">
+	                <div class="col-md-12">
+	                    <label for="noticeTitle" class="text-black">제목</label>
+	                    <input type="text" class="form-control" id="noticeTitle" name="noticeTitle">
+	                </div>
+	            </div>
+	            <div class="form-group row">
+	                <div class="col-md-12">
+	                    <label for="noticeContent" class="text-black">내용</label>
+	                    <textarea class="form-control" id="noticeContent" name="noticeContent" rows="15"></textarea>
+	                </div>
+	            </div>
+	        </div>
+	        <div class="col-12 text-right">
+	            <button type="button" class="btn btn-primary min-width-125" id="btnSave">
+	                저장
+	            </button>
+	        </div>
+	    </form>
+	</div>
+<script>
+func();
+</script>
 </body>
 </html>

@@ -48,7 +48,7 @@
 					
 			</div>
 		</div>
-<div id = "tableContainer" class="tm-product-table-container">
+<div id = "tableContainer" class="tm-product-table-container-order">
 		<table id='ordertable' class="table">
 			<thead>
 				<tr>
