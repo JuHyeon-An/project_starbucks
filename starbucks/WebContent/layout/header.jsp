@@ -111,7 +111,7 @@
                             <li class="active"><a href="/starbucks/">HOME</a></li>
                             <li class="has-children">
 <!--                                 <a href="/starbucks/product/list.jsp">All Product</a> -->
-								<a href="listPage.pl">All Product</a>
+								<a href="listCategories.pl">All Product</a>
                                 <ul class="dropdown">
                                     <li><a href="#"  onclick="categories('MG')" >머그</a></li>
                                     <li><a href="#"  onclick="categories('GL')">글라스</a></li>

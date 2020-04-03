@@ -61,6 +61,7 @@ public class ProductListServlet extends HttpServlet{
 		case "/itemFind.pl":
 			itemFind(req,resp);
 			break;
+		
 			
 	}
 	
@@ -99,7 +100,8 @@ public class ProductListServlet extends HttpServlet{
 	}
 	public void pListCategories(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int nowPage = 1;
-		String findStr = "";
+		System.out.println("카테고리 들어오나"+req.getParameter("pd_findStr"));
+		String findStr = "all";
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
 			

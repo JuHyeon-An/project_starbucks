@@ -1,7 +1,7 @@
 /**
  * http://usejsdoc.org/
  */
-
+/*
    let pd_goPage = function(nowPage){
 		$('#nowPage').val(nowPage);
 		$('#pd_frm').attr('method', 'post');
@@ -18,4 +18,4 @@
 	   $('#pd_frm').attr('action', 'item_view.pl').submit();
    } 
    
-   
+   */

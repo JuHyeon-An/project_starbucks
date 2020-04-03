@@ -36,7 +36,7 @@
                   <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="sort_title.pl">Name, A to Z</a>
+                      <a class="dropdown-item" href="#" onclick="categories('MG')"  >Name, A to Z</a>
                       <a class="dropdown-item" href="sort_title_desc.pl">Name, Z to A</a>
                       <div class="dropdown-divider"></div>
                       <a class="dropdown-item" href="sort_price.pl">Price, low to high</a>
@@ -86,7 +86,7 @@
                   <c:forEach var='i' begin='${p.startPage }' end='${p.endPage }'>
                   	 <input type="button" class=<c:if test='${ i == p.nowPage }'>'btn btn-primary btn-arraw-left'</c:if> 
 										<c:if test='${ i != p.nowPage }'>'btn btn-default btn-arraw-left'</c:if>
-							value ='${ i }' onclick='pd_goPage("${i}")'/>
+							value ='${ i }' onclick='pd_goPage("${i}","${p.findStr }")'/>
                   </c:forEach>
                   <c:if test="${p.nowPage < p.totPage }">
 					<input type="button" class='btn btn-default btn-arraw-left' value ='다음' onclick='pd_goPage(${p.nowPage+1})'/>
@@ -137,21 +137,26 @@
       <form id='pd_frm' name='pd_frm' method='post'>
       	<input type="hidden" name="nowPage" id='nowPage' value='${ empty param.nowPage? 1 : param.nowPage }'/>
       	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
+      	<input type="hidden" name='pd_sort' id='pd_sort' />
       </form>
 
      </div>
 <script>
 
-let pd_goPage = function(nowPage){
+let pd_goPage = function(nowPage, findStr){
 	$('#nowPage').val(nowPage);
+	$('#pd_findStr').val(findStr);
 	$('#pd_frm').attr('method', 'post');
-	$('#pd_frm').attr('action', 'listPage.pl').submit();
+	$('#pd_frm').attr('action', 'listCategories.pl').submit();
 }
-let categories = function(findStr){
+let categories = function(findStr, sort){
    $('#pd_findStr').val(findStr);
+	$('#nowPage').val('1');
+	 $('#pd_sort').val(sort);
    $('#pd_frm').attr('method', 'post');
    $('#pd_frm').attr('action', 'listCategories.pl').submit();
 }
+
 let item_view = function(findStr){
    $('#pd_findStr').val(findStr);
    $('#pd_frm').attr('method', 'post');
