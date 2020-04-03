@@ -102,13 +102,17 @@ public class ProductListServlet extends HttpServlet{
 		int nowPage = 1;
 		System.out.println("카테고리 들어오나"+req.getParameter("pd_findStr"));
 		String findStr = "all";
+		int sort = 1;
 		if(req.getParameter("nowPage") != null && req.getParameter("nowPage") != "") {
 			nowPage = Integer.parseInt(req.getParameter("nowPage"));
-			
 		}
 		if(req.getParameter("pd_findStr") != null) {
 			findStr = req.getParameter("pd_findStr");
 			System.out.println("카테고리" +findStr);
+		}
+		if(req.getParameter("pd_sort") != null && req.getParameter("pd_sort") != "") {
+			sort = Integer.parseInt(req.getParameter("pd_sort"));
+			System.out.println("소트" +sort);
 		}
 		
 		Page_ProductList p = new Page_ProductList();
@@ -117,12 +121,13 @@ public class ProductListServlet extends HttpServlet{
 		p.pageCompute();
 		ProductDao_YD dao = new ProductDao_YD();
 		
-		List<ProductVo> list  = dao.select(p, findStr);
+		List<ProductVo> list  = dao.select(p, findStr, sort);
 		List<ProductVo> listTheme  = dao.theme_view();
 		
 		req.setAttribute("listTheme", listTheme);
 		req.setAttribute("list", list);
 		req.setAttribute("p", p);
+		req.setAttribute("sort", sort);
 		
 		String path = url+"/list.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);

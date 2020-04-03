@@ -36,11 +36,11 @@
                   <div class="btn-group">
                     <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#" onclick="categories('MG')"  >Name, A to Z</a>
-                      <a class="dropdown-item" href="sort_title_desc.pl">Name, Z to A</a>
+                      <a class="dropdown-item" href="#" onclick="categories('all',1)"  >Name, A to Z</a>
+                      <a class="dropdown-item" href="#"  onclick="categories('all',2)">Name, Z to A</a>
                       <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="sort_price.pl">Price, low to high</a>
-                      <a class="dropdown-item" href="sort_price_desc.pl">Price, high to low</a>
+                      <a class="dropdown-item" href="#" onclick="categories('all',3)"  >Price, low to high</a>
+                      <a class="dropdown-item" href="#"  onclick="categories('all',4)">Price, high to low</a>
                     </div>
                   </div>
                 </div>
@@ -137,7 +137,7 @@
       <form id='pd_frm' name='pd_frm' method='post'>
       	<input type="hidden" name="nowPage" id='nowPage' value='${ empty param.nowPage? 1 : param.nowPage }'/>
       	<input type="hidden" name="pd_findStr" id='pd_findStr' value=''/>
-      	<input type="hidden" name='pd_sort' id='pd_sort' />
+      	<input type="hidden" name='pd_sort' id='pd_sort' value='${ empty sort? 1 : sort }'/>
       </form>
 
      </div>
