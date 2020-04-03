@@ -185,11 +185,20 @@ let addImg=function(){
 	$div.append($delete);
 	
 	$delete.on('click',function(){
-		$parent=$(this).parent();
-		let f=$parent.children()[1]
-		if(f.getAttribute('modify')=='yes'){
-			$parent.remove()
-		}
+		if($("input[type='file']").length==5){
+				$parent=$(this).parent();
+				let f=$parent.children()[1]
+				if(f.getAttribute('modify')=='yes'){
+					$parent.remove()
+				}
+				addImg();
+		}else{
+			$parent=$(this).parent();
+			let f=$parent.children()[1]
+			if(f.getAttribute('modify')=='yes'){
+				$parent.remove()
+			}
+		}	
 	});
 	
 	$img.on('click',function(){
