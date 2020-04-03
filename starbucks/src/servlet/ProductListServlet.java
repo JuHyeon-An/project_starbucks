@@ -162,20 +162,7 @@ public class ProductListServlet extends HttpServlet{
 		
 		
 		
-	/*	
-		String path = url+"/product_view.jsp";
-		String findStr = req.getParameter("pd_findStr");
-		ProductDao_YD dao = new ProductDao_YD();
-		List<ProductVo> list = new ArrayList<ProductVo>();
-		list = dao.item_view(findStr);
-		
-		
-		req.setAttribute("list", list);	
-		System.out.println(findStr+"검색어");
-		System.out.println(list.size()+"리스트사이즈");
-		RequestDispatcher rd=req.getRequestDispatcher(path);
-		rd.forward(req, resp);
-		*/
+
 	}
 	
 	public void sortList(int desc, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
