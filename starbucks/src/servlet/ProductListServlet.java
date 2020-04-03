@@ -128,6 +128,7 @@ public class ProductListServlet extends HttpServlet{
 		req.setAttribute("list", list);
 		req.setAttribute("p", p);
 		req.setAttribute("sort", sort);
+		req.setAttribute("pd_findStr", findStr);
 		
 		String path = url+"/list.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
