@@ -62,6 +62,7 @@
 
 <!-- tablesorter widgets (optional) -->
 <script type="text/javascript" src="../tablesorter-master/js/widgets/jquery.tablesorter.widgets.js"></script>
+<script src="../ExportExcel/src/jquery.table2excel.js"></script>
 	
 	
 </head>

@@ -412,7 +412,11 @@
     margin-bottom: 15px;
 }
 
-
+.btnDownload{
+	background-color:transparent;
+	color:#fff;
+	border-radius:0.25rem 0.25rem 0.25rem 0.25rem;
+}
 
 
 
