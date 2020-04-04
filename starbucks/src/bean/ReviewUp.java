@@ -7,6 +7,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.plaf.synth.SynthSeparatorUI;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -35,6 +36,7 @@ public class ReviewUp {
 		ReviewVo vo=new ReviewVo();
 		Review_imgs imgs=new Review_imgs();
 		List<String> list2=new ArrayList<String>(); 
+		List<String> list3=new ArrayList<String>(); 
 		String sys_img1="";
 		String sys_img2="";
 		String sys_img3="";
@@ -78,41 +80,50 @@ public class ReviewUp {
 					case"review_like":
 						vo.setReview_like(Integer.parseInt(value));
 						break;
+					case"review_postnum":
+						vo.setReview_postnum(Integer.parseInt(value));
+						break;
 					case"1":
 						sys_img1=value;
-						System.out.println(sys_img1);
 						break;
 					case"2":
 						sys_img2=value;
-						System.out.println(sys_img2);
+						System.out.println("valeu:"+value);
 						break;
 					case"3":
 						sys_img3=value;
-						System.out.println(sys_img3);
+						System.out.println("valeu:"+value);
 						break;
 					case"4":
 						sys_img4=value;
-						System.out.println(sys_img4);
 						break;
 					case"5":
 						sys_img5=value;
-						System.out.println(sys_img5);
 						break;
-					default: break;
+					default: 
+						break;
 					}
 				}else {
 					if(fileitem.getSize()>0) { 
+						
 						String filename=fileitem.getName();
 						String sysFile=new Date().getTime()+"-"+filename;
-						System.out.println(sysFile);
-						list2.add(sysFile);
+						System.out.println("sysfile:"+sysFile);
+						
+						list3.add(sysFile);
 						File filef=new File(dir+sysFile);
 						fileitem.write(filef);
 						fileitem.delete();
 					}
 				}
 			}
+			list2.add(sys_img1);
+			list2.add(sys_img2);
+			list2.add(sys_img3);
+			list2.add(sys_img4);
+			list2.add(sys_img5);
 			imgs.setSys_imgs(list2);
+			vo.setList(list3);
 			vo.setReview_imgs(imgs);
 		} catch (Exception e) {
 			e.printStackTrace();

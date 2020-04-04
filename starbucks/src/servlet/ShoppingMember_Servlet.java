@@ -49,7 +49,6 @@ public class ShoppingMember_Servlet extends HttpServlet{
 		}
 	}
 	public void idck(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("여까지오나");
 		String path = url+"/check_id.jsp";
 		String mId = req.getParameter("mId");
 		

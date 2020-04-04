@@ -187,10 +187,10 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_modifyR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		ReviewModify modify=new ReviewModify(req, resp);
+		ReviewUp up=new ReviewUp(req, resp);
 		String msg=null;
-		if(modify.encCheck()) {
-			ReviewVo vo=modify.upload();
+		if(up.encCheck()) {
+			ReviewVo vo=up.upload();
 			DaoUk dao=new DaoUk();
 			msg=dao.review_modify(vo);
 		}

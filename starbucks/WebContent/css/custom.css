@@ -182,7 +182,6 @@
 }
 /* 리뷰 별 */
 
-=======
 @charset "UTF-8";
 
 /* ************************** index
@@ -406,7 +405,16 @@
 .carousel-control-next, .carousel-control-prev{
 	opacity: 1;
 }
-
+.ukfolder{
+    background-image: url(/starbucks/img/ukfolder.png);
+    background-size: 27%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: #e8e8e8;
+    /* opacity: 0.5; */
+    width: 180px;
+	height: 180px;
+}
 .tm-product-table-container-order {
     max-height: 465px;
     margin-bottom: 15px;

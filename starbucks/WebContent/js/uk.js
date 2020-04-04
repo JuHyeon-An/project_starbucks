@@ -10,8 +10,8 @@ let func=function(){
 	}
 	if($('#review_btnRegist')!=null){
 		$('#review_btnRegist').on('click',function(){
-			for(i=0; i<$("input[type=file]").length; i++){
-				let src=$("input[type=file]")[i].files[0];
+			for(i=0; i<$("input[type='file']").length; i++){
+				let src=$("input[type='file']")[i].files[0];
 				if(src!=null){
 					let j=i+1
 					$('#'+j).attr('value',src.name);
@@ -22,10 +22,11 @@ let func=function(){
 	}
 	if($('#review_btnUpdate')!=null){
 		$('#review_btnUpdate').on('click',function(){
-			for(i=0; i<$("input[type=file]").length; i++){
-				let src=$("input[type=file]")[i].files[0];
+			for(i=0; i<$("input[type='file']").length; i++){
+				let src=$("input[type='file']")[i].files[0];
 				if(src!=null){
 					let j=i+1
+					$('#'+j).attr('name',j);
 					$('#'+j).attr('value',src.name);
 				}
 			}
@@ -160,14 +161,13 @@ let addImg=function(){
 	func();
 	let $div = $('<div></div>');
 	$div.attr('style','width:180px; height:180px;');
-	$div.attr('class','d-inline-block mr-1');
+	$div.attr('class','ukfolder d-inline-block mr-1');
 	$('#board').append($div);
 	
 	let $img=$('<img>');
 	$img.attr('name','img'+cnt)
 	$img.attr('width', '180px');
 	$img.attr('height','180px');
-	$img.attr('src','/starbucks/img/ukUp.png');
 	$div.append($img);
 	
 	let $file=$('<input>');
@@ -185,11 +185,20 @@ let addImg=function(){
 	$div.append($delete);
 	
 	$delete.on('click',function(){
-		$parent=$(this).parent();
-		let f=$parent.children()[1]
-		if(f.getAttribute('modify')=='yes'){
-			$parent.remove()
-		}
+		if($("input[type='file']").length==5){
+				$parent=$(this).parent();
+				let f=$parent.children()[1]
+				if(f.getAttribute('modify')=='yes'){
+					$parent.remove()
+				}
+				addImg();
+		}else{
+			$parent=$(this).parent();
+			let f=$parent.children()[1]
+			if(f.getAttribute('modify')=='yes'){
+				$parent.remove()
+			}
+		}	
 	});
 	
 	$img.on('click',function(){
@@ -206,8 +215,8 @@ let addImg=function(){
 				$img.attr('src',ev.target.result);
 			}
 			
-			$('input[type=file]').length;
-			if($file.attr('modify')=='no' && $('input[type=file]').length<5 ){
+			$("input[type='file']").length;
+			if($file.attr('modify')=='no' && $("input[type='file']").length<5 ){
 				addImg();
 			}	
 			$file.attr('modify','yes');
@@ -246,10 +255,7 @@ let modify_addImg=function(sysImage){
 	
 	$delete.on('click',function(){
 		$parent=$(this).parent();
-		let f=$parent.children()[1]
-		if(f.getAttribute('modify')=='yes'){
-			$parent.remove()
-		}
+		$parent.remove();
 	});
 	
 	$img.on('click',function(){

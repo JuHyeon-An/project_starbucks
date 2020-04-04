@@ -223,7 +223,7 @@ public class DaoUk {
 					imgs.setSys_imgs(list2);
 					vo.setReview_imgs(imgs);
 				}
-				vo.setTotList(totList);
+				/*vo.setTotList(totList);*/
 				list.add(vo);
 			}
 		} catch (SQLException e) {
@@ -388,17 +388,115 @@ public class DaoUk {
 			int r=pstmt.executeUpdate();
 			if(r>0) {
 				msg=" 리뷰가 수정되었습니다. ";
+				/*List<String> dbList=dbImgs.getSys_imgs();*/
+				Review_imgs dbImgs=getImgs(vo.getReview_postnum());
 				
 				Review_imgs imgs=vo.getReview_imgs();
-				List<String> list=imgs.getSys_imgs();
-				List<String> fileImageName=vo.getList();
-				Review_imgs dbImgs=getImgs(vo.getReview_postnum());
-				List<String> dbList=dbImgs.getSys_imgs();
-				for(int i=0; i<list.size(); i++) {
-					String img=list.get(i);
-					String file=fileImageName.get(i);
+				List<String> olist=imgs.getSys_imgs();
+				
+				List<String> dlist=vo.getList();
+
+				/*for(String dimg:dlist) {
+					System.out.println("2개나와야함::"+dimg);
+					int dlen=dimg.length();
+					for(int i=0; i<olist.size(); i++) {
+						String oimg=olist.get(i);
+						System.out.println("널3개,2개:"+oimg);
+						int olen=oimg.length();
+						if(olen>0) {
+							String str=dimg.substring(dlen-olen);
+							if(oimg.equals(str)) {
+								System.out.println(i);
+								System.out.println(dimg);
+								System.out.println("사진원래이름이랑 같아야함:"+str);
+							}
+						}
+					}
+				}*/
+				
+				for(int i=0; i<olist.size(); i++) {
+					String oimg=olist.get(i);
+					System.out.println("널3개,2개(총5번):"+oimg);
+					int olen=oimg.length();
 					
-					int last=file.lastIndexOf("e");
+					if(olen>0) {
+						for(String dimg:dlist) {
+							System.out.println("2개나와야함(총4번):"+dimg);
+							int dlen=dimg.length();
+							
+							String str=dimg.substring(dlen-olen);
+							if(oimg.equals(str)) {
+								System.out.println(i);
+								System.out.println(dimg);
+								System.out.println("사진원래이름이랑 같아야함(총2번):"+str);
+								
+								switch(i+1) {
+								case 1:
+									String sql1= " update review_imgs set sys_img1=? where review_postnum=? ";
+									PreparedStatement pstmt1=conn.prepareStatement(sql1);
+									pstmt1.setString(1, dimg);
+									pstmt1.setInt(2, vo.getReview_postnum());
+									int r1=pstmt1.executeUpdate();
+									conn.commit();
+									break;
+								case 2:
+									String sql2= " update review_imgs set sys_img2=? where review_postnum=? ";
+									PreparedStatement pstmt2=conn.prepareStatement(sql2);
+									pstmt2.setString(1, dimg);
+									pstmt2.setInt(2, vo.getReview_postnum());
+									int r2=pstmt2.executeUpdate();
+									conn.commit();
+									break;
+								case 3:
+									String sql3= " update review_imgs set sys_img3=? where review_postnum=? ";
+									PreparedStatement pstmt3=conn.prepareStatement(sql3);
+									pstmt3.setString(1, dimg);
+									pstmt3.setInt(2, vo.getReview_postnum());
+									int r3=pstmt3.executeUpdate();
+									conn.commit();
+									break;
+								case 4:
+									String sql4= " update review_imgs set sys_img4=? where review_postnum=? ";
+									PreparedStatement pstmt4=conn.prepareStatement(sql4);
+									pstmt4.setString(1, dimg);
+									pstmt4.setInt(2, vo.getReview_postnum());
+									int r4=pstmt4.executeUpdate();
+									conn.commit();
+									break;
+								case 5:
+									String sql5= " update review_imgs set sys_img5=? where review_postnum=? ";
+									PreparedStatement pstmt5=conn.prepareStatement(sql5);
+									pstmt5.setString(1, dimg);
+									pstmt5.setInt(2, vo.getReview_postnum());
+									int r5=pstmt5.executeUpdate();
+									conn.commit();
+									break;
+								}
+								
+							}
+						}
+					}
+				}
+				
+				  /*for(int i=0; i<list.size(); i++) {
+					System.out.println(i);
+					String img=list.get(i);
+					System.out.println("1::"+img);
+					for(String dateimg:datelist) {
+						int datelength=dateimg.length();
+						int length=img.length();
+						int date=datelength-length;
+						String str=dateimg.substring(date);
+						System.out.println("2::"+str);
+						if(img.equals(str)) {
+							System.out.println("여기되냐");
+						}
+					}
+				}*/
+				
+					/*String file=fileImageName.get(i);*/
+					
+					/*int last=file.lastIndexOf("e");
 					String c=file.substring(last+1);
 					switch(c) {
 					case "1":
@@ -476,8 +574,8 @@ public class DaoUk {
 							}
 						}
 						break;
-					}
-				}
+					}*/
+				
 			}else {
 				msg=" 리뷰 수정 도중 오류가 발생하였습니다. ";
 				conn.rollback();

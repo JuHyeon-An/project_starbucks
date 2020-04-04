@@ -117,22 +117,41 @@ public class ProductDao_YD {
 			return list;
 		}
 	}
-
-	public List<ProductVo> select(Page_ProductList p, String findStr){  //테마 및 카테고리로 보기
+	
+//작업중인 다오
+	public List<ProductVo> select(Page_ProductList p, String findStr, int sort){  //테마 및 카테고리로 보기
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		
 		String sql = null;
 		PreparedStatement ps = null;
 		ResultSet rs = null;
 		int totList = 0;
+		
+		String find = "";
+		if(sort == 1) { //상품명순으로 정렬
+			find = "item_title";
+		}else if(sort == 2) { // 상품명 역순으로 정렬
+			find = "item_title desc";
+		}else if(sort == 3) { // 상품명 역순으로 정렬
+			find =  "item_price";
+		}else if(sort == 4) { // 상품명 역순으로 정렬
+			find = "item_price desc";
+		}
+		
 		System.out.println(findStr+"검색어 다오");
 		try {
-			sql = " select count(item_code) cnt from itemboard where ( item_group = ? or item_theme = ? ) and item_status = '판매' ";
+			if(!findStr.equals("all")) {
+				sql = " select count(item_code) cnt from itemboard where ( item_group = ? or item_theme = ? ) and item_status = '판매' ";
+			System.out.println("열로옴/");
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, findStr);
 			ps.setString(2, findStr);
-			rs = ps.executeQuery();
+			}else if(findStr.equals("all")) {
+				sql = " select count(item_code) cnt from itemboard where item_status = '판매' ";
 			
+			ps = conn.prepareStatement(sql);
+			}
+			rs = ps.executeQuery();
 			if(rs.next()) {
 				totList = rs.getInt("cnt");
 			}
@@ -143,17 +162,27 @@ public class ProductDao_YD {
 					+ "select rownum rn , A.* from ("
 					+ 	" select * "
 					+ 	" from itemboard "
-					+	" where item_status = '판매'  and "
-					+ " ( item_group = ? or item_theme = ? ) "
-					+   " order by item_group ) A "
-					+ ") where rn between ? and ? ";
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, findStr);
-			ps.setString(2, findStr);
-			ps.setInt(3, p.getStartNo());
-			ps.setInt(4, p.getEndNo());
-			rs = ps.executeQuery();
+					+	" where item_status = '판매'  ";
 			
+			if(!findStr.equals("all")) {
+				sql = sql + " and ( item_group = ? or item_theme = ? ) ";
+				sql = sql +   " order by "+find+" ) A "
+						+ ") where rn between ? and ? ";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, findStr);
+				ps.setString(2, findStr);
+				ps.setInt(3, p.getStartNo());
+				ps.setInt(4, p.getEndNo());
+			}else if(findStr.equals("all")) {
+				System.out.println("엘스이프");
+				sql = sql +   " order by "+find+" ) A "
+						+ ") where rn between ? and ? ";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, p.getStartNo());
+				ps.setInt(2, p.getEndNo());
+				
+			}
+			rs = ps.executeQuery();
 			while(rs.next()) {
 				ProductVo vo = new ProductVo();
 				vo.setItem_code(rs.getString("ITEM_CODE"));
@@ -302,7 +331,7 @@ public class ProductDao_YD {
 		}
 	}
 	
-	
+	/*
 	//정렬하여 상품 뿌려주기
 	public List<ProductVo> select(Page_ProductList p, String findStr, int desc ){
 		List<ProductVo> list = new ArrayList<ProductVo>();
@@ -387,7 +416,7 @@ public class ProductDao_YD {
 			return list;
 		}
 	}
-	
+	*/
 	public List<ProductVo> mainSelect(int flag){
 		List<ProductVo> list = new ArrayList<ProductVo>();
 		String sql = null;
