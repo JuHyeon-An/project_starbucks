@@ -86,7 +86,8 @@
 								<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_regdate">등록일자
 									</label> <input id="item_regdate" name="item_regdate" type="text"
-										class="form-control validate" data-large-mode="true" />
+										class="form-control validate" data-large-mode="true" 
+										value = "2020-04-06"/>
 								</div>
 
 							</div>
@@ -105,7 +106,7 @@
 						class="btn btn-primary btn-block text-uppercase">상품등록</button>
 				</div>
 				
-				<input type="text" id="resultMsg" value="${msg }"/>
+				<input type="hidden" id="resultMsg" value="${msg }"/>
 				</form>
 			</div>
 		</div>

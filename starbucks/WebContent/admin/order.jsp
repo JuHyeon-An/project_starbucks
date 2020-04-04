@@ -21,7 +21,7 @@
 <div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
 
 
-		<h2 class="tm-block-title text-center">Orders List</h2>
+		<h2 class="tm-block-title text-center">주문내역 조회</h2>
 		<div class='row'>
 
 			<div class='col-lg-8'></div>

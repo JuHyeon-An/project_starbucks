@@ -17,13 +17,6 @@
 				<div id="mainDiv"
 					class="tm-bg-primary-dark tm-block tm-block-products">
 					<div class="row">
-					<div class="input-group col-lg-3 btn-toolbar">
-					<div class="btn-group">
-					<button class="btn-sm btn-dark btn-custom-l" id="btnTheme">테마별</button>
-					<button class="btn-sm btn-dark btn-custom-r" id="btnCategory">종류별</button>
-					</div>
-					</div>
-						
 						<div class="input-group col-lg-3"></div>
 					<form id="frmSearch" method="post" name="frmSearch" class="input-group col-lg-6 mb-3">
 						<select id="categorySelect" class="select-custom" onchange="loadTable();">

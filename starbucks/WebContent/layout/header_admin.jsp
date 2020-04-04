@@ -71,7 +71,7 @@
     <div class="" id="home"></div>
         <nav class="navbar navbar-expand-xl ">
             <div class="container h-100">
-                <a class="navbar-brand" href="index.jsp">
+                <a class="navbar-brand" href="dashboard.stb">
                     <h1 class="tm-site-title mb-0">Product Admin</h1>
                 </a>
                 <button class="navbar-toggler ml-auto mr-0" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -119,7 +119,7 @@
                         <li class="nav-item dropdown">
                             <a id="accNav" class="nav-link dropdown-toggle"  href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
                                 <i class="far fa-user"></i>
-                                <span>Accounts<i class="fas fa-angle-down"></i></span>
+                                <span>회원관리<i class="fas fa-angle-down"></i></span>
                             </a>
                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="admin.adminmember">회원관리</a>
@@ -136,7 +136,7 @@
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="fas fa-cog"></i>
                                 <span>
-                                    Settings <i class="fas fa-angle-down"></i>
+                                    		설정 <i class="fas fa-angle-down"></i>
                                 </span>
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
