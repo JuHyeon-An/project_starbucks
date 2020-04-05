@@ -60,7 +60,6 @@ public class MyServlet extends HttpServlet{
 		String temp = req.getRequestURI(); //   /insert.mm
 		int pos = temp.lastIndexOf("/");	
 		String tempUrl = temp.substring(pos);
-		//System.out.println(url + tempUrl);
 		
 		switch(tempUrl) {
 		case "/cart.my":
@@ -293,8 +292,6 @@ public class MyServlet extends HttpServlet{
  		int listSize = Integer.parseInt(req.getParameter("itemSize"));
  		
 		for(i=0; i<listSize; i++) {
-			//list = new ArrayList<OrderVo>();
-			System.out.println("while i : " + i); 
 			
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("mName");
@@ -318,13 +315,10 @@ public class MyServlet extends HttpServlet{
 			
 		}	// for end
 		
-		System.out.println("list size : " + list.size());
 		
 		OrderDaoJE dao = new OrderDaoJE();
 		result = dao.insert(list);
-		
-		System.out.println( "result : " + result);
-		System.out.println("====================");
+
 		if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
 			ShoppingCartDao cartDao = new ShoppingCartDao();
 			cartDao.delete(serial); 
