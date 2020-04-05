@@ -83,7 +83,7 @@
                   <ul>
                   
                   <c:if test='${p.nowPage > p.blockSize }'>
-                 	 <input type="button" class='btn btn-default btn-arraw-left' value ='이전' onclick='pd_goPage(1,""${p.findStr }"")'/>
+                 	 <input type="button" class='btn btn-default btn-arraw-left' value ='이전' onclick='pd_goPage(1,"${p.findStr }")'/>
                   </c:if>
                   <c:forEach var='i' begin='${p.startPage }' end='${p.endPage }'>
                   	 <input type="button" class=<c:if test='${ i == p.nowPage }'>'btn btn-primary btn-arraw-left'</c:if> 
