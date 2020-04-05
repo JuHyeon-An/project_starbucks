@@ -16,12 +16,26 @@ public class OrderDaoJE {
 	
 	public int insert(List<OrderVo> list) {
 		int result = 0;
-		for(OrderVo vo:list) {
+		String sql = "";
+		int size = list.size();
+		
+		for(int i=0; i<size; i++) {
+			OrderVo vo = list.get(i);
+			
 			try {
-				String sql = "insert into SHOPPING_ORDER"
+				if(i==0) {
+					sql = "insert into SHOPPING_ORDER"
 							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
 							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
 							+ "values(order_orderNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+					
+				}else {
+					sql = "insert into SHOPPING_ORDER"
+							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
+							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
+							+ "values(order_orderNum_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+				}
+				
 				PreparedStatement ps = conn.prepareStatement(sql);
 				conn.setAutoCommit(false);
 			
@@ -40,8 +54,11 @@ public class OrderDaoJE {
 				ps.setString(13, vo.getAddr1());
 				ps.setString(14, vo.getAddr2()); 
 				
+				
+				
 				list.add(vo);
 				
+
 				int r = ps.executeUpdate();
 				
 				if(r>0) {
@@ -55,8 +72,6 @@ public class OrderDaoJE {
 				
 			}catch(Exception ex) {
 				ex.printStackTrace();
-			}finally {
-				return result;
 			}
 		}
 		return result;
@@ -92,30 +107,100 @@ public class OrderDaoJE {
 		}
 	}
 	
-	public List<OrderVo> select(String mId){
+	public List<OrderVo> select(String mId, Page page, String status){
 		
 		List<OrderVo> list = new ArrayList<OrderVo>();
+		String sql = "";
+		PreparedStatement ps = null;
+		
+		int totList = 0;
+		int orderStatus = 0;
 		try {
-			String sql  = "SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price " 
-						+ "FROM SHOPPING_ORDER o join ITEMBOARD i " 
-						+ "ON o.item_code = i.item_code " 
-						+ "WHERE o.member_id=?";
-			PreparedStatement ps = conn.prepareStatement(sql);
-			ps.setString(1, mId);
+			if(status.equals("0")) {	// 전체 주문 목록 
+				//전체 주문 건수 구하기 
+				sql = "SELECT COUNT(ordernumber) cnt FROM SHOPPING_ORDER WHERE MEMBER_ID=?";
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, mId);
+				
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					totList = rs.getInt("cnt");
+				}
+				page.setTotListSize(totList);
+				page.pageCompute();
+				
+				sql = "select * from ("
+						+ "		select rownum rn, A.* from("
+						+ " 		SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price, o.serial "
+						+ "				FROM SHOPPING_ORDER o join ITEMBOARD i "
+						+ "				ON o.item_code = i.item_code "
+						+ "				WHERE o.member_id=? "
+						+ "				order by o.serial desc) A "
+						+ "	) where rn between ? and ? ";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, mId);
+				ps.setInt(2, page.getStartNo());
+				ps.setInt(3, page.getEndNo());
+			}else {
+				if(status.equals("1")) { // 주문상태 = 1 (주문취소)
+					orderStatus = 1;
+				}else if(status.equals("2")) { // 주문상태 = 2 (승인대기)
+					orderStatus = 2;
+				}else if(status.equals("3")) { // 주문상태 = 3 (주문완료 )
+					orderStatus = 3;
+				}
+				
+				
+				//전체 주문 건수 구하기 
+				sql = "SELECT COUNT(ordernumber) cnt FROM SHOPPING_ORDER WHERE MEMBER_ID=? and order_status=?";
+				ps = conn.prepareStatement(sql);
+				
+				ps.setString(1, mId);
+				ps.setInt(2, orderStatus);
+				
+				rs = ps.executeQuery();
+				if(rs.next()) {
+					totList = rs.getInt("cnt");
+				}
+				page.setTotListSize(totList);
+				page.pageCompute();
+				
+				sql = "select * from ("
+						+ "		select rownum rn, A.* from("
+						+ " 		SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price, o.serial "
+						+ "				FROM SHOPPING_ORDER o join ITEMBOARD i "
+						+ "				ON o.item_code = i.item_code "
+						+ "				WHERE o.member_id=? "
+						+ "				and order_status=? "
+						+ "				order by o.serial desc) A "
+						+ "	) where rn between ? and ? ";
+				
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, mId);
+				ps.setInt(2, orderStatus);
+				ps.setInt(3, page.getStartNo());
+				ps.setInt(4, page.getEndNo());
+			
+			}
+			
+		
 			
 			rs = ps.executeQuery();
 			
 			while(rs.next()) {
 				OrderVo vo = new OrderVo();
 				
-				vo.setOrderregDate(rs.getString(1));
-				vo.setProductImg(rs.getString(2));
-				vo.setItemTitle(rs.getString(3));
-				vo.setOrderPrice(rs.getInt(4));
-				vo.setOrderNum(rs.getInt(5));
-				vo.setOrderStatus(rs.getInt(6));
-				vo.setItemCode(rs.getString(7));
-				vo.setPrice(rs.getInt(8));
+				vo.setOrderregDate(rs.getString("order_regdate"));
+				vo.setProductImg(rs.getString("item_thumbnailImg"));
+				vo.setItemTitle(rs.getString("item_title"));
+				vo.setOrderPrice(rs.getInt("order_price"));
+				vo.setOrderNum(rs.getInt("order_num"));
+				vo.setOrderStatus(rs.getInt("order_status"));
+				vo.setItemCode(rs.getString("item_code"));
+				vo.setPrice(rs.getInt("item_price"));
+				vo.setSerial(rs.getInt("serial"));
 				
 				list.add(vo);
 			}
@@ -123,6 +208,7 @@ public class OrderDaoJE {
 		}catch(Exception ex) {
 			ex.printStackTrace();
 		}
+		
 		
 		return list;
 	}

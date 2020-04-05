@@ -53,16 +53,11 @@
 	
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 	
-	<!-- dataTable -->
-	<script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
-	
-<!-- load jQuery and tablesorter scripts -->
-<script type="text/javascript" src="../tablesorter-master/docs/js/jquery-latest.js"></script>
-<script type="text/javascript" src="../tablesorter-master/js/jquery.tablesorter.js"></script>
-
-<!-- tablesorter widgets (optional) -->
-<script type="text/javascript" src="../tablesorter-master/js/widgets/jquery.tablesorter.widgets.js"></script>
+<!-- exportExcel -->
 <script src="../ExportExcel/src/jquery.table2excel.js"></script>
+
+<!--  exportCSV -->
+<script src='../CSVexport/jquery.TableCSVExport.js'></script>
 	
 	
 </head>

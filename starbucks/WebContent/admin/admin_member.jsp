@@ -18,7 +18,7 @@
 
 <form name='frm' id='frmm' method='post' style='margin:130px'>
 <div id="mainDiv" class="tm-bg-primary-dark tm-block tm-block-products">
-	               <h2 class="tm-block-title text-center" >Member List</h2>
+	               <h2 class="tm-block-title text-center" >회원 목록</h2>
 <div class='row'>
 <div class='col-lg-8'> </div>
 <div class='btn-xs  input-group col-lg-4 mb-2'  >

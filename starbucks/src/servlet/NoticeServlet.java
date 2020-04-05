@@ -2,6 +2,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,8 +11,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import bean.DaoUk;
 import bean.NoticeDao;
 import bean.NoticeVo;
+import bean.OrderMemberDao;
+import bean.Page;
+import bean.Shopping_MemberVo;
 
 @WebServlet("*.nn")
 public class NoticeServlet extends HttpServlet {
@@ -41,10 +46,14 @@ public class NoticeServlet extends HttpServlet {
 		case "/notice_insertR.nn":
 			notice_insertR(req, resp);
 			break;
-		case "/notice_upadate.nn":
-			//notice_update(req, resp);
+		case "/notice_update.nn":
+			notice_update(req, resp);
 			break;
-
+			
+		case "/notice_delete.nn":
+			notice_delete(req, resp);
+			break;
+			
 		}
 
 	}
@@ -81,27 +90,63 @@ public class NoticeServlet extends HttpServlet {
 		String path = url + "?main=./notice/notice_insert.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
-	}
+	}   
 
-	public void notice_upadate(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		int r = 0;
+	public void notice_update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		NoticeVo vo = new NoticeVo();
-		String memberId = req.getParameter("memberId");
-		String noticeTitle = req.getParameter("noticeTitle");
-		String noticeContent = req.getParameter("noticeContent");
+		NoticeDao dao = new NoticeDao();
+		String msg="";
+//		vo.setMemberId(req.getParameter("memberId"));
+		vo.setNoticeTitle(req.getParameter("noticeTitle"));
+		vo.setNoticeContent(req.getParameter("noticeContent"));
+//		vo.setMemberName(req.getParameter("memberName"));
+		vo.setNoticePostNum(Integer.parseInt(req.getParameter("noticePostNum")));
 
-		vo.setMemberId(memberId);
-		vo.setNoticeTitle(noticeTitle);
-		vo.setNoticeContent(noticeContent);
-
+		int r =dao.modify(vo);
+		if(r>0) {
+			msg="성공";
+		}else {
+			msg="실패";
+		}
+		
+		
+		req.setAttribute("msg", msg); //여기가 뷰의 값
+		req.setAttribute("vo", vo);
+		String path=url + "?main=./notice/notice_view.jsp";
+		RequestDispatcher rd=req.getRequestDispatcher(path);
+		rd.forward(req, resp);
+	
+		
+	}
+	
+	public void notice_delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String msg = "";
+		NoticeVo vo = new NoticeVo();
+		
+		vo.setNoticePostNum(Integer.parseInt(req.getParameter("noticePostNum")));
+		System.out.println(vo.getNoticePostNum()+"zxczx");
 		NoticeDao dao = new NoticeDao();
 		// vo 넘기는 부분 // 오라클 시퀀스
-
-		r = dao.insert(vo);
-		req.setAttribute("r", r);
-		String path = url + "?main=./notice/notice_insertResult.jsp";
+		int r= dao.delete(vo.getNoticePostNum());
+		
+		if(r>0) {
+			msg="성공";
+		}else {
+			msg="실패";
+		}
+		
+		req.setAttribute("msg", msg);
+		String path = url + "?main=./notice/notice_delete.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
-	}
+	}   
 
+
+	
+	
+	
+	
+	
+	
+	
 }

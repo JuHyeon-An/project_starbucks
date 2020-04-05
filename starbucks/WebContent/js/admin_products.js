@@ -2,7 +2,7 @@
  * http://usejsdoc.org/
  */
 
- let cnt = 1;
+let cnt = 1;
 let array = [];
 let arrayValue = [];
 let sumArray = [];
@@ -11,6 +11,15 @@ let themeValue = [];
 
  function btnFunc(){
 	
+	if($('#btnSaveItem')!=null){
+		$('#btnSaveItem').click(function(){
+			$('input[type=file]:eq(0)').attr('name', 'fileInput1');
+			$('input[type=file]:eq(1)').attr('name', 'fileInput2');
+			$('input[type=file]:eq(2)').attr('name', 'fileInput3');
+			$('#productFrm').attr('action', 'add_productR.stb').submit();
+		})
+	}
+	 
 	// 수정
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').click(function(){
@@ -22,14 +31,21 @@ let themeValue = [];
 	if($('#getExcel')!=null){
 		$('#getExcel').click(function(){
 			$("#orderTable").table2excel({ 
-				exclude: ".noExl", 
-				name: "Excel Document Name", 
 				filename: "DeliveryList" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
-				fileext: ".xls", 
-				exclude_img: true, 
-				exclude_links: true, 
-				exclude_inputs: true 
+				fileext: ".xls"
 			});
+			
+		})
+	}
+	
+	// dashboard에서 테이블 엑셀파일로 export
+	if($('#getCSV')!=null){
+		$('#getCSV').click(function(){
+			
+			 $('#orderTable').TableCSVExport({
+			        delivery: 'download',
+			        filename: 'DeliveryList' + new Date().toISOString().replace(/[\-\:\.]/g, "") + '.csv'
+			    });
 			
 		})
 	}
@@ -153,7 +169,6 @@ let themeValue = [];
 		themeArray = document.getElementsByName("themeSum");
 		themeValue = document.getElementsByName("themeSumValue");
 		
-		console.log(themeValue[0].value);
 	}
 	
 	
@@ -213,7 +228,7 @@ function makeDiv(main){
 	  
 	  let div = document.createElement('div');
 	  div.setAttribute('class', 
-			  'form-group mb-3 col-xs-12 col-sm-4');
+			  'form-group mb-3 col-xs-12 col-sm-4 photo-parent-div');
 	  
 	  
 	  let divChild = document.createElement('div');
@@ -232,13 +247,10 @@ function makeDiv(main){
 	  div.appendChild(divChild);
 	  
 	  // 삭제버튼 추가
-	  
-	  /*
 	  let btnDel = document.createElement('input');
 	  btnDel.setAttribute('name', 'delBtn'+cnt);
-	  btnDel.setAttribute('type', 'button');
-	  btnDel.setAttribute('value', 'X');
-	  btnDel.setAttribute('class', 'btnDel');
+	  btnDel.setAttribute('class', 'btnDel-item');
+	  btnDel.setAttribute('type', 'hidden');
 	  
 	  btnDel.onclick = function(ev){
 		  let obj = ev.srcElement;
@@ -249,16 +261,17 @@ function makeDiv(main){
 		  
 		  if(tag.getAttribute('modify')=='yes'){
 			  main.removeChild(parent);
+			  makeDiv(main);
 		  }
 	  }
 	  
-	  divChild.appendChild(btnDel);
-	  */
+	  div.appendChild(btnDel);
 	  
 	  // 이미지당 file tag
 	  let file = document.createElement('input');
 	  file.setAttribute('type', 'file');
 	  file.setAttribute('name', 'fileInput'+cnt);
+	  file.setAttribute('id', 'fileInput'+cnt);
 	  file.setAttribute('style', 'display:none');
 	  file.setAttribute('modify', 'no');
 	  
@@ -272,9 +285,6 @@ function makeDiv(main){
 	  file.onclick =  function imagePreView(event){
 		  	let btn = event.srcElement;
 		  	
-		  	console.log(btn);
-		  	console.log(btn.value);
-		  	
 		  	btn.onchange = function(){
 		  	let url = btn.files[0];
 		  	let reader = new FileReader();
@@ -286,19 +296,23 @@ function makeDiv(main){
 		  		temp.src = ev.target.result;
 		  		img.src = temp.src;
 		  		}
-		  	if(file.getAttribute('modify')=='no'){
+		  	if(file.getAttribute('modify')=='no' && $('input[type=file]:eq(3)').val()==null){
 		  	makeDiv(main);
 		  	// 이미지 불러오고 나면 div를 하나 더 추가해라
 		  	}
 		  	file.setAttribute('modify', 'yes');
 		  	}
+		  	
+			$('.photo-parent-div').on('mouseover', function(){
+				$(this).find('.btnDel-item').attr('type', 'button');
+			}).on('mouseout', function(){
+				$(this).find('.btnDel-item').attr('type', 'hidden');
+			})
+		  	
 		  }
-	  
-		  	if(cnt<4){
-	  		main.appendChild(div);
-	  		cnt++;
-	  }
-}
+	  			main.appendChild(div);
+	  			cnt++;
+}// end of make DIV
 //TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
 
 
