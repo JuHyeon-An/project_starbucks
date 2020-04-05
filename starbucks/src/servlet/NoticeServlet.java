@@ -49,11 +49,10 @@ public class NoticeServlet extends HttpServlet {
 		case "/notice_update.nn":
 			notice_update(req, resp);
 			break;
+			
 		case "/notice_delete.nn":
 			notice_delete(req, resp);
 			break;
-			
-			
 			
 		}
 
@@ -137,7 +136,7 @@ public class NoticeServlet extends HttpServlet {
 		}
 		
 		req.setAttribute("msg", msg);
-		String path = url + "?main=./notice/notice_select.jsp";
+		String path = url + "?main=./notice/notice_delete.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}   

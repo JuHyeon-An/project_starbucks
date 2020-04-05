@@ -4,7 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="/starbucks/js/jquery-3.3.1.min.js"></script>
 
-<form name='notice' id='notice' method='get'>
+<form name='noticeFrm' id='noticeFrm' method='post'>
 
 	<div class="row">
 		<div class="col-md-12 mb-3">
@@ -118,6 +118,7 @@
 			</div>
 		</div>
 	</div>
+</form>
 <script>
 /* $("#btnDelete").on("click",function(noticePostNum){
 	alert(noticePostNum);
@@ -129,11 +130,10 @@
 var notice_delete = function(noticePostNum, event){
 	alert(noticePostNum);
 	$('#noticePostNum').val(noticePostNum);
-	$('#notice').attr('action','notice_delete.nn').submit();
+	$('#noticeFrm').attr('action','notice_delete.nn').submit();
     //상위로 이벤트가 전파되지 않도록 중단한다.
     event.stopPropagation();
 };
 </script>
-</form>
 
 
