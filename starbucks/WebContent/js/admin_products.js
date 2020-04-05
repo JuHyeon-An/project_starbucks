@@ -2,7 +2,7 @@
  * http://usejsdoc.org/
  */
 
- let cnt = 1;
+let cnt = 1;
 let array = [];
 let arrayValue = [];
 let sumArray = [];
@@ -22,14 +22,21 @@ let themeValue = [];
 	if($('#getExcel')!=null){
 		$('#getExcel').click(function(){
 			$("#orderTable").table2excel({ 
-				exclude: ".noExl", 
-				name: "Excel Document Name", 
 				filename: "DeliveryList" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
-				fileext: ".xls", 
-				exclude_img: true, 
-				exclude_links: true, 
-				exclude_inputs: true 
+				fileext: ".xls"
 			});
+			
+		})
+	}
+	
+	// dashboard에서 테이블 엑셀파일로 export
+	if($('#getCSV')!=null){
+		$('#getCSV').click(function(){
+			
+			 $('#orderTable').TableCSVExport({
+			        delivery: 'download',
+			        filename: 'DeliveryList' + new Date().toISOString().replace(/[\-\:\.]/g, "") + '.csv'
+			    });
 			
 		})
 	}
@@ -232,8 +239,6 @@ function makeDiv(main){
 	  div.appendChild(divChild);
 	  
 	  // 삭제버튼 추가
-	  
-	  /*
 	  let btnDel = document.createElement('input');
 	  btnDel.setAttribute('name', 'delBtn'+cnt);
 	  btnDel.setAttribute('type', 'button');
@@ -252,8 +257,7 @@ function makeDiv(main){
 		  }
 	  }
 	  
-	  divChild.appendChild(btnDel);
-	  */
+	  div.appendChild(btnDel);
 	  
 	  // 이미지당 file tag
 	  let file = document.createElement('input');
