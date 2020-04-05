@@ -20,9 +20,7 @@ public class ShoppingCartDao {
 		PreparedStatement ps = null;
 		try {
 			// member_name 값 세팅하기 
-			sql = "SELECT member_name " 
-				+ "from SHOPPING_MEMBER " 
-				+ "where member_id=?";
+			sql = "SELECT member_name from SHOPPING_MEMBER where member_id=?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			rs = ps.executeQuery();
@@ -31,7 +29,6 @@ public class ShoppingCartDao {
 				vo.setmName(rs.getString(1));
 			}
 			
-			System.out.println("mId ???" + mId);
 			// 해당 아이디, 아이템 코드가 일치하는 데이터가 있는지 확인 (중복값 제거)
 			sql = "select * from shoppingBasket where member_id=? and item_code=?";
 			

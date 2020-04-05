@@ -30,8 +30,8 @@
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/shopping-cart (4).png" class="rounded-circle" width="100%" height="100%""></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>주문완료</b> : <a href="#"
-	                                    class="tm-notification-link">1 </a>건. </p>
-	                                    <h3>21000원</h3>
+	                                    class="tm-notification-link">${dr[2].orderCnt } </a>건. </p>
+	                                    <h3>${dr[2].orderTotal } 원</h3>
 	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
@@ -39,8 +39,8 @@
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/refund (3).png" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>주문취소</b> : <a href="#"
-	                                    class="tm-notification-link">1 </a>건. </p>
-	                                    <h3>10000원</h3>
+	                                    class="tm-notification-link">${dr[0].orderCnt } </a>건. </p>
+	                                    <h3>${dr[0].orderTotal } 원</h3>
 	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
@@ -48,8 +48,8 @@
 	                        <div class="tm-gray-circle"><img src="/starbucks/images/order.jpg" class="rounded-circle" width="100%" height="100%"></div>
 	                        <div class="media-body">
 	                            <p class="mb-2"><b>승인대기</b> : <a href="#"
-	                                    class="tm-notification-link">1 </a>건. </p>
-	                                    <h3>10000원</h3>
+	                                    class="tm-notification-link">${dr[1].orderCnt } </a>건. </p>
+	                                    <h3>${dr[1].orderTotal } 원</h3>
 	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
 	                        </div>
 	                    </div>
@@ -73,8 +73,12 @@
 
 	        <div class="col-12 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-	                <h2 class="tm-block-title">금일 배송리스트</h2>
-	                <table class="table">
+	                <h2 class="tm-block-title text-center">금일 배송리스트</h2>
+	                <div class="text-right">
+	                <button id="getCSV" class="btnDownload mb-3"> 다운로드 (.csv) </button>
+	                <button id="getExcel" class="btnDownload mb-3"> 다운로드 (.xls) </button>
+	                </div>
+	                <table class="table" id="orderTable">
 	                    <thead>
 	                        <tr>
 	                        	<th scope="col">주문상태</th>
@@ -105,7 +109,7 @@
 										</c:when>
 	                                </c:choose>
 	                            </td>
-	                            <th scope="row"><b>${vo.orderNumber }</b></th>
+	                            <td><b>${vo.orderNumber }</b></td>
 	                            <td><b>${vo.memberId }</b></td>
 	                            <td><b>${vo.itemCode }</b></td>
 	                            <td>${vo.orderPrice }</td>
@@ -134,12 +138,13 @@
 	<input type="hidden" name="themeSum" value="${item.item_theme }"/>
 	<input type="hidden" name="themeSumValue" value="${item.salesSum}"/>
 	</c:forEach>
-	
 	</form>
+	
 	<script>
 	   $(document).ready(function(){
 		    $('#dashNav').addClass('active');
 	   });
+	   
 	</script>
 </body>
 </html>

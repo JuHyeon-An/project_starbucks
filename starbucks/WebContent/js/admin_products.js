@@ -2,7 +2,7 @@
  * http://usejsdoc.org/
  */
 
- let cnt = 1;
+let cnt = 1;
 let array = [];
 let arrayValue = [];
 let sumArray = [];
@@ -11,44 +11,50 @@ let themeValue = [];
 
  function btnFunc(){
 	
-	$('a.nav-link').click(function(){
-		$('a.nav-link').removeClass('active');
-		$(this).addClass('active');
-	})
-	
-	
+	// 수정
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').click(function(){
 			$('#editFrm').submit();
 		})
 	}
 	
-	if($('.category-input')!=null){
-		$('.category-input').on({
-			click:function(){ $(this).removeAttr('readonly'); }
-		});
+	// dashboard에서 테이블 엑셀파일로 export
+	if($('#getExcel')!=null){
+		$('#getExcel').click(function(){
+			$("#orderTable").table2excel({ 
+				filename: "DeliveryList" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+				fileext: ".xls"
+			});
+			
+		})
 	}
 	
-		/*
-		  $("#findStr").on("keyup", function() {
-		    let value = $(this).val().toLowerCase();
-		    $("#selectTable tr").filter(function() {
-		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		    });
-		  });
-	*/
+	// dashboard에서 테이블 엑셀파일로 export
+	if($('#getCSV')!=null){
+		$('#getCSV').click(function(){
+			
+			 $('#orderTable').TableCSVExport({
+			        delivery: 'download',
+			        filename: 'DeliveryList' + new Date().toISOString().replace(/[\-\:\.]/g, "") + '.csv'
+			    });
+			
+		})
+	}
 	
+	//검색버튼 누르면 테이블 로드
 	if($('#btnSearch-item')!=null){
 		$('#btnSearch-item').click(function(){
 			loadTable();
 		})
 	}
 	
+	// 엔터키 눌렀을때 검색이 되도록
 	$('#frmSearch').submit(function(){
 		$('#btnSearch-item').click();
 		return false;
 	});
 	
+	// 테마별 or 종류별 토글버튼 (보류)
 	if($('#btnTheme')!=null && $('#btnCategory')!=null){
 		 $('#btnTheme').click(function(){
 			 $(this).addClass('active');
@@ -60,6 +66,7 @@ let themeValue = [];
 		 
 	}
 	
+	// 상품등록시 sweetalert
 	if($('#resultMsg')!=null){
 		if($('#resultMsg').val()=='성공'){
 			$('#resultMsg').val('');
@@ -102,6 +109,7 @@ let themeValue = [];
 	}
 	
 	
+	// 상품 수정시 sweetalert
 	if($('#editMsg')!=null){
 		if($('#editMsg').val()=='성공'){
 			$('#editMsg').val('');
@@ -143,8 +151,8 @@ let themeValue = [];
 		}
 	}
 	
+	// DAO에서 가져온 데이터값 hidden태그에 넣고 배열에 담기
 	if($('#dashFrm')!=null){
-		// 누적판매량이 많은 순대로 하나씩 배열에 담아서
 		
 		array = document.getElementsByName("bestItem");
 		arrayValue = document.getElementsByName("bestItemValue");
@@ -158,6 +166,7 @@ let themeValue = [];
 	
 }// end of btnFunc
 
+ // delete 버튼 눌렀을 때 이벤트 (sweetalert)
 let deleteItem = function(item_code){
 	
 	Swal.fire({
@@ -198,12 +207,15 @@ let deleteItem = function(item_code){
 	});
 }
 
+
+// 편집화면으로 넘어가기
 function goEdit(item_code){
 	$('#hidden_code').val(item_code);
 	$('#codeForm').attr('action', 'edit_product.stb').submit();
 }
 
 
+// img div 추가
 function makeDiv(main){
 	  
 	  let div = document.createElement('div');
@@ -227,8 +239,6 @@ function makeDiv(main){
 	  div.appendChild(divChild);
 	  
 	  // 삭제버튼 추가
-	  
-	  /*
 	  let btnDel = document.createElement('input');
 	  btnDel.setAttribute('name', 'delBtn'+cnt);
 	  btnDel.setAttribute('type', 'button');
@@ -247,8 +257,7 @@ function makeDiv(main){
 		  }
 	  }
 	  
-	  divChild.appendChild(btnDel);
-	  */
+	  div.appendChild(btnDel);
 	  
 	  // 이미지당 file tag
 	  let file = document.createElement('input');
@@ -297,6 +306,7 @@ function makeDiv(main){
 //TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
 
 
+	//이미지 미리보기
 	function preview(index){
 		$('#fileEdit'+index).trigger('click');
 		$('#fileEdit'+index).change(function(e){
@@ -346,25 +356,6 @@ function makeDiv(main){
 		loadTable();
 	}
 	
-	/*
-	function sortTable(index){
-		let table = $('#selectTable');
-		let rows = table[0].rows;
-		// 테이블 전체 행
-		console.log(rows.length)
-		
-		for (var i = 1; i < (rows.length - 1); i++) { 
-			console.log("실행");
-			var fCell = rows[i].cells[index];
-			console.log(fCell.innerHTML.toLowerCase()); // value
-			var sCell = rows[i + 1].cells[index];
-			if (fCell.innerHTML.toLowerCase() > sCell.innerHTML.toLowerCase()) {
-				console.log("몇번실행되는지");
-				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); } 
-			}
-			}
-*/
-
 		let sortType = 'asc';
 		function sortTable(index){
 		    sortType = (sortType === 'asc') ? 'desc':'asc';
@@ -380,6 +371,7 @@ function makeDiv(main){
 		            
 		            let fCell = row.cells[index].innerHTML;
 		            let sCell = rows[i + 1].cells[index].innerHTML;
+//		            let sCell = row.nextSibling.cells[index].innerHTML.toLowerCase();
 		            
 		            if(index==3 || index==4){
 		            	fCell = parseInt(fCell);
@@ -388,7 +380,6 @@ function makeDiv(main){
 		            	fCell = fCell.toLowerCase();
 		            	sCell = sCell.toLowerCase();
 		            }
-//		            let sCell = row.nextSibling.cells[index].innerHTML.toLowerCase();
 		            
 		            if ( (sortType === 'asc'  && fCell > sCell) ||
 		               (sortType === 'desc' && fCell < sCell) ) {

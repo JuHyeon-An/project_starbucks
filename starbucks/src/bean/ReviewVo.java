@@ -15,7 +15,7 @@ public class ReviewVo {
 	Review_imgs review_imgs; /*ReviewUp에서 받아옴*/
 	
 	List<String> list;       /*수정한 파일 순서 알 수 있음*/
-	int totList;             /*전체 페이지*/
+	/*int totList;  */           /*전체 페이지*/
 	
 	public int getReview_postnum() {
 		return review_postnum;
@@ -77,10 +77,10 @@ public class ReviewVo {
 	public void setList(List<String> list) {
 		this.list = list;
 	}
-	public int getTotList() {
+/*	public int getTotList() {
 		return totList;
 	}
 	public void setTotList(int totList) {
 		this.totList = totList;
-	}
+	}*/
 }
