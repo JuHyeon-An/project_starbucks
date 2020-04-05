@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -129,9 +130,9 @@ public class MyServlet extends HttpServlet{
 		
 		List<ShoppingCartVo> list = dao.select(mId);
 		
-		req.setAttribute("list", list);
+		req.setAttribute("list", list); 
 		
-		String path = url + "?my=./cart.jsp";
+		String path = url + "?my=./cart_ajax.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 		
@@ -156,7 +157,6 @@ public class MyServlet extends HttpServlet{
 		
 		req.setAttribute("result", result);
 		
-		System.out.println("result : " + result);
 		
 		String path = url + "/item_view.pl";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
@@ -269,7 +269,7 @@ public class MyServlet extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		
 		String mId = req.getParameter("mId");
-		String code = req.getParameter("itemCode");
+		//String code = req.getParameter("itemCode");
 		
 		String phone = req.getParameter("memPhone");
 		String email = req.getParameter("memEmail");
@@ -279,24 +279,28 @@ public class MyServlet extends HttpServlet{
 		String getNm = req.getParameter("getName");
 		String getPhone = req.getParameter("getPhone");
 		
-		
+		String code = "";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
+		List<OrderVo> list = new ArrayList<OrderVo>();;
 		
 		
-		List<OrderVo> list = new ArrayList<OrderVo>();
 		int result = 0;
 		int serial = 0;
 		int price = 0;
  		int i = 0;
-		while(true) {
-			 
-			if(req.getParameter("itemCode_"+i)==null) {
-				break;
-			}
+ 		
+ 		int listSize = Integer.parseInt(req.getParameter("itemSize"));
+ 		
+		for(i=0; i<listSize; i++) {
+			//list = new ArrayList<OrderVo>();
+			System.out.println("while i : " + i); 
+			
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("mName");
 			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			
+			
 			if(req.getParameter("serial_"+i) != null && req.getParameter("serial_"+i) != "") {
 				serial = Integer.parseInt(req.getParameter("serial_"+i));
 			}
@@ -304,21 +308,29 @@ public class MyServlet extends HttpServlet{
 				price = Integer.parseInt(req.getParameter("price_"+i));
 			}
 			
+			
 				
 			String orderDt = sdf.format(new Date());
 			int orderStatus = 2;	// 주문처리상태 : 승인대기 설전 
 			
 			OrderVo vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, addr2);
 			list.add(vo);
-			OrderDaoJE dao = new OrderDaoJE();
-			result = dao.insert(list);
 			
-			if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
-				ShoppingCartDao cartDao = new ShoppingCartDao();
-				cartDao.delete(serial); 
-			}
-			i++;
+		}	// for end
+		
+		System.out.println("list size : " + list.size());
+		
+		OrderDaoJE dao = new OrderDaoJE();
+		result = dao.insert(list);
+		
+		System.out.println( "result : " + result);
+		System.out.println("====================");
+		if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
+			ShoppingCartDao cartDao = new ShoppingCartDao();
+			cartDao.delete(serial); 
 		}
+		
+		
 		req.setAttribute("itemCode", code);
 		req.setAttribute("list", list);
 		req.setAttribute("result", result);

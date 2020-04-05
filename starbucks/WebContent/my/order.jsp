@@ -110,7 +110,7 @@
                                     	
                                     	
                                         <c:forEach var="list" items="${list }" varStatus="i">
-                                            <tr>
+                                            <tr class="item-list">
                                                 <td>${list.itemTitle } <strong class="mx-2">x</strong>${list.itemEa }</td>
                                                 <td>${list.totPrice }</td>
                                                 <input type="hidden" name="serial_${i.index }" value="${list.serial}" />
@@ -122,7 +122,7 @@
                                         </c:forEach>
                                         </c:if>
                                         <c:if test="${empty list}">
-                                        	<tr>
+                                        	<tr class="item-list">
                                                 <td>${itemTitle } <strong class="mx-2">x</strong>${ea }</td>
                                                 <td>${totPrice }</td>
                                                 
@@ -175,7 +175,7 @@
                 <input type="hidden" name="mName" value="${vo.memberName }" />
                 <input type="hidden" name="memPhone" value="${vo.memberPhone }" />
                 <input type="hidden" name="memEmail" value="${vo.memberEmail }" />
-
+				<input type="hidden" name="itemSize" id="itemSize" />
             </form>
             <!-- </form> -->
         </div>

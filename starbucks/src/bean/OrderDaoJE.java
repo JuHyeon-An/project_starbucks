@@ -16,12 +16,32 @@ public class OrderDaoJE {
 	
 	public int insert(List<OrderVo> list) {
 		int result = 0;
-		for(OrderVo vo:list) {
+		String sql = "";
+		int size = list.size();
+		System.out.println("=====dao=====");
+		System.out.println("list size dao : " + list.size());
+		for(int i=0; i<size; i++) {
+			OrderVo vo = list.get(i);
+			
+			System.out.println("list size : " + list.size());
 			try {
-				String sql = "insert into SHOPPING_ORDER"
+				System.out.println("dao i : " + i);
+				
+				if(i==0) {
+					sql = "insert into SHOPPING_ORDER"
 							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
 							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
 							+ "values(order_orderNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+					
+					System.out.println("?");
+				}else {
+					sql = "insert into SHOPPING_ORDER"
+							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
+							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
+							+ "values(order_orderNum_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+					System.out.println("currval");
+				}
+				
 				PreparedStatement ps = conn.prepareStatement(sql);
 				conn.setAutoCommit(false);
 			
@@ -40,7 +60,12 @@ public class OrderDaoJE {
 				ps.setString(13, vo.getAddr1());
 				ps.setString(14, vo.getAddr2()); 
 				
+				
+				
 				list.add(vo);
+				
+				
+				System.out.println("vo. itemcode : " + vo.getItemCode());
 				
 				int r = ps.executeUpdate();
 				
@@ -55,8 +80,6 @@ public class OrderDaoJE {
 				
 			}catch(Exception ex) {
 				ex.printStackTrace();
-			}finally {
-				return result;
 			}
 		}
 		return result;

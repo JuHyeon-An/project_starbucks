@@ -15,6 +15,11 @@ function btnClickEvent(){
 	
 	if($("#btnPay") != null){
 		$("#btnPay").click(function(){
+			
+			
+			$("#itemSize").val($('.item-list').length);
+			
+			
 			$("#prodOrderFrm").attr("action", "orderResult.my").submit();
 		});
 	}   
