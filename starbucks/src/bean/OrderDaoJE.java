@@ -27,13 +27,13 @@ public class OrderDaoJE {
 					sql = "insert into SHOPPING_ORDER"
 							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
 							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
-							+ "values(order_orderNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+							+ "values(TO_CHAR(SYSDATE,'YYYYMMDD')||'-'||order_orderNum_seq.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
 					
 				}else {
 					sql = "insert into SHOPPING_ORDER"
 							+ "(ORDERNUMBER, MEMBER_ID, ITEM_CODE, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, ORDER_NUM, ORDER_PRICE, "
 							+ "GET_NAME, GET_PHONE, ORDER_REGDATE, ORDER_STATUS, MEMBER_ZIP, MEMBER_ADDR1, MEMBER_ADDR2, SERIAL) "
-							+ "values(order_orderNum_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
+							+ "values(TO_CHAR(SYSDATE,'YYYYMMDD')||'-'||order_orderNum_seq.currval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, order_serial_seq.nextval)";
 				}
 				
 				PreparedStatement ps = conn.prepareStatement(sql);
@@ -132,7 +132,7 @@ public class OrderDaoJE {
 				
 				sql = "select * from ("
 						+ "		select rownum rn, A.* from("
-						+ " 		SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price, o.serial "
+						+ " 		SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price, o.serial, o.ORDERNUMBER "
 						+ "				FROM SHOPPING_ORDER o join ITEMBOARD i "
 						+ "				ON o.item_code = i.item_code "
 						+ "				WHERE o.member_id=? "
@@ -169,7 +169,7 @@ public class OrderDaoJE {
 				
 				sql = "select * from ("
 						+ "		select rownum rn, A.* from("
-						+ " 		SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price, o.serial "
+						+ " 		SELECT to_char(o.order_regdate, 'rrrr-MM-dd') order_regdate, i.item_thumbnailImg, i.item_title, o.order_price, o.order_num, o.order_status, o.item_code, i.item_price, o.serial, o.ORDERNUMBER "
 						+ "				FROM SHOPPING_ORDER o join ITEMBOARD i "
 						+ "				ON o.item_code = i.item_code "
 						+ "				WHERE o.member_id=? "
@@ -201,6 +201,7 @@ public class OrderDaoJE {
 				vo.setItemCode(rs.getString("item_code"));
 				vo.setPrice(rs.getInt("item_price"));
 				vo.setSerial(rs.getInt("serial"));
+				vo.setOrderNumber(rs.getString("ORDERNUMBER"));
 				
 				list.add(vo);
 			}
