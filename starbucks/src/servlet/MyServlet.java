@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import bean.OrderDaoJE;
 import bean.OrderVo;
+import bean.Page;
 import bean.ShoppingCartDao;
 import bean.ShoppingCartVo;
 import bean.Shopping_MemberDao;
@@ -62,6 +63,9 @@ public class MyServlet extends HttpServlet{
 		String tempUrl = temp.substring(pos);
 		
 		switch(tempUrl) {
+		case "/my.my": 
+			my(req, resp);
+			break;
 		case "/cart.my":
 			cart(req, resp);
 			break;
@@ -83,13 +87,29 @@ public class MyServlet extends HttpServlet{
 		case "/delete.my":
 			delete(req, resp);
 			break;
+		case "/orderListPage.my":
+			orderList(req, resp);
+			break;
 		}
 	}
 	
 	// 마이페이지 인덱스 
 	public void my (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String findStr="";
+		int nowPage=1;
+		if(req.getParameter("findStr")!="" && req.getParameter("findStr")!=null) {
+			findStr=req.getParameter("findStr");
+		}
+		if(req.getParameter("nowPage")!="" && req.getParameter("nowPage")!=null ) {
+			nowPage=Integer.parseInt(req.getParameter("nowPage"));
+		}
+		Page page=new Page(findStr, nowPage);
+		
 		Shopping_MemberDao dao = new Shopping_MemberDao();
 		String mId = req.getParameter("mId2");
+		String status = req.getParameter("selectedStatus");
+		
+		System.out.println("status : " + status);
 		
 		Shopping_MemberVo vo = dao.view(mId);
 		req.setAttribute("vo", vo);
@@ -97,8 +117,9 @@ public class MyServlet extends HttpServlet{
 		OrderVo orderVo = new OrderVo();
 		OrderDaoJE orderDao = new OrderDaoJE();
 		
-		List<OrderVo> list = orderDao.select(mId);
+		List<OrderVo> list = orderDao.select(mId, page, status);
 		
+		req.setAttribute("page", page);
 		req.setAttribute("list", list);
 		 
 		String path = url + "?my=./my.jsp";
@@ -243,15 +264,30 @@ public class MyServlet extends HttpServlet{
 	
 	// 주문내역 
 	public void orderList (HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String findStr="";
+		int nowPage=1;
+		
+		if(req.getParameter("findStr")!="" && req.getParameter("findStr")!=null) {
+			findStr=req.getParameter("findStr");
+		}
+		if(req.getParameter("nowPage")!="" && req.getParameter("nowPage")!=null ) {
+			nowPage=Integer.parseInt(req.getParameter("nowPage"));
+		}
+		Page page=new Page(findStr, nowPage);
+		
+		
+		String status = req.getParameter("selectedStatus");
+		
 		String mId = req.getParameter("mId2");
 		OrderVo vo = new OrderVo();
 		OrderDaoJE dao = new OrderDaoJE();
 		
-		List<OrderVo> list = dao.select(mId);
+		List<OrderVo> list = dao.select(mId, page, status);
 		
+		req.setAttribute("page", page);
 		req.setAttribute("list", list);
 		
-		String path = url + "?my=./order_list.jsp";
+		String path = url + "?my=./order_list.jsp&&mId="+mId;
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 		

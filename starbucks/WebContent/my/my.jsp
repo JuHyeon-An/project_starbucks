@@ -63,6 +63,14 @@
         <div class="col-md-12">
             <h2 class="h3 text-black pb-4 mb-4">최근 구매내역</h2>
         </div>
+        <form class="col-md-12" name="latestOrderList" id='latestOrderList' method='post' >
+        	<input type="hidden" name="mId2" id="mId" value="${mId }"  />
+        	<input type="hidden" name="selectedStatus" id="selectedStatus" value="0" />
+			<input type="hidden" name="cancleSerial" id="cancleSerial" />
+			<input type='hidden' id='msg' name='msg' value='${msg }'/>
+			<input type='hidden' id='reviewItemCode' name='reviewItemCode'/>
+			<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
+        </form>
         <div class="col-md-12">
             <div class="site-blocks-table mb-3">
                 <table class="table table-bordered">
@@ -118,9 +126,31 @@
                     </tbody>
                 </table>
             </div>
-
+            <!-- 
+			<div class="row">
+		        <div class="col-md-12 text-center">
+		            <div class="site-block-27">
+		                <ul>
+							<c:if test="${page.nowPage >1}">
+							<li onclick='orderListPageNav(${page.nowPage }-1)'><a href="#">&lt;</a></li>
+							</c:if>
+							
+							<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
+							<li id='here' onclick='orderListPageNav(${i }, "${mId }")' ${(i==page.nowPage)? "class='active'":""}><a href="#">${i }</a></li>
+							</c:forEach>		
+							
+							<c:if test="${page.nowPage<page.totPage }">
+							<li onclick='orderListPageNav(${page.nowPage }+1)'><a href="#">&gt;</a></li>
+							</c:if>
+			        	</ul>
+		            </div>
+		        </div>
+		    </div>
+		     -->
         </div>
     </div>
+    
+    <!-- 
     <div class="row mb-3">
         <div class="col-md-12">
             <h2 class="h3 text-black pb-4 mb-4">내가 쓴 리뷰</h2>
@@ -132,6 +162,7 @@
 
         </div>
     </div>
+     -->
     <form action="">
     	<input type="hidden" name="mId2" value="${mId }" />
     </form>

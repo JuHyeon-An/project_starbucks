@@ -22,6 +22,7 @@ public class OrderVo {
 	String productImg;	// 상품이미지 
 	String itemTitle; // 상품명 
 	int price;	// 상품 가격 
+	int serial;
 	
 	public OrderVo() {
 		
@@ -42,6 +43,25 @@ public class OrderVo {
 		this.zone = zone;
 		this.addr1 = addr1;
 		this.addr2 = addr2;
+		
+	}
+	
+	public OrderVo(String mId, String itemCode, String mName, String phone, String email, int orderNum, int orderPrice, String getNm, String getPhone, String orderRegDt, int orderStatus, String zone, String addr1, String addr2, int serial) {	
+		this.memberId = mId;
+		this.itemCode = itemCode;
+		this.memberName = mName;
+		this.memberPhone = phone;
+		this.memberEmail = email;
+		this.orderNum = orderNum;
+		this.orderPrice = orderPrice;
+		this.getName = getNm;
+		this.getPhone = getPhone;
+		this.orderregDate = orderRegDt;
+		this.orderStatus = orderStatus;
+		this.zone = zone;
+		this.addr1 = addr1;
+		this.addr2 = addr2;
+		this.serial = serial;
 		
 	}
 	
@@ -170,6 +190,14 @@ public class OrderVo {
 
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	public int getSerial() {
+		return serial;
+	}
+
+	public void setSerial(int serial) {
+		this.serial = serial;
 	}
 	
 	

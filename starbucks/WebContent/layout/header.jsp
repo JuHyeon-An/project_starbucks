@@ -85,7 +85,7 @@
                                        		 <li><a href="/starbucks/member/logoutAction.jsp">logout</a></li>
                                        		 <li><a href="/starbucks/my/my.my?mId2=${mId }"><span class="icon icon-person"></span></a></li>
                                        		 <li>
-	                                            <a href="/starbucks/my/cart.my?mId2=${mId }" class="site-cart">
+	                                            <a href="/starbucks/my/cart.my?mId2=${mId }&&selectedStatus=0" class="site-cart">
 	                                                <span class="icon icon-shopping_cart"></span>
 	                                                <span class="count">2</span>
 	                                            </a>

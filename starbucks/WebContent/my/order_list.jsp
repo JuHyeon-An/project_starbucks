@@ -9,22 +9,29 @@
             <h2 class="h3 mb-3 text-black">주문내역</h2>
         </div>
         <form class="col-md-12" name="review" id='review' method='post' >
-        	<input type="hidden" name="mId2" value="${mId }"  />
+        	<input type="hidden" name="mId2" id="mId" value="${mId }"  />
+        	<input type="hidden" name="selectedStatus" id="selectedStatus" value="0" />
             <div class="float-md-left">
-                <div class="dropdown mr-1 ml-md-auto">
-                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        주문상태
+                <div class="dropdown mr-1 ml-md-auto mb-3">
+                    <button type="button" class="btn btn-secondary btn-sm dropdown-toggle btnOrderSort" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <c:choose>
+                        	<c:when test="${param.selectedStatus == 0 }">전체</c:when>
+                        	<c:when test="${param.selectedStatus == 1 }">주문취소</c:when>
+                        	<c:when test="${param.selectedStatus == 2 }">승인대기</c:when>
+                        	<c:when test="${param.selectedStatus == 3 }">주문완료</c:when>
+                        </c:choose> 
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                        <a class="dropdown-item" href="#">입금확인</a>
-                        <a class="dropdown-item" href="#">배송준비중</a>
-                        <a class="dropdown-item" href="#">배송완료</a>
+                        <a class="dropdown-item" id="status00" href="#" onclick="orderListSort('0');">전체</a>
+                        <a class="dropdown-item" id="status01" href="#" onclick="orderListSort('1');">주문취소</a>
+                        <a class="dropdown-item" id="status02" href="#" onclick="orderListSort('2');">승인대기</a>
+                        <a class="dropdown-item" id="status03" href="#" onclick="orderListSort('3');">주문완료</a>
                     </div>
                 </div>
 
             </div>
             <div class="d-flex">
-                <div class="offset-md-6 col-md-6 col-12 mb-3 pr-0">
+                <div class="offset-md-6 col-md-6 col-12 mb-3 pr-0 d-none">
                     <div class="input-group input-group-sm input-daterange">
                         <input type="text" class="form-control" value="">
                         <div class="input-group-text py-0">to</div>
@@ -35,10 +42,10 @@
                     </div>
                 </div>
             </div>
-
-<input type='hidden' id='msg' name='msg' value='${msg }'/>
-<input type='hidden' id='reviewItemCode' name='reviewItemCode'/>
-
+			<input type="hidden" name="cancleSerial" id="cancleSerial" />
+			<input type='hidden' id='msg' name='msg' value='${msg }'/>
+			<input type='hidden' id='reviewItemCode' name='reviewItemCode'/>
+			<input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
         </form>
 
     </div>
@@ -78,6 +85,7 @@
 	                        <span class="" id="orderPrice">${vo.orderPrice }</span>
 	                    </td>
 	                    <td>
+	                    	<input type="hidden" name="serial_${i.index }" id="serial_${i.index }" value="${vo.serial }" />
 	                    	<input type="hidden" name="orderStatus_${i.index }" value="${vo.orderStatus }" />
 	                    	<input type='hidden' name='itemCode' id='itemCode' value='${vo.itemCode }'/>
 	                    	<input type='hidden' name='cnt' id='cnt' value='${vo.itemCode }'/>
@@ -88,7 +96,7 @@
 		                        </button>
 						    </c:if>
 						    <c:if test="${status == 2}">
-						        <button type="button" class="btn btn-primary btn-sm" id="" name=''>
+						        <button type="button" class="btn btn-primary btn-sm" id="btnCancle_${i.index }" name='' onclick="orderCancle(${i.index});">
 		                            취소요청
 		                        </button>
 						    </c:if>
@@ -108,14 +116,18 @@
         <div class="col-md-12 text-center">
             <div class="site-block-27">
                 <ul>
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                </ul>
+					<c:if test="${page.nowPage >1}">
+					<li onclick='orderListPageNav(${page.nowPage }-1)'><a href="#">&lt;</a></li>
+					</c:if>
+					
+					<c:forEach var="i" begin="${page.startPage }" end="${page.endPage }">
+					<li id='here' onclick='orderListPageNav(${i }, "${mId }")' ${(i==page.nowPage)? "class='active'":""}><a href="#">${i }</a></li>
+					</c:forEach>		
+					
+					<c:if test="${page.nowPage<page.totPage }">
+					<li onclick='orderListPageNav(${page.nowPage }+1)'><a href="#">&gt;</a></li>
+					</c:if>
+	        	</ul>
             </div>
         </div>
     </div>
@@ -123,6 +135,10 @@
 
     <script>
         $(function () {
+        	
+        	
+			
+        	
             // 취소 요청 alert
             $("#btnCancle").click(function () {
                 Swal.fire({
@@ -130,7 +146,7 @@
                     text: "확인 버튼을 누르시면 관리자 승인 후 주문 취소가 완료됩니다.",
                     icon: 'warning',
                     showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
+                    confirmButtonColor: '#006633',
                     cancelButtonColor: '#d33',
                     confirmButtonText: '확인',
                     cancelButtonText: '취소'
@@ -154,4 +170,9 @@
                 //zIndexOffset
             });
         });
+        
+        
+        
+        
+    	
     </script>
