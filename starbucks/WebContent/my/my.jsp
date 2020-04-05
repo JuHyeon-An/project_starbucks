@@ -76,7 +76,7 @@
                 <table class="table table-bordered">
                     <thead>
                         <tr>
-                            <th class="">주문일자</th>
+                            <th class="">주문번호</th>
                             <th class="product-thumbnail">Image</th>
                             <th class="product-name">Product</th>
                             <th class="product-price">Price</th>
@@ -86,10 +86,10 @@
                         </tr>
                     </thead>
                     <tbody>
-                         <c:forEach var="orderVo" items="${list }" varStatus="i" >
+                         <c:forEach var="orderVo" items="${list }" varStatus="i" begin="0" end="4" >
 			                <tr>
 			                    <td class="">
-			                        <span id="orderRegDate_${i.index }">${orderVo.orderregDate }</span>
+			                        <span id="orderNum_${i.index }">${vo.orderNumber }</span>
 			                    </td>
 			                    <td class="product-thumbnail">
 			                        <img src="/starbucks/fileFolder/${orderVo.productImg }" alt="Image" class="img-fluid">
