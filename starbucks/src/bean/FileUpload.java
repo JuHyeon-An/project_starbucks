@@ -85,7 +85,6 @@ public class FileUpload {
 					
 					String f = fi.getName();
 					// file name을 가지고 오는 작업
-					
 					String sysFile = new Date().getTime() +"-"+f;
 					// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
 					

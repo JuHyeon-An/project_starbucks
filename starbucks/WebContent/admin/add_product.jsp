@@ -11,7 +11,7 @@
 							<h2 class="tm-block-title d-inline-block">상품 등록</h2>
 						</div>
 					</div>
-					<form id="productFrm" name="productFrm" method="post" action="add_productR.stb" enctype="multipart/form-data"
+					<form id="productFrm" name="productFrm" method="post" enctype="multipart/form-data"
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="form-group mb-3">
@@ -102,7 +102,7 @@
 					<input id="fileBtn" name="fileBtn" type="file" style="display: none;" />
 
 				<div class="col-12">
-					<button type="submit" id="btnInsert"
+					<button type="button" id="btnSaveItem"
 						class="btn btn-primary btn-block text-uppercase">상품등록</button>
 				</div>
 		<hr/>
