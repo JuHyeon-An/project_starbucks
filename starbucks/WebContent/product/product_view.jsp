@@ -127,16 +127,6 @@
 
 </c:forEach>
 
-
-
-
-
-
-
-
-
-
-<!-- 기존리뷰 시작 -->
 <div class="container">
 <h3>리뷰</h3><br />
 <table class="table table-stripped col-10 text-center" id="reviews">

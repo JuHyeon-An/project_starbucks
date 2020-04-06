@@ -677,6 +677,7 @@ public class DaoUk {
 				pstmt2.setInt(1, vo.getReview_postnum());
 				ResultSet rs2=pstmt2.executeQuery();
 				if(rs2.next()) {
+				System.out.println("다오 와일문안 ");
 					Review_imgs imgs=new Review_imgs();
 					List<String> list2=new ArrayList<String>();
 					list2.add(rs2.getString("sys_img1"));
@@ -687,6 +688,7 @@ public class DaoUk {
 					imgs.setSys_imgs(list2);
 					vo.setReview_imgs(imgs);
 				}
+				list.add(vo);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

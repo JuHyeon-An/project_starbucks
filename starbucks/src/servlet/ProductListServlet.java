@@ -148,12 +148,12 @@ public class ProductListServlet extends HttpServlet{
 		
 		Page_Item page=new Page_Item(findStr, nowPage);
 		DaoUk daoR=new DaoUk();
-		List<ReviewVo> listR=daoR.review_select(page);
+		List<ReviewVo> listR = daoR.review_select(page);
 		req.setAttribute("listR", listR);
 		req.setAttribute("page", page);
 		
 		
-		
+		System.out.println(listR.size()+"리스트알 사이즈");
 		
 		String path = url+"/product_view.jsp";
 		
