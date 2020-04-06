@@ -49,7 +49,6 @@ public class OrderDao {
 				+ "		MEMBER_ID, " 
 				+ "	 	ITEM_CODE, "  
 				+ "		ORDER_NUM, "  
-				+ "     SERIAL, "
 				+ "		ORDER_PRICE, "  
 				+ " 	ORDER_REGDATE, "  
 				+ "		ORDER_STATUS "
@@ -93,7 +92,6 @@ public class OrderDao {
 				+ "		MEMBER_ID, " 
 				+ "	 	ITEM_CODE, "  
 				+ "		ORDER_NUM, "  
-				+ "     SERIAL, "
 				+ "		ORDER_PRICE, "  
 				+ " 	ORDER_REGDATE, "  
 				+ "		ORDER_STATUS "
@@ -124,7 +122,6 @@ public class OrderDao {
 //				vo.setMemberPhone(rs.getString("MEMBER_PHONE"));
 //				vo.setMemberEmail(rs.getString("MEMBER_EMAIL"));
 				vo.setOrderNum(rs.getInt("ORDER_NUM"));
-				vo.setSerial(rs.getInt("SERIAL"));
 				vo.setOrderPrice(rs.getInt("ORDER_PRICE"));
 //				vo.setGetName(rs.getString("GET_NAME"));
 //				vo.setGetAddress(rs.getString("GET_ADDRESS"));
