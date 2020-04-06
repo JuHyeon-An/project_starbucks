@@ -52,6 +52,7 @@
 		<table id='ordertable' class="table">
 			<thead>
 				<tr>
+					<th scope="col">No</th>
 					<th scope="col">주문번호</th>
 					<th scope="col">아이디</th>
 					<th scope="col">상품코드</th>
@@ -67,7 +68,7 @@
 
 					<tr id='list'
 						onclick="view('${vo.orderNumber}','${vo.memberId }','${vo.itemCode }','${vo.orderNum } ', '${vo.orderPrice}', '${vo.orderregDate}', '${vo.orderStatus}'   )">
-
+						<td><b>${vo.serial}</b></td>
 						<td><b>${vo.orderNumber}</b></td>
 						<td><b>${vo.memberId}</b></td>
 						<td><b>${vo.itemCode}</b></td>
