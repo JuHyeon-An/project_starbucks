@@ -19,6 +19,7 @@
 	    </div>
 	    <form class="row" method="post" name="formmm" id="formmm">
 	    <input type="hidden" id="ncc" name="ncc" value="${msg }"/>
+	    <input type="hidden" id="del" name="del" value="${msg }"/>
 	        <div class="col-md-12">
 	        	<div class="form-group row">
 	                <div class="col-md-3">
@@ -44,6 +45,7 @@
 	        <%
 				if (session.getAttribute("admin") != null) {
 			%>
+				<button type="button" class="btn btn-primary min-width-125" id="btnDelete" name='btnDelete'>삭제</button>
 	            <button type="button" class="btn btn-primary min-width-125" id="btnUpdate">  
 	               수정
 	            </button>
@@ -85,6 +87,41 @@ if($('#ncc')!=null){
 				  if (confirm.value) {
 					  // 확인을 눌렀으면
 					  $('#ncc').val('');
+		}else{
+			location.href="notice_select.uk"
+		}
+	})
+	}
+}
+
+if($('#del')!=null){
+	if($('#del').val()=='성공'){
+		Swal.fire({
+			  title: 'SUCCESS! :D',
+			  text: "게시물이 성공적으로 삭제되었습니다..",
+			  icon: 'success',
+			  showCancelButton: false,
+			  confirmButtonColor: '#3085d6',
+			  confirmButtonText: '목록으로'
+			}).then((result) => {
+			  if (result.value) {
+		location.href="notice_select.uk";
+	}
+})
+	}else if($('#del').val()=='실패'){
+		Swal.fire({
+			  title: '오류 발생',
+			  text: "삭제 중 오류가 발생했습니다. 관리자에게 문의하세요.",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '다시 시도',
+			  cancelButtonText: '목록으로'
+			}).then((confirm) => {
+				  if (confirm.value) {
+					  // 확인을 눌렀으면
+					  $('#del').val('');
 		}else{
 			location.href="notice_select.uk"
 		}

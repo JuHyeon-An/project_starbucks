@@ -109,6 +109,7 @@ public class MyServlet extends HttpServlet{
 		String mId = req.getParameter("mId2");
 		String status = req.getParameter("selectedStatus");
 		
+		System.out.println("status : " + status);
 		
 		Shopping_MemberVo vo = dao.view(mId);
 		req.setAttribute("vo", vo);
@@ -316,26 +317,22 @@ public class MyServlet extends HttpServlet{
 		String code = "";
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		
-		List<OrderVo> list = new ArrayList<OrderVo>();
+		List<OrderVo> list = new ArrayList<OrderVo>();;
+		
 		
 		int result = 0;
 		int serial = 0;
 		int price = 0;
  		int i = 0;
- 		int ea = 0;
- 		int orderStatus = 2;	// 주문처리상태 : 승인대기 설정 
- 		String orderDt = sdf.format(new Date());
- 		String itemTitle = "";
- 		OrderVo vo = null;
+ 		
  		int listSize = Integer.parseInt(req.getParameter("itemSize"));
  		
- 		List<Integer> serialList = new ArrayList<Integer>();
 		for(i=0; i<listSize; i++) {
 			
 			code = req.getParameter("itemCode_"+i);
 			String mName = req.getParameter("mName");
-			ea = Integer.parseInt(req.getParameter("itemEa_"+i));
-			itemTitle = req.getParameter("itemTitle_"+i);
+			int ea = Integer.parseInt(req.getParameter("itemEa_"+i));
+			
 			
 			if(req.getParameter("serial_"+i) != null && req.getParameter("serial_"+i) != "") {
 				serial = Integer.parseInt(req.getParameter("serial_"+i));
@@ -344,33 +341,29 @@ public class MyServlet extends HttpServlet{
 				price = Integer.parseInt(req.getParameter("price_"+i));
 			}
 			
-			vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, addr2);
+			
+				
+			String orderDt = sdf.format(new Date());
+			int orderStatus = 2;	// 주문처리상태 : 승인대기 설전 
+			
+			OrderVo vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, addr2);
 			list.add(vo);
-			serialList.add(serial);
+			
 		}	// for end
 		
 		
 		OrderDaoJE dao = new OrderDaoJE();
-		
 		result = dao.insert(list);
-			
-		if(result>0){	// 	주문 성공 시 장바구니 상품 삭제처리 
+
+		if(result==1){	// 	주문 성공 시 장바구니 상품 삭제처리 
 			ShoppingCartDao cartDao = new ShoppingCartDao();
-			for(int s : serialList) {  
-				cartDao.delete(s); 
-			}
+			cartDao.delete(serial); 
 		}
 		
-		int cartTotalPrice = Integer.parseInt(req.getParameter("cartTotPriceHd"));
-		
-		req.setAttribute("ea", ea);
-		req.setAttribute("price", price);
-		req.setAttribute("itemTitle", itemTitle);
 		
 		req.setAttribute("itemCode", code);
 		req.setAttribute("list", list);
 		req.setAttribute("result", result);
-		req.setAttribute("cartTotalPrice", cartTotalPrice);
 		
 		String path = url + "?my=./order_result.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);

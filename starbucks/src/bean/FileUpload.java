@@ -21,6 +21,7 @@ public class FileUpload {
 	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
 //	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder/";
 	
+//	String upload = "C:/Users/Ellen/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/photos";
 	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
