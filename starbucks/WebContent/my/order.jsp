@@ -82,7 +82,7 @@
                                     <span class="text-black ml-auto h5" id="memberSavedmoney">${vo.savedMoney }</span>
                                 </div>
                                 <div class="input-group">
-                                    <input type="number" class="form-control" id="savedMoney" placeholder="">
+                                    <input type="number" class="form-control" name="savedMoney" id="savedMoney" placeholder="" value="0">
                                     <div class="input-group-append">
                                         <button class="btn btn-primary btn-sm" type="button" id="btnUseSaveMoney">전액 사용</button>
                                     </div>
@@ -178,6 +178,7 @@
                 <input type="hidden" name="memEmail" value="${vo.memberEmail }" />
 				<input type="hidden" name="itemSize" id="itemSize" />
 				<input type="hidden" name="orderList" value="${list }" />
+				<input type="hidden" name="usePoint" id="usePoint" value="0"/>
             </form>
             <!-- </form> -->
         </div>
@@ -193,7 +194,6 @@
             	$( "#savedMoney" )
             	  .keyup(function() {
             	    var value = Number($( this ).val());
-	          	    console.log(value);
             	    
             	    if(savedMoney >= value){
             	    	$( "#memberSavedmoney" ).text( savedMoney - value );

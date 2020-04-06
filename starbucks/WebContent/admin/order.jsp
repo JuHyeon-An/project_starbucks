@@ -111,6 +111,7 @@
 			</c:if>
 		</div>
 		</div>
+		
 		<input type='hidden' name='orderNumber' id='orderNumber' />
 		<input type='hidden' name='memberId' id='memberId' />
 		<input type='hidden' name='itemCode' id='itemCode' />
