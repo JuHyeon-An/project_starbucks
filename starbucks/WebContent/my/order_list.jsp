@@ -135,31 +135,6 @@
 
     <script>
         $(function () {
-        	
-        	
-			
-        	
-            // 취소 요청 alert
-            $("#btnCancle").click(function () {
-                Swal.fire({
-                    title: '주문을 취소하시겠습니까?',
-                    text: "확인 버튼을 누르시면 관리자 승인 후 주문 취소가 완료됩니다.",
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#006633',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: '확인',
-                    cancelButtonText: '취소'
-                }).then((result) => {
-                    if (result.value) {
-                        Swal.fire(
-                            'Deleted!',
-                            '관리자에게 주문 취소 요청을 하였습니다.',
-                            'success'
-                        )
-                    }
-                })
-            });
             // datepicker
             $('.input-daterange input').each(function () {
                 //$(this).datepicker('clearDates');

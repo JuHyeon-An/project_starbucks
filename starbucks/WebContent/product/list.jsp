@@ -163,6 +163,7 @@ let item_view = function(findStr){
    $('#pd_findStr').val(findStr);
    $('#pd_frm').attr('method', 'post');
    $('#pd_frm').attr('action', 'item_view.pl').submit();
+   
 } 
 
 </script>
