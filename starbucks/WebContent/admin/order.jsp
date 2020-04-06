@@ -68,7 +68,7 @@
 
 					<tr id='list'
 						onclick="view('${vo.orderNumber}','${vo.memberId }','${vo.itemCode }','${vo.orderNum } ', '${vo.orderPrice}', '${vo.orderregDate}', '${vo.orderStatus}'   )">
-						<td><b>${vo.orderNumber}</b></td>
+						<td><b>${vo.serial}</b></td>
 						<td><b>${vo.orderNumber}</b></td>
 						<td><b>${vo.memberId}</b></td>
 						<td><b>${vo.itemCode}</b></td>
