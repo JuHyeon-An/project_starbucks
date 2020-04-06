@@ -20,8 +20,8 @@ public class Shopping_MemberDao {
 		try {
 
 			
-			String sql = "insert into shopping_member(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_REGDATE, member_zip, member_addr1, member_addr2 ) "
-						+ " values( ? , ? , ? , ? , ? , ? , ? , ? , ? )";
+			String sql = "insert into shopping_member(MEMBER_ID, MEMBER_PW, MEMBER_NAME, MEMBER_PHONE, MEMBER_EMAIL, MEMBER_REGDATE, member_zip, member_addr1, member_addr2,member_savedmoney ) "
+						+ " values( ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, vo.getmId());
 			ps.setString(2, vo.getPwd());
@@ -32,7 +32,7 @@ public class Shopping_MemberDao {
 			ps.setString(7, vo.getZip());
 			ps.setString(8, vo.getAddr1());
 			ps.setString(9, vo.getAddr2());
-			
+			ps.setInt(10, 0);
 			int r = ps.executeUpdate();
 			if(r<1) {
 				msg = "입력중 오류발생";
