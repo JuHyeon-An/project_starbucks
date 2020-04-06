@@ -150,7 +150,7 @@ let notice_view=function(noticePostNum,noticeTitle,noticeContent,memberId ){
 	$('#noticeTitle').val(noticeTitle);
 	$('#noticeContent').val(noticeContent);
 	$('#memberId').val(memberId);
-	$('#notice').attr('action','notice_view.uk').submit();
+	$('#noticeFrm').attr('action','notice_view.uk').submit();
 }
 let review_view=function(review_postnum, item_code){
 	$('#review_postnum').val(review_postnum);
