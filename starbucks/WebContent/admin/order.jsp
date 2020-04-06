@@ -52,6 +52,7 @@
 		<table id='ordertable' class="table">
 			<thead>
 				<tr>
+					<th scope="col">No</th>
 					<th scope="col">주문번호</th>
 					<th scope="col">아이디</th>
 					<th scope="col">상품코드</th>
@@ -110,6 +111,7 @@
 			</c:if>
 		</div>
 		</div>
+		
 		<input type='hidden' name='orderNumber' id='orderNumber' />
 		<input type='hidden' name='memberId' id='memberId' />
 		<input type='hidden' name='itemCode' id='itemCode' />
