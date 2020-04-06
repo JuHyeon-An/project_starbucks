@@ -119,7 +119,7 @@ public class Shopping_MemberDao {
 	public Shopping_MemberVo view(String mId) {
 		Shopping_MemberVo vo = new Shopping_MemberVo();
 		try {
-			String sql  = "select member_id, member_pw, member_name, member_phone, member_zip, member_addr1, member_addr2, member_email "
+			String sql  = "select member_id, member_pw, member_name, member_phone, member_zip, member_addr1, member_addr2, member_email, MEMBER_SAVEDMONEY "
 					+ "from SHOPPING_MEMBER "
 					+ "WHERE member_id = ? ";
 
@@ -136,6 +136,7 @@ public class Shopping_MemberDao {
 				vo.setAddr1(rs.getString("member_addr1"));
 				vo.setAddr2(rs.getString("member_addr2"));
 				vo.setEmail(rs.getString("member_email"));
+				vo.setSavedMoney(rs.getInt("MEMBER_SAVEDMONEY"));
 			}
 			
 			rs.close();

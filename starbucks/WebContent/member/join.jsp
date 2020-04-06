@@ -43,10 +43,13 @@
 				</div>
 		
 				<div class="form-group">
-					<input type="password" class='form-control' placeholder='비밀번호' name='pwd' maxlength='20'required/>
+					<input type="password" class='form-control' placeholder='비밀번호' name='pwd' id='pwd' maxlength='20'required/>
+				</div>
+				<div class="form-group">
+					<input type="password" class='form-control' placeholder='비밀번호 확인' name='pwd2' id='pwd2'  maxlength='20'required/>
 				</div>
 				<div class="form-group ">
-					<input type="text" class='form-control' placeholder='이름' name='mName' maxlength='20' required oninvalid="alert('알리메시지!');"/>
+					<input type="text" class='form-control' placeholder='이름' name='mName' maxlength='20' required />
 					
 
 
@@ -98,6 +101,22 @@ $('#email').keyup(function(){
 
 
 <script>
+
+	$('#pwd2').blur(function(){
+		if($('#pwd').val() != $('#pwd2').val()){
+			if($('#pwd2').val()!=''){
+				Swal.fire({
+					  icon: 'error',
+					  title: 'Oops...',
+					  text: '비밀번호가 일치하지 않습니다.',
+					
+					})
+					  $('#pwd2').val('');
+					$('#pwd2').focus();
+				
+			}
+		}
+	})
 
 
 $("#mId").blur(function() {

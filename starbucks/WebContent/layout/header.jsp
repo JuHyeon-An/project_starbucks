@@ -1,3 +1,4 @@
+<%@page import="bean.ShoppingCartDao"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <!DOCTYPE html>
@@ -39,7 +40,13 @@
 	}
    </script>
 
+    <%
     
+    ShoppingCartDao cartdao = new ShoppingCartDao();
+    String mId2 = session.getAttribute("mId")+"";
+    int cnt = cartdao.cartcnt(mId2);
+    
+    %>
 
     <body>
      
@@ -78,7 +85,6 @@
                                        		 <li>
 	                                            <a href="/starbucks/member/login.jsp" class="site-cart">
 	                                                <span class="icon icon-shopping_cart"></span>
-	                                                <span class="count">2</span>
 	                                            </a>
 	                                        </li>
                                         <%}else{ %>
@@ -87,7 +93,8 @@
                                        		 <li>
 	                                            <a href="/starbucks/my/cart.my?mId2=${mId }" class="site-cart">
 	                                                <span class="icon icon-shopping_cart"></span>
-	                                                <span class="count">2</span>
+	                                                <%if(cnt!=0){ %><span class="count"><%=cnt%></span>
+	                                                <%} %>
 	                                            </a>
 	                                        </li>
                                         <%} %>
