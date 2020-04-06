@@ -16,20 +16,22 @@
                 		<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 			<c:choose>
                 				<c:when test="${param.item_code == ''||param.sort ==null}">카테고리</c:when>
-                				<c:when test="${param.item_code == '1'}">1</c:when>
-                				<c:when test="${param.item_code == '2'}">2</c:when>
-                				<c:when test="${param.item_code == '3'}">3</c:when>
-                				<c:when test="${param.item_code == '4'}">4</c:when>
-                				<c:when test="${param.item_code == '5'}">5</c:when>
+                				<c:when test="${param.item_code == '1'}">머그</c:when>
+                				<c:when test="${param.item_code == '2'}">글라스</c:when>
+                				<c:when test="${param.item_code == '3'}">텀블러</c:when>
+                				<c:when test="${param.item_code == '4'}">보온병</c:when>
+                				<c:when test="${param.item_code == '5'}">액세서리</c:when>
+                				<c:when test="${param.item_code == '6'}">커피용품/원두</c:when>
                 			</c:choose>
                     	</button>
 	                  	<div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
 	                    	<a class="dropdown-item" href="#" onclick="kategorie()">전체</a>
-	                    	<a class="dropdown-item" href="#" onclick="kategorie(1)">1</a>
-	                    	<a class="dropdown-item" href="#" onclick="kategorie(2)">2</a>
-	                    	<a class="dropdown-item" href="#" onclick="kategorie(3)">3</a>
-	                    	<a class="dropdown-item" href="#" onclick="kategorie(4)">4</a>
-	                    	<a class="dropdown-item" href="#" onclick="kategorie(5)">5</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(1)">머그</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(2)">글라스</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(3)">텀블러</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(4)">보온병</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(5)">액세서리</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(6)">커피용품/원두</a>
 	                  </div>
                 </div>
          	</div>
