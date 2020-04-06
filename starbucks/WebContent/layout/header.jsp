@@ -124,21 +124,19 @@
                             </li>
 
                             <li class="has-children">
-                                <a href="/starbucks/bbs/">Community</a>
+                                <a href="review_select.uk?nowPage=1">Community</a>
                                 <ul class="dropdown">
-                                    <li><a href="/starbucks/bbs/">Review</a></li>
-                                    <li><a href="#">Store Info</a></li>
+                                    <li><a href="review_select.uk?nowPage=1">Review</a></li>
                                 </ul>
                             </li>
                             <li class="has-children">
                                 <a href="notice_select.uk?nowPage=1">CS Center</a>
                                 <ul class="dropdown">
                                     <li><a href="notice_select.uk?nowPage=1">Notice</a></li>
-                                    <li><a href="review_select.uk?nowPage=1">Review</a></li>
                                     <li><a href="review_insert.uk">임시 리뷰 입력</a></li>
                                 </ul>
                                                           <li class="has-children">
-                                <a href="/starbucks/infomation/privacy.jsp">Information</a>
+                                <a href="/starbucks/infomation/map.jsp">Information</a>
                                 <ul class="dropdown">
                                		<li><a href="/starbucks/infomation/map.jsp">매장찾기</a></li>
                                     <li><a href="/starbucks/infomation/privacy.jsp">개인정보처리방침</a></li>
