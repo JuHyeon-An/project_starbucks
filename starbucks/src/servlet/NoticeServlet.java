@@ -96,11 +96,13 @@ public class NoticeServlet extends HttpServlet {
 		NoticeVo vo = new NoticeVo();
 		NoticeDao dao = new NoticeDao();
 		String msg="";
-//		vo.setMemberId(req.getParameter("memberId"));
+		vo.setMemberId(req.getParameter("memberId"));
 		vo.setNoticeTitle(req.getParameter("noticeTitle"));
+		System.out.println("여기 가져오는지 : "+req.getParameter("noticeTitle"));
 		vo.setNoticeContent(req.getParameter("noticeContent"));
 //		vo.setMemberName(req.getParameter("memberName"));
 		vo.setNoticePostNum(Integer.parseInt(req.getParameter("noticePostNum")));
+		System.out.println("노티스 포스트넘 : "+req.getParameter("noticePostNum"));
 
 		int r =dao.modify(vo);
 		if(r>0) {

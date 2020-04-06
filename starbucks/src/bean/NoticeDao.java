@@ -54,6 +54,12 @@ public class NoticeDao {
 	}
 
 	public int modify(NoticeVo vo) {
+		System.out.println("modify dao 시자아아아아ㅏ앙ㄱ");
+		System.out.println("1 : "+vo.getMemberId());
+		System.out.println("2 : "+vo.getNoticeContent());
+		System.out.println("3 : "+vo.getNoticeTitle());
+		System.out.println("4 : "+vo.getNoticePostNum());
+		
 		System.out.println("notice modifyy dao 시작");
 		String msg = "수정완료오!";
 		int r = 0;
@@ -75,7 +81,6 @@ public class NoticeDao {
 			System.out.println(r + "알에스 시작후 ");
 			if (r < 1) {
 				System.out.println(r + "r값 ");
-
 				throw new Exception("수정하는데 오류발새애앵");
 
 			}
@@ -152,6 +157,7 @@ public class NoticeDao {
 				vo.setNoticeContent(rs.getString("notice_content"));
 				vo.setNoticeRegDate(rs.getString("notice_regdate"));
 				vo.setNoticeView(rs.getInt("notice_views"));
+				vo.setNoticePostNum(rs.getInt("notice_postnum"));
 			}
 			
 			conn.commit();
