@@ -330,6 +330,8 @@ public class MyServlet extends HttpServlet{
  		
  		
  		int usePoint = 	Integer.parseInt(req.getParameter("savedMoney"));
+ 		System.out.println("usePoint : " + usePoint);
+ 		
  		int listSize = Integer.parseInt(req.getParameter("itemSize"));
  		
  		List<Integer> serialList = new ArrayList<Integer>();
