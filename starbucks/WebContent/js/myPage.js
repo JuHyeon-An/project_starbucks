@@ -113,7 +113,6 @@ function btnClickEvent(){
 		$("#btnPay").click(function(){
 			// 적립금 값 세팅 
 			$("#usePoint").val($("#savedMoney").val());
-			console.log($("#savedMoney").val());
 			
 			$("#itemSize").val($('.item-list').length);
 			$("#prodOrderFrm").attr("action", "orderResult.my").submit();

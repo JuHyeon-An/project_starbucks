@@ -328,7 +328,7 @@ public class MyServlet extends HttpServlet{
  		String itemTitle = "";
  		OrderVo vo = null;
  		
- 		System.out.println("req.getParameter(\"usePoint\") : " + req.getParameter("usePoint"));
+ 		
  		int usePoint = 	Integer.parseInt(req.getParameter("savedMoney"));
  		int listSize = Integer.parseInt(req.getParameter("itemSize"));
  		
