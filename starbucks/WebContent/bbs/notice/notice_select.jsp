@@ -59,7 +59,7 @@
 			</thead>
 			<tbody>
 				<c:forEach var="vo" items="${list }">
-					<tr onclick="notice_view('${vo.noticePostNum }','${vo.noticeTitle}','${vo.noticeContent }','${vo.memberId } ')">
+					<tr onclick="notice_view('${vo.noticePostNum }');">
 						<td class=""><span>${vo.noticePostNum }</span></td>
 						<td class="product-thumbnail"><span>${vo.memberId }</span></td>
 						<td class="product-name text-left"><span></span></td>

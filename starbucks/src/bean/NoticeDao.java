@@ -4,7 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class NoticeDao {
 	Connection conn;
@@ -81,9 +83,7 @@ public class NoticeDao {
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-
 			System.out.println(msg);
-
 			return r;
 		}
 	}
@@ -134,6 +134,35 @@ public class NoticeDao {
 			ex.printStackTrace();
 		}finally {
 			return r;
+		}
+	}
+	
+	public NoticeVo view(int noticePostNum) {
+		NoticeVo vo = new NoticeVo();
+		
+		try {
+			String sql = " select * from noticeboard where notice_postnum = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setInt(1, noticePostNum);
+			
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				vo.setMemberId(rs.getString("member_id"));
+				vo.setNoticeTitle(rs.getString("notice_title"));
+				vo.setNoticeContent(rs.getString("notice_content"));
+				vo.setNoticeRegDate(rs.getString("notice_regdate"));
+				vo.setNoticeView(rs.getInt("notice_views"));
+			}
+			
+			conn.commit();
+
+			ps.close();
+			rs.close();
+			
+		}catch(Exception ex) {
+			ex.printStackTrace();
+		}finally {
+			return vo;
 		}
 	}
 	

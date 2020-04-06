@@ -24,22 +24,22 @@
 	        	<div class="form-group row">
 	                <div class="col-md-3">
 	                    <label for="memberId" class="text-black">글쓴이</label>
-	                    <input type="text" class="form-control" id="memberId"  value='${param.memberId }' name="memberId" readonly="readonly">
+	                    <input type="text" class="form-control" id="memberId"  value='${vo.memberId }' name="memberId" readonly="readonly">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="noticeTitle" class="text-black">제목</label>
-	                    <input type="text" class="form-control" id="noticeTitle" value='${param.noticeTitle }' name="noticeTitle" readonly>
+	                    <input type="text" class="form-control" id="noticeTitle" value='${vo.noticeTitle }' name="noticeTitle" readonly>
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="noticeContent" class="text-black" >내용</label>
-	                    <textarea class="form-control" id="noticeContent"   name="noticeContent" rows="15" readonly>${param.noticeContent }</textarea>
+	                    <textarea class="form-control" id="noticeContent"   name="noticeContent" rows="15" readonly>${vo.noticeContent }</textarea>
 	                </div>
 	            </div>
-                <input type="hidden" class="form-control" id="noticePostNum"  value='${param.noticePostNum}' name="noticePostNum">
+                <input type="hidden" class="form-control" id="noticePostNum"  value='${vo.noticePostNum}' name="noticePostNum">
 	        </div>
 	        <div class="col-12 text-right">
 	        <%

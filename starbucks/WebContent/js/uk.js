@@ -157,9 +157,9 @@ let goPage2=function(nowPage){
 }
 let notice_view=function(noticePostNum,noticeTitle,noticeContent,memberId ){
 	$('#noticePostNum').val(noticePostNum);
-	$('#noticeTitle').val(noticeTitle);
+	/*$('#noticeTitle').val(noticeTitle);
 	$('#noticeContent').val(noticeContent);
-	$('#memberId').val(memberId);
+	$('#memberId').val(memberId);*/
 	$('#noticeFrm').attr('action','notice_view.uk').submit();
 }
 let review_view=function(review_postnum, item_code){

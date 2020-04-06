@@ -102,6 +102,8 @@ public class ServletUk extends HttpServlet{
 		int noticePostNum = Integer.parseInt(req.getParameter("noticePostNum"));
 		System.out.println("memberId : "+req.getParameter("memberId"));
 		int r = dao.updateViewCount(noticePostNum);
+		NoticeVo vo = dao.view(noticePostNum);
+		req.setAttribute("vo", vo);
 		String path=url+"?main=./notice/notice_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);
