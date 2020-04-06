@@ -16,7 +16,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 public class ReviewModify {
 
-	String dir="c:/Users/uk/git/project_starbucks/starbucks/WebContent/review_img/";
+	String dir="c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/review_img/";
 	String temp="c:/temp/";
 	
 	int maxSize=1024*1024*50;

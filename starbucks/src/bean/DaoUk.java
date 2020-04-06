@@ -14,7 +14,7 @@ public class DaoUk {
 	
 	Connection conn;
 	SimpleDateFormat sdf=new SimpleDateFormat("yyyy-MM-dd");
-	String review_img="C:/Users/uk/eclipse-workspace/1907-web/WebContent/review_img/";
+	String review_img="c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/review_img/";
 	
 	
 	public DaoUk() {
