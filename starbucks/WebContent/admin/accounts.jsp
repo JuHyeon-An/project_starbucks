@@ -10,6 +10,18 @@
 
 <html lang="en">
 <head>
+<style>
+#mId{
+    background-color: #2d4863;
+    opacity: 1;
+    color: black;
+}
+#rDate{
+    background-color: #2d4863;
+    opacity: 1;
+    color: black;
+}
+</style>
 <meta charset="UTF-8">
 <script src="/starbucks/lib/jquery-3.4.1.js"></script>
 <script src="/starbucks/admin/admin_member.js"></script>
