@@ -48,12 +48,12 @@
                 <div class="col-md-3">
                     <strong class="text-black" id="">${vo.savedMoney }</strong>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <span class="text-black">리뷰</span>
                 </div>
                 <div class="col-md-3 text-right">
                     <strong class="text-black"><a href="">5</a></strong>
-                </div>
+                </div> -->
                 <div class="col-12 border-bottom mt-5 mb-4"></div>
             </div>
         </div>

@@ -39,7 +39,7 @@ let orderListSort = function(status){
 let orderCancle = function (index){
 	// serial 값 세팅 
 	$("#cancleSerial").val($("#serial_"+index).val());
-	console.log("asdsad");
+	
 	Swal.fire({
         title: '주문을 취소하시겠습니까?',
         text: "확인 버튼을 누르시면 관리자 승인 후 주문 취소가 완료됩니다.",
