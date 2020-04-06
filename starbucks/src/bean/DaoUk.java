@@ -59,7 +59,7 @@ public class DaoUk {
 					   + "      where notice_title like ? "
 					   + "      or notice_content like ? "
 					   + "      or member_name like ? "
-					   + "      order by NOTICE_REGDATE desc)A"
+					   + "      order by notice_postnum desc)A"
 					   + " )where rn between ? and ? ";
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1, "%"+page.getFindStr()+"%");
