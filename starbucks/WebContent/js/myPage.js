@@ -111,6 +111,9 @@ function btnClickEvent(){
 	// 결제하기 버튼 클릭 이벤트 
 	if($("#btnPay") != null){
 		$("#btnPay").click(function(){
+			// 적립금 값 세팅 
+			$("#usePoint").val($("#savedMoney").val());
+			
 			$("#itemSize").val($('.item-list').length);
 			$("#prodOrderFrm").attr("action", "orderResult.my").submit();
 		});

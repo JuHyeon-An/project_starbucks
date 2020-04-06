@@ -445,3 +445,16 @@
 	border: 0px;
 	opacity: 0.5;
 }
+#noticeContent {
+  	background-color:white;
+    opacity: 1;
+}
+#noticeTitle{
+  	background-color:white;
+    opacity: 1;
+}
+#memberId{
+  	background-color:white;
+    opacity: 1;
+}
+
