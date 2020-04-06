@@ -32,7 +32,7 @@
 	                            <p class="mb-2"><b>주문완료</b> : <a href="#"
 	                                    class="tm-notification-link">${dr[2].orderCnt } </a>건. </p>
 	                                    <h3>${dr[2].orderTotal } 원</h3>
-	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
+	                            <span class="tm-small tm-text-color-secondary">2020년 4월 06일</span>
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
@@ -41,7 +41,7 @@
 	                            <p class="mb-2"><b>주문취소</b> : <a href="#"
 	                                    class="tm-notification-link">${dr[0].orderCnt } </a>건. </p>
 	                                    <h3>${dr[0].orderTotal } 원</h3>
-	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
+	                            <span class="tm-small tm-text-color-secondary">2020년 4월 06일</span>
 	                        </div>
 	                    </div>
 	                    <div class="media tm-notification-item">
@@ -50,7 +50,7 @@
 	                            <p class="mb-2"><b>승인대기</b> : <a href="#"
 	                                    class="tm-notification-link">${dr[1].orderCnt } </a>건. </p>
 	                                    <h3>${dr[1].orderTotal } 원</h3>
-	                            <span class="tm-small tm-text-color-secondary">2020년 4월 01일</span>
+	                            <span class="tm-small tm-text-color-secondary">2020년 4월 06일</span>
 	                        </div>
 	                    </div>
 	                </div>
@@ -81,14 +81,14 @@
 	                <table class="table" id="orderTable">
 	                    <thead>
 	                        <tr>
-	                        	<th scope="col">주문상태</th>
-	                            <th scope="col">주문번호</th>
-	                            <th scope="col">회원아이디</th>
-	                            <th scope="col">상품코드</th>
-	                            <th scope="col">결제금액</th>
-	                            <th scope="col">연락처</th>
-	                            <th scope="col">배송지</th>
-	                            <th scope="col">주문날짜</th>
+	                        	<th scope="col" class='text-center'>주문상태</th>
+	                            <th scope="col" class='text-center'>주문번호</th>
+	                            <th scope="col" class='text-center'>아이디</th>
+	                            <th scope="col" class='text-center'>상품코드</th>
+	                            <th scope="col" class='text-center'>결제금액</th>
+	                            <th scope="col" class='text-center'>연락처</th>
+	                            <th scope="col" class='text-center'>배송지</th>
+	                            <th scope="col" class='text-center'>주문날짜</th>
 	                            
 	                        </tr>
 	                    </thead>
@@ -110,12 +110,12 @@
 	                                </c:choose>
 	                            </td>
 	                            <td><b>${vo.orderNumber }</b></td>
-	                            <td><b>${vo.memberId }</b></td>
-	                            <td><b>${vo.itemCode }</b></td>
-	                            <td>${vo.orderPrice }</td>
-	                            <td><b>${vo.getPhone }</b></td>
-	                            <td><b>${vo.getAddress }</b></td>
-	                            <td>${vo.orderregDate}</td>
+	                            <td class='text-center'><b>${vo.memberId }</b></td>
+	                            <td class='text-center'><b>${vo.itemCode }</b></td>
+	                            <td class='text-center'>${vo.orderPrice }</td>
+	                            <td class='text-center'><b>${vo.getPhone }</b></td>
+	                            <td class='text-center'><b>${vo.getAddress }</b></td>
+	                            <td class='text-center'>${vo.orderregDate}</td>
 	                        </tr>
 	                        </c:forEach>
 	                    </tbody>
