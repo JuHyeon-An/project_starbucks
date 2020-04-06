@@ -16,6 +16,7 @@ let func=function(){
 					let j=i+1
 					$('#'+j).attr('value',src.name);
 				}
+				
 			}
 			$('#review').attr('action', 'review_insertR.uk').submit();
 		});
@@ -136,6 +137,7 @@ let func=function(){
 			$('#review_view_btnDelete').removeClass('noLogin');
 		}
 	}
+	
 }		
 let goPage=function(nowPage){
 	$('#nowPage').val(nowPage);
@@ -156,16 +158,25 @@ let review_view=function(review_postnum, item_code){
 	$('#item_code').val(item_code);
 	$('#review').attr('action','review_view.uk').submit();
 }
+let kategorie=function(item_code){
+	$('#item_code').val(item_code);
+	$('#review').attr('action','review_select.uk').submit();
+}
+let sort=function(order){
+	$('#sort').val(order);
+	$('#review').attr('action','review_select.uk').submit();
+}
+
 /*이미지, 파일, 미리보기 제공*/ 
 let addImg=function(){
 	func();
 	let $div = $('<div></div>');
 	$div.attr('style','width:180px; height:180px;');
-	$div.attr('class','ukfolder d-inline-block mr-1');
+	$div.attr('class','ukfolder d-inline-block mr-1 ');
 	$('#board').append($div);
 	
 	let $img=$('<img>');
-	$img.attr('name','img'+cnt)
+	$img.attr('name','img'+cnt);
 	$img.attr('width', '180px');
 	$img.attr('height','180px');
 	$div.append($img);
@@ -173,7 +184,7 @@ let addImg=function(){
 	let $file=$('<input>');
 	$file.attr('type','file');
 	$file.attr('name','file'+cnt);
-	$file.attr('modify','no')
+	$file.attr('modify','no');
 	$file.attr('style', 'display:none');
 	$div.append($file);
 	
@@ -185,13 +196,13 @@ let addImg=function(){
 	$div.append($delete);
 	
 	$delete.on('click',function(){
-		if($("input[type='file']").length==5){
-				$parent=$(this).parent();
-				let f=$parent.children()[1]
-				if(f.getAttribute('modify')=='yes'){
-					$parent.remove()
-				}
+		if($('#board').find('.check').length==5){
+			$parent=$(this).parent();
+			let f=$parent.children()[1]
+			if(f.getAttribute('modify')=='yes'){
+				$parent.remove()
 				addImg();
+			}
 		}else{
 			$parent=$(this).parent();
 			let f=$parent.children()[1]
@@ -203,6 +214,7 @@ let addImg=function(){
 	
 	$img.on('click',function(){
 		$file.trigger('click');
+		$img.attr('class','check');
 	});
 	$file.on('click',function(event){
 		$target=$(event.target);
@@ -236,6 +248,7 @@ let modify_addImg=function(sysImage){
 	$img.attr('name','img'+cnt)
 	$img.attr('width', '180px');
 	$img.attr('height','180px');
+	$img.attr('class','check');
 	$img.attr('src','/starbucks/review_img/'+sysImage);
 	$div.append($img);
 	
@@ -254,13 +267,20 @@ let modify_addImg=function(sysImage){
 	$div.append($delete);
 	
 	$delete.on('click',function(){
-		$parent=$(this).parent();
-		$parent.remove();
+		if($('#board').find('.check').length==5){
+			$parent=$(this).parent();
+			$parent.remove()
+			addImg();
+		}else{
+			$parent=$(this).parent();
+			$parent.remove()
+		}	
 	});
 	
 	$img.on('click',function(){
 		$file.trigger('click');
 	});
+	
 	$file.on('click',function(event){
 		$target=$(event.target);
 		$target.on('change',function(){

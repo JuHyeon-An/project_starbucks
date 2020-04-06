@@ -79,13 +79,11 @@
   </div>
   <input type='hidden' id='member_id' name='member_id' value='${mId }'/>
   <input type='hidden' id='review_like' name='review_like' />
-  <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
-  <input type='hidden' name='findStr' id='findStr' value='${param.findStr }'/>
-  <input type='text' name='1' id='1' />
-  <input type='text' name='2' id='2' />
-  <input type='text' name='3' id='3' />
-  <input type='text' name='4' id='4' />
-  <input type='text' name='5' id='5' />
+  <input type='hidden' name='1' id='1' />
+  <input type='hidden' name='2' id='2' />
+  <input type='hidden' name='3' id='3' />
+  <input type='hidden' name='4' id='4' />
+  <input type='hidden' name='5' id='5' />
 </form>
 <script>
 addImg();
