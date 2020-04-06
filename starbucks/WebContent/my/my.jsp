@@ -110,7 +110,7 @@
 			                    	<input type="hidden" name="orderStatus_${i.index }" value="${orderVo.orderStatus }" />
 			                    	<c:set var="status" value="${orderVo.orderStatus }" scope="page"/>
 								    <c:if test="${status == 1 || status == 2}">
-								        <button type="button" class="btn btn-primary btn-sm" id="btnCancle_${i.index }">
+								        <button type="button" class="btn btn-primary btn-sm" id="btnCancle_${i.index }  onclick="orderCancle(${i.index});"">
 				                            취소요청
 				                        </button>
 								    </c:if>

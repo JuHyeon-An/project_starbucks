@@ -327,6 +327,9 @@ public class MyServlet extends HttpServlet{
  		String orderDt = sdf.format(new Date());
  		String itemTitle = "";
  		OrderVo vo = null;
+ 		
+ 		System.out.println("req.getParameter(\"usePoint\") : " + req.getParameter("usePoint"));
+ 		int usePoint = 	Integer.parseInt(req.getParameter("savedMoney"));
  		int listSize = Integer.parseInt(req.getParameter("itemSize"));
  		
  		List<Integer> serialList = new ArrayList<Integer>();
@@ -344,9 +347,10 @@ public class MyServlet extends HttpServlet{
 				price = Integer.parseInt(req.getParameter("price_"+i));
 			}
 			
-			vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, addr2);
+			vo = new OrderVo(mId, code, mName, phone, email, ea, price, getNm, getPhone, orderDt, orderStatus, zone, addr1, usePoint, addr2);
 			list.add(vo);
-			serialList.add(serial);
+			
+			serialList.add(serial);	// serial을 위한 list 생성 
 		}	// for end
 		
 		
