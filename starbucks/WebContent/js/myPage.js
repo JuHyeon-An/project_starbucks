@@ -146,7 +146,8 @@ function userInfoUpdate() {
     /*김관욱이 만든 클릭이벤트*/
     if($("button[name='btnWrite']")!=null){
     	$("button[name='btnWrite']").on('click',function(){
-    		$ind=$("button[name='btnWrite']").index($(this));
+    		$ind=$("table button").index($(this));
+    		console.log($ind);
     		/*itemCode 밸류 가져오기*/
     		let itemCode=$("input[name='itemCode']").eq($ind).attr("value");
     		reviewItemCode(itemCode);
