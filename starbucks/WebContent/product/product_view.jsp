@@ -75,13 +75,13 @@
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
-                <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceminus()'>&minus;</button>
+                <button id='minus'class="btn btn-outline-primary js-btn-minus" type="button" onclick='priceMinus2()'>&minus;</button>
               </div>
               
               <input id='itemEa' name="itemEa" type="button" class="form-control text-center" value="1" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">
               
               <div class="input-group-append">
-                <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='priceplus()'>&plus;</button>
+                <button id='plus' class="btn btn-outline-primary js-btn-plus" type="button" onclick='pricePlus2()'>&plus;</button>
               </div>
             </div>
 

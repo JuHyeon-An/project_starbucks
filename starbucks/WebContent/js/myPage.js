@@ -195,12 +195,13 @@ function pricePlus(i){
 	$("#totPriceVal_"+i).val($("#totPrice_"+i).html());
 }
 
+
 //장바구니 상품 개수 클릭 이벤트 (-)
 function priceMinus(i){
 	var price = Number($("#price_"+i).html());
 	var ea = Number($("#itemEa_"+i).val());
 	
-	if(price*ea >= price ){	// 전체 가격이 상품 가격과 동일하거나 클 경우만 감
+	if(price*ea >= price ){	// 전체 가격이 상품 가격과 동일하거나 클 경우만 감소 
 		$("#totPrice_"+i).html(price*ea);
 		$("#itemEa_"+i).val(ea);
 		
@@ -213,11 +214,42 @@ function priceMinus(i){
 	// value 업데이트 
 	$("#itemEaVal_"+i).val(ea);
 	$("#totPriceVal_"+i).val($("#totPrice_"+i).html());
+
+}
+
+// 상품상제 상품 개수 클릭 이벤트 
+function pricePlus2(){
+	
+	var price = Number($("#oriPrice").val());
+	var ea = Number($("#itemEa").val())+1;
+	
+	$("#price").html(price*ea);
+	
+	// value 업데이트
+	$("#itemEaVal").val(ea);
+	$("#totPrice").val($("#price").html());
+}
+
+
+function priceMinus2(){
+	var price = Number($("#oriPrice").val());
+	var ea = Number($("#itemEa").val()-1);
+	
+	if(price*ea >= price ){	// 전체 가격이 상품 가격과 동일하거나 클 경우만 감소 
+		$("#price").html(price*ea);
+		$("#itemEaVal").val(ea);
+		
+	}else if(ea == 0){
+		$("#price").html(0);
+	}
+	
+	// value 업데이트 
+	$("#itemEaVal").val(ea);
+	$("#totPrice").val($("#price").html());
 	
 	
 	
 }
-
 
 // 다음 우편번호 서비스
 function openDaumZipAddress() {
