@@ -133,7 +133,6 @@
                                 <a href="notice_select.uk?nowPage=1">CS Center</a>
                                 <ul class="dropdown">
                                     <li><a href="notice_select.uk?nowPage=1">Notice</a></li>
-                                    <li><a href="review_select.uk?nowPage=1">Review</a></li>
                                 </ul>
                                                           <li class="has-children">
                                 <a href="/starbucks/infomation/map.jsp">Information</a>
