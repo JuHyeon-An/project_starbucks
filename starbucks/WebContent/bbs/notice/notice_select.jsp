@@ -53,13 +53,6 @@
 					<th class="product-price">제목</th>
 					<th class="product-quantity">등록일</th>
 					<th class="product-total">조회수</th>
-					<%
-						if (session.getAttribute("admin") != null) {
-					%>
-					<th class="product-remove">-</th>
-					<%
-						}
-					%>
 
 				</tr>
 			</thead>
@@ -72,16 +65,6 @@
 						<td><span>${vo.noticeTitle }</span></td>
 						<td><span>${vo.noticeRegDate }</span></td>
 						<td><span>${vo.noticeView }</span></td>
-						<%
-							if (session.getAttribute("admin") != null) {
-						%>
-						<td>
-							<!-- Button trigger modal -->
-							<button type="button" class="btn btn-primary btn-sm" id="btnDelete" name='btnDelete' onclick="notice_delete('${vo.noticePostNum }');">삭제</button>
-						</td>
-						<%
-							}
-						%>
 
 					</tr>
 				</c:forEach>
@@ -91,7 +74,7 @@
 		<%
 			if (session.getAttribute("admin") != null) {
 		%>
-		<input type="button" class='btn btn-primary offset-10 ' value="입력"
+		<input type="button" class='btn btn-primary offset-11 ' value="입력"
 			onclick="location.href='notice_insert.nn'" />
 		<%
 			}
@@ -120,20 +103,20 @@
 	</div>
 </form>
 <script>
-/* $("#btnDelete").on("click",function(noticePostNum){
+ /* $("#btnDelete").on("click",function(noticePostNum){
 	alert(noticePostNum);
 	$('#noticePostNum').val(noticePostNum);
 	$('#notice').attr('action','notice_delete.nn').submit();
     //상위로 이벤트가 전파되지 않도록 중단한다.
     event.stopPropagation();
 }); */
-var notice_delete = function(noticePostNum, event){
+/* var notice_delete = function(noticePostNum, event){
 	alert(noticePostNum);
 	$('#noticePostNum').val(noticePostNum);
 	$('#noticeFrm').attr('action','notice_delete.nn').submit();
     //상위로 이벤트가 전파되지 않도록 중단한다.
     event.stopPropagation();
-};
+}; */ 
 </script>
 
 

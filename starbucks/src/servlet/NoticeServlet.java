@@ -124,7 +124,6 @@ public class NoticeServlet extends HttpServlet {
 		NoticeVo vo = new NoticeVo();
 		
 		vo.setNoticePostNum(Integer.parseInt(req.getParameter("noticePostNum")));
-		System.out.println(vo.getNoticePostNum()+"zxczx");
 		NoticeDao dao = new NoticeDao();
 		// vo 넘기는 부분 // 오라클 시퀀스
 		int r= dao.delete(vo.getNoticePostNum());
@@ -136,7 +135,7 @@ public class NoticeServlet extends HttpServlet {
 		}
 		
 		req.setAttribute("msg", msg);
-		String path = url + "?main=./notice/notice_delete.jsp";
+		String path = url + "?main=./notice/notice_view.jsp";
 		RequestDispatcher rd = req.getRequestDispatcher(path);
 		rd.forward(req, resp);
 	}   
