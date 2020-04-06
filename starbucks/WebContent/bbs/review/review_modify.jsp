@@ -10,7 +10,7 @@
     <div class="form-group row">
       <div class="col-md-6">
       	<h2 class="text-black">${ydVo.item_title }</h2>
-      	<span>${ydVo.item_content }</span>
+      	<p>${ydVo.item_content }</p>
       	<img src='/starbucks/fileFolder/${ydVo.item_mainimg }' style='max-width:300px; max-height:300px;'/>
       </div>
       <div class="col-md-6">
@@ -22,7 +22,7 @@
 <section class='rating-widget'>
   <!-- Rating Stars Box -->
   <div class='rating-stars text-center'>
-    <ul id='stars'>
+    <ul id='stars' >
       <li class='star' title='Poor' data-value='1' id='star1'>
         <i class='fa fa-star fa-fw'></i>
       </li>

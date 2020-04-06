@@ -59,7 +59,15 @@ let func=function(){
 		if($('#stars li').data('value')<=i){
 			$("#stars li:nth-child("+i+")").addClass("selected");
 		}
-		
+	}
+	/*select에 별 뿌려주기*/
+	/*j는 태그 갯수*/
+	/*sc는 별 개수*/
+	for(let j=0; j<$("input[name='sc']").length; j++){
+		var sc=$("input[name='sc']").eq(j).val();
+		for(var i=0; i<sc; i++){
+				$("ul[id='starss']").eq(j).find('li').eq(i).addClass("selected");
+		}
 	}
 /*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*//*여기*/	
 	$(document).ready(function(){

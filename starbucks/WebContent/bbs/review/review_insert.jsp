@@ -9,7 +9,7 @@
     <div class="form-group row">
       <div class="col-md-6">
       	<h2 class="text-black">${ydVo.item_title }</h2>
-      	<span>${ydVo.item_content }</span>
+      	<p>${ydVo.item_content }</p>
       	<img src='/starbucks/fileFolder/${ydVo.item_mainimg }' style='max-width:300px; max-height:300px;'/>
       </div>
       <div class="col-md-6">
@@ -78,6 +78,7 @@
     </div>
   </div>
   <input type='hidden' id='member_id' name='member_id' value='${mId }'/>
+  <input type='hidden' id='item_code' name='item_code' value='${param.reviewItemCode }'/>
   <input type='hidden' id='review_like' name='review_like' />
   <input type='hidden' name='1' id='1' />
   <input type='hidden' name='2' id='2' />

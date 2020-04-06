@@ -14,7 +14,7 @@ public class ReviewVo {
 	int reivew_view;         /*dao에서 0*/
 	Review_imgs review_imgs; /*ReviewUp에서 받아옴*/
 	
-	List<String> list;       /*수정한 파일 순서 알 수 있음*/
+	List<String> list;       /*이미지 바뀐 이름*/
 	/*int totList;  */           /*전체 페이지*/
 	
 	public int getReview_postnum() {
