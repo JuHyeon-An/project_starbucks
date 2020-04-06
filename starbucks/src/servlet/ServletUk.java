@@ -172,8 +172,7 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_insertR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
+		String reviewItemCode=req.getParameter("reviewItemCode");
 		ReviewUp up=new ReviewUp(req, resp);
 		String msg=null;
 		

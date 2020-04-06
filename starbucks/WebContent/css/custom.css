@@ -396,9 +396,11 @@
 	color:white;
 }
 .carousel-inner img {
-  width: 100%;
+  width: 150px;
   height: 100%;
+  margin: 0 auto;
 }
+.text-gray{color: #d0d0d0;}
 .noLogin{
 	display: none;
 }
@@ -445,6 +447,16 @@
 	border: 0px;
 	opacity: 0.5;
 }
+.select_star  ul > li.star > i.fa{
+	font-size: 1.5rem
+}
+.product-no{width: 6%}
+.product-img{width: 10%}
+.product-title{width: 23%}
+.product-like{width: 20%}
+.product-id{width: 10%}
+.product-date{width: 10%}
+.product-view{width: 8%}
 #noticeContent {
   	background-color:white;
     opacity: 1;

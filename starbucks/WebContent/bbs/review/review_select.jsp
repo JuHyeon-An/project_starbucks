@@ -4,7 +4,7 @@
             <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
     
-
+<div id='star_jax'>
 <form name='review' id='review' method='post'> 
     <div class="row">
    		<div class="col-md-12 mb-3">
@@ -15,7 +15,7 @@
             		<div class="dropdown mr-1 ml-md-auto">
                 		<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 			<c:choose>
-                				<c:when test="${param.item_code == ''||param.sort ==null}">카테고리</c:when>
+                				<c:when test="${param.item_code == ''|| param.sort == null}">카테고리</c:when>
                 				<c:when test="${param.item_code == '1'}">머그</c:when>
                 				<c:when test="${param.item_code == '2'}">글라스</c:when>
                 				<c:when test="${param.item_code == '3'}">텀블러</c:when>
@@ -75,13 +75,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th class="">no</th>
-                <th class="product-price">사진</th>
-                <th class="product-name">제목</th>
-                <th class="product-total">평점</th>
-                <th class="product-thumbnail">아이디</th>
-                <th class="product-quantity">등록일</th>
-                <th class="product-quantity">조회수</th>
+                <th class="product-no">no</th>
+                <th class="product-img">사진</th>
+                <th class="product-title">제목</th>
+                <th class="product-like">평점</th>
+                <th class="product-id">아이디</th>
+                <th class="product-date">등록일</th>
+                <th class="site-section">조회수</th>
             </tr>
         </thead>
         <tbody>
@@ -99,16 +99,16 @@
 					    
 				   	 	<c:set var="imgs" value="${vo.review_imgs }"/>
 						<c:forEach var="img" items="${imgs.sys_imgs}">
-							${(img==null)? "":"<div class='carousel-item'><img class='d-block w-100' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
+							${(img==null)? "":"<div class='carousel-item'><img class='d-block ' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
 						</c:forEach>
 					  <!-- 화살표 --> 
 					  </div>
 					  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-					    <i class="fa fa-angle-left fa-3x"></i>
+					    <i class="fa fa-angle-left fa-3x text-gray"></i>
 					    <span class="sr-only">Previous</span>
 					  </a>
 					  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-					   <i class="fa fa-angle-right fa-3x"></i>
+					   <i class="fa fa-angle-right fa-3x text-gray"></i>
 					    <span class="sr-only">Next</span>
 					  </a>
 					</div>
@@ -120,9 +120,31 @@
                 </td>
                 <td class="product-name text-left">
                     <a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.review_title }</a>
+                    
                 </td>
+                
                 <td>
-                  	<a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.review_like }</a>
+					 <!-- Rating Stars Box -->
+                	<input type='hidden' name='sc' value='${vo.review_like }'/>
+					   <div class='rating-stars text-center select_star' > 
+					    <ul id='starss' >
+					      <li class='star' title='Poor' data-value='1' id='star1'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='Fair' data-value='2' id='star2'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='Good' data-value='3' id='star3'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='Excellent' data-value='4' id='star4'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					      <li class='star' title='WOW!!!' data-value='5' id='star5'>
+					        <i class='fa fa-star fa-fw'></i>
+					      </li>
+					    </ul>
+					   </div> 
                 </td>
                 <td class="product-thumbnail">
                    <a onclick="review_view('${vo.review_postnum}','${vo.item_code }')" href="#">${vo.member_id }</a>
@@ -160,7 +182,7 @@
 	      </div>
 	  </div>
 </form>
-
+</div>
 <script>
 $(function(){
 	$(".carousel-item:first-child").addClass("active");

@@ -112,7 +112,7 @@ public class DaoUk {
 				sql2= " insert into review_imgs values(seq_review_postnum.currval,?,?,?,?,?) ";
 				pstmt2=conn.prepareStatement(sql2);
 				
-				if(vo.getReview_imgs()==null) {
+				/*if(vo.getReview_imgs()==null) {
 					List<String> list=new ArrayList<String>();
 					for(int i=0; i<5; i++) {
 						list.add(null);
@@ -122,7 +122,8 @@ public class DaoUk {
 					vo.setReview_imgs(imgs);
 				}
 				Review_imgs imgs=vo.getReview_imgs();
-				List<String> list2=imgs.getSys_imgs();
+				List<String> list2=imgs.getSys_imgs();*/
+				List<String> list2=vo.getList();
 				for(int i=0; i<list2.size(); i++) {
 					int count=i+1;
 					String para=list2.get(i);

@@ -26,7 +26,7 @@
 		</div>
 	</div>	
 	<div class="col-12">
-		<div class="row mb-3">
+		<div class="row border-bottom mb-3">
 			<div class="col-12 mb-3">
 				<c:set var="imgs" value="${vo.review_imgs }"/>
 					<c:forEach var="img" items="${imgs.sys_imgs}">
@@ -37,20 +37,20 @@
 		</div>
 	</div>
 </div>
-<div class="row border-bottom mb-3">
+<div class="row  mb-3">
 	<div class="col-12 text-right">
 		<button id='btnModify' class="btn btn-outline-primary mr-2 noLogin">수정</button>
 		<button id='review_view_btnDelete' class="btn btn-outline-primary mr-2 noLogin">삭제</button>
 		<button id='review_btnSelect' class="btn btn-outline-primary">목록</button>
 	</div>
 </div>
-<div class="row  mb-3">
+<!-- <div class="row  mb-3">
 	<div class="col-2">총 댓글</div>
 	<div class="col-10"></div>
 </div>
 <div class="row  mb-3">
 	<div class="col-12 mb-3">댓글을 다시오.</div>
-</div>
+</div> -->
 <form id='review' name='review' method='post'>
 	<input type='hidden' name='findStr' value='${param.findStr }' /> 
 	<input type='hidden' name='nowPage' value='${param.nowPage }' />
