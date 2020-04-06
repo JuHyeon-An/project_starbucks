@@ -671,6 +671,7 @@ public class DaoUk {
 				vo.setReview_regdate(sdf.format(rs.getDate("review_regdate")));
 				vo.setReivew_view(rs.getInt("review_view"));
 				
+				
 				/*reivew_imgs*/
 				String sql2= " select * from review_imgs where review_postnum=? ";
 				PreparedStatement pstmt2=conn.prepareStatement(sql2);

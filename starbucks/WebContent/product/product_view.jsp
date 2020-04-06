@@ -133,7 +133,7 @@
     <thead>
         <tr>
             <th>평점</th> <!-- 평점 -->
-            <th>사진</th>
+<!--             <th>사진</th> -->
             <th>제목</th>
             <th>아이디</th>
             <th>등록일</th>
@@ -144,11 +144,20 @@
 
     
         <c:forEach var="rVo" items="${listR }">
+        
+        
+        
+        
+        
+        
             <!-- 평점 기준 별표시 출력 -->
             <tr  onclick="review_view('${rVo.review_postnum}')">
-                <td>
+                <td>${rVo.review_like }</td>
                 <!-- Rating Stars Box -->
                 	<input type='hidden' name='sc' value='${rVo.review_like }'/>
+
+
+					 <!-- 
 					   <div class='rating-stars text-center' > 
 					    <ul id='starss' >
 					      <li class='star' title='Poor' data-value='1' id='star1'>
@@ -168,18 +177,19 @@
 					      </li>
 					    </ul>
 					   </div> 
-                </td>
-                <td><!-- 사진-->
+					    -->
+              <!--  <td> 
                 	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
 					  <div class="carousel-inner">
 					    
 				   	 	<c:set var="imgs" value="${rVo.review_imgs }"/>
+				   	 	<img src="/starbucks/review_img/${imgs.sys_imgs }" alt="" />
 						<c:forEach var="img" items="${imgs.sys_imgs}">
 							${(img==null)? "":"<div class='carousel-item'><img class='d-block w-100' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
 						</c:forEach>
 					  </div>
 					</div>
-				</td>
+				</td>사진-->
                 <td>${rVo.review_title }</td>
                 <td>${rVo.member_id }</td>
                 <td>${rVo.review_regdate }</td>
