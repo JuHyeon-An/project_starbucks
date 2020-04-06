@@ -171,6 +171,7 @@
 .rating-stars ul > li.star > i.fa {
   font-size:2.5em; /* Change the size of the stars */
   color:#ccc; /* Color on idle state */
+  cursor: pointer;
 }
 /* Hover state of the stars */
 .rating-stars ul > li.star.hover > i.fa {
@@ -453,7 +454,7 @@
 .product-no{width: 6%}
 .product-img{width: 10%}
 .product-title{width: 23%}
-.product-like{width: 20%}
+.product-like{width: :20%}
 .product-id{width: 10%}
 .product-date{width: 10%}
 .product-view{width: 8%}
