@@ -104,9 +104,9 @@ public class NoticeServlet extends HttpServlet {
 
 		int r =dao.modify(vo);
 		if(r>0) {
-			msg="성공";
+			msg="수정";
 		}else {
-			msg="실패";
+			msg="실수";
 		}
 		
 		
