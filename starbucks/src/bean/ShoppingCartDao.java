@@ -134,6 +134,32 @@ public class ShoppingCartDao {
 			return result;
 		}
 	}
+	
+	
+	
+	public int cartcnt(String mId) {
+		int cnt = 0;
+		List<ShoppingCartVo> list = new ArrayList<ShoppingCartVo>();
+		try {
+			String sql  = "select count(member_id) cnt from shoppingbasket where member_id = ? ";
+			PreparedStatement ps = conn.prepareStatement(sql);
+			ps.setString(1, mId);
+			
+			rs = ps.executeQuery();
+			
+			if(rs.next()) {
+				
+				cnt = rs.getInt("cnt");
+				
+			} 
+			
+		}catch(Exception ex) {
+			ex.printStackTrace(); 
+		}finally {
+			return cnt;
+		}
+		
+	}
                                                                              
 }
  

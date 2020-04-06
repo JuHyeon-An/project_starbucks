@@ -71,8 +71,9 @@
 	}
 %>
 </head>
+<%@include file="../layout/header.jsp"%>
 <body>
-<%@include file="../layout/header.jsp" %>
+	
     <!-- Breadcrumb -->
     <div class="bg-light py-3">
         <div class="container">
