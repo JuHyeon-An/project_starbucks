@@ -133,6 +133,7 @@
     <thead>
         <tr>
             <th>평점</th> <!-- 평점 -->
+            <th>사진</th>
             <th>제목</th>
             <th>아이디</th>
             <th>등록일</th>
@@ -146,6 +147,14 @@
             <!-- 평점 기준 별표시 출력 -->
             <tr  onclick="review_view('${rVo.review_postnum}')">
                 <td>${rVo.review_like }/5</td>
+                <td><!-- 사진-->
+                	<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+					  <div class="carousel-inner">
+					    
+				   	 	<c:set var="imgs" value="${rVo.review_imgs }"/>
+						<c:forEach var="img" items="${imgs.sys_imgs}">
+							${(img==null)? "":"<div class='carousel-item'><img class='d-block w-100' src='/starbucks/review_img/"}${img }${(img==null)? "":"'/></div>"}
+						</c:forEach></div></div></td>
                 <td>${rVo.review_title }</td>
                 <td>${rVo.member_id }</td>
                 <td>${rVo.review_regdate }</td>
