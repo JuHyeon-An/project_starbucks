@@ -9,25 +9,19 @@ let func=function(){
 	
 	
 	
-	if($('#btnUpate')!=null){
-		$('#btnUpate').on('click', function(){
-			$('#formmm').attr('action', 'notice_upadate.nn').submit();
+	if($('#btnUpdate')!=null){
+		$('#btnUpdate').on('click', function(){
+			$('#formmm').attr('action', 'notice_update.nn').submit();
 		});
 	}
 
 
 	if($('#btnSelect')!=null){
 		$('#btnSelect').on('click', function(){
-			$('#formmm').attr('action', 'notice_select.nn').submit();
+			$('#formmm').attr('action', 'notice_select.uk').submit();
 		});
 	}
 
 
-
-
-
-
-	
-	
-
 }
+

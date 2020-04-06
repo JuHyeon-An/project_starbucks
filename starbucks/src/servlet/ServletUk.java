@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import bean.DaoUk;
+import bean.NoticeDao;
 import bean.NoticeVo;
 import bean.Page;
 import bean.ProductDao_YD;
@@ -82,8 +83,9 @@ public class ServletUk extends HttpServlet{
 		Page page=new Page(findStr, nowPage);
 		DaoUk dao=new DaoUk();
 		
-		List<NoticeVo> list=dao.notice_select(page);
 		
+		List<NoticeVo> list=dao.notice_select(page);
+	
 		req.setAttribute("page", page);
 		req.setAttribute("list", list);
 		
@@ -92,6 +94,11 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void notice_view(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		NoticeDao dao = new NoticeDao();
+		
+		int noticePostNum = Integer.parseInt(req.getParameter("noticePostNum"));
+		System.out.println("memberId : "+req.getParameter("memberId"));
+		int r = dao.updateViewCount(noticePostNum);
 		String path=url+"?main=./notice/notice_view.jsp";
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);

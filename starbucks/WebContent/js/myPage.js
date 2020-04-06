@@ -4,8 +4,102 @@
  * 작성일 : 2020.03
  */
 
+let orderListSort = function(status){
+	$("#selectedStatus").val(status);
+	$("#review").attr("action", "orderListPage.my").submit();
+	
+	$(".dropdown-item").click(function(){
+		$(".btnOrderSort").html($(this).html());
+		
+		
+		/*
+		let param = $("#review").serialize();
+		$.ajax({
+			url : "order_sort_result.jsp",
+			type : "post",
+			data : param , 
+			success : function(result){
+				if(result == 1){
+					
+				}else{
+					
+				}
+			}	// end of success 
+		}).fail(function() {
+	    	
+	    })
+	    
+	    */
+	})
+	
+	
+}
+
+
+let orderCancle = function (index){
+	// serial 값 세팅 
+	$("#cancleSerial").val($("#serial_"+index).val());
+	console.log("asdsad");
+	Swal.fire({
+        title: '주문을 취소하시겠습니까?',
+        text: "확인 버튼을 누르시면 관리자 승인 후 주문 취소가 완료됩니다.",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#006633',
+        cancelButtonColor: '#d33',
+        confirmButtonText: '확인',
+        cancelButtonText: '취소'
+    }).then((result) => {
+    	if (result.value) {
+    		let param = $("#review").serialize();
+    		$.ajax({
+    			url : "order_cancle_result.jsp",
+    			type : "post",
+    			data : param , 
+    			success : function(result){
+    				if(result == 1){
+    					Swal.fire(
+                            'Deleted!',
+                            '관리자에게 주문 취소 요청을 하였습니다.',
+                            'success'
+                        );
+                        
+    					// 버튼 상태 변경 
+                        $("#btnCancle_"+index).html("승인대기");
+    					$("#btnCancle_"+index).addClass("disabled");
+    					$("#btnCancle_"+index).attr('disabled', true);
+    				}else{
+    					Swal.fire({
+    		   				icon: 'error',
+    		   				text: '오류가 발생했습니다.' 
+    		   			});
+    				}
+    			}	// end of success 
+    		}).fail(function() {
+            	Swal.fire({
+       				icon: 'error',
+       				text: '오류가 발생했습니다.' 
+       			});
+            })
+        }else{	// 취소버튼 클릭 시 
+        	
+        }
+    });
+}
+
+// 주문내역 페이지 네이게이션  
+let orderListPageNav=function (nowPage, mId){
+	$('#nowPage').val(nowPage);
+	$('#mId').val(mId);
+	$('#review').attr('action','orderListPage.my').submit();
+}
+
+
+
 
 function btnClickEvent(){
+	
+	// 주문하기 버튼 클릭 이벤트 
 	if($("#btnCheckOut") != null){
 		$("#btnCheckOut").click(function(){
 			$("#cartTotPriceHd").val($("#cartTotPrice").html());	// cart 주문 상품 전체 가격 세팅
@@ -13,8 +107,11 @@ function btnClickEvent(){
 		});
 	}
 	
+	
+	// 결제하기 버튼 클릭 이벤트 
 	if($("#btnPay") != null){
 		$("#btnPay").click(function(){
+			$("#itemSize").val($('.item-list').length);
 			$("#prodOrderFrm").attr("action", "orderResult.my").submit();
 		});
 	}   
@@ -53,6 +150,8 @@ function userInfoUpdate() {
     	});
 	}
 }
+
+
 /*김관욱이 만든 펑션*/
 let reviewItemCode=function(itemCode){
 	console.log('fung');

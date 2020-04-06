@@ -147,10 +147,11 @@ let goPage2=function(nowPage){
 	$('#nowPage').val(nowPage);
 	$('#review').attr('action','review_select.uk').submit();
 }
-let notice_view=function(noticeTitle,noticeContent,noticeRegDate ){
+let notice_view=function(noticePostNum,noticeTitle,noticeContent,memberId ){
+	$('#noticePostNum').val(noticePostNum);
 	$('#noticeTitle').val(noticeTitle);
 	$('#noticeContent').val(noticeContent);
-	$('#noticeRegDate').val(noticeRegDate);
+	$('#memberId').val(memberId);
 	$('#notice').attr('action','notice_view.uk').submit();
 }
 let review_view=function(review_postnum, item_code){

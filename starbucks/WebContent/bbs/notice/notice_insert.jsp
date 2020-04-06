@@ -39,9 +39,15 @@
 	                </div>
 	            </div>
 	        </div>
-	        <div class="col-12 text-right">
+	        <div class="col-10 text-right">
 	            <button type="button" class="btn btn-primary min-width-125" id="btnSave">
 	                저장
+	            </button>
+	        </div>
+	        
+	        <div class="col-1 text-right">
+	            <button type="button" class="btn btn-primary min-width-125" id="btnSelect">
+	                목록
 	            </button>
 	        </div>
 	    </form>

@@ -8,10 +8,10 @@
 				<div class="tm-bg-primary-dark tm-block tm-block-h-auto">
 					<div class="row">
 						<div class="col-12">
-							<h2 class="tm-block-title d-inline-block">Add Product</h2>
+							<h2 class="tm-block-title d-inline-block">상품 등록</h2>
 						</div>
 					</div>
-					<form id="productFrm" name="productFrm" method="post" action="add_productR.stb" enctype="multipart/form-data"
+					<form id="productFrm" name="productFrm" method="post" enctype="multipart/form-data"
 						class="tm-edit-product-row">
 						<div class="col-xl-12 col-lg-12 col-md-12">
 							<div class="form-group mb-3">
@@ -27,7 +27,7 @@
 								</div>
 								<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_num">재고
-									</label> <input id="item_num" name="item_num" type="text"
+									</label> <input id="item_num" name="item_num" type="number"
 										class="form-control validate" required />
 								</div>
 								
@@ -86,7 +86,8 @@
 								<div class="form-group mb-3 col-xs-12 col-sm-6">
 									<label for="item_regdate">등록일자
 									</label> <input id="item_regdate" name="item_regdate" type="text"
-										class="form-control validate" data-large-mode="true" />
+										class="form-control validate" data-large-mode="true" 
+										value = "2020-04-06"/>
 								</div>
 
 							</div>
@@ -101,16 +102,29 @@
 					<input id="fileBtn" name="fileBtn" type="file" style="display: none;" />
 
 				<div class="col-12">
-					<button type="submit" id="btnInsert"
+					<button type="button" id="btnSaveItem"
 						class="btn btn-primary btn-block text-uppercase">상품등록</button>
 				</div>
+		<hr/>
+				<div class="row">
+				<div class="col-9"></div>
+				<div class="col-3">
+					<div class="row">
+					<span class="col-6 bottom-nav" onclick="toList();"
+						>목록으로</span>
+					<span class="col-6 bottom-nav" onclick="$('html').scrollTop(0);"
+						>맨 위로</span>
+						</div>
+				</div>
+				</div>
 				
-				<input type="text" id="resultMsg" value="${msg }"/>
+				<input type="hidden" id="resultMsg" value="${msg }"/>
 				</form>
 			</div>
 		</div>
 	</div>
 		<!-- row -->
+		
 </div>
 	<!-- container -->
 
@@ -120,7 +134,7 @@
 
     $(function() {
         $("#item_regdate").datepicker({
-          defaultDate: "2020-03-26"
+          defaultDate: "2020-04-06"
         });
       });
       

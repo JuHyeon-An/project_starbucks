@@ -18,11 +18,12 @@
 	        </div>
 	    </div>
 	    <form class="row" method="post" name="formmm" id="formmm">
+	    <input type="hidden" id="ncc" name="ncc" value="${msg }"/>
 	        <div class="col-md-12">
 	        	<div class="form-group row">
 	                <div class="col-md-3">
 	                    <label for="memberId" class="text-black">글쓴이</label>
-	                    <input type="text" class="form-control" id="memberId"  value='관리자' name="memberId" readonly="readonly">
+	                    <input type="text" class="form-control" id="memberId"  value='${param.memberId }' name="memberId" readonly="readonly">
 	                </div>
 	            </div>
 	            <div class="form-group row">
@@ -37,22 +38,59 @@
 	                    <textarea class="form-control" id="noticeContent"   name="noticeContent" rows="15">${param.noticeContent }</textarea>
 	                </div>
 	            </div>
+                <input type="hidden" class="form-control" id="noticePostNum"  value='${param.noticePostNum}' name="noticePostNum">
 	        </div>
-	        <div class="col-9 text-right">
+	        <div class="col-12 text-right">
+	        <%
+				if (session.getAttribute("admin") != null) {
+			%>
+	            <button type="button" class="btn btn-primary min-width-125" id="btnUpdate">  
+	               수정
+	            </button>
+	        <%	} %>
 	            <button type="button" class="btn btn-primary min-width-125" id="btnSelect">
 	                목록
 	            </button>
 	        </div>
-	        <div class="col-1 text-right">
-	            <button type="button" class="btn btn-primary min-width-125" id="btnUpdate">
-	               수정
-	          	
-	            </button>
-	        </div>
 	    </form>
 	</div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.5/dist/sweetalert2.all.min.js"></script>
 <script>
 func();
+if($('#ncc')!=null){
+	if($('#ncc').val()=='성공'){
+		Swal.fire({
+			  title: 'SUCCESS! :D',
+			  text: "게시물이 성공적으로 수정되었습니다..",
+			  icon: 'success',
+			  showCancelButton: false,
+			  confirmButtonColor: '#3085d6',
+			  confirmButtonText: '목록으로'
+			}).then((result) => {
+			  if (result.value) {
+		location.href="notice_select.uk";
+	}
+})
+	}else if($('#ncc').val()=='실패'){
+		Swal.fire({
+			  title: '오류 발생',
+			  text: "수정 중 오류가 발생했습니다. 관리자에게 문의하세요.",
+			  icon: 'warning',
+			  showCancelButton: true,
+			  confirmButtonColor: '#3085d6',
+			  cancelButtonColor: '#d33',
+			  confirmButtonText: '다시 시도',
+			  cancelButtonText: '목록으로'
+			}).then((confirm) => {
+				  if (confirm.value) {
+					  // 확인을 눌렀으면
+					  $('#ncc').val('');
+		}else{
+			location.href="notice_select.uk"
+		}
+	})
+	}
+}
 </script>
 </body>
 </html>

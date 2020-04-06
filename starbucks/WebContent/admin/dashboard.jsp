@@ -73,8 +73,12 @@
 
 	        <div class="col-12 tm-block-col">
 	            <div class="tm-bg-primary-dark tm-block tm-block-taller tm-block-scroll">
-	                <h2 class="tm-block-title">금일 배송리스트</h2>
-	                <table class="table">
+	                <h2 class="tm-block-title text-center">금일 배송리스트</h2>
+	                <div class="text-right">
+	                <button id="getCSV" class="btnDownload mb-3"> 다운로드 (.csv) </button>
+	                <button id="getExcel" class="btnDownload mb-3"> 다운로드 (.xls) </button>
+	                </div>
+	                <table class="table" id="orderTable">
 	                    <thead>
 	                        <tr>
 	                        	<th scope="col">주문상태</th>
@@ -105,7 +109,7 @@
 										</c:when>
 	                                </c:choose>
 	                            </td>
-	                            <th scope="row"><b>${vo.orderNumber }</b></th>
+	                            <td><b>${vo.orderNumber }</b></td>
 	                            <td><b>${vo.memberId }</b></td>
 	                            <td><b>${vo.itemCode }</b></td>
 	                            <td>${vo.orderPrice }</td>
@@ -134,12 +138,13 @@
 	<input type="hidden" name="themeSum" value="${item.item_theme }"/>
 	<input type="hidden" name="themeSumValue" value="${item.salesSum}"/>
 	</c:forEach>
-	
 	</form>
+	
 	<script>
 	   $(document).ready(function(){
 		    $('#dashNav').addClass('active');
 	   });
+	   
 	</script>
 </body>
 </html>

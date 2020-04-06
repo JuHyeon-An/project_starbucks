@@ -16,6 +16,8 @@ public class ProductDao {
 
 	Connection conn;
 	SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+//	String upload = "C:/Users/Ellen/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/photos";
+
 	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
 //	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder/";
 //	String upload = "c:/Users/JHTA/git/project_starbucks/starbucks/WebContent/fileFolder/";
@@ -424,7 +426,8 @@ public class ProductDao {
 				DailyReport dr = new DailyReport();
 
 				// 주문완료건 카운트
-				sql = "select count(*) from shopping_order where order_status = ?";
+				sql = "select count(*) from shopping_order where order_status = ?"
+						+ " and to_char(order_regdate, 'rrrr-mm-dd') = to_char(sysdate, 'rrrr-mm-dd')";
 				
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, i);
@@ -432,15 +435,20 @@ public class ProductDao {
 				
 				if(rs.next()) {
 					dr.setOrderCnt(rs.getInt(1));
+				}else {
+					dr.setOrderCnt(0);
 				}
 				
-				sql = "select sum(order_price) from shopping_order where order_status = ?";
+				sql = "select sum(order_price) from shopping_order where order_status = ?"
+						+ " and to_char(order_regdate, 'rrrr-mm-dd') = to_char(sysdate, 'rrrr-mm-dd')";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, i);
 				rs = ps.executeQuery();
 				
 				if(rs.next()) {
 					dr.setOrderTotal(rs.getInt(1));
+				}else {
+					dr.setOrderTotal(0);
 				}
 				
 				list.add(dr);

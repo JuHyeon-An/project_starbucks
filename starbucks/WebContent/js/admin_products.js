@@ -2,7 +2,7 @@
  * http://usejsdoc.org/
  */
 
- let cnt = 1;
+let cnt = 1;
 let array = [];
 let arrayValue = [];
 let sumArray = [];
@@ -11,44 +11,59 @@ let themeValue = [];
 
  function btnFunc(){
 	
-	$('a.nav-link').click(function(){
-		$('a.nav-link').removeClass('active');
-		$(this).addClass('active');
-	})
-	
-	
+	if($('#btnSaveItem')!=null){
+		$('#btnSaveItem').click(function(){
+			$('input[type=file]:eq(0)').attr('name', 'fileInput1');
+			$('input[type=file]:eq(1)').attr('name', 'fileInput2');
+			$('input[type=file]:eq(2)').attr('name', 'fileInput3');
+			$('#productFrm').attr('action', 'add_productR.stb').submit();
+		})
+	}
+	 
+	// 수정
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').click(function(){
 			$('#editFrm').submit();
 		})
 	}
 	
-	if($('.category-input')!=null){
-		$('.category-input').on({
-			click:function(){ $(this).removeAttr('readonly'); }
-		});
+	// dashboard에서 테이블 엑셀파일로 export
+	if($('#getExcel')!=null){
+		$('#getExcel').click(function(){
+			$("#orderTable").table2excel({ 
+				filename: "DeliveryList" + new Date().toISOString().replace(/[\-\:\.]/g, "") + ".xls",
+				fileext: ".xls"
+			});
+			
+		})
 	}
 	
-		/*
-		  $("#findStr").on("keyup", function() {
-		    let value = $(this).val().toLowerCase();
-		    $("#selectTable tr").filter(function() {
-		      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-		    });
-		  });
-	*/
+	// dashboard에서 테이블 엑셀파일로 export
+	if($('#getCSV')!=null){
+		$('#getCSV').click(function(){
+			
+			 $('#orderTable').TableCSVExport({
+			        delivery: 'download',
+			        filename: 'DeliveryList' + new Date().toISOString().replace(/[\-\:\.]/g, "") + '.csv'
+			    });
+			
+		})
+	}
 	
+	//검색버튼 누르면 테이블 로드
 	if($('#btnSearch-item')!=null){
 		$('#btnSearch-item').click(function(){
 			loadTable();
 		})
 	}
 	
+	// 엔터키 눌렀을때 검색이 되도록
 	$('#frmSearch').submit(function(){
 		$('#btnSearch-item').click();
 		return false;
 	});
 	
+	// 테마별 or 종류별 토글버튼 (보류)
 	if($('#btnTheme')!=null && $('#btnCategory')!=null){
 		 $('#btnTheme').click(function(){
 			 $(this).addClass('active');
@@ -60,6 +75,7 @@ let themeValue = [];
 		 
 	}
 	
+	// 상품등록시 sweetalert
 	if($('#resultMsg')!=null){
 		if($('#resultMsg').val()=='성공'){
 			$('#resultMsg').val('');
@@ -102,6 +118,7 @@ let themeValue = [];
 	}
 	
 	
+	// 상품 수정시 sweetalert
 	if($('#editMsg')!=null){
 		if($('#editMsg').val()=='성공'){
 			$('#editMsg').val('');
@@ -143,8 +160,8 @@ let themeValue = [];
 		}
 	}
 	
+	// DAO에서 가져온 데이터값 hidden태그에 넣고 배열에 담기
 	if($('#dashFrm')!=null){
-		// 누적판매량이 많은 순대로 하나씩 배열에 담아서
 		
 		array = document.getElementsByName("bestItem");
 		arrayValue = document.getElementsByName("bestItemValue");
@@ -152,12 +169,12 @@ let themeValue = [];
 		themeArray = document.getElementsByName("themeSum");
 		themeValue = document.getElementsByName("themeSumValue");
 		
-		console.log(themeValue[0].value);
 	}
 	
 	
 }// end of btnFunc
 
+ // delete 버튼 눌렀을 때 이벤트 (sweetalert)
 let deleteItem = function(item_code){
 	
 	Swal.fire({
@@ -198,17 +215,20 @@ let deleteItem = function(item_code){
 	});
 }
 
+
+// 편집화면으로 넘어가기
 function goEdit(item_code){
 	$('#hidden_code').val(item_code);
 	$('#codeForm').attr('action', 'edit_product.stb').submit();
 }
 
 
+// img div 추가
 function makeDiv(main){
 	  
 	  let div = document.createElement('div');
 	  div.setAttribute('class', 
-			  'form-group mb-3 col-xs-12 col-sm-4');
+			  'form-group mb-3 col-xs-12 col-sm-4 photo-parent-div');
 	  
 	  
 	  let divChild = document.createElement('div');
@@ -227,13 +247,10 @@ function makeDiv(main){
 	  div.appendChild(divChild);
 	  
 	  // 삭제버튼 추가
-	  
-	  /*
 	  let btnDel = document.createElement('input');
 	  btnDel.setAttribute('name', 'delBtn'+cnt);
-	  btnDel.setAttribute('type', 'button');
-	  btnDel.setAttribute('value', 'X');
-	  btnDel.setAttribute('class', 'btnDel');
+	  btnDel.setAttribute('class', 'btnDel-item');
+	  btnDel.setAttribute('type', 'hidden');
 	  
 	  btnDel.onclick = function(ev){
 		  let obj = ev.srcElement;
@@ -244,16 +261,17 @@ function makeDiv(main){
 		  
 		  if(tag.getAttribute('modify')=='yes'){
 			  main.removeChild(parent);
+			  makeDiv(main);
 		  }
 	  }
 	  
-	  divChild.appendChild(btnDel);
-	  */
+	  div.appendChild(btnDel);
 	  
 	  // 이미지당 file tag
 	  let file = document.createElement('input');
 	  file.setAttribute('type', 'file');
 	  file.setAttribute('name', 'fileInput'+cnt);
+	  file.setAttribute('id', 'fileInput'+cnt);
 	  file.setAttribute('style', 'display:none');
 	  file.setAttribute('modify', 'no');
 	  
@@ -267,9 +285,6 @@ function makeDiv(main){
 	  file.onclick =  function imagePreView(event){
 		  	let btn = event.srcElement;
 		  	
-		  	console.log(btn);
-		  	console.log(btn.value);
-		  	
 		  	btn.onchange = function(){
 		  	let url = btn.files[0];
 		  	let reader = new FileReader();
@@ -281,22 +296,27 @@ function makeDiv(main){
 		  		temp.src = ev.target.result;
 		  		img.src = temp.src;
 		  		}
-		  	if(file.getAttribute('modify')=='no'){
+		  	if(file.getAttribute('modify')=='no' && $('input[type=file]:eq(3)').val()==null){
 		  	makeDiv(main);
 		  	// 이미지 불러오고 나면 div를 하나 더 추가해라
 		  	}
 		  	file.setAttribute('modify', 'yes');
 		  	}
+		  	
+			$('.photo-parent-div').on('mouseover', function(){
+				$(this).find('.btnDel-item').attr('type', 'button');
+			}).on('mouseout', function(){
+				$(this).find('.btnDel-item').attr('type', 'hidden');
+			})
+		  	
 		  }
-	  
-		  	if(cnt<4){
-	  		main.appendChild(div);
-	  		cnt++;
-	  }
-}
+	  			main.appendChild(div);
+	  			cnt++;
+}// end of make DIV
 //TODO : 사진에 마우스 올리면 삭제할 수 있는 버튼? 등장하게!!!
 
 
+	//이미지 미리보기
 	function preview(index){
 		$('#fileEdit'+index).trigger('click');
 		$('#fileEdit'+index).change(function(e){
@@ -346,25 +366,6 @@ function makeDiv(main){
 		loadTable();
 	}
 	
-	/*
-	function sortTable(index){
-		let table = $('#selectTable');
-		let rows = table[0].rows;
-		// 테이블 전체 행
-		console.log(rows.length)
-		
-		for (var i = 1; i < (rows.length - 1); i++) { 
-			console.log("실행");
-			var fCell = rows[i].cells[index];
-			console.log(fCell.innerHTML.toLowerCase()); // value
-			var sCell = rows[i + 1].cells[index];
-			if (fCell.innerHTML.toLowerCase() > sCell.innerHTML.toLowerCase()) {
-				console.log("몇번실행되는지");
-				rows[i].parentNode.insertBefore(rows[i + 1], rows[i]); } 
-			}
-			}
-*/
-
 		let sortType = 'asc';
 		function sortTable(index){
 		    sortType = (sortType === 'asc') ? 'desc':'asc';
@@ -380,6 +381,7 @@ function makeDiv(main){
 		            
 		            let fCell = row.cells[index].innerHTML;
 		            let sCell = rows[i + 1].cells[index].innerHTML;
+//		            let sCell = row.nextSibling.cells[index].innerHTML.toLowerCase();
 		            
 		            if(index==3 || index==4){
 		            	fCell = parseInt(fCell);
@@ -388,7 +390,6 @@ function makeDiv(main){
 		            	fCell = fCell.toLowerCase();
 		            	sCell = sCell.toLowerCase();
 		            }
-//		            let sCell = row.nextSibling.cells[index].innerHTML.toLowerCase();
 		            
 		            if ( (sortType === 'asc'  && fCell > sCell) ||
 		               (sortType === 'desc' && fCell < sCell) ) {
