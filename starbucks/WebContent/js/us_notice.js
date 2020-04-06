@@ -7,10 +7,18 @@ let func=function(){
 		});
 	}
 	
-	
-	
 	if($('#btnUpdate')!=null){
 		$('#btnUpdate').on('click', function(){
+			$('#noticeTitle').attr('readonly', false);
+			$('#noticeContent').attr('readonly', false);
+			$('#btnUpdate').attr('type', 'hidden');
+			$('#btnUp').attr('type', 'button');
+		});
+	}
+	
+	
+	if($('#btnUp')!=null){
+		$('#btnUp').on('click', function(){
 			$('#formmm').attr('action', 'notice_update.nn').submit();
 		});
 	}

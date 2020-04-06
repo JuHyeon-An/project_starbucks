@@ -76,10 +76,10 @@ public class ServletUk extends HttpServlet{
 		String findStr="";
 		int nowPage=1;
 		
-		if(req.getParameter("findStr")!=null) {
+		if(req.getParameter("findStr")!=null && req.getParameter("findStr")!="") {
 			findStr=req.getParameter("findStr");
 		}
-		if(req.getParameter("nowPage")!=null) {
+		if(req.getParameter("nowPage")!=null && req.getParameter("nowPage")!="") {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
 
