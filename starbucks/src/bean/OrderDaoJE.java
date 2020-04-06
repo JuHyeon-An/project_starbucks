@@ -12,7 +12,7 @@ public class OrderDaoJE {
 	
 	public OrderDaoJE() {
 		conn = DBConn.getConn();
-	}
+	} 
 	
 	public int insert(List<OrderVo> list) {
 		int result = 0;
@@ -213,4 +213,6 @@ public class OrderDaoJE {
 		
 		return list;
 	}
+	
+	
 }

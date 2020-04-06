@@ -48,12 +48,12 @@
                 <div class="col-md-3">
                     <strong class="text-black" id="">${vo.savedMoney }</strong>
                 </div>
-                <div class="col-md-3">
+                <!-- <div class="col-md-3">
                     <span class="text-black">리뷰</span>
                 </div>
                 <div class="col-md-3 text-right">
                     <strong class="text-black"><a href="">5</a></strong>
-                </div>
+                </div> -->
                 <div class="col-12 border-bottom mt-5 mb-4"></div>
             </div>
         </div>
@@ -89,7 +89,7 @@
                          <c:forEach var="orderVo" items="${list }" varStatus="i" begin="0" end="4" >
 			                <tr>
 			                    <td class="">
-			                        <span id="orderNum_${i.index }">${vo.orderNumber }</span>
+			                        <span id="orderNum_${i.index }">${orderVo.orderNumber }</span>
 			                    </td>
 			                    <td class="product-thumbnail">
 			                        <img src="/starbucks/fileFolder/${orderVo.productImg }" alt="Image" class="img-fluid">

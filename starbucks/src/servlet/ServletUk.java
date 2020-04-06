@@ -48,6 +48,9 @@ public class ServletUk extends HttpServlet{
 		case"/review_select.uk":
 			review_select(req,resp);
 			break;
+		case"/review_list.uk":
+			review_select(req,resp);
+			break;
 		case"/review_view.uk":
 			review_view(req,resp);
 			break;

@@ -107,12 +107,11 @@
                                     </thead>
                                     <tbody>
                                     	<c:if test="${not empty list}">
-                                    	
-                                    	
                                         <c:forEach var="list" items="${list }" varStatus="i">
                                             <tr class="item-list">
                                                 <td>${list.itemTitle } <strong class="mx-2">x</strong>${list.itemEa }</td>
                                                 <td>${list.totPrice }</td>
+                                                <input type="hidden" name="itemTitle_${i.index }" value="${list.itemTitle }" />
                                                 <input type="hidden" name="serial_${i.index }" value="${list.serial}" />
                                                 <input type="hidden" name="itemCode_${i.index }" value="${list.itemCode }" />
                                                 <input type="hidden" name="itemEa_${i.index }" value="${list.itemEa }" />
@@ -125,7 +124,7 @@
                                         	<tr class="item-list">
                                                 <td>${itemTitle } <strong class="mx-2">x</strong>${ea }</td>
                                                 <td>${totPrice }</td>
-                                                
+                                                <input type="hidden" name="itemTitle_0" value="${itemTitle }" />
                                                 <input type="hidden" name="itemCode_0" value="${itemCode }" />
                                                 <input type="hidden" name="itemEa_0" value="${ea }" />
                                                 <input type="hidden" name="price_0" value="${totPrice }" />
@@ -139,6 +138,8 @@
                                         <tr>
                                             <td class="text-black font-weight-bold"><strong>Order Total</strong></td>
                                             <td class="text-black font-weight-bold" id="orderTotPrice"><strong>${cartTotalPrice }</strong></td>
+                                        	<input type="hidden" name="cartTotPriceHd" id="cartTotPriceHd" value="${cartTotalPrice }" />
+                                        	
                                         </tr>
                                     </tbody>
                                 </table>
@@ -176,6 +177,7 @@
                 <input type="hidden" name="memPhone" value="${vo.memberPhone }" />
                 <input type="hidden" name="memEmail" value="${vo.memberEmail }" />
 				<input type="hidden" name="itemSize" id="itemSize" />
+				<input type="hidden" name="orderList" value="${list }" />
             </form>
             <!-- </form> -->
         </div>
