@@ -88,15 +88,16 @@
   </div>
   <input type='hidden' id='member_id' name='member_id' value='${mId }'/>
   <input type='hidden' id='review_like' name='review_like' value='${vo.review_like }'/> 
-  <input type='hidden' id='item_code' name='item_code' value='MG200330-93'/>
+  <input type='hidden' id='item_code' name='item_code' value='${vo.item_code }'/>
   <input type='hidden' id='review_postnum' name='review_postnum' value='${vo.review_postnum}'/>
   <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
   <input type='hidden' name='findStr' id='findStr' value='${param.findStr }'/>
-  <input type='text' name='' id='1' value=""/>
-  <input type='text' name='' id='2' value=""/>
-  <input type='text' name='' id='3' value=""/>
-  <input type='text' name='' id='4' value=""/>
-  <input type='text' name='' id='5' value=""/>
+  <input type='hidden' name='sort' id='sort' value='${param.sort }'/>
+  <input type='hidden' name='' id='1' value=""/>
+  <input type='hidden' name='' id='2' value=""/>
+  <input type='hidden' name='' id='3' value=""/>
+  <input type='hidden' name='' id='4' value=""/>
+  <input type='hidden' name='' id='5' value=""/>
 </form>
 <script>
 modify_addImgs();

@@ -174,7 +174,7 @@
 						text: '"장바구니에서 해당 상품이 삭제되었습니다.' 
 					});
 					$("#btnDelCartItem_"+serial).parents("tr").remove();
-					console.log($(this).parent("tr"));
+					
 				}else{
 					Swal.fire({
 		   				icon: 'error',

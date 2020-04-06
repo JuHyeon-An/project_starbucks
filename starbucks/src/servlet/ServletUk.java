@@ -17,7 +17,6 @@ import bean.NoticeVo;
 import bean.Page;
 import bean.ProductDao_YD;
 import bean.ProductVo;
-import bean.ReviewModify;
 import bean.ReviewUp;
 import bean.ReviewVo;
 
@@ -109,14 +108,24 @@ public class ServletUk extends HttpServlet{
 	
 	public void review_select(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String findStr="";
+		String item_code="";
+		String sort="";
+		
 		int nowPage=1;
-		if(req.getParameter("findStr")!="" && req.getParameter("findStr")!=null) {
+		if(req.getParameter("findStr")!=null) {
 			findStr=req.getParameter("findStr");
+		}
+		if(req.getParameter("item_code")!=null) {
+			item_code=req.getParameter("item_code");
+		}
+		if(req.getParameter("sort")!=null) {
+			sort=req.getParameter("sort");
 		}
 		if(req.getParameter("nowPage")!="" && req.getParameter("nowPage")!=null ) {
 			nowPage=Integer.parseInt(req.getParameter("nowPage"));
 		}
-		Page page=new Page(findStr, nowPage);
+		
+		Page page=new Page(findStr, nowPage, item_code, sort);
 		DaoUk dao=new DaoUk();
 		List<ReviewVo> list=dao.review_select(page);
 		req.setAttribute("list", list);
@@ -160,6 +169,8 @@ public class ServletUk extends HttpServlet{
 		rd.forward(req, resp);
 	}
 	public void review_insertR(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		
 		ReviewUp up=new ReviewUp(req, resp);
 		String msg=null;
 		

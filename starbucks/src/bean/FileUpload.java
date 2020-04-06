@@ -21,6 +21,7 @@ public class FileUpload {
 	String upload = "c:/Users/Ellen/git/project_starbucks/starbucks/WebContent/fileFolder/";
 //	String upload = "C:/Users/Go/Documents/GitHub/project_starbucks/starbucks/WebContent/fileFolder/";
 	
+//	String upload = "C:/Users/Ellen/eclipse-workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/photos";
 	// 업로드되는 경로명
 	String tempDir = "c:/temp/";
 	// 파일이 전송되는 중간 중간 저장되는 장소
@@ -85,7 +86,6 @@ public class FileUpload {
 					
 					String f = fi.getName();
 					// file name을 가지고 오는 작업
-					
 					String sysFile = new Date().getTime() +"-"+f;
 					// file명에 현재시간을 롱타입으로 바꿔서 집어넣어서 시스템파일명을 만들었다
 					

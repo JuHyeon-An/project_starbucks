@@ -11,16 +11,47 @@
            	<h2 class="h3 mb-3 text-black">리뷰</h2>
         </div>
         <div class="col-md-12">
+        <div class="float-md-left">
+            		<div class="dropdown mr-1 ml-md-auto">
+                		<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                			<c:choose>
+                				<c:when test="${param.item_code == ''||param.sort ==null}">카테고리</c:when>
+                				<c:when test="${param.item_code == '1'}">머그</c:when>
+                				<c:when test="${param.item_code == '2'}">글라스</c:when>
+                				<c:when test="${param.item_code == '3'}">텀블러</c:when>
+                				<c:when test="${param.item_code == '4'}">보온병</c:when>
+                				<c:when test="${param.item_code == '5'}">액세서리</c:when>
+                				<c:when test="${param.item_code == '6'}">커피용품/원두</c:when>
+                			</c:choose>
+                    	</button>
+	                  	<div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+	                    	<a class="dropdown-item" href="#" onclick="kategorie()">전체</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(1)">머그</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(2)">글라스</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(3)">텀블러</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(4)">보온병</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(5)">액세서리</a>
+	                    	<a class="dropdown-item" href="#" onclick="kategorie(6)">커피용품/원두</a>
+	                  </div>
+                </div>
+         	</div>
         		<div class="float-md-left">
             		<div class="dropdown mr-1 ml-md-auto">
                 		<button type="button" class="btn btn-secondary btn-sm dropdown-toggle" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							리뷰
+                				<c:choose>
+                					<c:when test="${param.sort == ''||param.sort ==null}">최신 날짜 순</c:when>
+                					<c:when test="${param.sort == 'review_view'}">조회순</c:when>
+                					<c:when test="${param.sort == 'review_like'}">별점순</c:when>
+                				</c:choose>
                     	</button>
-                  <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                    	<a class="dropdown-item" href="notice_select.uk?nowPage=1">공지사항</a>
-                  </div>
+	                  	<div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+	                    	<a class="dropdown-item" href="#" onclick="sort()">최신 날짜 순</a>
+	                    	<a class="dropdown-item" href="#" onclick="sort('review_view')">조회순</a>
+	                    	<a class="dropdown-item" href="#" onclick="sort('review_like')">별점순</a>
+	                  </div>
                 </div>
          	</div>
+        		
              <div class="d-flex">
                 <div class="offset-md-6 col-md-6 col-12 mb-3 pr-0">
                     <div class="input-group input-group-sm input-daterange">
@@ -35,7 +66,8 @@
 	</div> <!-- <div class="row"> -->
 <input type='hidden' name='nowPage' id='nowPage' value='${param.nowPage }'/>
 <input type='hidden' name='review_postnum' id='review_postnum' value='${vo.review_postnum }'/>
-<input type='hidden' name='item_code' id='item_code' value='${vo.item_code }'/>
+<input type='hidden' name='item_code' id='item_code' value='${param.item_code }'/>
+<input type='hidden' name='sort' id='sort' value='${param.sort }'/>
 <input type='hidden' name='msg' id='msg' value='${msg }'/>
 
 

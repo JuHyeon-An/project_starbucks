@@ -73,7 +73,6 @@ public class ServletJH extends HttpServlet{
 			break;
 			
 		}
-
 	}
 		
 	

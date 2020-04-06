@@ -88,11 +88,9 @@ public class ReviewUp {
 						break;
 					case"2":
 						sys_img2=value;
-						System.out.println("valeu:"+value);
 						break;
 					case"3":
 						sys_img3=value;
-						System.out.println("valeu:"+value);
 						break;
 					case"4":
 						sys_img4=value;
@@ -108,7 +106,6 @@ public class ReviewUp {
 						
 						String filename=fileitem.getName();
 						String sysFile=new Date().getTime()+"-"+filename;
-						System.out.println("sysfile:"+sysFile);
 						
 						list3.add(sysFile);
 						File filef=new File(dir+sysFile);

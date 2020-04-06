@@ -1,24 +1,36 @@
 package bean;
 
 public class Page {
-	String findStr=""; //검색어                                ->매개변수로 받아옴
-	int totListSize;   //검색된 데이터의 총 개수        ->매개변수로 받아옴
-	int nowPage;       //현재페이지                          ->매개변수로 받아옴
-	int listSize=10;    //한 페이지에 목록 개수           ->디폴트값
-	int blockSize=10;   //페이지 블럭 개수                  ->디폴트값
-	int totPage;       //전체 페이지                         ->산출됨
+	String findStr=""; //검색어                               ->매개변수로 받아옴
+	int totListSize;   //검색된 데이터의 총 개수       ->매개변수로 받아옴
+	int nowPage;       //현재페이지                         ->매개변수로 받아옴
+	int listSize=10;    //한 페이지에 목록 개수        ->디폴트값
+	int blockSize=10;   //페이지 블럭 개수               ->디폴트값
+	int totPage;       //전체 페이지                        ->산출됨
 	int startNo;       //페이지의 목록번호 시작 숫자  ->산출됨
 	int endNo;         //페이지의 목록번호 나는 숫자  ->산출됨
 	int startPage;     //페이지 시작 숫자                  ->산출됨
 	int endPage;	   //페이지 마지막 숫자               ->산출됨
-	
-	
+	String item_code;     //아이템코드                          ->매개변수로 받아옴
+	String sort;          //정렬                         ->매개변수로 받아옴
 	public Page() {
 		
 	}
 	public Page(String findStr, int nowPage) {
 		this.findStr=findStr;
 		this.nowPage=nowPage;
+	}
+	public Page(String findStr, int nowPage, String item_code, String sort) {
+		this.findStr=findStr;
+		this.nowPage=nowPage;
+		this.item_code=item_code;
+		this.sort=sort;
+	}
+	public String getSort() {
+		return sort;
+	}
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 	public void pageCompute() {//페이지를 계산하는 로직(startNo, endNo 계산) 
 		totPage=(int)Math.ceil(totListSize/(double)listSize); //총 페이지=올림(전체 데이터/한 페이지의 데이터 개수) 
@@ -94,4 +106,11 @@ public class Page {
 	public void setFindStr(String findStr) {
 		this.findStr = findStr;
 	}
+	public String getItem_code() {
+		return item_code;
+	}
+	public void setItem_code(String item_code) {
+		this.item_code = item_code;
+	}
+	
 }

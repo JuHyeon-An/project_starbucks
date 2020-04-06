@@ -58,6 +58,7 @@
 	<input type='hidden' name='review_postnum' value='${vo.review_postnum }' /> 
 	<input type='hidden' name='mId' id='mId' value='${mId }' />
 	<input type='hidden' name='member_id' id='member_id' value='${vo.member_id }' />
+	<input type='hidden' name='sort' id='sort' value='${param.sort }'/>
 </form>
 
 
