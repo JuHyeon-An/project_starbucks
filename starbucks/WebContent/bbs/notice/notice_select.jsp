@@ -4,6 +4,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <script src="/starbucks/js/jquery-3.3.1.min.js"></script>
 
+
 <form name='noticeFrm' id='noticeFrm' method='post'>
 
 	<div class="row">
@@ -43,7 +44,7 @@
 	<input type='hidden' name='memberId' id='memberId' /> 
 	<input type='hidden' name='noticeContent' id='noticeContent' /> 
 	<input type='hidden' name='noticeRegDate' id='noticeRegDate' />
-	<div class="site-blocks-table mb-3">
+	<div class="site-blocks-table mb-3" id='sewhang' >
 		<table class="table">
 			<thead>
 				<tr>

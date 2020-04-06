@@ -206,29 +206,19 @@ public class ServletJH extends HttpServlet{
 		
 		ProductDao dao = new ProductDao();
 		List<ProductSumVo> list = dao.dashBoard();
-		System.out.println("1 : "+list.get(0).getItem_title());
+//		System.out.println("1 : "+list.get(0).getItem_title());
 		List<Integer> sum = dao.totalSales();
-		System.out.println("2 : "+sum.get(0));
+//		System.out.println("2 : "+sum.get(0));
 		List<ThemeVo> list2 = dao.themeSum();
-		System.out.println("3 : "+list2.get(0).getItem_theme());
+//		System.out.println("3 : "+list2.get(0).getItem_theme());
 		List<OrderVo> orderList = dao.selectOrder();
 		
-		//System.out.println("4 : "+orderList.get(0).getItemCode());
-
-		//System.out.println(orderList.get(0).getGetPhone());
+//		System.out.println("4 : "+orderList.get(0).getItemCode());
+//		System.out.println(orderList.get(0).getGetPhone());
 		
 		List<DailyReport> dr = new ArrayList<DailyReport>();
 		dr = dao.dailyReport();
 
-//		System.out.println("이것만 하고 가자"+dr.get(0).getOrderCnt());
-//		System.out.println("이것만 하고 가자"+dr.get(0).getOrderTotal());
-//		
-//		System.out.println("이것만 하고 가자"+dr.get(1).getOrderCnt());
-//		System.out.println("이것만 하고 가자"+dr.get(1).getOrderTotal());
-//		
-//		System.out.println("이것만 하고 가자"+dr.get(2).getOrderCnt());
-//		System.out.println("이것만 하고 가자"+dr.get(2).getOrderTotal());
-		
 		req.setAttribute("dr", dr);
 		req.setAttribute("pList", list);
 		req.setAttribute("sum", sum);

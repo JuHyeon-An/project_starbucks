@@ -39,7 +39,7 @@ let orderListSort = function(status){
 let orderCancle = function (index){
 	// serial 값 세팅 
 	$("#cancleSerial").val($("#serial_"+index).val());
-	console.log("asdsad");
+	
 	Swal.fire({
         title: '주문을 취소하시겠습니까?',
         text: "확인 버튼을 누르시면 관리자 승인 후 주문 취소가 완료됩니다.",
@@ -111,6 +111,9 @@ function btnClickEvent(){
 	// 결제하기 버튼 클릭 이벤트 
 	if($("#btnPay") != null){
 		$("#btnPay").click(function(){
+			// 적립금 값 세팅 
+			$("#usePoint").val($("#savedMoney").val());
+			
 			$("#itemSize").val($('.item-list').length);
 			$("#prodOrderFrm").attr("action", "orderResult.my").submit();
 		});

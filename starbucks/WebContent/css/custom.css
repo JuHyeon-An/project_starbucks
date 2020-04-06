@@ -457,3 +457,36 @@
 .product-id{width: 10%}
 .product-date{width: 10%}
 .product-view{width: 8%}
+#noticeContent {
+  	background-color:white;
+    opacity: 1;
+}
+#noticeTitle{
+  	background-color:white;
+    opacity: 1;
+}
+#memberId{
+  	background-color:white;
+    opacity: 1;
+}
+
+#sewhang tr:hover{
+	font-weight:bold;	
+}
+#mId{
+    background-color: #2d4863;
+    opacity: 1;
+    color: black;
+}
+
+#mId{
+    background-color: #2d4863;
+    opacity: 1;
+    color: black;
+}
+#rDate{
+    background-color: #2d4863;
+    opacity: 1;
+    color: black;
+}
+

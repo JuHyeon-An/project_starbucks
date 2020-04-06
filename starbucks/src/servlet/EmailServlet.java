@@ -121,7 +121,9 @@ public class EmailServlet extends HttpServlet {
 		
 		if(vo.getmId() != null) {
 			int flag = 2 ; // 비밀번호 찾는경우
-			String msg = mId+"회원님의 비밀번호는 [ "+vo.getPwd()+" ] 입니다.";
+			
+			String msg =  mId+"회원님의 비밀번호는 [ "+vo.getPwd()+" ] 입니다.";
+			
 			int r = sendEmail(flag, email , msg, req, resp);
 			
 			if(r==1) {
@@ -141,7 +143,7 @@ public class EmailServlet extends HttpServlet {
 			// mail server 설정
 			String host = "smtp.naver.com";
 			String user = "yuoper@naver.com"; // 자신의 네이버 계정
-			String password = "!dudejr123";// 자신의 네이버 패스워드
+			String password = "!dud5699213";// 자신의 네이버 패스워드
 
 			// 메일 받을 주소
 			/* String to_email = m.getEmail(); */
@@ -182,11 +184,13 @@ public class EmailServlet extends HttpServlet {
 					msg.setSubject("안녕하세요 스타벅스 비밀번호 찾기 메일입니다.");
 
 				}
-				
-			
+//				<img src=`https://image.istarbucks.co.kr/img/edm_event/2019/edm_191120_privacyInfor_1.jpg` "
+//						+ " style=`display:block; margin:0;` border=`0` usemap=`#Map1` loading=`lazy`> <br/>
+//			
+
 				// 메일 내용
 				msg.setText( temp+ "");
-   
+				
 				Transport.send(msg);
 				r=1; //여기까지 흘러오면 반환값은 1
 				System.out.println("이메일 전송");
