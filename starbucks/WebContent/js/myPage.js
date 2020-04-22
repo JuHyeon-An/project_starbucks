@@ -123,7 +123,33 @@ function userInfoUpdate() {
     // 	회원정보 수정 버튼
     if ($("#btnSave") != null) {
         $("#btnSave").click(function () {
-            $("#userInfoFrm").attr("action", "accountResult.my").submit();
+        	if($("#userNm").val().trim() == ""){
+        		Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '이름을 입력해주세요.'
+                });
+        	}else if($("#userPwd").val().trim() == ""){
+        		Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '비밀번호를 입력해주세요.'
+                });
+        	}else if($("#userPhone").val().trim() == ""){
+        		Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '연락처를 입력해주세요.'
+                });
+        	}else if($("#memberEmail").val().trim() == ""){
+        		Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '연락처를 입력해주세요.'
+                });
+        	}else{
+        		$("#userInfoFrm").attr("action", "accountResult.my").submit();
+        	}
         });
     }
 

@@ -26,19 +26,19 @@
 	            <div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="userNm" class="text-black">이름 <span class="text-danger">*</span></label>
-	                    <input type="text" class="form-control" value="${vo.mName }" id="userNm" name="userNm">
+	                    <input type="text" class="form-control" value="${vo.mName }" required="required" id="userNm" name="userNm">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="userPwd" class="text-black">비밀번호 <span class="text-danger">*</span></label>
-	                    <input type="password" class="form-control" value="${vo.pwd }" id="userPwd" name="userPwd">
+	                    <input type="password" class="form-control" value="${vo.pwd }" required="required" id="userPwd" name="userPwd">
 	                </div>
 	            </div>
 	            <div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="userPhone" class="text-black">연락처 <span class="text-danger">*</span></label>
-	                    <input type="tel" class="form-control" value="${vo.phone }" id="userPhone" name="userPhone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}">
+	                    <input type="tel" class="form-control" value="${vo.phone }" required="required" id="userPhone" name="userPhone" pattern="[0-9]{3}-[0-9]{4}-[0-9]{3}">
 	                </div>
 	            </div>
 	        </div>
@@ -47,7 +47,7 @@
 	        	<div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="memberEmail" class="text-black">이메일 <span class="text-danger">*</span></label>
-	                    <input type="text" class="form-control" value="${vo.email }" id="memberEmail" name="memberEmail">
+	                    <input type="text" class="form-control" value="${vo.email }" required="required" id="memberEmail" name="memberEmail">
 	                </div>
 	
 	            </div>
@@ -55,7 +55,7 @@
 	                <div class="col-md-12">
 	                    <label for="zonecode" class="text-black">우편번호 <span class="text-danger">*</span></label>
 	                    <div class="input-group">
-	                        <input type="text" class="form-control" value="${vo.zip }" id="zonecode" name="zonecode" readonly>
+	                        <input type="text" class="form-control" value="${vo.zip }" required="required" id="zonecode" name="zonecode" readonly>
 	                        <div class="input-group-append">
 	                            <button class="btn btn-primary btn-sm" type="button" onclick="openDaumZipAddress();">우편번호 찾기</button>
 	                        </div>
@@ -66,13 +66,13 @@
 	            <div class="form-group row">
 	                <div class="col-md-12">
 	                    <label for="address" class="text-black">주소 <span class="text-danger">*</span></label>
-	                    <input type="text" class="form-control" value="${vo.addr1 }" id="address" name="address" readonly>
+	                    <input type="text" class="form-control" value="${vo.addr1 }" required="required" id="address" name="address" readonly>
 	                </div>
 	            </div>
 	            <div class="form-group row mb-5">
 	                <div class="col-md-12">
 	                    <label for="address_etc" class="text-black">상세주소 <span class="text-danger">*</span></label>
-	                    <input type="text" class="form-control" value="${vo.addr2 }" id="address2" name="address2">
+	                    <input type="text" class="form-control" value="${vo.addr2 }" required="required" id="address2" name="address2">
 	                </div>
 	            </div>
 	
