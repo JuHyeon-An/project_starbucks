@@ -91,6 +91,7 @@ var enCheck = RegExp(/[^a-zA-Z]$/);
 
 var enCheck = RegExp(/[^a-zA-Z]$/);
 
+var userIdCheck = RegExp(/^[A-Za-z0-9_\-]{5,20}$/);
 $('#email').keyup(function(){
 	if(emailCheck.test($('#email').val())){
 		$('#email').val($('#email').val().replace(/[^a-z]/gi,''));
@@ -122,9 +123,10 @@ $('#email').keyup(function(){
 $("#mId").blur(function() {
     //사용자가 입력한 아이디
     var mId = $("#mId").val();
+    //입력한 아이디를 파라미터로 담아주기위한 변수
     var param = "mId=" + mId;
     if (mId.length >= 2) { 
-    
+    //ajax를 이용하여 아이디 중복체크 서블릿을 호출하여 실행된 결과값을 #id_check에 표시해줌
         $.ajax({
             type : "post",
             url : "idck.sm",

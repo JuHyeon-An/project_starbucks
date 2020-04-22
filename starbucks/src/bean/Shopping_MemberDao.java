@@ -16,7 +16,7 @@ public class Shopping_MemberDao {
 	public String insert(Shopping_MemberVo vo) { //회원가입
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
 		String msg = "회원정보가 정상적으로 등록되었습니다.";
-		
+
 		try {
 
 			
@@ -98,12 +98,15 @@ public class Shopping_MemberDao {
 	
 	public int idCheck(String mId) {
 		
+		//매개변수로 넘어온 아이디와 같은 값이 데이터베이스내에 존재하는지 확인하는 sql문
 		String sql = "select count(*) from shopping_member where member_id = ? ";
 		int result = 1;
 		try {
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, mId);
 			rs = ps.executeQuery();
+			
+			//sql문이 실행되고 중복된 값이 있나 가져와서 리턴시켜줌 0일경우 중복된게 없으므로 사용가능
 			if(rs.next()) {
 				return rs.getInt(1);
 			}
