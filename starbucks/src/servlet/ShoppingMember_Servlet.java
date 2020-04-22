@@ -53,6 +53,9 @@ public class ShoppingMember_Servlet extends HttpServlet{
 		String mId = req.getParameter("mId");
 		
 		Shopping_MemberDao dao = new Shopping_MemberDao();
+		
+		//파라미터를 넘어온 아이디 값을 담아서 데이터베이스에서 중복체크 후 반환값이 0일때는 
+		//사용가능한 아이디 그외에는 중복되는 아이디를 나타내줌
 		int result = dao.idCheck(mId);
 		String msg = "";
 		if (result == 0) {
@@ -62,9 +65,6 @@ public class ShoppingMember_Servlet extends HttpServlet{
         }
         req.setAttribute("msg", msg);
 
-
-		
-		
 		
 		RequestDispatcher rd=req.getRequestDispatcher(path);
 		rd.forward(req, resp);

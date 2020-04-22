@@ -10,9 +10,14 @@ public class DBConn {
 //		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 //		String dbUser = "starbucks";
 //		String dbPwd = "1234";
-		String url = "jdbc:oracle:thin:@192.168.0.32:1521:xe";
-		String dbUser = "hr";
-		String dbPwd = "hr";
+//		String url = "jdbc:oracle:thin:@192.168.0.32:1521:xe";
+//		String dbUser = "hr";
+//		String dbPwd = "hr";
+		
+		String url = "jdbc:oracle:thin:@orcl.ciewatldssqx.ap-northeast-2.rds.amazonaws.com:1521:orcl";
+		
+		String dbUser = "scott";
+		String dbPwd = "hrhrhrhr";
 		Connection conn = null;
 		
 		try {
